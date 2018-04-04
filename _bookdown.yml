@@ -1,30 +1,15 @@
 book_filename: "tidystatR"
-repo: https://github.com/desautm/tidystatR/
+repo: https://github.com/desautm/tidystatR
 delete_merged_file: true
 output_dir: "docs"
-edit: https://github.com/desautm/tidystatR/edit/master/%s
+edit: https://github.com/desautm/tidystatR/edit/%s
 language:
   ui:
     chapter_name: "Chapitre "
     edit: "Source"
-  label:
-    fig: 'Figure '
-    tab: 'Table '
-    eq: 'Équation '
-    thm: 'Théorème '
-    lem: 'Lemme '
-    cor: 'Corollaire '
-    prp: 'Proposition '
-    cnj: 'Conjecture '
-    def: 'Définition '
-    exm: 'Exemple '
-    exr: 'Exercice '
-    proof: 'Preuve. '
-    remark: 'Remarque. '
-    solution: 'Solution. '
 rmd_files: [
   "index.Rmd",
-  "chapitres/tidyverse.Rmd",
-  "chapitres/references.Rmd"]
+  "tidyverse.Rmd",
+  "references.Rmd"]
 
 before_chapter_script: "_common.R"

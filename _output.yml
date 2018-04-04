@@ -1,9 +1,10 @@
 bookdown::gitbook:
+  highlight: kate
   css: style.css
   config:
     sharing:
       facebook: yes
-      github: yes
+      github: no
       twitter: yes
     toc:
       collapse: section
@@ -22,4 +23,5 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
+  
 bookdown::epub_book: default

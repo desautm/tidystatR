@@ -3,10 +3,12 @@ title: "Statistiques et Probabilités avec R et le Tidyverse"
 author: "Marc-André Désautels"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+output: bookdown::gitbook
 documentclass: book
 bibliography: ["book.bib", "packages.bib"]
 biblio-style: "apalike"
 link-citations: yes
+github-repo: desautm/tidystatR
 description: "Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse."
 ---
 
