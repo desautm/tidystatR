@@ -2,10 +2,4 @@
 .Rhistory
 .RData
 .Ruserdata
-*_cache
-*_files
-_book
-*.md
-*.html
-*.rds
-_bookdown*
+_bookdown_files
