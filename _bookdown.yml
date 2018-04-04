@@ -24,10 +24,7 @@ language:
     solution: 'Solution. '
 rmd_files: [
   "index.Rmd",
-  "chapitres/01-intro.Rmd",
-  "chapitres/02-literature.Rmd",
-  "chapitres/03-method.Rmd",
-  "chapitres/04-application.Rmd",
-  "chapitres/05-summary.Rmd",
-  "chapitres/06-references.Rmd"]
+  "chapitres/tidyverse.Rmd",
+  "chapitres/references.Rmd"]
 
+before_chapter_script: "_common.R"
