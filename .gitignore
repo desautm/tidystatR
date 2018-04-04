@@ -8,4 +8,4 @@ _book
 *.md
 *.html
 *.rds
-bookdown*
+_bookdown*
