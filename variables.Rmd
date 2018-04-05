@@ -183,7 +183,7 @@ Dans la base de données `weather` de l'extension `nycflights13`, nous allons ob
 weather
 ```
 
-
+À FAIRE : DÉCOUPER DES VARIABLES QUANTITATIVES DISCRETES...
 
 
 ## L'extension `questionr`
