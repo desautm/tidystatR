@@ -1,0 +1,319 @@
+---
+title: "Statistiques et Probabilités avec R et le Tidyverse"
+author: "Marc-André Désautels"
+date: "2018-04-04"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: ["book.bib", "packages.bib"]
+biblio-style: "apalike"
+link-citations: yes
+github-repo: desautm/tidystatR
+description: "Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse."
+---
+
+
+# Introduction {-}
+
+
+
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# (PART) Pourquoi le tidyverse {-}
+
+# Le tidyverse {#tidyverse}
+
+Dans ce document, nous utiliserons l'extension  `tidyverse` par [@R-tidyverse]. Ce chapitre permettra d'introduire l'extension `tidyverse` mais surtout les principes qui la sous-tendent. Ce chapitre est inspiré de [@juba2018] et [@wickham2017].
+
+
+
+## Extensions
+
+Le terme *tidyverse* est une contraction de *tidy* (qu'on pourrait traduire par "bien rangé") et de *universe*. En allant visiter le site internet de ces extensions [https://www.tidyverse.org/](https://www.tidyverse.org/), voici ce que nous pouvons trouver sur la première page du site:
+
+> The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. 
+
+que nous pourrions traduire par:
+
+> Le tidyverse est une collection dogmatique d'extensions pour le langage R conçues pour la science des données. Toutes les extensions partagent une philosphie sous-jacente de design, de grammaire et de structures de données.
+
+Ces extensions abordent un très grand nombre d'opérations courantes dans `R`. L'avantage d'utiliser le `tidyverse` c'est qu'il permet de simplifier plusieurs opérations fréquentes et il introduit le concept de **tidy data**. De plus, la grammaire du `tidyverse` étant cohérente entre toutes ses extensions, en apprenant comment utiliser l'une de ces extensions, vous serez en monde connu lorsque viendra le temps d'apprendre de nouvelles extensions.
+
+Nous utiliserons le `tidyverse` pour:
+
+- Le concept de **tidy data**
+- L'importation et/ou l'exportation de données
+- La manipulation de variables
+- La visualisation
+
+Le `tidyverse` permet aussi de:
+
+- Travailler avec des chaînes de caractères (du texte par exemple)
+- Programmer
+- Remettre en forme des données
+- Extraire des données du Web
+- Etc.
+
+Pour en savoir plus, nous invitons le lecteur à se rendre au site du `tidyverse` [https://www.tidyverse.org/](https://www.tidyverse.org/). Le `tidyverse` est en grande partie issu des travaux de [Hadley Wickham](http://hadley.nz/).
+
+## Installation
+
+Pour installer les extensions du `tidyverse`, nous effectuons la commande suivante:
+
+
+```r
+install.packages("tidyverse")
+```
+
+Une fois l'extension installée, il n'est pas nécessaire de la réinstaller à chaque fois que vous utilisez `R`. Par contre, vous devez charger l'extension à chaque fois que vous utilisez `R`.
+
+Pour charger l'extension et l'utiliser dans `R`, nous effectuons la commande suivante:
+
+
+```r
+library(tidyverse)
+```
+
+Cette commande va en fait charger plusieurs extensions qui constituent le __coeur__ du `tidyverse`, à savoir :
+
+- `ggplot2` (visualisation)
+- `dplyr` (manipulation des données)
+- `tidyr` (remise en forme des données)
+- `purrr` (programmation)
+- `readr` (importation de données)
+- `tibble` (tableaux de données)
+- `forcats` (variables qualitatives)
+- `stringr` (chaînes de caractères)
+
+Il existe d'autres extensions qui font partie du `tidyverse` mais qui doivent être chargées explicitement, comme par exemple `readxl` (pour l'importation de données depuis des fichiers Excel).
+
+La liste complète des extensions se trouve sur le site officiel du `tidyverse` [https://www.tidyverse.org/packages/](https://www.tidyverse.org/packages/).
+
+## Les tidy data {#tidydata}
+
+Le `tidyverse` est en partie fondé sur le concept de *tidy data*, développé à l'origine par Hadley Wickham dans un article du *Journal of Statistical Software*, voir [@wickham2014]. Nous pourrions traduire ce concept par *données bien rangées*.
+
+Il s'agit d'un modèle d'organisation des données qui vise à faciliter le travail souvent long et fastidieux de nettoyage et de préparation préalable à la mise en oeuvre de méthodes d'analyse. Dans ce livre, nous travaillerons toujours avec des *tidy data*. En réalité, la plupart des données rencontrées par les chercheurs ne sont pas *tidy*. Il existe une extension du `tidyverse` qui permet de faciliter la transformation de données *non tidy* en données *tidy*, l'extension `tidyr`. Nous ne verrons pas comment l'utiliser dans ce livre.
+
+Les principes d'un jeu de données *tidy* sont les suivants :
+
+1. chaque variable est une colonne
+2. chaque observation est une ligne
+3. chaque valeur doit être dans une cellule différente
+
+La figure \@ref(fig:tidy-structure) montre ces règles de façon visuelle (l'image a été prise de [@wickham2017]).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/tidy-1} 
+
+}
+
+\caption{Suivre les trois principes rend les données tidy: les variables sont en colonnes, les observations sont sur des lignes, et chaques valeurs sont dans des cellules différentes.}(\#fig:tidy-structure)
+\end{figure}
+
+Pourquoi s'assurer que vos données sont *tidy*? Il y a deux avantages importants:
+
+1. Un avantage général de choisir une seule façon de conserver vos données.
+   Si vous utilisez une structure de données consitante, il est plus facile
+   d'apprendre à utiliser les outils qui fonctionneront avec ce type de 
+   structure, étant donné que celles-ci possède une uniformité sous-jacente.
+   
+1. Un avantage spécifique de placer les variables en colonnes car ceci permet 
+   de *vectoriser* les opérations dans `R`. Ceci implique que vos fonctions seront plus
+   rapides lorsque viendra le temps de les exécuter.
+   
+Voici un exemple de données *tidy* qui sont accessibles en `R` de base.
+
+
+```r
+as_tibble(rownames_to_column(mtcars))
+```
+
+```
+## # A tibble: 32 x 12
+##   rowname        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
+##   <chr>        <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1 Mazda RX4     21.0    6.  160.  110.  3.90  2.62  16.5    0.    1.    4.
+## 2 Mazda RX4 W~  21.0    6.  160.  110.  3.90  2.88  17.0    0.    1.    4.
+## 3 Datsun 710    22.8    4.  108.   93.  3.85  2.32  18.6    1.    1.    4.
+## 4 Hornet 4 Dr~  21.4    6.  258.  110.  3.08  3.22  19.4    1.    0.    3.
+## 5 Hornet Spor~  18.7    8.  360.  175.  3.15  3.44  17.0    0.    0.    3.
+## 6 Valiant       18.1    6.  225.  105.  2.76  3.46  20.2    1.    0.    3.
+## # ... with 26 more rows, and 1 more variable: carb <dbl>
+```
+
+
+## Les tibbles {#tibbles}
+
+Une autre particularité du *tidyverse* est que ces extensions travaillent avec des tableaux de données au format *tibble*, qui est une évolution plus moderne du classique *data frame* du R de base. Ce format est fourni est géré par l'extension du même nom (`tibble`), qui fait partie du coeur du *tidyverse*. La plupart des fonctions des extensions du *tidyverse* acceptent des *data frames* en entrée, mais retournent un objet de classe `tibble`.
+
+Contrairement aux *data frames*, les *tibbles* :
+
+- n'ont pas de noms de lignes (*rownames*)
+- autorisent des noms de colonnes invalides pour les *data frames* (espaces, caractères spéciaux, nombres...) ^[Quand on veut utiliser des noms de ce type, on doit les entourer avec des *backticks* (`)]
+- s'affichent plus intelligemment que les *data frames* : seules les premières lignes sont affichées, ainsi que quelques informations supplémentaires utiles (dimensions, types des colonnes...)
+- ne font pas de *partial matching* sur les noms de colonnes ^[Dans R de base, si une table `d` contient une colonne `qualif`, `d$qual` retournera cette colonne.]
+- affichent un avertissement si on essaie d'accéder à une colonne qui n'existe pas
+
+Pour autant, les tibbles restent compatibles avec les *data frames*. On peut ainsi facilement convertir un *data frame* en tibble avec `as_tibble` :
+
+
+```r
+as_tibble(mtcars)
+```
+
+```
+## # A tibble: 32 x 11
+##     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+## * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1  21.0    6.  160.  110.  3.90  2.62  16.5    0.    1.    4.    4.
+## 2  21.0    6.  160.  110.  3.90  2.88  17.0    0.    1.    4.    4.
+## 3  22.8    4.  108.   93.  3.85  2.32  18.6    1.    1.    4.    1.
+## 4  21.4    6.  258.  110.  3.08  3.22  19.4    1.    0.    3.    1.
+## 5  18.7    8.  360.  175.  3.15  3.44  17.0    0.    0.    3.    2.
+## 6  18.1    6.  225.  105.  2.76  3.46  20.2    1.    0.    3.    1.
+## # ... with 26 more rows
+```
+
+Si le *data frame* d'origine a des *rownames*, on peut d'abord les convertir en colonnes avec `rownames_to_columns` :
+
+
+```r
+d <- as_tibble(rownames_to_column(mtcars))
+d
+```
+
+```
+## # A tibble: 32 x 12
+##   rowname        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
+##   <chr>        <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1 Mazda RX4     21.0    6.  160.  110.  3.90  2.62  16.5    0.    1.    4.
+## 2 Mazda RX4 W~  21.0    6.  160.  110.  3.90  2.88  17.0    0.    1.    4.
+## 3 Datsun 710    22.8    4.  108.   93.  3.85  2.32  18.6    1.    1.    4.
+## 4 Hornet 4 Dr~  21.4    6.  258.  110.  3.08  3.22  19.4    1.    0.    3.
+## 5 Hornet Spor~  18.7    8.  360.  175.  3.15  3.44  17.0    0.    0.    3.
+## 6 Valiant       18.1    6.  225.  105.  2.76  3.46  20.2    1.    0.    3.
+## # ... with 26 more rows, and 1 more variable: carb <dbl>
+```
+
+À l'inverse, on peut à tout moment convertir un tibble en *data frame* avec `as.data.frame` :
+
+
+```r
+as.data.frame(d)
+```
+
+```
+##                rowname  mpg cyl  disp  hp drat   wt qsec vs am gear carb
+## 1            Mazda RX4 21.0   6 160.0 110 3.90 2.62 16.5  0  1    4    4
+## 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.88 17.0  0  1    4    4
+## 3           Datsun 710 22.8   4 108.0  93 3.85 2.32 18.6  1  1    4    1
+## 4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.21 19.4  1  0    3    1
+## 5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.44 17.0  0  0    3    2
+## 6              Valiant 18.1   6 225.0 105 2.76 3.46 20.2  1  0    3    1
+## 7           Duster 360 14.3   8 360.0 245 3.21 3.57 15.8  0  0    3    4
+## 8            Merc 240D 24.4   4 146.7  62 3.69 3.19 20.0  1  0    4    2
+## 9             Merc 230 22.8   4 140.8  95 3.92 3.15 22.9  1  0    4    2
+## 10            Merc 280 19.2   6 167.6 123 3.92 3.44 18.3  1  0    4    4
+## 11           Merc 280C 17.8   6 167.6 123 3.92 3.44 18.9  1  0    4    4
+## 12          Merc 450SE 16.4   8 275.8 180 3.07 4.07 17.4  0  0    3    3
+## 13          Merc 450SL 17.3   8 275.8 180 3.07 3.73 17.6  0  0    3    3
+## 14         Merc 450SLC 15.2   8 275.8 180 3.07 3.78 18.0  0  0    3    3
+## 15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.25 18.0  0  0    3    4
+## 16 Lincoln Continental 10.4   8 460.0 215 3.00 5.42 17.8  0  0    3    4
+## 17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.34 17.4  0  0    3    4
+## 18            Fiat 128 32.4   4  78.7  66 4.08 2.20 19.5  1  1    4    1
+## 19         Honda Civic 30.4   4  75.7  52 4.93 1.61 18.5  1  1    4    2
+## 20      Toyota Corolla 33.9   4  71.1  65 4.22 1.83 19.9  1  1    4    1
+## 21       Toyota Corona 21.5   4 120.1  97 3.70 2.46 20.0  1  0    3    1
+## 22    Dodge Challenger 15.5   8 318.0 150 2.76 3.52 16.9  0  0    3    2
+## 23         AMC Javelin 15.2   8 304.0 150 3.15 3.44 17.3  0  0    3    2
+## 24          Camaro Z28 13.3   8 350.0 245 3.73 3.84 15.4  0  0    3    4
+## 25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.85 17.1  0  0    3    2
+## 26           Fiat X1-9 27.3   4  79.0  66 4.08 1.94 18.9  1  1    4    1
+## 27       Porsche 914-2 26.0   4 120.3  91 4.43 2.14 16.7  0  1    5    2
+## 28        Lotus Europa 30.4   4  95.1 113 3.77 1.51 16.9  1  1    5    2
+## 29      Ford Pantera L 15.8   8 351.0 264 4.22 3.17 14.5  0  1    5    4
+## 30        Ferrari Dino 19.7   6 145.0 175 3.62 2.77 15.5  0  1    5    6
+## 31       Maserati Bora 15.0   8 301.0 335 3.54 3.57 14.6  0  1    5    8
+## 32          Volvo 142E 21.4   4 121.0 109 4.11 2.78 18.6  1  1    4    2
+```
+
+Là encore, on peut convertir la colonne `rowname` en "vrais" *rownames* avec `column_to_rownames` :
+
+
+```r
+column_to_rownames(as.data.frame(d))
+```
+
+```
+##                      mpg cyl  disp  hp drat   wt qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.62 16.5  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.88 17.0  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.32 18.6  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.21 19.4  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.44 17.0  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.46 20.2  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.57 15.8  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.19 20.0  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.15 22.9  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.44 18.3  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.44 18.9  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.07 17.4  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.73 17.6  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.78 18.0  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.25 18.0  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.42 17.8  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.34 17.4  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.20 19.5  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.61 18.5  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.83 19.9  1  1    4    1
+## Toyota Corona       21.5   4 120.1  97 3.70 2.46 20.0  1  0    3    1
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.52 16.9  0  0    3    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.44 17.3  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73 3.84 15.4  0  0    3    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.85 17.1  0  0    3    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.94 18.9  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.14 16.7  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.51 16.9  1  1    5    2
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.17 14.5  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.77 15.5  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.57 14.6  0  1    5    8
+## Volvo 142E          21.4   4 121.0 109 4.11 2.78 18.6  1  1    4    2
+```
+
+\begin{rmdnote}
+Les deux fonctions \texttt{column\_to\_rownames} et
+\texttt{rownames\_to\_column} acceptent un argument supplémentaire
+\texttt{var} qui permet d'indiquer un nom de colonne autre que le nom
+\texttt{rowname} utilisé par défaut pour créer ou identifier la colonne
+contenant les noms de lignes.
+\end{rmdnote}
+
+
+<!--chapter:end:tidyverse.Rmd-->
+
+
+# Les types de variables {#typesvariables}
+
+<!--chapter:end:typesvariables.Rmd-->
+
+
+# Les types de représentation graphiques {#graphiques}
+
+<!--chapter:end:graphiques.Rmd-->
+
+
+# Les différentes mesures {#mesures}
+
+<!--chapter:end:mesures.Rmd-->
+
+
+
+
+<!--chapter:end:references.Rmd-->
+

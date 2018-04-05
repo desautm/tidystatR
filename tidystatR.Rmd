@@ -1,0 +1,316 @@
+---
+title: "Statistiques et Probabilités avec R et le Tidyverse"
+author: "Marc-André Désautels"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: ["book.bib", "packages.bib"]
+biblio-style: "apalike"
+link-citations: yes
+github-repo: desautm/tidystatR
+description: "Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse."
+---
+```{r include=FALSE, cache=FALSE}
+library(tidyverse)
+library(questionr)
+
+## Copied from Hadley Wickham and Garrett Grolemund and Hadley Wickham's r4ds
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "##",
+  collapse = FALSE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.height = 3.708,  # width * 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
+
+# Introduction {-}
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'questionr'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+library(tidyverse)
+library(questionr)
+
+## Copied from Hadley Wickham and Garrett Grolemund and Hadley Wickham's r4ds
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "##",
+  collapse = FALSE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.height = 3.708,  # width * 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
+# (PART) Pourquoi le tidyverse {-}
+
+# Le tidyverse {#tidyverse}
+
+Dans ce document, nous utiliserons l'extension  `tidyverse` par [@R-tidyverse]. Ce chapitre permettra d'introduire l'extension `tidyverse` mais surtout les principes qui la sous-tendent. Ce chapitre est inspiré de [@juba2018] et [@wickham2017].
+
+```{r include = FALSE}
+library(tidyverse)
+library(questionr)
+```
+
+## Extensions
+
+Le terme *tidyverse* est une contraction de *tidy* (qu'on pourrait traduire par "bien rangé") et de *universe*. En allant visiter le site internet de ces extensions [https://www.tidyverse.org/](https://www.tidyverse.org/), voici ce que nous pouvons trouver sur la première page du site:
+
+> The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. 
+
+que nous pourrions traduire par:
+
+> Le tidyverse est une collection dogmatique d'extensions pour le langage R conçues pour la science des données. Toutes les extensions partagent une philosphie sous-jacente de design, de grammaire et de structures de données.
+
+Ces extensions abordent un très grand nombre d'opérations courantes dans `R`. L'avantage d'utiliser le `tidyverse` c'est qu'il permet de simplifier plusieurs opérations fréquentes et il introduit le concept de **tidy data**. De plus, la grammaire du `tidyverse` étant cohérente entre toutes ses extensions, en apprenant comment utiliser l'une de ces extensions, vous serez en monde connu lorsque viendra le temps d'apprendre de nouvelles extensions.
+
+Nous utiliserons le `tidyverse` pour:
+
+- Le concept de **tidy data**
+- L'importation et/ou l'exportation de données
+- La manipulation de variables
+- La visualisation
+
+Le `tidyverse` permet aussi de:
+
+- Travailler avec des chaînes de caractères (du texte par exemple)
+- Programmer
+- Remettre en forme des données
+- Extraire des données du Web
+- Etc.
+
+Pour en savoir plus, nous invitons le lecteur à se rendre au site du `tidyverse` [https://www.tidyverse.org/](https://www.tidyverse.org/). Le `tidyverse` est en grande partie issu des travaux de [Hadley Wickham](http://hadley.nz/).
+
+## Installation
+
+Pour installer les extensions du `tidyverse`, nous effectuons la commande suivante:
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+```
+
+Une fois l'extension installée, il n'est pas nécessaire de la réinstaller à chaque fois que vous utilisez `R`. Par contre, vous devez charger l'extension à chaque fois que vous utilisez `R`.
+
+Pour charger l'extension et l'utiliser dans `R`, nous effectuons la commande suivante:
+
+```{r eval=FALSE}
+library(tidyverse)
+```
+
+Cette commande va en fait charger plusieurs extensions qui constituent le __coeur__ du `tidyverse`, à savoir :
+
+- `ggplot2` (visualisation)
+- `dplyr` (manipulation des données)
+- `tidyr` (remise en forme des données)
+- `purrr` (programmation)
+- `readr` (importation de données)
+- `tibble` (tableaux de données)
+- `forcats` (variables qualitatives)
+- `stringr` (chaînes de caractères)
+
+Il existe d'autres extensions qui font partie du `tidyverse` mais qui doivent être chargées explicitement, comme par exemple `readxl` (pour l'importation de données depuis des fichiers Excel).
+
+La liste complète des extensions se trouve sur le site officiel du `tidyverse` [https://www.tidyverse.org/packages/](https://www.tidyverse.org/packages/).
+
+## Les tidy data {#tidydata}
+
+Le `tidyverse` est en partie fondé sur le concept de *tidy data*, développé à l'origine par Hadley Wickham dans un article du *Journal of Statistical Software*, voir [@wickham2014]. Nous pourrions traduire ce concept par *données bien rangées*.
+
+Il s'agit d'un modèle d'organisation des données qui vise à faciliter le travail souvent long et fastidieux de nettoyage et de préparation préalable à la mise en oeuvre de méthodes d'analyse. Dans ce livre, nous travaillerons toujours avec des *tidy data*. En réalité, la plupart des données rencontrées par les chercheurs ne sont pas *tidy*. Il existe une extension du `tidyverse` qui permet de faciliter la transformation de données *non tidy* en données *tidy*, l'extension `tidyr`. Nous ne verrons pas comment l'utiliser dans ce livre.
+
+Les principes d'un jeu de données *tidy* sont les suivants :
+
+1. chaque variable est une colonne
+2. chaque observation est une ligne
+3. chaque valeur doit être dans une cellule différente
+
+La figure \@ref(fig:tidy-structure) montre ces règles de façon visuelle (l'image a été prise de [@wickham2017]).
+
+```{r tidy-structure, echo = FALSE, out.width = "100%", fig.cap = "Suivre les trois principes rend les données tidy: les variables sont en colonnes, les observations sont sur des lignes, et chaques valeurs sont dans des cellules différentes."}
+knitr::include_graphics("images/tidy-1.png")
+```
+
+Pourquoi s'assurer que vos données sont *tidy*? Il y a deux avantages importants:
+
+1. Un avantage général de choisir une seule façon de conserver vos données.
+   Si vous utilisez une structure de données consitante, il est plus facile
+   d'apprendre à utiliser les outils qui fonctionneront avec ce type de 
+   structure, étant donné que celles-ci possède une uniformité sous-jacente.
+   
+1. Un avantage spécifique de placer les variables en colonnes car ceci permet 
+   de *vectoriser* les opérations dans `R`. Ceci implique que vos fonctions seront plus
+   rapides lorsque viendra le temps de les exécuter.
+   
+Voici un exemple de données *tidy* qui sont accessibles en `R` de base.
+
+```{r as-tibble-mtcars}
+as_tibble(rownames_to_column(mtcars))
+```
+
+
+## Les tibbles {#tibbles}
+
+Une autre particularité du *tidyverse* est que ces extensions travaillent avec des tableaux de données au format *tibble*, qui est une évolution plus moderne du classique *data frame* du R de base. Ce format est fourni est géré par l'extension du même nom (`tibble`), qui fait partie du coeur du *tidyverse*. La plupart des fonctions des extensions du *tidyverse* acceptent des *data frames* en entrée, mais retournent un objet de classe `tibble`.
+
+Contrairement aux *data frames*, les *tibbles* :
+
+- n'ont pas de noms de lignes (*rownames*)
+- autorisent des noms de colonnes invalides pour les *data frames* (espaces, caractères spéciaux, nombres...) ^[Quand on veut utiliser des noms de ce type, on doit les entourer avec des *backticks* (`)]
+- s'affichent plus intelligemment que les *data frames* : seules les premières lignes sont affichées, ainsi que quelques informations supplémentaires utiles (dimensions, types des colonnes...)
+- ne font pas de *partial matching* sur les noms de colonnes ^[Dans R de base, si une table `d` contient une colonne `qualif`, `d$qual` retournera cette colonne.]
+- affichent un avertissement si on essaie d'accéder à une colonne qui n'existe pas
+
+Pour autant, les tibbles restent compatibles avec les *data frames*. On peut ainsi facilement convertir un *data frame* en tibble avec `as_tibble` :
+
+```{r paged.print=FALSE, warning=FALSE}
+as_tibble(mtcars)
+```
+
+Si le *data frame* d'origine a des *rownames*, on peut d'abord les convertir en colonnes avec `rownames_to_columns` :
+
+```{r warning=FALSE, paged.print=FALSE}
+d <- as_tibble(rownames_to_column(mtcars))
+d
+```
+
+À l'inverse, on peut à tout moment convertir un tibble en *data frame* avec `as.data.frame` :
+
+```{r paged.print=FALSE}
+as.data.frame(d)
+```
+
+Là encore, on peut convertir la colonne `rowname` en "vrais" *rownames* avec `column_to_rownames` :
+
+```{r warning=FALSE, paged.print=FALSE}
+column_to_rownames(as.data.frame(d))
+```
+
+```{block type='rmdnote'}
+Les deux fonctions `column_to_rownames` et `rownames_to_column` acceptent un argument supplémentaire `var` qui permet d'indiquer un nom de colonne autre que le nom `rowname` utilisé par défaut pour créer ou identifier la colonne contenant les noms de lignes.
+```
+
+
+<!--chapter:end:tidyverse.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+library(tidyverse)
+library(questionr)
+
+## Copied from Hadley Wickham and Garrett Grolemund and Hadley Wickham's r4ds
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "##",
+  collapse = FALSE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.height = 3.708,  # width * 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
+# Les types de variables {#typesvariables}
+
+<!--chapter:end:typesvariables.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+library(tidyverse)
+library(questionr)
+
+## Copied from Hadley Wickham and Garrett Grolemund and Hadley Wickham's r4ds
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "##",
+  collapse = FALSE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.height = 3.708,  # width * 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
+# Les types de représentation graphiques {#graphiques}
+
+<!--chapter:end:graphiques.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+library(tidyverse)
+library(questionr)
+
+## Copied from Hadley Wickham and Garrett Grolemund and Hadley Wickham's r4ds
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "##",
+  collapse = FALSE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.height = 3.708,  # width * 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
+# Les différentes mesures {#mesures}
+
+<!--chapter:end:mesures.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+library(tidyverse)
+library(questionr)
+
+## Copied from Hadley Wickham and Garrett Grolemund and Hadley Wickham's r4ds
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "##",
+  collapse = FALSE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.height = 3.708,  # width * 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
+`r if (knitr::is_html_output()) '
+# Bibliographie {-}
+'`
+
+<!--chapter:end:references.Rmd-->
+
