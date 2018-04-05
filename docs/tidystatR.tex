@@ -1064,20 +1064,17 @@ que quelques unes.
 \end{Shaded}
 
 Pour visualiser les levels d'une variable facilement, nous pouvons
-utiliser la fonction \texttt{unique} qui retourne toutes les modalités
-différentes rencontrées pour cette variable. Voici par exemple les
-modalités et les levels pour les variables \texttt{race} et
-\texttt{marital}
+utiliser la fonction \texttt{levels} qui retourne tous les levels
+différents rencontrés pour cette variable. Voici par exemple les levels
+pour les variables \texttt{race} et \texttt{marital}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{unique}\NormalTok{(gss_cat}\OperatorTok{$}\NormalTok{race)}
-\NormalTok{## [1] White Black Other}
-\NormalTok{## Levels: Other Black White Not applicable}
-\KeywordTok{unique}\NormalTok{(gss_cat}\OperatorTok{$}\NormalTok{marital)}
-\NormalTok{## [1] Never married Divorced      Widowed       Married       Separated    }
-\NormalTok{## [6] No answer    }
-\NormalTok{## Levels: No answer Never married Separated Divorced Widowed Married}
+\KeywordTok{levels}\NormalTok{(gss_cat}\OperatorTok{$}\NormalTok{race)}
+\NormalTok{## [1] "Other"          "Black"          "White"          "Not applicable"}
+\KeywordTok{levels}\NormalTok{(gss_cat}\OperatorTok{$}\NormalTok{marital)}
+\NormalTok{## [1] "No answer"     "Never married" "Separated"     "Divorced"     }
+\NormalTok{## [5] "Widowed"       "Married"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1126,12 +1123,68 @@ Remarquons que dans la liste \textbf{Levels}, \texttt{R} ajoute les
 symboles \texttt{\textless{}} pour indiquer que la variable possède un
 ordre. Il n'est pas nécessaire de travailler avec des facteurs ordonnés.
 
+Nous remarquons que dans la base de données \texttt{forcats::gss\_cat},
+la variable \texttt{rincome} représente une variable qualitative à
+échelle ordinale:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{levels}\NormalTok{(gss_cat}\OperatorTok{$}\NormalTok{rincome)}
+\NormalTok{##  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"}
+\NormalTok{##  [5] "$20000 - 24999" "$15000 - 19999" "$10000 - 14999" "$8000 to 9999" }
+\NormalTok{##  [9] "$7000 to 7999"  "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999" }
+\NormalTok{## [13] "$3000 to 3999"  "$1000 to 2999"  "Lt $1000"       "Not applicable"}
+\end{Highlighting}
+\end{Shaded}
+
+Si nous laissons de côté les modalités \emph{No answer}, \emph{Don't
+know} et \emph{Refused}, le reste des modalités peut être placé en
+ordre. En effet, la modalité \emph{\$4000 to 4999} est plus petite que
+la modalité \emph{\$5000 to 5999} et ainsi de suite.
+
+\begin{quote}
+Bien que les modalités de la variable précédente soient composées de
+nombres, le fait que nous ayons affaire à des intervalles indique que
+nous avons en fait une variable qualitative à échelle ordinale.
+\end{quote}
+
+Les modalités sont placées en ordre décroissant, si nous voulions avoir
+les modalités en ordre croissant, nous pourrions faire ceci:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(gss_cat}\OperatorTok{$}\NormalTok{rincome, }
+            \DataTypeTok{levels=}\KeywordTok{c}\NormalTok{(}\StringTok{"Lt $1000"}\NormalTok{, }\StringTok{"$1000 to 2999"}\NormalTok{, }\StringTok{"$3000 to 3999"}\NormalTok{, }\StringTok{"$4000 to 4999"}\NormalTok{, }
+                     \StringTok{"$5000 to 5999"}\NormalTok{, }\StringTok{"$6000 to 6999"}\NormalTok{, }\StringTok{"$7000 to 7999"}\NormalTok{, }\StringTok{"$8000 to 9999"}\NormalTok{, }
+                     \StringTok{"$10000 - 14999"}\NormalTok{, }\StringTok{"$15000 - 19999"}\NormalTok{, }\StringTok{"$20000 - 24999"}\NormalTok{, }\StringTok{"$25000 or more"}\NormalTok{, }
+                     \StringTok{"No answer"}\NormalTok{, }\StringTok{"Refused"}\NormalTok{, }\StringTok{"Not applicable"}\NormalTok{, }\StringTok{"Don't know"}\NormalTok{))}
+\KeywordTok{levels}\NormalTok{(a)}
+\NormalTok{##  [1] "Lt $1000"       "$1000 to 2999"  "$3000 to 3999"  "$4000 to 4999" }
+\NormalTok{##  [5] "$5000 to 5999"  "$6000 to 6999"  "$7000 to 7999"  "$8000 to 9999" }
+\NormalTok{##  [9] "$10000 - 14999" "$15000 - 19999" "$20000 - 24999" "$25000 or more"}
+\NormalTok{## [13] "No answer"      "Refused"        "Not applicable" "Don't know"}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{variables-quantitatives}{%
 \section{Variables quantitatives}\label{variables-quantitatives}}
 
 Une variable quantitative est une variable dont les résultats possibles
 sont des \textbf{nombres}. Les différents nombres que peuvent prendre
 une telle variable sont appelées des \textbf{valeurs}.
+
+\hypertarget{mise-en-place-1}{%
+\subsection{Mise en place}\label{mise-en-place-1}}
+
+Dans cette section, nous utiliserons la librairie \texttt{nycflights13}
+qui contient cinq bases de données portant sur tous les vols aériens
+ayant quittés la ville de New-York en 2013.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(nycflights13)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{variables-quantitatives-discretes}{%
 \subsection{Variables quantitatives
@@ -1144,15 +1197,46 @@ suivis pendant cette session} est une variable quantitative discrète.
 Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,\ldots{} Il
 est impossible de suivre 4,6 cours durant une session.
 
-Dans la base de données \texttt{nycflights13}, la variable
-\texttt{engines} provenant des données \texttt{planes} est une variable
-quantitative discrète. Cette variable représente le nombre de moteurs de
-l'avion en question.
+La base de données \texttt{planes} contient certaines variables
+quantitatives discrètes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{planes}
+\NormalTok{## # A tibble: 3,322 x 9}
+\NormalTok{##   tailnum  year type       manufacturer  model  engines seats speed engine}
+\NormalTok{##   <chr>   <int> <chr>      <chr>         <chr>    <int> <int> <int> <chr> }
+\NormalTok{## 1 N10156   2004 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~}
+\NormalTok{## 2 N102UW   1998 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~}
+\NormalTok{## 3 N103US   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~}
+\NormalTok{## 4 N104UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~}
+\NormalTok{## 5 N10575   2002 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~}
+\NormalTok{## 6 N105UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~}
+\NormalTok{## # ... with 3,316 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+Pour être en mesure de connaître toutes les \emph{valeurs} différentes
+que peut prendre une variable, nous allons utiliser la commande
+\texttt{unique}. Si nous nous intéressons à la variable \texttt{engines}
+(qui dénombre le nombre de moteurs de l'avion):
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{unique}\NormalTok{(planes}\OperatorTok{$}\NormalTok{engines)}
 \NormalTok{## [1] 2 1 4 3}
+\end{Highlighting}
+\end{Shaded}
+
+La variable \texttt{seats} (qui dénombre le nombre de sièges de
+l'avion):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{unique}\NormalTok{(planes}\OperatorTok{$}\NormalTok{seats)}
+\NormalTok{##  [1]  55 182 149 330 178  95 290 199  20 140   2   8 400 260 255 191 375}
+\NormalTok{## [18] 145  22  14   6  80 189   7   4 377 102  10  11 269 200 222 172 379}
+\NormalTok{## [35]   5 147 100  16 275 292 139   9 450 179 128 300 142  12}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1179,6 +1263,71 @@ variable \texttt{carat}. Voici les 25 premiers éléments de ces valeurs.
 \NormalTok{## [15] 0.20 0.32 0.30 0.30 0.30 0.30 0.30 0.23 0.23 0.31 0.31}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{lextension-questionr}{%
+\section{\texorpdfstring{L'extension
+\texttt{questionr}}{L'extension questionr}}\label{lextension-questionr}}
+
+L'extension \texttt{questionr} propose une interface graphique pour
+faciliter l'opération qui consiste à réordonner vos données.
+
+\hypertarget{mise-en-place-2}{%
+\subsection{Mise en place}\label{mise-en-place-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(questionr)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{linterface-graphique}{%
+\subsection{L'interface graphique}\label{linterface-graphique}}
+
+L'objectif est de permettre à l'utilisateur de saisir les nouvelles
+valeurs dans un formulaire, et de générer ensuite le code \texttt{R}
+correspondant au recodage indiqué.
+
+Pour utiliser cette interface, sous RStudio vous pouvez aller dans le
+menu \emph{Addins} (présent dans la barre d'outils principale) puis
+choisir \emph{Levels recoding}.
+
+\textbackslash{}begin\{figure\}
+
+\{\centering \includegraphics[width=0.25\linewidth]{images/addin-irec}
+
+\}
+
+\textbackslash{}caption\{\emph{Levels recoding} dans le menu
+\emph{Addins}\}\label{fig:addin-irec} \textbackslash{}end\{figure\}
+
+Si nous utilisons l'interface graphique pour la variable
+\texttt{rincome} de la base de données \texttt{gts\_cat}, nous obtenons:
+
+\textbackslash{}begin\{figure\}
+
+\{\centering \includegraphics[width=1\linewidth]{images/irec}
+
+\}
+
+\textbackslash{}caption\{L'interface graphique de \emph{Levels
+recoding}\}\label{fig:irec} \textbackslash{}end\{figure\}
+
+L'interface se compose de trois onglets : l'onglet \emph{Variable et
+paramètres} vous permet de sélectionner la variable à recoder, le nom de
+la nouvelle variable et d'autres paramètres, l'onglet \emph{Recodages}
+vous permet de saisir les nouvelles valeurs des modalités, et l'onglet
+\emph{Code et résultat} affiche le code \texttt{R} correspondant ainsi
+qu'un tableau permettant de vérifier les résultats.
+
+Une fois votre recodage terminé, cliquez sur le bouton \emph{Done} et le
+code \texttt{R} sera inséré dans votre script \texttt{R} ou affiché dans
+la console.
+
+\begin{quote}
+\emph{Important}: cette interface est prévue pour ne pas modifier vos
+données. C'est donc à vous d'exécuter le code généré pour que le
+recodage soit réellement effectif.
+\end{quote}
 
 \hypertarget{graphiques}{%
 \chapter{Les types de représentation graphiques}\label{graphiques}}

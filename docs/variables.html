@@ -154,7 +154,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.2" data-path="variables.html"><a href="variables.html#variables-qualitatives-a-echelle-ordinale"><i class="fa fa-check"></i><b>2.2.2</b> Variables qualitatives à échelle ordinale</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="variables.html"><a href="variables.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.3</b> Variables quantitatives</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="variables.html"><a href="variables.html#variables-quantitatives-discretes"><i class="fa fa-check"></i><b>2.3.1</b> Variables quantitatives discrètes</a></li>
+<li class="chapter" data-level="2.3.1" data-path="variables.html"><a href="variables.html#mise-en-place-1"><i class="fa fa-check"></i><b>2.3.1</b> Mise en place</a></li>
+<li class="chapter" data-level="2.3.2" data-path="variables.html"><a href="variables.html#variables-quantitatives-discretes"><i class="fa fa-check"></i><b>2.3.2</b> Variables quantitatives discrètes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="variables.html"><a href="variables.html#lextension-questionr"><i class="fa fa-check"></i><b>2.4</b> L’extension <code>questionr</code></a><ul>
+<li class="chapter" data-level="2.4.1" data-path="variables.html"><a href="variables.html#mise-en-place-2"><i class="fa fa-check"></i><b>2.4.1</b> Mise en place</a></li>
+<li class="chapter" data-level="2.4.2" data-path="variables.html"><a href="variables.html#linterface-graphique"><i class="fa fa-check"></i><b>2.4.2</b> L’interface graphique</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="graphiques.html"><a href="graphiques.html"><i class="fa fa-check"></i><b>3</b> Les types de représentation graphiques</a></li>
@@ -266,14 +271,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb27-9" data-line-number="9">## 5  2000 Divorced         25 White Not app~ Not str ~ None   Not a~       1</a>
 <a class="sourceLine" id="cb27-10" data-line-number="10">## 6  2000 Married          25 White $20000 ~ Strong d~ Prote~ South~      NA</a>
 <a class="sourceLine" id="cb27-11" data-line-number="11">## # ... with 2.148e+04 more rows</a></code></pre></div>
-<p>Pour visualiser les levels d’une variable facilement, nous pouvons utiliser la fonction <code>unique</code> qui retourne toutes les modalités différentes rencontrées pour cette variable. Voici par exemple les modalités et les levels pour les variables <code>race</code> et <code>marital</code></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">unique</span>(gss_cat<span class="op">$</span>race)</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">## [1] White Black Other</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">## Levels: Other Black White Not applicable</a>
-<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="kw">unique</span>(gss_cat<span class="op">$</span>marital)</a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">## [1] Never married Divorced      Widowed       Married       Separated    </a>
-<a class="sourceLine" id="cb28-6" data-line-number="6">## [6] No answer    </a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">## Levels: No answer Never married Separated Divorced Widowed Married</a></code></pre></div>
+<p>Pour visualiser les levels d’une variable facilement, nous pouvons utiliser la fonction <code>levels</code> qui retourne tous les levels différents rencontrés pour cette variable. Voici par exemple les levels pour les variables <code>race</code> et <code>marital</code></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">levels</span>(gss_cat<span class="op">$</span>race)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">## [1] &quot;Other&quot;          &quot;Black&quot;          &quot;White&quot;          &quot;Not applicable&quot;</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">levels</span>(gss_cat<span class="op">$</span>marital)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">## [1] &quot;No answer&quot;     &quot;Never married&quot; &quot;Separated&quot;     &quot;Divorced&quot;     </a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">## [5] &quot;Widowed&quot;       &quot;Married&quot;</a></code></pre></div>
 </div>
 <div id="variables-qualitatives-a-echelle-ordinale" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Variables qualitatives à échelle ordinale</h3>
@@ -293,27 +296,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb30-4" data-line-number="4">## [5] Satisfait       </a>
 <a class="sourceLine" id="cb30-5" data-line-number="5">## 4 Levels: Très insatisfait &lt; Insatisfait &lt; ... &lt; Très satisfait</a></code></pre></div>
 <p>Remarquons que dans la liste <strong>Levels</strong>, <code>R</code> ajoute les symboles <code>&lt;</code> pour indiquer que la variable possède un ordre. Il n’est pas nécessaire de travailler avec des facteurs ordonnés.</p>
+<p>Nous remarquons que dans la base de données <code>forcats::gss_cat</code>, la variable <code>rincome</code> représente une variable qualitative à échelle ordinale:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">levels</span>(gss_cat<span class="op">$</span>rincome)</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">##  [1] &quot;No answer&quot;      &quot;Don&#39;t know&quot;     &quot;Refused&quot;        &quot;$25000 or more&quot;</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">##  [5] &quot;$20000 - 24999&quot; &quot;$15000 - 19999&quot; &quot;$10000 - 14999&quot; &quot;$8000 to 9999&quot; </a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">##  [9] &quot;$7000 to 7999&quot;  &quot;$6000 to 6999&quot;  &quot;$5000 to 5999&quot;  &quot;$4000 to 4999&quot; </a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">## [13] &quot;$3000 to 3999&quot;  &quot;$1000 to 2999&quot;  &quot;Lt $1000&quot;       &quot;Not applicable&quot;</a></code></pre></div>
+<p>Si nous laissons de côté les modalités <em>No answer</em>, <em>Don’t know</em> et <em>Refused</em>, le reste des modalités peut être placé en ordre. En effet, la modalité <em>$4000 to 4999</em> est plus petite que la modalité <em>$5000 to 5999</em> et ainsi de suite.</p>
+<blockquote>
+<p>Bien que les modalités de la variable précédente soient composées de nombres, le fait que nous ayons affaire à des intervalles indique que nous avons en fait une variable qualitative à échelle ordinale.</p>
+</blockquote>
+<p>Les modalités sont placées en ordre décroissant, si nous voulions avoir les modalités en ordre croissant, nous pourrions faire ceci:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">factor</span>(gss_cat<span class="op">$</span>rincome, </a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">            <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Lt $1000&quot;</span>, <span class="st">&quot;$1000 to 2999&quot;</span>, <span class="st">&quot;$3000 to 3999&quot;</span>, <span class="st">&quot;$4000 to 4999&quot;</span>, </a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">                     <span class="st">&quot;$5000 to 5999&quot;</span>, <span class="st">&quot;$6000 to 6999&quot;</span>, <span class="st">&quot;$7000 to 7999&quot;</span>, <span class="st">&quot;$8000 to 9999&quot;</span>, </a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">                     <span class="st">&quot;$10000 - 14999&quot;</span>, <span class="st">&quot;$15000 - 19999&quot;</span>, <span class="st">&quot;$20000 - 24999&quot;</span>, <span class="st">&quot;$25000 or more&quot;</span>, </a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">                     <span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Refused&quot;</span>, <span class="st">&quot;Not applicable&quot;</span>, <span class="st">&quot;Don&#39;t know&quot;</span>))</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="kw">levels</span>(a)</a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">##  [1] &quot;Lt $1000&quot;       &quot;$1000 to 2999&quot;  &quot;$3000 to 3999&quot;  &quot;$4000 to 4999&quot; </a>
+<a class="sourceLine" id="cb32-8" data-line-number="8">##  [5] &quot;$5000 to 5999&quot;  &quot;$6000 to 6999&quot;  &quot;$7000 to 7999&quot;  &quot;$8000 to 9999&quot; </a>
+<a class="sourceLine" id="cb32-9" data-line-number="9">##  [9] &quot;$10000 - 14999&quot; &quot;$15000 - 19999&quot; &quot;$20000 - 24999&quot; &quot;$25000 or more&quot;</a>
+<a class="sourceLine" id="cb32-10" data-line-number="10">## [13] &quot;No answer&quot;      &quot;Refused&quot;        &quot;Not applicable&quot; &quot;Don&#39;t know&quot;</a></code></pre></div>
 </div>
 </div>
 <div id="variables-quantitatives" class="section level2">
 <h2><span class="header-section-number">2.3</span> Variables quantitatives</h2>
 <p>Une variable quantitative est une variable dont les résultats possibles sont des <strong>nombres</strong>. Les différents nombres que peuvent prendre une telle variable sont appelées des <strong>valeurs</strong>.</p>
+<div id="mise-en-place-1" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Mise en place</h3>
+<p>Dans cette section, nous utiliserons la librairie <code>nycflights13</code> qui contient cinq bases de données portant sur tous les vols aériens ayant quittés la ville de New-York en 2013.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">library</span>(nycflights13)</a></code></pre></div>
+</div>
 <div id="variables-quantitatives-discretes" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Variables quantitatives discrètes</h3>
+<h3><span class="header-section-number">2.3.2</span> Variables quantitatives discrètes</h3>
 <p>On observe ce type de variable lorsque les valeurs sont énumérables, c’est-à-dire lorsqu’il n’existe pas de valeur possible entre deux valeurs consécutives. Par exemple, la variable <em>nombre de cours suivis pendant cette session</em> est une variable quantitative discrète. Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,… Il est impossible de suivre 4,6 cours durant une session.</p>
-<p>Dans la base de données <code>nycflights13</code>, la variable <code>engines</code> provenant des données <code>planes</code> est une variable quantitative discrète. Cette variable représente le nombre de moteurs de l’avion en question.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>engines)</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">## [1] 2 1 4 3</a></code></pre></div>
+<p>La base de données <code>planes</code> contient certaines variables quantitatives discrètes.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">planes</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">## # A tibble: 3,322 x 9</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">##   tailnum  year type       manufacturer  model  engines seats speed engine</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">##   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; </a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">## 1 N10156   2004 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">## 2 N102UW   1998 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">## 3 N103US   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">## 4 N104UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9">## 5 N10575   2002 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~</a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">## 6 N105UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</a>
+<a class="sourceLine" id="cb34-11" data-line-number="11">## # ... with 3,316 more rows</a></code></pre></div>
+<p>Pour être en mesure de connaître toutes les <em>valeurs</em> différentes que peut prendre une variable, nous allons utiliser la commande <code>unique</code>. Si nous nous intéressons à la variable <code>engines</code> (qui dénombre le nombre de moteurs de l’avion):</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>engines)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">## [1] 2 1 4 3</a></code></pre></div>
+<p>La variable <code>seats</code> (qui dénombre le nombre de sièges de l’avion):</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>seats)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">##  [1]  55 182 149 330 178  95 290 199  20 140   2   8 400 260 255 191 375</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">## [18] 145  22  14   6  80 189   7   4 377 102  10  11 269 200 222 172 379</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">## [35]   5 147 100  16 275 292 139   9 450 179 128 300 142  12</a></code></pre></div>
 <p>Dans la sortie <code>R</code> les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.</p>
 <div id="variables-quantitatives-continues" class="section level4">
-<h4><span class="header-section-number">2.3.1.1</span> Variables quantitatives continues</h4>
+<h4><span class="header-section-number">2.3.2.1</span> Variables quantitatives continues</h4>
 <p>On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable <em>masse d’un étudiant (en lbs)</em> est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.</p>
 <p>Dans la base de données <code>diamonds</code>, nous allons observer la variable <code>carat</code>. Voici les 25 premiers éléments de ces valeurs.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">diamonds<span class="op">$</span>carat[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>]</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">##  [1] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 0.30 0.23 0.22 0.31</a>
-<a class="sourceLine" id="cb32-3" data-line-number="3">## [15] 0.20 0.32 0.30 0.30 0.30 0.30 0.30 0.23 0.23 0.31 0.31</a></code></pre></div>
-
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">diamonds<span class="op">$</span>carat[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>]</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">##  [1] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 0.30 0.23 0.22 0.31</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">## [15] 0.20 0.32 0.30 0.30 0.30 0.30 0.30 0.23 0.23 0.31 0.31</a></code></pre></div>
 </div>
+</div>
+</div>
+<div id="lextension-questionr" class="section level2">
+<h2><span class="header-section-number">2.4</span> L’extension <code>questionr</code></h2>
+<p>L’extension <code>questionr</code> propose une interface graphique pour faciliter l’opération qui consiste à réordonner vos données.</p>
+<div id="mise-en-place-2" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Mise en place</h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">library</span>(questionr)</a></code></pre></div>
+</div>
+<div id="linterface-graphique" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> L’interface graphique</h3>
+<p>L’objectif est de permettre à l’utilisateur de saisir les nouvelles valeurs dans un formulaire, et de générer ensuite le code <code>R</code> correspondant au recodage indiqué.</p>
+<p>Pour utiliser cette interface, sous RStudio vous pouvez aller dans le menu <em>Addins</em> (présent dans la barre d’outils principale) puis choisir <em>Levels recoding</em>.</p>
+<div class="figure" style="text-align: center"><span id="fig:addin-irec"></span>
+<img src="images/addin-irec.png" alt="_Levels recoding_ dans le menu _Addins_" width="25%" />
+<p class="caption">
+Figure 2.1: <em>Levels recoding</em> dans le menu <em>Addins</em>
+</p>
+</div>
+<p>Si nous utilisons l’interface graphique pour la variable <code>rincome</code> de la base de données <code>gts_cat</code>, nous obtenons:</p>
+<div class="figure" style="text-align: center"><span id="fig:irec"></span>
+<img src="images/irec.png" alt="L'interface graphique de _Levels recoding_" width="100%" />
+<p class="caption">
+Figure 2.2: L’interface graphique de <em>Levels recoding</em>
+</p>
+</div>
+<p>L’interface se compose de trois onglets : l’onglet <em>Variable et paramètres</em> vous permet de sélectionner la variable à recoder, le nom de la nouvelle variable et d’autres paramètres, l’onglet <em>Recodages</em> vous permet de saisir les nouvelles valeurs des modalités, et l’onglet <em>Code et résultat</em> affiche le code <code>R</code> correspondant ainsi qu’un tableau permettant de vérifier les résultats.</p>
+<p>Une fois votre recodage terminé, cliquez sur le bouton <em>Done</em> et le code <code>R</code> sera inséré dans votre script <code>R</code> ou affiché dans la console.</p>
+<blockquote>
+<p><em>Important</em>: cette interface est prévue pour ne pas modifier vos données. C’est donc à vous d’exécuter le code généré pour que le recodage soit réellement effectif.</p>
+</blockquote>
+
 </div>
 </div>
 </div>

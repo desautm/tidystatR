@@ -87,11 +87,11 @@ Nous allons maintenant utiliser de vraies données provenant du [General Social 
 gss_cat
 ```
 
-Pour visualiser les levels d'une variable facilement, nous pouvons utiliser la fonction `unique` qui retourne toutes les modalités différentes rencontrées pour cette variable. Voici par exemple les modalités et les levels pour les variables `race` et `marital`
+Pour visualiser les levels d'une variable facilement, nous pouvons utiliser la fonction `levels` qui retourne tous les levels différents rencontrés pour cette variable. Voici par exemple les levels pour les variables `race` et `marital`
 
 ```{r}
-unique(gss_cat$race)
-unique(gss_cat$marital)
+levels(gss_cat$race)
+levels(gss_cat$marital)
 ```
 
 ### Variables qualitatives à échelle ordinale
@@ -116,18 +116,59 @@ sort(z2)
 
 Remarquons que dans la liste __Levels__, `R` ajoute les symboles `<` pour indiquer que la variable possède un ordre. Il n'est pas nécessaire de travailler avec des facteurs ordonnés.
 
+Nous remarquons que dans la base de données `forcats::gss_cat`, la variable `rincome` représente une variable qualitative à échelle ordinale:
+
+```{r}
+levels(gss_cat$rincome)
+```
+
+Si nous laissons de côté les modalités _No answer_, _Don't know_ et _Refused_, le reste des modalités peut être placé en ordre. En effet, la modalité _$4000 to 4999_ est plus petite que la modalité _$5000 to 5999_ et ainsi de suite. 
+
+> Bien que les modalités de la variable précédente soient composées de nombres, le fait que nous ayons affaire à des intervalles indique que nous avons en fait une variable qualitative à échelle ordinale.
+
+Les modalités sont placées en ordre décroissant, si nous voulions avoir les modalités en ordre croissant, nous pourrions faire ceci:
+
+```{r}
+a <- factor(gss_cat$rincome, 
+            levels=c("Lt $1000", "$1000 to 2999", "$3000 to 3999", "$4000 to 4999", 
+                     "$5000 to 5999", "$6000 to 6999", "$7000 to 7999", "$8000 to 9999", 
+                     "$10000 - 14999", "$15000 - 19999", "$20000 - 24999", "$25000 or more", 
+                     "No answer", "Refused", "Not applicable", "Don't know"))
+levels(a)
+```
+
 ## Variables quantitatives
 
 Une variable quantitative est une variable dont les résultats possibles sont des **nombres**. Les différents nombres que peuvent prendre une telle variable sont appelées des **valeurs**.
+
+### Mise en place
+
+Dans cette section, nous utiliserons la librairie `nycflights13` qui contient cinq bases de données portant sur tous les vols aériens ayant quittés la ville de New-York en 2013.
+
+```{r message=FALSE}
+library(nycflights13)
+```
 
 ### Variables quantitatives discrètes
 
 On observe ce type de variable lorsque les valeurs sont énumérables, c’est-à-dire lorsqu’il n’existe pas de valeur possible entre deux valeurs consécutives. Par exemple, la variable _nombre de cours suivis pendant cette session_ est une variable quantitative discrète. Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,... Il est impossible de suivre 4,6 cours durant une session.
 
-Dans la base de données `nycflights13`, la variable `engines` provenant des données `planes` est une variable quantitative discrète. Cette variable représente le nombre de moteurs de l'avion en question.
+La base de données `planes` contient certaines variables quantitatives discrètes.
+
+```{r}
+planes
+```
+
+Pour être en mesure de connaître toutes les _valeurs_ différentes que peut prendre une variable, nous allons utiliser la commande `unique`. Si nous nous intéressons à la variable `engines` (qui dénombre le nombre de moteurs de l'avion):
 
 ```{r}
 unique(planes$engines)
+```
+
+La variable `seats` (qui dénombre le nombre de sièges de l'avion):
+
+```{r}
+unique(planes$seats)
 ```
 
 Dans la sortie `R` les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.
@@ -141,3 +182,41 @@ Dans la base de données `diamonds`, nous allons observer la variable `carat`. V
 ```{r}
 diamonds$carat[1:25]
 ```
+
+
+## L'extension `questionr`
+
+L'extension `questionr` propose une interface graphique pour faciliter l'opération qui consiste à réordonner vos données.
+
+### Mise en place
+
+```{r message=FALSE}
+library(questionr)
+```
+
+```{r echo=FALSE}
+data(hdv2003)
+hdv2003 <- as.tibble(hdv2003)
+```
+
+### L'interface graphique
+
+L’objectif est de permettre à l’utilisateur de saisir les nouvelles valeurs dans un formulaire, et de générer ensuite le code `R` correspondant au recodage indiqué.
+
+Pour utiliser cette interface, sous RStudio vous pouvez aller dans le menu _Addins_ (présent dans la barre d’outils principale) puis choisir _Levels recoding_.
+
+```{r addin-irec, echo = FALSE, out.width = "25%", fig.cap = "_Levels recoding_ dans le menu _Addins_"}
+knitr::include_graphics("images/addin-irec.png")
+```
+
+Si nous utilisons l'interface graphique pour la variable `rincome` de la base de données `gts_cat`, nous obtenons:
+
+```{r irec, echo = FALSE, out.width = "100%", fig.cap = "L'interface graphique de _Levels recoding_"}
+knitr::include_graphics("images/irec.png")
+```
+
+L’interface se compose de trois onglets : l’onglet _Variable et paramètres_ vous permet de sélectionner la variable à recoder, le nom de la nouvelle variable et d’autres paramètres, l’onglet _Recodages_ vous permet de saisir les nouvelles valeurs des modalités, et l’onglet _Code et résultat_ affiche le code `R` correspondant ainsi qu’un tableau permettant de vérifier les résultats.
+
+Une fois votre recodage terminé, cliquez sur le bouton _Done_ et le code `R` sera inséré dans votre script `R` ou affiché dans la console.
+
+> *Important*: cette interface est prévue pour ne pas modifier vos données. C’est donc à vous d’exécuter le code généré pour que le recodage soit réellement effectif.
