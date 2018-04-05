@@ -4,6 +4,21 @@ delete_merged_file: true
 output_dir: "docs"
 edit: https://github.com/desautm/tidystatR/edit/%s
 language:
+  label:
+    fig: 'Figure '
+    tab: 'Table '
+    eq: 'Équation '
+    thm: 'Théorème '
+    lem: 'Lemme '
+    cor: 'Corollaire '
+    prp: 'Proposition '
+    cnj: 'Conjecture '
+    def: 'Définition '
+    exm: 'Exemple '
+    exr: 'Exercice '
+    proof: 'Preuve. '
+    remark: 'Remarque. '
+    solution: 'Solution. '
   ui:
     chapter_name: "Chapitre "
     edit: "Source"

@@ -205,13 +205,13 @@ L’objectif est de permettre à l’utilisateur de saisir les nouvelles valeurs
 
 Pour utiliser cette interface, sous RStudio vous pouvez aller dans le menu _Addins_ (présent dans la barre d’outils principale) puis choisir _Levels recoding_.
 
-```{r addin-irec, echo = FALSE, out.width = "25%", fig.cap = "_Levels recoding_ dans le menu _Addins_"}
+```{r addin-irec, echo = FALSE, out.width = "25%", fig.cap = "Levels recoding dans le menu Addins"}
 knitr::include_graphics("images/addin-irec.png")
 ```
 
 Si nous utilisons l'interface graphique pour la variable `rincome` de la base de données `gts_cat`, nous obtenons:
 
-```{r irec, echo = FALSE, out.width = "100%", fig.cap = "L'interface graphique de _Levels recoding_"}
+```{r irec, echo = FALSE, out.width = "100%", fig.cap = "L'interface graphique de Levels recoding"}
 knitr::include_graphics("images/irec.png")
 ```
 
