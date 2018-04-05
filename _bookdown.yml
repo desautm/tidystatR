@@ -10,7 +10,7 @@ language:
 rmd_files: [
   "index.Rmd",
   "tidyverse.Rmd",
-  "typesvariables.Rmd",
+  "variables.Rmd",
   "graphiques.Rmd",
   "mesures.Rmd",
   "references.Rmd"]

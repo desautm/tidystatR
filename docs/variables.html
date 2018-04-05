@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistiques et Probabilités avec R et le Tidyverse</title>
+  <meta name="description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistiques et Probabilités avec R et le Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse." />
+  <meta name="github-repo" content="desautm/tidystatR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistiques et Probabilités avec R et le Tidyverse" />
+  
+  <meta name="twitter:description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse." />
+  
+
+<meta name="author" content="Marc-André Désautels">
+
+
+<meta name="date" content="2018-04-05">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="tidyverse.html">
+<link rel="next" href="graphiques.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistiques et Probabilités avec R et le Tidyverse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="part"><span><b>I Pourquoi le tidyverse</b></span></li>
+<li class="chapter" data-level="1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>1</b> Le tidyverse</a><ul>
+<li class="chapter" data-level="1.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>1.1</b> Extensions</a></li>
+<li class="chapter" data-level="1.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>1.2</b> Installation</a></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse.html"><a href="tidyverse.html#tidydata"><i class="fa fa-check"></i><b>1.3</b> Les tidy data</a></li>
+<li class="chapter" data-level="1.4" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>1.4</b> Les tibbles</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="tidyverse.html"><a href="tidyverse.html#prerequis"><i class="fa fa-check"></i><b>1.4.1</b> Prérequis</a></li>
+<li class="chapter" data-level="1.4.2" data-path="tidyverse.html"><a href="tidyverse.html#un-exemple-de-tibble"><i class="fa fa-check"></i><b>1.4.2</b> Un exemple de “tibble”</a></li>
+<li class="chapter" data-level="1.4.3" data-path="tidyverse.html"><a href="tidyverse.html#la-base-de-donnees-flights"><i class="fa fa-check"></i><b>1.4.3</b> La base de données flights</a></li>
+<li class="chapter" data-level="1.4.4" data-path="tidyverse.html"><a href="tidyverse.html#donneesdiamonds"><i class="fa fa-check"></i><b>1.4.4</b> La base de données <code>diamonds</code></a></li>
+<li class="chapter" data-level="1.4.5" data-path="tidyverse.html"><a href="tidyverse.html#explorertibbles"><i class="fa fa-check"></i><b>1.4.5</b> Comment explorer des “tibbles”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>2</b> Les variables</a><ul>
+<li class="chapter" data-level="2.1" data-path="variables.html"><a href="variables.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="variables.html"><a href="variables.html#mise-en-place"><i class="fa fa-check"></i><b>2.1.1</b> Mise en place</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="variables.html"><a href="variables.html#les-variables-qualitatives"><i class="fa fa-check"></i><b>2.2</b> Les variables qualitatives</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="variables.html"><a href="variables.html#qualinominale"><i class="fa fa-check"></i><b>2.2.1</b> Variables qualitatives à échelle nominale</a></li>
+<li class="chapter" data-level="2.2.2" data-path="variables.html"><a href="variables.html#variables-qualitatives-a-echelle-ordinale"><i class="fa fa-check"></i><b>2.2.2</b> Variables qualitatives à échelle ordinale</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="variables.html"><a href="variables.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.3</b> Variables quantitatives</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="variables.html"><a href="variables.html#variables-quantitatives-discretes"><i class="fa fa-check"></i><b>2.3.1</b> Variables quantitatives discrètes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphiques.html"><a href="graphiques.html"><i class="fa fa-check"></i><b>3</b> Les types de représentation graphiques</a></li>
+<li class="chapter" data-level="4" data-path="mesures.html"><a href="mesures.html"><i class="fa fa-check"></i><b>4</b> Les différentes mesures</a><ul>
+<li class="chapter" data-level="4.1" data-path="mesures.html"><a href="mesures.html#les-mesures-de-tendance-centrale"><i class="fa fa-check"></i><b>4.1</b> Les mesures de tendance centrale</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="mesures.html"><a href="mesures.html#le-mode"><i class="fa fa-check"></i><b>4.1.1</b> Le mode</a></li>
+<li class="chapter" data-level="4.1.2" data-path="mesures.html"><a href="mesures.html#la-mediane"><i class="fa fa-check"></i><b>4.1.2</b> La médiane</a></li>
+<li class="chapter" data-level="4.1.3" data-path="mesures.html"><a href="mesures.html#la-moyenne"><i class="fa fa-check"></i><b>4.1.3</b> La moyenne</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="mesures.html"><a href="mesures.html#les-mesures-de-dispersion"><i class="fa fa-check"></i><b>4.2</b> Les mesures de dispersion</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="mesures.html"><a href="mesures.html#letendue"><i class="fa fa-check"></i><b>4.2.1</b> L’étendue</a></li>
+<li class="chapter" data-level="4.2.2" data-path="mesures.html"><a href="mesures.html#la-variance"><i class="fa fa-check"></i><b>4.2.2</b> La variance</a></li>
+<li class="chapter" data-level="4.2.3" data-path="mesures.html"><a href="mesures.html#lecart-type"><i class="fa fa-check"></i><b>4.2.3</b> L’écart-type</a></li>
+<li class="chapter" data-level="4.2.4" data-path="mesures.html"><a href="mesures.html#le-coefficient-de-variation"><i class="fa fa-check"></i><b>4.2.4</b> Le coefficient de variation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="mesures.html"><a href="mesures.html#les-mesures-de-position"><i class="fa fa-check"></i><b>4.3</b> Les mesures de position</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="mesures.html"><a href="mesures.html#la-cote-z"><i class="fa fa-check"></i><b>4.3.1</b> La cote z</a></li>
+<li class="chapter" data-level="4.3.2" data-path="mesures.html"><a href="mesures.html#les-quantiles"><i class="fa fa-check"></i><b>4.3.2</b> Les quantiles</a></li>
+<li class="chapter" data-level="4.3.3" data-path="mesures.html"><a href="mesures.html#la-commande-summary"><i class="fa fa-check"></i><b>4.3.3</b> La commande <code>summary</code></a></li>
+<li class="chapter" data-level="4.3.4" data-path="mesures.html"><a href="mesures.html#le-rang-centile"><i class="fa fa-check"></i><b>4.3.4</b> Le rang centile</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques et Probabilités avec R et le Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variables" class="section level1">
+<h1><span class="header-section-number">Chapitre 2</span> Les variables</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">2.1</span> Introduction</h2>
+<p>Chacune des notions étudiées par le chercheur porte le nom de variable. C’est logique, puisque les données recueillies vont varier d’une unité statistique à une autre. On distingue quatre types de variables séparées en deux grandes catégories : les variables qualitatives et les variables quantitatives.</p>
+<div id="mise-en-place" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Mise en place</h3>
+<p>Dans ce chapitre, nous introduirons les différents types de variables et les façons avec lesquelles nous pouvons les utiliser en langage <code>R</code>. Nous utiliserons la librairie <code>tidyverse</code> et en particulier l’extension <code>forcats</code> pour travailler avec des variables qualitatives. Puisque l’extension <code>forcats</code> fait partie du <code>tidyverse</code> de base, nous avons simplement à charger <code>tidyverse</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+</div>
+</div>
+<div id="les-variables-qualitatives" class="section level2">
+<h2><span class="header-section-number">2.2</span> Les variables qualitatives</h2>
+<p>Une variable qualitative est une variable dont les résultats possibles sont des <strong>mots</strong>. Les différents <strong>mots</strong> que peuvent prendre une telle variable sont appelées des <strong>modalités</strong>. Il existe deux types de variables qualitatives.</p>
+<div id="qualinominale" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Variables qualitatives à échelle nominale</h3>
+<p>On observe ce type de variable lorsqu’il n’y a pas d’ordre croissant naturel dans les <strong>modalités</strong> de la variable. Par exemple, la variable <em>couleur des cheveux</em> est à échelle nominale. L’ordre “blonds, bruns, roux, noirs, autre” est un ordre aussi valable que
+“bruns, noirs, roux, blonds, autre”.</p>
+<p>Imaginons que vous vouliez créer une variable qui indique le mois de l’année:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Déc&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</a></code></pre></div>
+<p>L’approche précédente pose deux problèmes:</p>
+<ol style="list-style-type: decimal">
+<li><p>Il n’y a que douze mois possibles et rien ne vous empêche de vous tromper dans votre entrée de modalités:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Déc&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Jam&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</a></code></pre></div></li>
+<li><p>Les modalités ne seront pas affichées dans un ordre logique</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># La commande &quot;sort&quot; permet de trier les données</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">sort</span>(x1)</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">## [1] &quot;Avr&quot; &quot;Déc&quot; &quot;Jan&quot; &quot;Mar&quot;</a></code></pre></div></li>
+</ol>
+<p>Nous pouvons résoudre ce problèmes en utilisant un <strong>facteur</strong> (<strong>factor</strong> en <code>R</code>). Pour créer un facteur, vous devez créer en premier lieu une liste avec <strong>toutes les modalités possibles placées dans l’ordre qui vous convient</strong> (<strong>levels</strong> en <code>R</code>):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">niveaux_mois &lt;-<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">  <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Fév&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Jun&quot;</span>,</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">  <span class="st">&quot;Jui&quot;</span>, <span class="st">&quot;Aoû&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Oct&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Déc&quot;</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">)</a></code></pre></div>
+<p>Vous pouvez maintenant créer un facteur:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">y1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> niveaux_mois)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">y1</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">## [1] Déc Avr Jan Mar</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">## Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="kw">sort</span>(y1)</a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">## [1] Jan Mar Avr Déc</a>
+<a class="sourceLine" id="cb23-7" data-line-number="7">## Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</a></code></pre></div>
+<p>Si certaines modalités ne sont pas dans votre liste de levels, elles seront converties en NA:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">y2 &lt;-<span class="st"> </span><span class="kw">factor</span>(x2, <span class="dt">levels =</span> niveaux_mois)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">y2</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">## [1] Déc  Avr  &lt;NA&gt; Mar </a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">## Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</a></code></pre></div>
+<p>Si vous n’utilisez pas vos levels, vos modalités seront affichées en ordre alphabétique:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">factor</span>(x1)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">## [1] Déc Avr Jan Mar</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">## Levels: Avr Déc Jan Mar</a></code></pre></div>
+<p>Le fait qu’il y ait un <strong>ordre</strong> dans les modalités n’est pas suffisant pour dire qu’une variable qualitative n’est pas nominale. Dans l’exemple précédent, bien que les mois de l’année soient toujours énumérés dans un certain ordre, il serait faux de dire que Janvier &lt; Février par exemple.</p>
+<p>Nous pourrions créer une variable qui contient la couleur des cheveux sans indiquer de levels. De cette façon, les données seront triées en ordre alphabétique:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">x3  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;blonds&quot;</span>, <span class="st">&quot;bruns&quot;</span>, <span class="st">&quot;roux&quot;</span>, <span class="st">&quot;noirs&quot;</span>, <span class="st">&quot;autre&quot;</span>)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">sort</span>(x3)</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">## [1] &quot;autre&quot;  &quot;blonds&quot; &quot;bruns&quot;  &quot;noirs&quot;  &quot;roux&quot;</a></code></pre></div>
+<p>Nous allons maintenant utiliser de vraies données provenant du <a href="http://gss.norc.org">General Social Survey</a>, qui est un sondage produit par une organisation de recherche indépendante NORC à l’Université de Chicago. Le sondage original comporte des milliers de questions, la base de donnéee <code>forcats::gss_cat</code> n’en contient que quelques unes.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">gss_cat</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">## # A tibble: 21,483 x 9</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">##    year marital         age race  rincome  partyid   relig  denom  tvhours</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">##   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">## 1  2000 Never married    26 White $8000 t~ Ind,near~ Prote~ South~      12</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">## 2  2000 Divorced         48 White $8000 t~ Not str ~ Prote~ Bapti~      NA</a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">## 3  2000 Widowed          67 White Not app~ Independ~ Prote~ No de~       2</a>
+<a class="sourceLine" id="cb27-8" data-line-number="8">## 4  2000 Never married    39 White Not app~ Ind,near~ Ortho~ Not a~       4</a>
+<a class="sourceLine" id="cb27-9" data-line-number="9">## 5  2000 Divorced         25 White Not app~ Not str ~ None   Not a~       1</a>
+<a class="sourceLine" id="cb27-10" data-line-number="10">## 6  2000 Married          25 White $20000 ~ Strong d~ Prote~ South~      NA</a>
+<a class="sourceLine" id="cb27-11" data-line-number="11">## # ... with 2.148e+04 more rows</a></code></pre></div>
+<p>Pour visualiser les levels d’une variable facilement, nous pouvons utiliser la fonction <code>unique</code> qui retourne toutes les modalités différentes rencontrées pour cette variable. Voici par exemple les modalités et les levels pour les variables <code>race</code> et <code>marital</code></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">unique</span>(gss_cat<span class="op">$</span>race)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">## [1] White Black Other</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">## Levels: Other Black White Not applicable</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="kw">unique</span>(gss_cat<span class="op">$</span>marital)</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">## [1] Never married Divorced      Widowed       Married       Separated    </a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">## [6] No answer    </a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">## Levels: No answer Never married Separated Divorced Widowed Married</a></code></pre></div>
+</div>
+<div id="variables-qualitatives-a-echelle-ordinale" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Variables qualitatives à échelle ordinale</h3>
+<p>On observe ce type de variable lorsqu’il existe un ordre croissant dans les modalités de la variable. Par exemple, la variable <em>degré de satisfaction</em> est à échelle ordinale. Il est possible de classer les modalités en ordre décroissant en écrivant : Très satisfait &gt; Satisfait &gt; Insatisfait &gt; Très insatisfait.</p>
+<p>Pour créer une variable qualitative à échelle ordinale en <code>R</code>, nous pouvons utiliser la même technique vue à la section <a href="variables.html#qualinominale">2.2.1</a>. Nous pouvons donc avoir:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Satisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">niveaux_satisfaction &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>, <span class="st">&quot;Satisfait&quot;</span>, <span class="st">&quot;Très satisfait&quot;</span>)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">z1 &lt;-<span class="st"> </span><span class="kw">factor</span>(z, <span class="dt">levels =</span> niveaux_satisfaction)</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="kw">sort</span>(z1)</a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">## [1] Très insatisfait Très insatisfait Insatisfait      Insatisfait     </a>
+<a class="sourceLine" id="cb29-6" data-line-number="6">## [5] Satisfait       </a>
+<a class="sourceLine" id="cb29-7" data-line-number="7">## Levels: Très insatisfait Insatisfait Satisfait Très satisfait</a></code></pre></div>
+<p>Il est aussi possible d’utiliser des <strong>facteurs ordonnés</strong>. Nous devons utiliser encore la commande <code>factor</code> en ajoutant l’option <code>ordered=TRUE</code>. Par example:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">z2 &lt;-<span class="st"> </span><span class="kw">factor</span>(z, <span class="dt">levels =</span> niveaux_satisfaction, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">sort</span>(z2)</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">## [1] Très insatisfait Très insatisfait Insatisfait      Insatisfait     </a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">## [5] Satisfait       </a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">## 4 Levels: Très insatisfait &lt; Insatisfait &lt; ... &lt; Très satisfait</a></code></pre></div>
+<p>Remarquons que dans la liste <strong>Levels</strong>, <code>R</code> ajoute les symboles <code>&lt;</code> pour indiquer que la variable possède un ordre. Il n’est pas nécessaire de travailler avec des facteurs ordonnés.</p>
+</div>
+</div>
+<div id="variables-quantitatives" class="section level2">
+<h2><span class="header-section-number">2.3</span> Variables quantitatives</h2>
+<p>Une variable quantitative est une variable dont les résultats possibles sont des <strong>nombres</strong>. Les différents nombres que peuvent prendre une telle variable sont appelées des <strong>valeurs</strong>.</p>
+<div id="variables-quantitatives-discretes" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Variables quantitatives discrètes</h3>
+<p>On observe ce type de variable lorsque les valeurs sont énumérables, c’est-à-dire lorsqu’il n’existe pas de valeur possible entre deux valeurs consécutives. Par exemple, la variable <em>nombre de cours suivis pendant cette session</em> est une variable quantitative discrète. Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,… Il est impossible de suivre 4,6 cours durant une session.</p>
+<p>Dans la base de données <code>nycflights13</code>, la variable <code>engines</code> provenant des données <code>planes</code> est une variable quantitative discrète. Cette variable représente le nombre de moteurs de l’avion en question.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>engines)</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">## [1] 2 1 4 3</a></code></pre></div>
+<p>Dans la sortie <code>R</code> les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.</p>
+<div id="variables-quantitatives-continues" class="section level4">
+<h4><span class="header-section-number">2.3.1.1</span> Variables quantitatives continues</h4>
+<p>On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable <em>masse d’un étudiant (en lbs)</em> est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.</p>
+<p>Dans la base de données <code>diamonds</code>, nous allons observer la variable <code>carat</code>. Voici les 25 premiers éléments de ces valeurs.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">diamonds<span class="op">$</span>carat[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>]</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">##  [1] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 0.30 0.23 0.22 0.31</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">## [15] 0.20 0.32 0.30 0.30 0.30 0.30 0.30 0.23 0.23 0.31 0.31</a></code></pre></div>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphiques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/desautm/tidystatR/edit/master/variables.Rmd",
+"text": "Modifier"
+},
+"download": ["tidystatR.pdf", "tidystatR.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

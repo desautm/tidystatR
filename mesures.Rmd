@@ -42,7 +42,7 @@ table(mtcars$cyl)
 
 Nous remarquons que le maximum est à la valeur _8_ avec une fréquence de `r max(table(mtcars$cyl))`.
 
-Dans le cas d'une variable quantitative continue, pour calculer le mode, il faut commencer par séparer les données en classes. Nous utiliserons les mêmes classes utilisées à la section \@ref(freqquantitatives)
+Dans le cas d'une variable quantitative continue, pour calculer le mode, il faut commencer par séparer les données en classes. Nous utiliserons les mêmes classes utilisées à la section 
 
 ```{r}
 carat_class = cut(diamonds$carat,

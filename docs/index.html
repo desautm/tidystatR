@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Statistiques et Probabilités avec R et le Tidyverse</title>
   <meta name="description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Statistiques et Probabilités avec R et le Tidyverse" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-04">
+<meta name="date" content="2018-04-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,47 +50,72 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="css\style.css" type="text/css" />
 </head>
 
 <body>
@@ -112,17 +137,24 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="1.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>1.1</b> Extensions</a></li>
 <li class="chapter" data-level="1.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>1.2</b> Installation</a></li>
 <li class="chapter" data-level="1.3" data-path="tidyverse.html"><a href="tidyverse.html#tidydata"><i class="fa fa-check"></i><b>1.3</b> Les tidy data</a></li>
-<li class="chapter" data-level="1.4" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>1.4</b> Les tibbles</a></li>
+<li class="chapter" data-level="1.4" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>1.4</b> Les tibbles</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="tidyverse.html"><a href="tidyverse.html#prerequis"><i class="fa fa-check"></i><b>1.4.1</b> Prérequis</a></li>
+<li class="chapter" data-level="1.4.2" data-path="tidyverse.html"><a href="tidyverse.html#un-exemple-de-tibble"><i class="fa fa-check"></i><b>1.4.2</b> Un exemple de “tibble”</a></li>
+<li class="chapter" data-level="1.4.3" data-path="tidyverse.html"><a href="tidyverse.html#la-base-de-donnees-flights"><i class="fa fa-check"></i><b>1.4.3</b> La base de données flights</a></li>
+<li class="chapter" data-level="1.4.4" data-path="tidyverse.html"><a href="tidyverse.html#donneesdiamonds"><i class="fa fa-check"></i><b>1.4.4</b> La base de données <code>diamonds</code></a></li>
+<li class="chapter" data-level="1.4.5" data-path="tidyverse.html"><a href="tidyverse.html#explorertibbles"><i class="fa fa-check"></i><b>1.4.5</b> Comment explorer des “tibbles”</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="typesvariables.html"><a href="typesvariables.html"><i class="fa fa-check"></i><b>2</b> Les types de variables</a><ul>
-<li class="chapter" data-level="2.0.1" data-path="typesvariables.html"><a href="typesvariables.html#prerequis"><i class="fa fa-check"></i><b>2.0.1</b> Prérequis</a></li>
-<li class="chapter" data-level="2.0.2" data-path="typesvariables.html"><a href="typesvariables.html#un-exemple-de-tibble"><i class="fa fa-check"></i><b>2.0.2</b> Un exemple de “tibble”</a></li>
-<li class="chapter" data-level="2.0.3" data-path="typesvariables.html"><a href="typesvariables.html#la-base-de-donnees-flights"><i class="fa fa-check"></i><b>2.0.3</b> La base de données flights</a></li>
-<li class="chapter" data-level="2.0.4" data-path="typesvariables.html"><a href="typesvariables.html#donneesdiamonds"><i class="fa fa-check"></i><b>2.0.4</b> La base de données <code>diamonds</code></a></li>
-<li class="chapter" data-level="2.0.5" data-path="typesvariables.html"><a href="typesvariables.html#explorertibbles"><i class="fa fa-check"></i><b>2.0.5</b> Comment explorer des “tibbles”</a></li>
-<li class="chapter" data-level="2.1" data-path="typesvariables.html"><a href="typesvariables.html#types-de-variables"><i class="fa fa-check"></i><b>2.1</b> Types de variables</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="typesvariables.html"><a href="typesvariables.html#variables-qualitatives"><i class="fa fa-check"></i><b>2.1.1</b> Variables qualitatives</a></li>
-<li class="chapter" data-level="2.1.2" data-path="typesvariables.html"><a href="typesvariables.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.1.2</b> Variables quantitatives</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>2</b> Les variables</a><ul>
+<li class="chapter" data-level="2.1" data-path="variables.html"><a href="variables.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="variables.html"><a href="variables.html#mise-en-place"><i class="fa fa-check"></i><b>2.1.1</b> Mise en place</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="variables.html"><a href="variables.html#les-variables-qualitatives"><i class="fa fa-check"></i><b>2.2</b> Les variables qualitatives</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="variables.html"><a href="variables.html#qualinominale"><i class="fa fa-check"></i><b>2.2.1</b> Variables qualitatives à échelle nominale</a></li>
+<li class="chapter" data-level="2.2.2" data-path="variables.html"><a href="variables.html#variables-qualitatives-a-echelle-ordinale"><i class="fa fa-check"></i><b>2.2.2</b> Variables qualitatives à échelle ordinale</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="variables.html"><a href="variables.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.3</b> Variables quantitatives</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="variables.html"><a href="variables.html#variables-quantitatives-discretes"><i class="fa fa-check"></i><b>2.3.1</b> Variables quantitatives discrètes</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="graphiques.html"><a href="graphiques.html"><i class="fa fa-check"></i><b>3</b> Les types de représentation graphiques</a></li>
@@ -169,7 +201,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="header">
 <h1 class="title">Statistiques et Probabilités avec R et le Tidyverse</h1>
 <h4 class="author"><em>Marc-André Désautels</em></h4>
-<h4 class="date"><em>2018-04-04</em></h4>
+<h4 class="date"><em>2018-04-05</em></h4>
 </div>
 <div id="introduction" class="section level1 unnumbered">
 <h1>Introduction</h1>
@@ -202,10 +234,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -229,9 +262,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

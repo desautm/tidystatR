@@ -1,12 +1,10 @@
-library(tidyverse)
-library(questionr)
-
 ## Copied from Hadley Wickham and Garrett Grolemund and Hadley Wickham's r4ds
+set.seed(1978)
 options(digits = 3)
 
 knitr::opts_chunk$set(
   comment = "##",
-  collapse = FALSE,
+  collapse = TRUE,
   cache = TRUE,
   out.width = "70%",
   fig.align = 'center',

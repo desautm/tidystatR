@@ -1,6 +1,6 @@
 bookdown::gitbook:
-  highlight: kate
-  css: style.css
+  highlight: default
+  css: css/style.css
   config:
     sharing:
       facebook: yes

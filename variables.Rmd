@@ -1,0 +1,143 @@
+# Les variables {#variables}
+
+## Introduction
+
+Chacune des notions étudiées par le chercheur porte le nom de variable. C’est logique, puisque les données recueillies vont varier d’une unité statistique à une autre. On distingue quatre types de variables séparées en deux grandes catégories : les variables qualitatives et les variables quantitatives.
+
+### Mise en place
+
+Dans ce chapitre, nous introduirons les différents types de variables et les façons avec lesquelles nous pouvons les utiliser en langage `R`. Nous utiliserons la librairie `tidyverse` et en particulier l'extension `forcats` pour travailler avec des variables qualitatives. Puisque l'extension `forcats` fait partie du `tidyverse` de base, nous avons simplement à charger `tidyverse`.
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+## Les variables qualitatives
+
+Une variable qualitative est une variable dont les résultats possibles sont des **mots**. Les différents **mots** que peuvent prendre une telle variable sont appelées des **modalités**. Il existe deux types de variables qualitatives.
+
+### Variables qualitatives à échelle nominale {#qualinominale}
+
+On observe ce type de variable lorsqu’il n’y a pas d’ordre croissant naturel dans les **modalités** de la variable. Par exemple, la variable _couleur des cheveux_ est à échelle nominale. L'ordre "blonds, bruns, roux, noirs, autre" est un ordre aussi valable que 
+"bruns, noirs, roux, blonds, autre".
+
+Imaginons que vous vouliez créer une variable qui indique le mois de l'année:
+
+```{r}
+x1 <- c("Déc", "Avr", "Jan", "Mar")
+```
+
+L'approche précédente pose deux problèmes:
+
+1. Il n'y a que douze mois possibles et rien ne vous empêche de vous tromper dans votre entrée de modalités:
+
+   ```{r}
+   x2 <- c("Déc", "Avr", "Jam", "Mar")
+   ```
+   
+1. Les modalités ne seront pas affichées dans un ordre logique
+
+   ```{r}
+   # La commande "sort" permet de trier les données
+   sort(x1)
+   ```
+   
+Nous pouvons résoudre ce problèmes en utilisant un **facteur** (**factor** en `R`). Pour créer un facteur, vous devez créer en premier lieu une liste avec __toutes les modalités possibles placées dans l'ordre qui vous convient__ (**levels** en `R`):
+
+```{r}
+niveaux_mois <- c(
+  "Jan", "Fév", "Mar", "Avr", "Mai", "Jun",
+  "Jui", "Aoû", "Sep", "Oct", "Nov", "Déc"
+)
+```
+
+Vous pouvez maintenant créer un facteur:
+
+```{r}
+y1 <- factor(x1, levels = niveaux_mois)
+y1
+sort(y1)
+```
+
+Si certaines modalités ne sont pas dans votre liste de levels, elles seront converties en NA:
+
+```{r}
+y2 <- factor(x2, levels = niveaux_mois)
+y2
+```
+
+Si vous n'utilisez pas vos levels, vos modalités seront affichées en ordre alphabétique:
+
+```{r}
+factor(x1)
+```
+
+Le fait qu'il y ait un __ordre__ dans les modalités n'est pas suffisant pour dire qu’une variable qualitative n'est pas nominale. Dans l'exemple précédent, bien que les mois de l'année soient toujours énumérés dans un certain ordre, il serait faux de dire que Janvier < Février par exemple.
+
+Nous pourrions créer une variable qui contient la couleur des cheveux sans indiquer de levels. De cette façon, les données seront triées en ordre alphabétique:
+
+```{r}
+x3  <- c("blonds", "bruns", "roux", "noirs", "autre")
+sort(x3)
+```
+
+Nous allons maintenant utiliser de vraies données provenant du [General Social Survey](http://gss.norc.org), qui est un sondage produit par une organisation de recherche indépendante NORC à l'Université de Chicago. Le sondage original comporte des milliers de questions, la base de donnéee `forcats::gss_cat` n'en contient que quelques unes.
+
+```{r}
+gss_cat
+```
+
+Pour visualiser les levels d'une variable facilement, nous pouvons utiliser la fonction `unique` qui retourne toutes les modalités différentes rencontrées pour cette variable. Voici par exemple les modalités et les levels pour les variables `race` et `marital`
+
+```{r}
+unique(gss_cat$race)
+unique(gss_cat$marital)
+```
+
+### Variables qualitatives à échelle ordinale
+
+On observe ce type de variable lorsqu’il existe un ordre croissant dans les modalités de la variable. Par exemple, la variable _degré de satisfaction_ est à échelle ordinale. Il est possible de classer les modalités en ordre décroissant en écrivant : Très satisfait  >  Satisfait  >  Insatisfait  >  Très insatisfait.
+
+Pour créer une variable qualitative à échelle ordinale en `R`, nous pouvons utiliser la même technique vue à la section \@ref(qualinominale). Nous pouvons donc avoir:
+
+```{r}
+z <- c("Satisfait", "Très insatisfait", "Insatisfait", "Très insatisfait", "Insatisfait")
+niveaux_satisfaction <- c("Très insatisfait", "Insatisfait", "Satisfait", "Très satisfait")
+z1 <- factor(z, levels = niveaux_satisfaction)
+sort(z1)
+```
+
+Il est aussi possible d'utiliser des **facteurs ordonnés**. Nous devons utiliser encore la commande `factor` en ajoutant l'option `ordered=TRUE`. Par example:
+
+```{r}
+z2 <- factor(z, levels = niveaux_satisfaction, ordered = TRUE)
+sort(z2)
+```
+
+Remarquons que dans la liste __Levels__, `R` ajoute les symboles `<` pour indiquer que la variable possède un ordre. Il n'est pas nécessaire de travailler avec des facteurs ordonnés.
+
+## Variables quantitatives
+
+Une variable quantitative est une variable dont les résultats possibles sont des **nombres**. Les différents nombres que peuvent prendre une telle variable sont appelées des **valeurs**.
+
+### Variables quantitatives discrètes
+
+On observe ce type de variable lorsque les valeurs sont énumérables, c’est-à-dire lorsqu’il n’existe pas de valeur possible entre deux valeurs consécutives. Par exemple, la variable _nombre de cours suivis pendant cette session_ est une variable quantitative discrète. Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,... Il est impossible de suivre 4,6 cours durant une session.
+
+Dans la base de données `nycflights13`, la variable `engines` provenant des données `planes` est une variable quantitative discrète. Cette variable représente le nombre de moteurs de l'avion en question.
+
+```{r}
+unique(planes$engines)
+```
+
+Dans la sortie `R` les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.
+
+#### Variables quantitatives continues
+
+On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable _masse d’un étudiant (en lbs)_ est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.
+
+Dans la base de données `diamonds`, nous allons observer la variable `carat`. Voici les 25 premiers éléments de ces valeurs.
+
+```{r}
+diamonds$carat[1:25]
+```
