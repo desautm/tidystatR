@@ -149,7 +149,7 @@ Dans cette section, nous utiliserons la librairie `nycflights13` qui contient ci
 library(nycflights13)
 ```
 
-### Variables quantitatives discrètes
+### Les variables quantitatives discrètes
 
 On observe ce type de variable lorsque les valeurs sont énumérables, c’est-à-dire lorsqu’il n’existe pas de valeur possible entre deux valeurs consécutives. Par exemple, la variable _nombre de cours suivis pendant cette session_ est une variable quantitative discrète. Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,... Il est impossible de suivre 4,6 cours durant une session.
 
@@ -173,15 +173,17 @@ unique(planes$seats)
 
 Dans la sortie `R` les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.
 
-#### Variables quantitatives continues
+### Variables quantitatives continues
 
 On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable _masse d’un étudiant (en lbs)_ est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.
 
-Dans la base de données `diamonds`, nous allons observer la variable `carat`. Voici les 25 premiers éléments de ces valeurs.
+Dans la base de données `weather` de l'extension `nycflights13`, nous allons observer la variable `temp`, qui représente la température en degrés Farenheit pour toutes les heures de chaques jours de l'année 2013.
 
 ```{r}
-diamonds$carat[1:25]
+weather
 ```
+
+
 
 
 ## L'extension `questionr`
