@@ -1,11 +1,6 @@
 bookdown::gitbook:
-<<<<<<< Updated upstream
   highlight: default
   css: css/style.css
-=======
-  highlight: espresso
-  css: style.css
->>>>>>> Stashed changes
   config:
     sharing:
       facebook: yes

@@ -12,11 +12,11 @@ Dans ce chapitre, nous introduirons les différents types de variables et les fa
 library(tidyverse)
 ```
 
-## Les variables qualitatives
+## Les variables qualitatives {#qual}
 
 Une variable qualitative est une variable dont les résultats possibles sont des **mots**. Les différents **mots** que peuvent prendre une telle variable sont appelées des **modalités**. Il existe deux types de variables qualitatives.
 
-### Variables qualitatives à échelle nominale {#qualinominale}
+### Les variables qualitatives à échelle nominale {#qualinominale}
 
 On observe ce type de variable lorsqu’il n’y a pas d’ordre croissant naturel dans les **modalités** de la variable. Par exemple, la variable _couleur des cheveux_ est à échelle nominale. L'ordre "blonds, bruns, roux, noirs, autre" est un ordre aussi valable que 
 "bruns, noirs, roux, blonds, autre".
@@ -94,7 +94,7 @@ levels(gss_cat$race)
 levels(gss_cat$marital)
 ```
 
-### Variables qualitatives à échelle ordinale
+### Les variables qualitatives à échelle ordinale {#qualord}
 
 On observe ce type de variable lorsqu’il existe un ordre croissant dans les modalités de la variable. Par exemple, la variable _degré de satisfaction_ est à échelle ordinale. Il est possible de classer les modalités en ordre décroissant en écrivant : Très satisfait  >  Satisfait  >  Insatisfait  >  Très insatisfait.
 
@@ -137,7 +137,7 @@ a <- factor(gss_cat$rincome,
 levels(a)
 ```
 
-## Variables quantitatives
+## Les variables quantitatives {#quant}
 
 Une variable quantitative est une variable dont les résultats possibles sont des **nombres**. Les différents nombres que peuvent prendre une telle variable sont appelées des **valeurs**.
 
@@ -148,6 +148,16 @@ Dans cette section, nous utiliserons la librairie `nycflights13` qui contient ci
 ```{r message=FALSE}
 library(nycflights13)
 ```
+
+Les cinq base de données sont les suivantes:
+
+- `airlines`
+- `airports`
+- `flights`
+- `planes`
+- `weather`
+
+Pour en savoir plus sur une base de données particulière, par exemple `airlines` vous pouvez utilisez la commande `?airlines`.
 
 ### Les variables quantitatives discrètes
 
@@ -165,6 +175,8 @@ Pour être en mesure de connaître toutes les _valeurs_ différentes que peut pr
 unique(planes$engines)
 ```
 
+Les avions  peuvent donc avoir 1, 2, 3 ou 4 moteurs.
+
 La variable `seats` (qui dénombre le nombre de sièges de l'avion):
 
 ```{r}
@@ -173,7 +185,9 @@ unique(planes$seats)
 
 Dans la sortie `R` les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.
 
-### Variables quantitatives continues
+> Bien que la variable `seats` possède plusieurs valeurs (elle en possède `r length(unique(planes$seats))`), cela ne signifie pas qu'elle soit une variable quantitative continue, comme nous le verrons à la section \@ref(quantcont).
+
+### Les variables quantitatives continues {#quantcont}
 
 On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable _masse d’un étudiant (en lbs)_ est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.
 
@@ -183,8 +197,26 @@ Dans la base de données `weather` de l'extension `nycflights13`, nous allons ob
 weather
 ```
 
-À FAIRE : DÉCOUPER DES VARIABLES QUANTITATIVES DISCRETES...
+Si nous utilisons la commande `unique` sur cette variable, nous obtenons la sortie suivante:
 
+```{r}
+unique(weather$temp)
+```
+
+Puisque nous avons `r length(unique(weather$temp))` températures différentes et que nous avons affaire à une variable quantitative continue, il est souvent avantageux de placer ces données dans des classes. Pour ce faire, nous devons utiliser la commande `cut` qui permet d'indiquer les frontières de ces classes. Voici un exemple où nous créons des classes de largeur 25:
+
+```{r}
+temp_classes <- cut(weather$temp,
+                    breaks = c(0, 25, 50, 75, 100, 125),
+                    include.lowest = TRUE,
+                    right = FALSE)
+unique(temp_classes)
+```
+
+Nous nous retrouvons donc avec `r length(unique(temp_classes))` classes. Lorsque nous présenterons les variables sous forme de tableau, il nous sera utile d'utiliser la commande `cut`.
+
+L'option `include.lowest` indique que nous voulons conserver ...
+L'option `right = FALSE` indique que nous voulons des intervalles fermés à gauche et  ouverts à droite.
 
 ## L'extension `questionr`
 

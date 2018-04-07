@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-05">
+<meta name="date" content="2018-04-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -149,13 +149,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="variables.html"><a href="variables.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="variables.html"><a href="variables.html#mise-en-place"><i class="fa fa-check"></i><b>2.1.1</b> Mise en place</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="variables.html"><a href="variables.html#les-variables-qualitatives"><i class="fa fa-check"></i><b>2.2</b> Les variables qualitatives</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="variables.html"><a href="variables.html#qualinominale"><i class="fa fa-check"></i><b>2.2.1</b> Variables qualitatives à échelle nominale</a></li>
-<li class="chapter" data-level="2.2.2" data-path="variables.html"><a href="variables.html#variables-qualitatives-a-echelle-ordinale"><i class="fa fa-check"></i><b>2.2.2</b> Variables qualitatives à échelle ordinale</a></li>
+<li class="chapter" data-level="2.2" data-path="variables.html"><a href="variables.html#qual"><i class="fa fa-check"></i><b>2.2</b> Les variables qualitatives</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="variables.html"><a href="variables.html#qualinominale"><i class="fa fa-check"></i><b>2.2.1</b> Les variables qualitatives à échelle nominale</a></li>
+<li class="chapter" data-level="2.2.2" data-path="variables.html"><a href="variables.html#qualord"><i class="fa fa-check"></i><b>2.2.2</b> Les variables qualitatives à échelle ordinale</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="variables.html"><a href="variables.html#variables-quantitatives"><i class="fa fa-check"></i><b>2.3</b> Variables quantitatives</a><ul>
+<li class="chapter" data-level="2.3" data-path="variables.html"><a href="variables.html#quant"><i class="fa fa-check"></i><b>2.3</b> Les variables quantitatives</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="variables.html"><a href="variables.html#mise-en-place-1"><i class="fa fa-check"></i><b>2.3.1</b> Mise en place</a></li>
-<li class="chapter" data-level="2.3.2" data-path="variables.html"><a href="variables.html#variables-quantitatives-discretes"><i class="fa fa-check"></i><b>2.3.2</b> Variables quantitatives discrètes</a></li>
+<li class="chapter" data-level="2.3.2" data-path="variables.html"><a href="variables.html#les-variables-quantitatives-discretes"><i class="fa fa-check"></i><b>2.3.2</b> Les variables quantitatives discrètes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="variables.html"><a href="variables.html#quantcont"><i class="fa fa-check"></i><b>2.3.3</b> Les variables quantitatives continues</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="variables.html"><a href="variables.html#lextension-questionr"><i class="fa fa-check"></i><b>2.4</b> L’extension <code>questionr</code></a><ul>
 <li class="chapter" data-level="2.4.1" data-path="variables.html"><a href="variables.html#mise-en-place-2"><i class="fa fa-check"></i><b>2.4.1</b> Mise en place</a></li>
@@ -214,11 +215,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 </div>
 </div>
-<div id="les-variables-qualitatives" class="section level2">
+<div id="qual" class="section level2">
 <h2><span class="header-section-number">2.2</span> Les variables qualitatives</h2>
 <p>Une variable qualitative est une variable dont les résultats possibles sont des <strong>mots</strong>. Les différents <strong>mots</strong> que peuvent prendre une telle variable sont appelées des <strong>modalités</strong>. Il existe deux types de variables qualitatives.</p>
 <div id="qualinominale" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Variables qualitatives à échelle nominale</h3>
+<h3><span class="header-section-number">2.2.1</span> Les variables qualitatives à échelle nominale</h3>
 <p>On observe ce type de variable lorsqu’il n’y a pas d’ordre croissant naturel dans les <strong>modalités</strong> de la variable. Par exemple, la variable <em>couleur des cheveux</em> est à échelle nominale. L’ordre “blonds, bruns, roux, noirs, autre” est un ordre aussi valable que
 “bruns, noirs, roux, blonds, autre”.</p>
 <p>Imaginons que vous vouliez créer une variable qui indique le mois de l’année:</p>
@@ -278,8 +279,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb28-4" data-line-number="4">## [1] &quot;No answer&quot;     &quot;Never married&quot; &quot;Separated&quot;     &quot;Divorced&quot;     </a>
 <a class="sourceLine" id="cb28-5" data-line-number="5">## [5] &quot;Widowed&quot;       &quot;Married&quot;</a></code></pre></div>
 </div>
-<div id="variables-qualitatives-a-echelle-ordinale" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Variables qualitatives à échelle ordinale</h3>
+<div id="qualord" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Les variables qualitatives à échelle ordinale</h3>
 <p>On observe ce type de variable lorsqu’il existe un ordre croissant dans les modalités de la variable. Par exemple, la variable <em>degré de satisfaction</em> est à échelle ordinale. Il est possible de classer les modalités en ordre décroissant en écrivant : Très satisfait &gt; Satisfait &gt; Insatisfait &gt; Très insatisfait.</p>
 <p>Pour créer une variable qualitative à échelle ordinale en <code>R</code>, nous pouvons utiliser la même technique vue à la section <a href="variables.html#qualinominale">2.2.1</a>. Nous pouvons donc avoir:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Satisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>)</a>
@@ -319,16 +320,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb32-10" data-line-number="10">## [13] &quot;No answer&quot;      &quot;Refused&quot;        &quot;Not applicable&quot; &quot;Don&#39;t know&quot;</a></code></pre></div>
 </div>
 </div>
-<div id="variables-quantitatives" class="section level2">
-<h2><span class="header-section-number">2.3</span> Variables quantitatives</h2>
+<div id="quant" class="section level2">
+<h2><span class="header-section-number">2.3</span> Les variables quantitatives</h2>
 <p>Une variable quantitative est une variable dont les résultats possibles sont des <strong>nombres</strong>. Les différents nombres que peuvent prendre une telle variable sont appelées des <strong>valeurs</strong>.</p>
 <div id="mise-en-place-1" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Mise en place</h3>
 <p>Dans cette section, nous utiliserons la librairie <code>nycflights13</code> qui contient cinq bases de données portant sur tous les vols aériens ayant quittés la ville de New-York en 2013.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">library</span>(nycflights13)</a></code></pre></div>
+<p>Les cinq base de données sont les suivantes:</p>
+<ul>
+<li><code>airlines</code></li>
+<li><code>airports</code></li>
+<li><code>flights</code></li>
+<li><code>planes</code></li>
+<li><code>weather</code></li>
+</ul>
+<p>Pour en savoir plus sur une base de données particulière, par exemple <code>airlines</code> vous pouvez utilisez la commande <code>?airlines</code>.</p>
 </div>
-<div id="variables-quantitatives-discretes" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Variables quantitatives discrètes</h3>
+<div id="les-variables-quantitatives-discretes" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Les variables quantitatives discrètes</h3>
 <p>On observe ce type de variable lorsque les valeurs sont énumérables, c’est-à-dire lorsqu’il n’existe pas de valeur possible entre deux valeurs consécutives. Par exemple, la variable <em>nombre de cours suivis pendant cette session</em> est une variable quantitative discrète. Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,… Il est impossible de suivre 4,6 cours durant une session.</p>
 <p>La base de données <code>planes</code> contient certaines variables quantitatives discrètes.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">planes</a>
@@ -345,20 +355,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Pour être en mesure de connaître toutes les <em>valeurs</em> différentes que peut prendre une variable, nous allons utiliser la commande <code>unique</code>. Si nous nous intéressons à la variable <code>engines</code> (qui dénombre le nombre de moteurs de l’avion):</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>engines)</a>
 <a class="sourceLine" id="cb35-2" data-line-number="2">## [1] 2 1 4 3</a></code></pre></div>
+<p>Les avions peuvent donc avoir 1, 2, 3 ou 4 moteurs.</p>
 <p>La variable <code>seats</code> (qui dénombre le nombre de sièges de l’avion):</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>seats)</a>
 <a class="sourceLine" id="cb36-2" data-line-number="2">##  [1]  55 182 149 330 178  95 290 199  20 140   2   8 400 260 255 191 375</a>
 <a class="sourceLine" id="cb36-3" data-line-number="3">## [18] 145  22  14   6  80 189   7   4 377 102  10  11 269 200 222 172 379</a>
 <a class="sourceLine" id="cb36-4" data-line-number="4">## [35]   5 147 100  16 275 292 139   9 450 179 128 300 142  12</a></code></pre></div>
 <p>Dans la sortie <code>R</code> les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.</p>
-<div id="variables-quantitatives-continues" class="section level4">
-<h4><span class="header-section-number">2.3.2.1</span> Variables quantitatives continues</h4>
-<p>On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable <em>masse d’un étudiant (en lbs)</em> est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.</p>
-<p>Dans la base de données <code>diamonds</code>, nous allons observer la variable <code>carat</code>. Voici les 25 premiers éléments de ces valeurs.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">diamonds<span class="op">$</span>carat[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>]</a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">##  [1] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 0.30 0.23 0.22 0.31</a>
-<a class="sourceLine" id="cb37-3" data-line-number="3">## [15] 0.20 0.32 0.30 0.30 0.30 0.30 0.30 0.23 0.23 0.31 0.31</a></code></pre></div>
+<blockquote>
+<p>Bien que la variable <code>seats</code> possède plusieurs valeurs (elle en possède 48), cela ne signifie pas qu’elle soit une variable quantitative continue, comme nous le verrons à la section <a href="variables.html#quantcont">2.3.3</a>.</p>
+</blockquote>
 </div>
+<div id="quantcont" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Les variables quantitatives continues</h3>
+<p>On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable <em>masse d’un étudiant (en lbs)</em> est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.</p>
+<p>Dans la base de données <code>weather</code> de l’extension <code>nycflights13</code>, nous allons observer la variable <code>temp</code>, qui représente la température en degrés Farenheit pour toutes les heures de chaques jours de l’année 2013.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">weather</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">## # A tibble: 26,130 x 15</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">##   origin  year month   day  hour  temp  dewp humid wind_dir wind_speed</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">## 1 EWR    2013.    1.     1     0  37.0  21.9  54.0     230.       10.4</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">## 2 EWR    2013.    1.     1     1  37.0  21.9  54.0     230.       13.8</a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">## 3 EWR    2013.    1.     1     2  37.9  21.9  52.1     230.       12.7</a>
+<a class="sourceLine" id="cb37-8" data-line-number="8">## 4 EWR    2013.    1.     1     3  37.9  23.0  54.5     230.       13.8</a>
+<a class="sourceLine" id="cb37-9" data-line-number="9">## 5 EWR    2013.    1.     1     4  37.9  24.1  57.0     240.       15.0</a>
+<a class="sourceLine" id="cb37-10" data-line-number="10">## 6 EWR    2013.    1.     1     6  39.0  26.1  59.4     270.       10.4</a>
+<a class="sourceLine" id="cb37-11" data-line-number="11">## # ... with 2.612e+04 more rows, and 5 more variables: wind_gust &lt;dbl&gt;,</a>
+<a class="sourceLine" id="cb37-12" data-line-number="12">## #   precip &lt;dbl&gt;, pressure &lt;dbl&gt;, visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</a></code></pre></div>
+<p>Si nous utilisons la commande <code>unique</code> sur cette variable, nous obtenons la sortie suivante:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">unique</span>(weather<span class="op">$</span>temp)</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">##   [1]  37.0  37.9  39.0  39.9  41.0  39.2  36.0  34.0  33.1  32.0  30.0</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">##  [12]  28.9  28.0  27.0  26.1  25.0  24.1  30.9  35.1  42.1  43.0  44.1</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">##  [23]  33.8  35.6  37.4  46.0  46.9  48.0  45.0  48.9  50.0  46.4  44.6</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">##  [34]  42.8  48.2  51.1  51.8  52.0  55.9  57.9  57.0  55.0  53.1  54.0</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">##  [45]  23.0  21.0  19.9  19.4  21.9  19.0  18.0  17.1  16.0  15.1  14.0</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">##  [56]  12.9  12.0  10.9  21.2  17.6  30.2  64.0  64.4  59.0  57.2  60.8</a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">##  [67]  62.1  62.6  24.8  26.6  28.4  41.9  45.7  41.2  38.8  34.2  34.9</a>
+<a class="sourceLine" id="cb38-9" data-line-number="9">##  [78]  32.4  36.5  53.6  60.1  63.0  64.9  66.0  70.0  71.1  68.0  66.9</a>
+<a class="sourceLine" id="cb38-10" data-line-number="10">##  [89]  73.9  77.0  80.1  82.0  82.9  84.0  81.0  79.0  73.0  69.1  61.0</a>
+<a class="sourceLine" id="cb38-11" data-line-number="11">## [100]  55.4  72.0  66.2  73.4  75.2  75.9  78.1  69.8  75.0  86.0  88.0</a>
+<a class="sourceLine" id="cb38-12" data-line-number="12">## [111]  87.1  84.9  78.8  80.6  82.4  71.6  89.1  91.0  91.9  93.0  91.4</a>
+<a class="sourceLine" id="cb38-13" data-line-number="13">## [122]  90.0  93.9  89.6  95.0  87.8  84.2  97.0  96.1  98.1 100.0  99.0</a>
+<a class="sourceLine" id="cb38-14" data-line-number="14">## [133]  93.2    NA  50.7  47.1  50.5  49.1  47.3  51.3  45.3  13.1  82.6</a>
+<a class="sourceLine" id="cb38-15" data-line-number="15">## [144]  84.7  83.7  81.1  54.5  53.4  50.2  48.4  43.2  40.6  42.3  43.9</a>
+<a class="sourceLine" id="cb38-16" data-line-number="16">## [155]  47.8  52.5  55.6  54.1  54.9  50.9  51.4  49.5  46.6  47.5  49.8</a>
+<a class="sourceLine" id="cb38-17" data-line-number="17">## [166]  50.4  52.7  56.5  58.1  57.6  51.6  60.4  60.3  59.2  55.8</a></code></pre></div>
+<p>Puisque nous avons 175 températures différentes et que nous avons affaire à une variable quantitative continue, il est souvent avantageux de placer ces données dans des classes. Pour ce faire, nous devons utiliser la commande <code>cut</code> qui permet d’indiquer les frontières de ces classes. Voici un exemple où nous créons des classes de largeur 25:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">temp_classes &lt;-<span class="st"> </span><span class="kw">cut</span>(weather<span class="op">$</span>temp,</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">                    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>),</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">                    <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">                    <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="kw">unique</span>(temp_classes)</a>
+<a class="sourceLine" id="cb39-6" data-line-number="6">## [1] [25,50)   [0,25)    [50,75)   [75,100)  [100,125] &lt;NA&gt;     </a>
+<a class="sourceLine" id="cb39-7" data-line-number="7">## Levels: [0,25) [25,50) [50,75) [75,100) [100,125]</a></code></pre></div>
+<p>Nous nous retrouvons donc avec 6 classes. Lorsque nous présenterons les variables sous forme de tableau, il nous sera utile d’utiliser la commande <code>cut</code>.</p>
+<p>L’option <code>include.lowest</code> indique que nous voulons conserver …
+L’option <code>right = FALSE</code> indique que nous voulons des intervalles fermés à gauche et ouverts à droite.</p>
 </div>
 </div>
 <div id="lextension-questionr" class="section level2">
@@ -366,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>L’extension <code>questionr</code> propose une interface graphique pour faciliter l’opération qui consiste à réordonner vos données.</p>
 <div id="mise-en-place-2" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Mise en place</h3>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">library</span>(questionr)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">library</span>(questionr)</a></code></pre></div>
 </div>
 <div id="linterface-graphique" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> L’interface graphique</h3>
