@@ -165,8 +165,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>II Présentation des données</b></span></li>
 <li class="chapter" data-level="3" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>3</b> Les variables qualitatives</a><ul>
-<li class="chapter" data-level="3.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>3.1</b> Mise en place</a></li>
-<li class="chapter" data-level="3.2" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#tableau-de-frequences"><i class="fa fa-check"></i><b>3.2</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="3.0.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>3.0.1</b> Mise en place</a></li>
+<li class="chapter" data-level="3.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#tableau-de-frequences"><i class="fa fa-check"></i><b>3.1</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="3.2" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#representation-graphique---le-diagramme-a-bandes"><i class="fa fa-check"></i><b>3.2</b> Représentation graphique - Le diagramme à bandes</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="graphiques.html"><a href="graphiques.html"><i class="fa fa-check"></i><b>4</b> Les types de représentation graphiques</a></li>
 <li class="chapter" data-level="5" data-path="mesures.html"><a href="mesures.html"><i class="fa fa-check"></i><b>5</b> Les différentes mesures</a><ul>
@@ -211,14 +212,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="variablesqualitatives" class="section level1">
 <h1><span class="header-section-number">Chapitre 3</span> Les variables qualitatives</h1>
-<div id="mise-en-place-3" class="section level2">
-<h2><span class="header-section-number">3.1</span> Mise en place</h2>
+<div id="mise-en-place-3" class="section level3">
+<h3><span class="header-section-number">3.0.1</span> Mise en place</h3>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
 <a class="sourceLine" id="cb42-3" data-line-number="3"><span class="kw">library</span>(knitr)</a></code></pre></div>
 </div>
 <div id="tableau-de-frequences" class="section level2">
-<h2><span class="header-section-number">3.2</span> Tableau de fréquences</h2>
+<h2><span class="header-section-number">3.1</span> Tableau de fréquences</h2>
 <p>Le tableau de fréquences…</p>
 <table>
 <colgroup>
@@ -307,6 +308,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+</div>
+<div id="representation-graphique---le-diagramme-a-bandes" class="section level2">
+<h2><span class="header-section-number">3.2</span> Représentation graphique - Le diagramme à bandes</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital))<span class="op">+</span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
