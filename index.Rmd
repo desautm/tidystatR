@@ -14,8 +14,6 @@ description: "Un livre portant sur les statistiques et la probabilité en utilis
 
 # Introduction {-}
 
-
-
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(

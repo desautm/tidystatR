@@ -26,6 +26,7 @@ rmd_files: [
   "index.Rmd",
   "tidyverse.Rmd",
   "variables.Rmd",
+  "variables-qualitatives.Rmd",
   "graphiques.Rmd",
   "mesures.Rmd",
   "references.Rmd"]

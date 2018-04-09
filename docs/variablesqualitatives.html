@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="variablesqualitatives.html">
-<link rel="next" href="mesures.html">
+<link rel="prev" href="variables.html">
+<link rel="next" href="graphiques.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -209,17 +209,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphiques" class="section level1">
-<h1><span class="header-section-number">Chapitre 4</span> Les types de représentation graphiques</h1>
+<div id="variablesqualitatives" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> Les variables qualitatives</h1>
+<div id="mise-en-place-3" class="section level2">
+<h2><span class="header-section-number">3.1</span> Mise en place</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="kw">library</span>(knitr)</a></code></pre></div>
+</div>
+<div id="tableau-de-frequences" class="section level2">
+<h2><span class="header-section-number">3.2</span> Tableau de fréquences</h2>
+<p>Le tableau de fréquences…</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="34%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Titre</th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Nom de la variable</strong></td>
+<td align="center"><strong>Nombre d’unités statistiques</strong></td>
+<td align="center"><strong>Pourcentage d’unités statistiques</strong>(%)</td>
+</tr>
+<tr class="even">
+<td align="center">(<em>Modalités</em>)</td>
+<td align="center">(<em>Fréquences absolues</em>)</td>
+<td align="center">(<em>Fréquences relatives</em>)</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Total</strong></td>
+<td align="center"><em>n</em></td>
+<td align="center">100%</td>
+</tr>
+<tr class="even">
+<td align="center"><em>Source</em></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">marital &lt;-<span class="st"> </span><span class="kw">freq</span>(gss_cat<span class="op">$</span>marital,</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">                <span class="dt">cum =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">                <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">                <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="kw">kable</span>(marital)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">n</th>
+<th align="right">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No answer</td>
+<td align="right">17</td>
+<td align="right">0.1</td>
+</tr>
+<tr class="even">
+<td>Never married</td>
+<td align="right">5416</td>
+<td align="right">25.2</td>
+</tr>
+<tr class="odd">
+<td>Separated</td>
+<td align="right">743</td>
+<td align="right">3.5</td>
+</tr>
+<tr class="even">
+<td>Divorced</td>
+<td align="right">3383</td>
+<td align="right">15.7</td>
+</tr>
+<tr class="odd">
+<td>Widowed</td>
+<td align="right">1807</td>
+<td align="right">8.4</td>
+</tr>
+<tr class="even">
+<td>Married</td>
+<td align="right">10117</td>
+<td align="right">47.1</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right">21483</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="variablesqualitatives.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mesures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphiques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -249,7 +346,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/desautm/tidystatR/edit/master/graphiques.Rmd",
+"link": "https://github.com/desautm/tidystatR/edit/master/variables-qualitatives.Rmd",
 "text": "Modifier"
 },
 "download": ["tidystatR.pdf", "tidystatR.epub"],

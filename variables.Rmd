@@ -145,7 +145,7 @@ Une variable quantitative est une variable dont les résultats possibles sont de
 
 Dans cette section, nous utiliserons la librairie `nycflights13` qui contient cinq bases de données portant sur tous les vols aériens ayant quittés la ville de New-York en 2013.
 
-```{r message=FALSE}
+```{r}
 library(nycflights13)
 ```
 
@@ -223,6 +223,14 @@ L'option `right = FALSE` indique que nous voulons des intervalles fermés à gau
 L'extension `questionr` propose une interface graphique pour faciliter l'opération qui consiste à réordonner vos données.
 
 ### Mise en place
+
+Pour installer l'extension, vous effectuez la commande suivante:
+
+```{r eval=FALSE}
+install.packages("questionr")
+```
+
+Vous pouvez ensuite la charger.
 
 ```{r message=FALSE}
 library(questionr)
