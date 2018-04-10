@@ -1,4 +1,4 @@
-# Les variables {#variables}
+# Les différents types de variables {#typesvariables}
 
 ## Introduction
 
@@ -12,7 +12,7 @@ Dans ce chapitre, nous introduirons les différents types de variables et les fa
 library(tidyverse)
 ```
 
-## Les variables qualitatives {#qual}
+## Les variables qualitatives {#varqual}
 
 Une variable qualitative est une variable dont les résultats possibles sont des **mots**. Les différents **mots** que peuvent prendre une telle variable sont appelées des **modalités**. Il existe deux types de variables qualitatives.
 
@@ -81,7 +81,7 @@ x3  <- c("blonds", "bruns", "roux", "noirs", "autre")
 sort(x3)
 ```
 
-Nous allons maintenant utiliser de vraies données provenant du [General Social Survey](http://gss.norc.org), qui est un sondage produit par une organisation de recherche indépendante NORC à l'Université de Chicago. Le sondage original comporte des milliers de questions, la base de donnéee `forcats::gss_cat` n'en contient que quelques unes.
+Nous allons maintenant utiliser de vraies données provenant du [General Social Survey](http://gss.norc.org), qui est un sondage produit par une organisation de recherche indépendante NORC à l'Université de Chicago. Le sondage original comporte des milliers de questions, la base de donnéee `forcats::gss_cat` n'en contient que quelques unes. Pour en savoir plus sur la base de données `gss_cat`, consultez @R-forcats.
 
 ```{r}
 gss_cat
@@ -143,7 +143,7 @@ Une variable quantitative est une variable dont les résultats possibles sont de
 
 ### Mise en place
 
-Dans cette section, nous utiliserons la librairie `nycflights13` qui contient cinq bases de données portant sur tous les vols aériens ayant quittés la ville de New-York en 2013.
+Dans cette section, nous utiliserons la librairie `nycflights13` (voir @R-nycflights13) qui contient cinq bases de données portant sur tous les vols aériens ayant quittés la ville de New-York en 2013.
 
 ```{r}
 library(nycflights13)

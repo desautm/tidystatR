@@ -1,0 +1,126 @@
+# (PART) Présentation des données {-}
+
+# Les variables qualitatives {#variablesqualitatives}
+
+## Mise en place
+
+```{r message=FALSE}
+library(tidyverse)
+library(questionr)
+library(knitr)
+```
+
+## Tableau de fréquences
+
+Une fois les données d’un sondage recueillies, il est plus aisé d’analyser ces données si elles sont classées dans un tableau. 
+
+Le tableau de fréquences que nous utiliserons est le suivant:
+
+|                                      Titre                                                          ||
+|:----------------------:|:--------------------------------:|:----------------------------------------:|
+| **Nom de la variable** | **Nombre d'unités statistiques** | **Pourcentage d'unités statistiques** (%)|
+|      (_Modalités_)     |      (_Fréquences absolues_)     |         (_Fréquences relatives_)         |
+|        **Total**       |                _n_               |                   100%                   |
+
+> Important : Le titre doit toujours être indiqué lors de la construction d’un tableau de fréquence.
+
+Lorsque les données se trouvent dans une `tibble` dans `R`, il est possible d'utiliser la commande `freq` de la librairie `questionr` pour afficher le tableau de fréquences. La commande `freq` prend comme argument la variable dont vous voulez produire le tableau de fréquences. Pour obtenir une sortie adéquate, il faut ajouter trois options à la commande:
+
+- `cum = FALSE`; permet de ne pas afficher les pourcentages cumulés
+- `valid = FALSE`; permet de ne pas afficher les données manquantes
+- `total = TRUE`; permet d'afficher le total
+
+Dans la base de données `forcats::gss_cat`, nous allons afficher la variable `marital`. Dans la commande ci-dessous, nous enregistrons le tableau de fréquences dans la variable `tab_marital`. Nous l'affichons ensuite à l'aide de la commande `kable`.
+
+```{r}
+tab_marital <- freq(gss_cat$marital,
+                cum = FALSE,
+                valid = FALSE,
+                total = TRUE)
+kable(tab_marital)
+```
+
+À l'aide du tableau précédent, répondez aux questions suivantes:
+
+1. Combien de personnes ne se sont jamais mariées dans l'échantillon? `r tab_marital[2,1]`
+1. Quel est le pourcentage de personnes divorcées dans l'échantillon? `r tab_marital[4,2]` %
+1. Quel est le nombre total d'unités statistiques? `r nrow(gss_cat)`
+
+Nous pouvons produire le tableau de fréquences de la variable `race` de la façon suivante:
+
+```{r}
+tab_race <- freq(gss_cat$race,
+                cum = FALSE,
+                valid = FALSE,
+                total = TRUE)
+kable(tab_race)
+```
+
+
+## Représentation graphique - Le diagramme à bandes
+
+Pour représenter graphiquement les variables qualitatives, nous allons utiliser les diagrammes à bandes. 
+
+Pour construire ce graphique:
+
+- Chaque modalité est représentée par un rectangle. 
+- La hauteur de chaque rectangle doit être proportionnelle
+	- au nombre d’unités statistiques (la fréquence absolue) OU 
+	- au pourcentage d’unités statistiques (la fréquence relative). 
+- Le titre et les fréquences (absolues ou relatives) doivent être indiqués. 
+- L’axe des x doit posséder un titre : le nom de la variable étudiée. 
+- L’axe des y doit posséder un titre : "Nombre d’unités statistiques" ou "Pourcentage d’unités statistiques".
+- La graduation de l’axe des y doit commencer à zéro (l’axe ne doit pas être coupé). 
+- Les rectangles doivent être équidistants et de largeur égale. De plus, ils ne doivent pas être collés.
+
+Pour produire le diagramme à bandes, nous utiliserons l'extension `ggplot2` qui est chargée avec le coeur de la librairie `tidyverse`. La grammaire graphique de `ggplot2` peut être décrite de la façon suivante:
+
+> **A statistical graphic is a `mapping` of `data` variables to `aes`thetic attributes of `geom`etric objects.**
+
+Plus spécifiquement, nous pouvons briser un graphique en trois composantes essentielles:
+
+1. `data`: la base de données contenant les variables que nous désirons visualiser.
+1. `geom`: l'objet géométrique en question. Ceci réfère au type d'objet que nous pouvons observer dans notre graphique. Par exemple, des points, des lignes, des barres, etc.
+1. `aes`: les attributs esthétiques (aesthetics) de l'objet géométrique que nous affichons dans notre graphique. Par exemple, la position x/y, la couleur, la forme, la taille. Chaque attribut peut être associé à une variable dans notre base de données.
+
+### La variable `marital`
+
+Nous allons visualiser le diagramme à bandes de la variable `marital` provenant de la base de données `forcats::gss_cat`. Nous devons spécifier:
+
+- `data = gss_cat`: la base de données.
+- `aes(x = marital)`: la variable étudiée.
+- `geom_bar()`: nous voulons un diagramme à bandes
+
+La commande est donc:
+
+```{r}
+ggplot(data = gss_cat, aes(x = marital))+
+  geom_bar()
+```
+
+Pour ajouter un titre et indiquer les titres des axes x et y, nous utilisons la commande `labs` (pour _labels_).
+
+```{r}
+ggplot(data = gss_cat, aes(x = marital))+
+  geom_bar()+
+  labs(
+    title = "Répartition de 21 483 personnes selon leur statut matrimonial",
+    x = "Statut matrimonial",
+    y = "Nombre d'unités statistiques"
+  )
+```
+
+### La variable `relig`
+
+Nous pouvons afficher le diagramme à bandes horizontales de la variable `relig` en ajoutant la commande `coord_flip()`. Nous avons donc:
+
+```{r}
+ggplot(data = gss_cat, aes(x = relig))+
+  geom_bar()+
+  labs(
+    title = "Répartition de 21 483 personnes selon leur religion",
+    x = "Religion",
+    y = "Nombre d'unités statistiques"
+  )+
+  coord_flip()
+```

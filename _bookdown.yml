@@ -24,11 +24,16 @@ language:
     edit: "Source"
 rmd_files: [
   "index.Rmd",
-  "tidyverse.Rmd",
-  "variables.Rmd",
-  "variables-qualitatives.Rmd",
-  "graphiques.Rmd",
-  "mesures.Rmd",
+  
+  "chapitres/tidyverse.Rmd",
+  
+  "chapitres/variables.Rmd",
+  "chapitres/variables-qualitatives.Rmd",
+  "chapitres/variables-quantitatives-discretes.Rmd",
+  "chapitres/variables-quantitatives-continues.Rmd",
+  
+  "chapitres/mesures.Rmd",
+  
   "references.Rmd"]
 
 before_chapter_script: "_common.R"

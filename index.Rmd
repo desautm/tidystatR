@@ -17,6 +17,6 @@ description: "Un livre portant sur les statistiques et la probabilité en utilis
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'questionr'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'questionr', 'nycflights13', 'forcats'
 ), 'packages.bib')
 ```
