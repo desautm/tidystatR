@@ -31,7 +31,7 @@ Pour être en mesure de briser une variable en classes, il faut utiliser la comm
 
 Pour simplifier le code, nous créons en premier lieu une variable `air_time_rec` avec les classes et nous l'affichons ensuite avec `freq`. Remarquons que nous avons ajouté l'option `valid = TRUE` car certaines valeurs sont manquantes. Rappelons que les données manquantes sont représentées par `NA` en `R`. Deux colonnes sont ajoutées:
 
-- `%val`: le pourcentage en omettant les valeurs manquantes
+- `val%`: le pourcentage en omettant les valeurs manquantes
 - `val%cum`: le pourcentage cumulé en omettant les valeurs manquantes
 
 Nous obtenons donc:
@@ -48,4 +48,29 @@ tab_airtime <- freq(air_time_rec,
 kable(tab_airtime)
 ```
 
-À la section \@ref(tabfreqquantdiscr), nous avons vu que la variable `seats` de la base de données `planes` contenait `r length(unique(planes$seats))` valeurs différentes. 
+À la section \@ref(tabfreqquantdiscr), nous avons vu que la variable `seats` de la base de données `planes` contenait `r length(unique(planes$seats))` valeurs différentes. Nous allons donc créer le tableau de fréquences avec des classes.
+
+```{r}
+seats_rec <- cut(planes$seats, 
+                 include.lowest=TRUE,  
+                 right=FALSE,
+                 breaks=c(0, 50, 100, 150, 200, 250, 300, 350, 400, 450))
+tab_seats <- freq(seats_rec,
+                  cum = TRUE,
+                  total = TRUE,
+                  valid = TRUE)
+kable(tab_seats)
+```
+
+## Représentation graphique - L'histogramme
+
+```{r}
+ggplot(flights, aes(x = air_time))+
+  geom_histogram(binwidth = 50, center = 25, color = 'white')+
+  labs(
+    title = "Répartition de 327 346 vols selon le nombre de minutes de vol",
+    x = "Nombre de minutes de vol",
+    y = "Nombre d'unités statistiques"
+  )
+```
+

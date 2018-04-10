@@ -180,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html"><i class="fa fa-check"></i><b>5</b> Les variables quantitatives continues</a><ul>
 <li class="chapter" data-level="5.1" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#mise-en-place-5"><i class="fa fa-check"></i><b>5.1</b> Mise en place</a></li>
 <li class="chapter" data-level="5.2" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#tableau-de-frequences-1"><i class="fa fa-check"></i><b>5.2</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="5.3" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#representation-graphique---lhistogramme"><i class="fa fa-check"></i><b>5.3</b> Représentation graphique - L’histogramme</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="mesures.html"><a href="mesures.html"><i class="fa fa-check"></i><b>6</b> Les différentes mesures</a><ul>
 <li class="chapter" data-level="6.1" data-path="mesures.html"><a href="mesures.html#les-mesures-de-tendance-centrale"><i class="fa fa-check"></i><b>6.1</b> Les mesures de tendance centrale</a><ul>
@@ -276,7 +277,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>right=FALSE</code>: permet d’avoir des classes fermées à gauche et ouvertes à droite</li>
 <li><code>breaks=c(0, 100, 200, 300, 400, 500, 600, 700)</code>: permet de couper les classes à 0, 100, 200, 300, 400, 500, 600 et 700</li>
 </ul>
-<p>Pour simplifier le code, nous créons en premier lieu une variable <code>air_time_rec</code> avec les classes et nous l’affichons ensuite avec <code>freq</code>. Remarquons que nous avons ajouté l’option <code>valid = TRUE</code> car certaines valeurs sont manquantes. Rappelons que les données manquantes sont représentées par <code>NA</code> en <code>R</code>.</p>
+<p>Pour simplifier le code, nous créons en premier lieu une variable <code>air_time_rec</code> avec les classes et nous l’affichons ensuite avec <code>freq</code>. Remarquons que nous avons ajouté l’option <code>valid = TRUE</code> car certaines valeurs sont manquantes. Rappelons que les données manquantes sont représentées par <code>NA</code> en <code>R</code>. Deux colonnes sont ajoutées:</p>
+<ul>
+<li><code>val%</code>: le pourcentage en omettant les valeurs manquantes</li>
+<li><code>val%cum</code>: le pourcentage cumulé en omettant les valeurs manquantes</li>
+</ul>
+<p>Nous obtenons donc:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">air_time_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(flights<span class="op">$</span>air_time, </a>
 <a class="sourceLine" id="cb55-2" data-line-number="2">                    <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb55-3" data-line-number="3">                    <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
@@ -372,7 +378,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>À la section <a href="variablesquantitativesdiscretes.html#tabfreqquantdiscr">4.2</a>, nous avons vu que la variable <code>seats</code> de la base de données <code>planes</code> contenait 48 valeurs différentes.</p>
+<p>À la section <a href="variablesquantitativesdiscretes.html#tabfreqquantdiscr">4.2</a>, nous avons vu que la variable <code>seats</code> de la base de données <code>planes</code> contenait 48 valeurs différentes. Nous allons donc créer le tableau de fréquences avec des classes.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">seats_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(planes<span class="op">$</span>seats, </a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">                 <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,  </a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">                 <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">                 <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>, <span class="dv">450</span>))</a>
+<a class="sourceLine" id="cb56-5" data-line-number="5">tab_seats &lt;-<span class="st"> </span><span class="kw">freq</span>(seats_rec,</a>
+<a class="sourceLine" id="cb56-6" data-line-number="6">                  <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb56-7" data-line-number="7">                  <span class="dt">total =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb56-8" data-line-number="8">                  <span class="dt">valid =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb56-9" data-line-number="9"><span class="kw">kable</span>(tab_seats)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">n</th>
+<th align="right">%</th>
+<th align="right">val%</th>
+<th align="right">%cum</th>
+<th align="right">val%cum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[0,50)</td>
+<td align="right">122</td>
+<td align="right">3.7</td>
+<td align="right">3.7</td>
+<td align="right">3.7</td>
+<td align="right">3.7</td>
+</tr>
+<tr class="even">
+<td>[50,100)</td>
+<td align="right">596</td>
+<td align="right">17.9</td>
+<td align="right">17.9</td>
+<td align="right">21.6</td>
+<td align="right">21.6</td>
+</tr>
+<tr class="odd">
+<td>[100,150)</td>
+<td align="right">1193</td>
+<td align="right">35.9</td>
+<td align="right">35.9</td>
+<td align="right">57.5</td>
+<td align="right">57.5</td>
+</tr>
+<tr class="even">
+<td>[150,200)</td>
+<td align="right">860</td>
+<td align="right">25.9</td>
+<td align="right">25.9</td>
+<td align="right">83.4</td>
+<td align="right">83.4</td>
+</tr>
+<tr class="odd">
+<td>[200,250)</td>
+<td align="right">269</td>
+<td align="right">8.1</td>
+<td align="right">8.1</td>
+<td align="right">91.5</td>
+<td align="right">91.5</td>
+</tr>
+<tr class="even">
+<td>[250,300)</td>
+<td align="right">68</td>
+<td align="right">2.0</td>
+<td align="right">2.0</td>
+<td align="right">93.6</td>
+<td align="right">93.6</td>
+</tr>
+<tr class="odd">
+<td>[300,350)</td>
+<td align="right">131</td>
+<td align="right">3.9</td>
+<td align="right">3.9</td>
+<td align="right">97.5</td>
+<td align="right">97.5</td>
+</tr>
+<tr class="even">
+<td>[350,400)</td>
+<td align="right">70</td>
+<td align="right">2.1</td>
+<td align="right">2.1</td>
+<td align="right">99.6</td>
+<td align="right">99.6</td>
+</tr>
+<tr class="odd">
+<td>[400,450]</td>
+<td align="right">13</td>
+<td align="right">0.4</td>
+<td align="right">0.4</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td align="right">3322</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="representation-graphique---lhistogramme" class="section level2">
+<h2><span class="header-section-number">5.3</span> Représentation graphique - L’histogramme</h2>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">ggplot</span>(flights, <span class="kw">aes</span>(<span class="dt">x =</span> air_time))<span class="op">+</span></a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">center =</span> <span class="dv">25</span>, <span class="dt">color =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb57-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 327 346 vols selon le nombre de minutes de vol&quot;</span>,</a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre de minutes de vol&quot;</span>,</a>
+<a class="sourceLine" id="cb57-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb57-8" data-line-number="8">## Warning: Removed 9430 rows containing non-finite values (stat_bin).</a></code></pre></div>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-62-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
