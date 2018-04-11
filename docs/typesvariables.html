@@ -133,7 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="part"><span><b>I Les outils</b></span></li>
-<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a></li>
+<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
+<li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
 <li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
 <li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>2.2</b> Installation</a></li>
@@ -166,9 +170,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.3" data-path="typesvariables.html"><a href="typesvariables.html#quantcont"><i class="fa fa-check"></i><b>5.3.3</b> Les variables quantitatives continues</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a></li>
+<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="questionnaire.html"><a href="questionnaire.html#criteres-a-respecter"><i class="fa fa-check"></i><b>6.1</b> Critères à respecter</a></li>
+<li class="chapter" data-level="6.2" data-path="questionnaire.html"><a href="questionnaire.html#types-de-questions"><i class="fa fa-check"></i><b>6.2</b> Types de questions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="questionnaire.html"><a href="questionnaire.html#question-ouverte"><i class="fa fa-check"></i><b>6.2.1</b> Question ouverte</a></li>
+<li class="chapter" data-level="6.2.2" data-path="questionnaire.html"><a href="questionnaire.html#questions-fermees"><i class="fa fa-check"></i><b>6.2.2</b> Questions fermées</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="echellesmesures.html"><a href="echellesmesures.html"><i class="fa fa-check"></i><b>7</b> Les échelles de mesure</a></li>
-<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a></li>
+<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a><ul>
+<li class="chapter" data-level="8.1" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-aleatoires"><i class="fa fa-check"></i><b>8.1</b> Techniques d’échantillonnage aléatoires</a></li>
+<li class="chapter" data-level="8.2" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-non-aleatoires"><i class="fa fa-check"></i><b>8.2</b> Techniques d’échantillonnage non-aléatoires</a></li>
+<li class="chapter" data-level="8.3" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#creation-dune-base-de-donnees-pour-les-mms"><i class="fa fa-check"></i><b>8.3</b> Création d’une base de données pour les <em>M&amp;M’s</em></a></li>
+</ul></li>
 <li class="part"><span><b>III Présentation des données</b></span></li>
 <li class="chapter" data-level="9" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>9</b> Les variables qualitatives</a><ul>
 <li class="chapter" data-level="9.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>9.1</b> Mise en place</a></li>
@@ -424,17 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb40-15" data-line-number="15">## [144]  84.7  83.7  81.1  54.5  53.4  50.2  48.4  43.2  40.6  42.3  43.9</a>
 <a class="sourceLine" id="cb40-16" data-line-number="16">## [155]  47.8  52.5  55.6  54.1  54.9  50.9  51.4  49.5  46.6  47.5  49.8</a>
 <a class="sourceLine" id="cb40-17" data-line-number="17">## [166]  50.4  52.7  56.5  58.1  57.6  51.6  60.4  60.3  59.2  55.8</a></code></pre></div>
-<p>Puisque nous avons 175 températures différentes et que nous avons affaire à une variable quantitative continue, il est souvent avantageux de placer ces données dans des classes. Pour ce faire, nous devons utiliser la commande <code>cut</code> qui permet d’indiquer les frontières de ces classes. Voici un exemple où nous créons des classes de largeur 25:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">temp_classes &lt;-<span class="st"> </span><span class="kw">cut</span>(weather<span class="op">$</span>temp,</a>
-<a class="sourceLine" id="cb41-2" data-line-number="2">                    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>),</a>
-<a class="sourceLine" id="cb41-3" data-line-number="3">                    <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb41-4" data-line-number="4">                    <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="kw">unique</span>(temp_classes)</a>
-<a class="sourceLine" id="cb41-6" data-line-number="6">## [1] [25,50)   [0,25)    [50,75)   [75,100)  [100,125] &lt;NA&gt;     </a>
-<a class="sourceLine" id="cb41-7" data-line-number="7">## Levels: [0,25) [25,50) [50,75) [75,100) [100,125]</a></code></pre></div>
-<p>Nous nous retrouvons donc avec 6 classes. Lorsque nous présenterons les variables sous forme de tableau, il nous sera utile d’utiliser la commande <code>cut</code>.</p>
-<p>L’option <code>include.lowest</code> indique que nous voulons conserver …
-L’option <code>right = FALSE</code> indique que nous voulons des intervalles fermés à gauche et ouverts à droite.</p>
+<p>Puisque nous avons 175 températures différentes et que nous avons affaire à une variable quantitative continue, il est souvent avantageux de placer ces données dans des classes. Nous verrons comment faire au chapitre <a href="variablesquantitativescontinues.html#variablesquantitativescontinues">11</a>.</p>
 
 </div>
 </div>

@@ -1,2 +1,67 @@
 # Les techniques d'échantillonnage {#techniquesechantillonnage}
 
+Lorsqu’on souhaite effectuer un sondage plutôt qu’un recensement, il existe diverses façons pour déterminer quelles seront les n unités statistiques qui feront partie de l’échantillon. Celles-ci sont appelées techniques d’échantillonnage.
+
+## Techniques d’échantillonnage aléatoires
+
+Ces techniques permettent de choisir $n$ unités statistiques au hasard parmi la population. 
+
+En choisissant une de ces techniques, il est possible de tirer des conclusions sur une population à partir des résultats d’un sondage puisque la marge d’erreur peut être calculée. 
+
+Ces techniques nécessitent par contre une base de sondage, c’est-à-dire une liste de toutes les unités statistiques. 
+
+Il existe 4 techniques d’échantillonnage aléatoires. 
+
+- Simple: Les individus sont choisis aléatoirement parmi toutes les unités statistiques.
+- Stratifié: La population est divisée en sous-ensembles ayant des caractéristiques communes (strates), puis des unités statistiques sont choisies parmi chacune des strates de façon aléatoire en respectant les proportions de la population. 
+- Par grappes: La population est divisée en sous-ensembles préalablement existants (grappes). Des grappes sont sélectionnées aléatoirement et toutes les unités statistiques de ces grappes sont choisies. 
+- Systématique: Les unités statistiques sont choisies à intervalles réguliers. Le pas de sondage, l’intervalle auquel sont choisies les unités statistiques, est $p=\frac{N}{n}$. La première unité statistique est choisie aléatoirement parmi les p premières unités statistiques.
+
+## Techniques d’échantillonnage non-aléatoires
+
+Ces techniques d’échantillonnage ne relèvent pas du hasard, mais elles sont souvent utilisées puisqu’elles ne nécessitent pas de base de sondage et sont par le fait même généralement plus faciles à mettre en application. 
+
+- Accidentel/À l’aveuglette: Les unités statistiques sont choisies parce qu’elles sont présentes lorsque le sondage est effectué. 
+- Volontaire: Les unités statistiques décident elles-mêmes de participer au sondage.
+- Par quotas: La population est divisée en sous-ensembles ayant des caractéristiques communes, puis des unités statistiques sont choisies parmi chacun des sous-ensembles de façon accidentelle en respectant les proportions de la population.
+- Au jugé: Le chercheur choisit des unités statistiques précises parce qu’il croit qu’elles sont représentatives de la population.
+
+##  Création d'une base de données pour les _M&M's_
+
+**TODO**
+
+1. J'aimerais introduire les méthodes d'échantillonnage en utilisant les _M&M's_
+1. Chaque étudiant reçoit une boîte
+1. Les étudiants comptent le nombre de bonbons de chaque couleur
+1. Je rentre l'information dans une tibble avec le nom de l'étudiant (ça permet de faire une grappe)
+1. Les couleurs permettent de faire des strates
+
+Comment construire facilement la tibble? Créer une fonction du genre
+
+```
+m-m(nom, qté rouge, qté bleu, ...)
+```
+
+```{r}
+library(tidyverse)
+library(questionr)
+
+set.seed(12345)
+
+n <- 24 #On rentre 24 données par personnes
+prenoms <- c("Marc-André", "Mélanie", "Anna", "Laurent")
+couleurs <- c("Bleu", "Brun", "Orange", "Vert", "Jaune", "Rouge") #Les couleurs possibles
+
+metm <- tibble(nom = character(), couleur = character())
+
+for (i in prenoms){
+  temp <- tibble(
+                  nom = rep(i, n),
+                  couleur = sample(couleurs, n, replace = TRUE)
+                )
+  metm <- rbind(metm, temp)
+}
+
+freq(metm$couleur, total = TRUE, valid = FALSE)
+```
+

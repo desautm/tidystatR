@@ -20,3 +20,7 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'questionr', 'nycflights13', 'forcats'
 ), 'packages.bib')
 ```
+
+Nous sommes constamment bombardés d’information. Que ce soit sur Internet, à la télévision ou à la radio, les résultats de sondage abondent. Comment faire pour déterminer quelle information est fiable? 
+
+Ce cours vise à faire de vous des citoyens critiques, capables d’analyser des données et d’en tirer des conclusions. 

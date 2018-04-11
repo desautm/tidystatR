@@ -133,7 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="part"><span><b>I Les outils</b></span></li>
-<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a></li>
+<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
+<li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
 <li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
 <li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>2.2</b> Installation</a></li>
@@ -166,9 +170,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.3" data-path="typesvariables.html"><a href="typesvariables.html#quantcont"><i class="fa fa-check"></i><b>5.3.3</b> Les variables quantitatives continues</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a></li>
+<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="questionnaire.html"><a href="questionnaire.html#criteres-a-respecter"><i class="fa fa-check"></i><b>6.1</b> Critères à respecter</a></li>
+<li class="chapter" data-level="6.2" data-path="questionnaire.html"><a href="questionnaire.html#types-de-questions"><i class="fa fa-check"></i><b>6.2</b> Types de questions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="questionnaire.html"><a href="questionnaire.html#question-ouverte"><i class="fa fa-check"></i><b>6.2.1</b> Question ouverte</a></li>
+<li class="chapter" data-level="6.2.2" data-path="questionnaire.html"><a href="questionnaire.html#questions-fermees"><i class="fa fa-check"></i><b>6.2.2</b> Questions fermées</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="echellesmesures.html"><a href="echellesmesures.html"><i class="fa fa-check"></i><b>7</b> Les échelles de mesure</a></li>
-<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a></li>
+<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a><ul>
+<li class="chapter" data-level="8.1" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-aleatoires"><i class="fa fa-check"></i><b>8.1</b> Techniques d’échantillonnage aléatoires</a></li>
+<li class="chapter" data-level="8.2" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-non-aleatoires"><i class="fa fa-check"></i><b>8.2</b> Techniques d’échantillonnage non-aléatoires</a></li>
+<li class="chapter" data-level="8.3" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#creation-dune-base-de-donnees-pour-les-mms"><i class="fa fa-check"></i><b>8.3</b> Création d’une base de données pour les <em>M&amp;M’s</em></a></li>
+</ul></li>
 <li class="part"><span><b>III Présentation des données</b></span></li>
 <li class="chapter" data-level="9" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>9</b> Les variables qualitatives</a><ul>
 <li class="chapter" data-level="9.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>9.1</b> Mise en place</a></li>
@@ -232,9 +246,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapitre 12</span> Les différentes mesures</h1>
 <p>Dans ce chapitre, nous verrons comment utiliser <code>R</code> pour calculer les mesures importantes permettant de résumer des données.</p>
 <p>Nous allons charger les paquetages que nous allons utiliser:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">library</span>(questionr)</a>
-<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb58-3" data-line-number="3"><span class="kw">library</span>(nycflights13)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">library</span>(questionr)</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="kw">library</span>(nycflights13)</a></code></pre></div>
 <div id="les-mesures-de-tendance-centrale" class="section level2">
 <h2><span class="header-section-number">12.1</span> Les mesures de tendance centrale</h2>
 <p>Les mesures de tendance centrale permettent de déterminer où se situe le « centre » des données. Les trois mesures de tendance centrale sont le mode, la moyenne et la médiane.</p>
@@ -246,25 +260,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Le mode est noté <strong>Mo</strong>.</p>
 <p>Le langage <code>R</code> ne possède pas de fonction permettant de calculer le mode. La façon la plus simple de le calculer est d’utiliser la fonction <code>table</code> de <code>R</code>.</p>
 <p>Par exemple, si nous voulons connaître le mode de la variable <code>cut</code> de la base de données <code>diamonds</code>:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">table</span>(diamonds<span class="op">$</span>cut)</a>
-<a class="sourceLine" id="cb59-2" data-line-number="2">## </a>
-<a class="sourceLine" id="cb59-3" data-line-number="3">##      Fair      Good Very Good   Premium     Ideal </a>
-<a class="sourceLine" id="cb59-4" data-line-number="4">##      1610      4906     12082     13791     21551</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">table</span>(diamonds<span class="op">$</span>cut)</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">## </a>
+<a class="sourceLine" id="cb61-3" data-line-number="3">##      Fair      Good Very Good   Premium     Ideal </a>
+<a class="sourceLine" id="cb61-4" data-line-number="4">##      1610      4906     12082     13791     21551</a></code></pre></div>
 <p>Nous remarquons que le maximum est à la modalité <em>Ideal</em> avec une fréquence de 21551.</p>
 <p>Si nous nous intéressons au mode d’une variable quantitative discrète comme <code>cyl</code> de la base de données <code>mtcars</code> nous obtenons:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">table</span>(mtcars<span class="op">$</span>cyl)</a>
-<a class="sourceLine" id="cb60-2" data-line-number="2">## </a>
-<a class="sourceLine" id="cb60-3" data-line-number="3">##  4  6  8 </a>
-<a class="sourceLine" id="cb60-4" data-line-number="4">## 11  7 14</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">table</span>(mtcars<span class="op">$</span>cyl)</a>
+<a class="sourceLine" id="cb62-2" data-line-number="2">## </a>
+<a class="sourceLine" id="cb62-3" data-line-number="3">##  4  6  8 </a>
+<a class="sourceLine" id="cb62-4" data-line-number="4">## 11  7 14</a></code></pre></div>
 <p>Nous remarquons que le maximum est à la valeur <em>8</em> avec une fréquence de 14.</p>
 <p>Dans le cas d’une variable quantitative continue, pour calculer le mode, il faut commencer par séparer les données en classes. Nous utiliserons les mêmes classes utilisées à la section</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">carat_class =<span class="st"> </span><span class="kw">cut</span>(diamonds<span class="op">$</span>carat,</a>
-<a class="sourceLine" id="cb61-2" data-line-number="2">                  <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">6</span>, <span class="dt">by =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb61-3" data-line-number="3">                  <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="kw">table</span>(carat_class)</a>
-<a class="sourceLine" id="cb61-5" data-line-number="5">## carat_class</a>
-<a class="sourceLine" id="cb61-6" data-line-number="6">## [0,1) [1,2) [2,3) [3,4) [4,5) [5,6) </a>
-<a class="sourceLine" id="cb61-7" data-line-number="7">## 34880 16906  2114    34     5     1</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">carat_class =<span class="st"> </span><span class="kw">cut</span>(diamonds<span class="op">$</span>carat,</a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">                  <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">6</span>, <span class="dt">by =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb63-3" data-line-number="3">                  <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="kw">table</span>(carat_class)</a>
+<a class="sourceLine" id="cb63-5" data-line-number="5">## carat_class</a>
+<a class="sourceLine" id="cb63-6" data-line-number="6">## [0,1) [1,2) [2,3) [3,4) [4,5) [5,6) </a>
+<a class="sourceLine" id="cb63-7" data-line-number="7">## 34880 16906  2114    34     5     1</a></code></pre></div>
 <p>La classe modale est donc la classe <em>[0,1)</em> avec une fréquence de 34880.</p>
 </div>
 <div id="la-mediane" class="section level3">
@@ -277,12 +291,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>La fonction <code>median</code> permet de calculer la médiane en langage <code>R</code>.</p>
 <p>Par exemple, pour calculer la médiane de la variable <code>carat</code> de la base de données <code>diamonds</code>, nous avons:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">median</span>(diamonds<span class="op">$</span>carat)</a>
-<a class="sourceLine" id="cb62-2" data-line-number="2">## [1] 0.7</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">median</span>(diamonds<span class="op">$</span>carat)</a>
+<a class="sourceLine" id="cb64-2" data-line-number="2">## [1] 0.7</a></code></pre></div>
 <p>Ceci signifie que 50% des diamants ont une valeur en carat inférieure ou égale à 0.7 et que 50% des diamants ont une valeur en carat supérieure ou égale à 0.7.</p>
 <p>Nous pouvons aussi obtenir que la médiane de la variable <code>price</code> de la base de données <code>diamonds</code> est donnée par:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">median</span>(diamonds<span class="op">$</span>price)</a>
-<a class="sourceLine" id="cb63-2" data-line-number="2">## [1] 2401</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">median</span>(diamonds<span class="op">$</span>price)</a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">## [1] 2401</a></code></pre></div>
 </div>
 <div id="la-moyenne" class="section level3">
 <h3><span class="header-section-number">12.1.3</span> La moyenne</h3>
@@ -292,11 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>La fonction <code>mean</code> permet de calculer la moyenne en langage <code>R</code>.</p>
 <p>Par exemple, pour calculer la moyenne de la variable <code>carat</code> de la base de données <code>diamonds</code>, nous avons:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>carat)</a>
-<a class="sourceLine" id="cb64-2" data-line-number="2">## [1] 0.798</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>carat)</a>
+<a class="sourceLine" id="cb66-2" data-line-number="2">## [1] 0.798</a></code></pre></div>
 <p>Nous pouvons aussi obtenir que la moyenne de la variable <code>price</code> de la base de données <code>diamonds</code> est donnée par:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>price)</a>
-<a class="sourceLine" id="cb65-2" data-line-number="2">## [1] 3933</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>price)</a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">## [1] 3933</a></code></pre></div>
 </div>
 </div>
 <div id="les-mesures-de-dispersion" class="section level2">
@@ -310,8 +324,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>L’étendue ne tenant compte que du maximum et du minimum, elle est grandement influencée par les valeurs extrêmes. Elle est donc une mesure de dispersion peu fiable.</p>
 <p>La fonction <code>range</code> permet de calculer l’étendue d’une variable en langage <code>R</code>.</p>
 <p>Par exemple, pour calculer l’étendue de la variable <code>carat</code> de la base de données <code>diamonds</code>, nous avons:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">range</span>(diamonds<span class="op">$</span>carat)</a>
-<a class="sourceLine" id="cb66-2" data-line-number="2">## [1] 0.20 5.01</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">range</span>(diamonds<span class="op">$</span>carat)</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">## [1] 0.20 5.01</a></code></pre></div>
 <p>Nous pouvons donc calculer l’étendue de la variable <code>carat</code> en soustrayant les deux valeurs obtenues par la fonction <code>range</code>, c’est-à-dire que l’étendue est 5.01-0.2 = 4.81.</p>
 </div>
 <div id="la-variance" class="section level3">
@@ -322,8 +336,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>La fonction <code>var</code> permet de calculer la variance d’une variable en langage <code>R</code>.</p>
 <p>Par exemple, pour calculer la variance de la variable <code>carat</code> de la base de données <code>diamonds</code>, nous avons:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">var</span>(diamonds<span class="op">$</span>carat)</a>
-<a class="sourceLine" id="cb67-2" data-line-number="2">## [1] 0.225</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">var</span>(diamonds<span class="op">$</span>carat)</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">## [1] 0.225</a></code></pre></div>
 <p>Ceci signifie que la variance de la variable <code>carat</code> est 0.225 carat<sup>2</sup>.</p>
 </div>
 <div id="lecart-type" class="section level3">
@@ -333,8 +347,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Il est défini comme la racine carrée de la variance.</p>
 <p>La fonction <code>sd</code> permet de calculer l’’écart-type d’une variable en langage <code>R</code>.</p>
 <p>Par exemple, pour calculer l’écart-type de la variable <code>carat</code> de la base de données <code>diamonds</code>, nous avons:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)</a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">## [1] 0.474</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)</a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">## [1] 0.474</a></code></pre></div>
 <p>Ceci signifie que l’écart-type de la variable <code>carat</code> est 0.474 carat.</p>
 </div>
 <div id="le-coefficient-de-variation" class="section level3">
@@ -350,8 +364,8 @@ C.V. = \dfrac{\text{ecart-type}}{\text{moyenne}}\times 100\%
 </blockquote>
 <p>Il n’existe pas de fonctions en <code>R</code> permettant de calculer directement le coefficient de variation. Par contre, nous pouvons utiliser en conjonction les fonctions <code>sd</code> et <code>mean</code> pour le calculer.</p>
 <p>Par exemple, pour calculer le coefficient de variation de la variable <code>carat</code> de la base de données <code>diamonds</code>, nous avons:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)<span class="op">/</span><span class="kw">mean</span>(diamonds<span class="op">$</span>carat)<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb69-2" data-line-number="2">## [1] 59.4</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)<span class="op">/</span><span class="kw">mean</span>(diamonds<span class="op">$</span>carat)<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2">## [1] 59.4</a></code></pre></div>
 <p>Le C.V. de la variable <code>carat</code> est donc 59.404 %, ce qui signifie que les données sont hétérogènes, car le coefficient de variation est plus grand que 15%.</p>
 </div>
 </div>
@@ -394,8 +408,8 @@ Z = \dfrac{x-\text{moyenne}}{\text{ecart-type}}
 </table>
 <p>Il n’existe pas de fonctions en <code>R</code> permettant de calculer directement la cote Z. Par contre, nous pouvons utiliser en conjonction les fonctions <code>sd</code> et <code>mean</code> pour la calculer.</p>
 <p>Par exemple, si nous voulons calculer la cote Z d’un diamant de 3 carats, nous avons:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">(<span class="dv">3</span><span class="op">-</span><span class="kw">mean</span>(diamonds<span class="op">$</span>carat))<span class="op">/</span><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)</a>
-<a class="sourceLine" id="cb70-2" data-line-number="2">## [1] 4.65</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">(<span class="dv">3</span><span class="op">-</span><span class="kw">mean</span>(diamonds<span class="op">$</span>carat))<span class="op">/</span><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)</a>
+<a class="sourceLine" id="cb72-2" data-line-number="2">## [1] 4.65</a></code></pre></div>
 </div>
 <div id="les-quantiles" class="section level3">
 <h3><span class="header-section-number">12.3.2</span> Les quantiles</h3>
@@ -424,14 +438,14 @@ Etc.</li>
 </blockquote>
 <p>La fonction <code>quantile</code> permet de calculer n’importe quel quantile d’une variable en langage <code>R</code>. Il suffit d’indiquer la variable étudiée ainsi que le pourcentage du quantile voulu.</p>
 <p>Par exemple, si nous voulons calculer D<sub>1</sub> pour la variable <code>carat</code>, nous allons utiliser la fonction <code>quantile</code> avec une probabilité de 0,1.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>carat, <span class="fl">0.1</span>)</a>
-<a class="sourceLine" id="cb71-2" data-line-number="2">##  10% </a>
-<a class="sourceLine" id="cb71-3" data-line-number="3">## 0.31</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>carat, <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb73-2" data-line-number="2">##  10% </a>
+<a class="sourceLine" id="cb73-3" data-line-number="3">## 0.31</a></code></pre></div>
 <p>Ceci implique que 10% des diamants ont une valeur en carat inférieure ou égale à 0.31 carat.</p>
 <p>Nous pouvons calculer le troisième quartile Q<sub>3</sub> de la variable <code>price</code> en utilisant la fonction <code>quantile</code> avec une probabilité de 0,75.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>price, <span class="fl">0.75</span>)</a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">##  75% </a>
-<a class="sourceLine" id="cb72-3" data-line-number="3">## 5324</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>price, <span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2">##  75% </a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">## 5324</a></code></pre></div>
 <p>Ceci implique que 75% des diamants ont un prix en dollars inférieur ou égal à 5324.25 $.</p>
 </div>
 <div id="la-commande-summary" class="section level3">
@@ -446,9 +460,9 @@ Etc.</li>
 <li><code>Max</code> : Le maximum de la variable</li>
 </ol>
 <p>Nous pouvons donc produire le sommaire de la variable <code>price</code> de la base de données <code>diamonds</code> de la façon suivante:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">summary</span>(diamonds<span class="op">$</span>price)</a>
-<a class="sourceLine" id="cb73-2" data-line-number="2">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </a>
-<a class="sourceLine" id="cb73-3" data-line-number="3">##     326     950    2401    3933    5324   18823</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">summary</span>(diamonds<span class="op">$</span>price)</a>
+<a class="sourceLine" id="cb75-2" data-line-number="2">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </a>
+<a class="sourceLine" id="cb75-3" data-line-number="3">##     326     950    2401    3933    5324   18823</a></code></pre></div>
 </div>
 <div id="le-rang-centile" class="section level3">
 <h3><span class="header-section-number">12.3.4</span> Le rang centile</h3>
@@ -456,8 +470,8 @@ Etc.</li>
 <p>Les rangs centiles sont donc exactement l’inverse des centiles.</p>
 <p>Il n’existe pas de fonctions dans <code>R</code> permettant de trouver directement le rang centile, mais il est facile d’utiliser la fonction <code>mean</code> pour le trouver.</p>
 <p>Par exemple, si nous voulons trouver le rang centile d’un diamant qui coûte 500$, il suffit d’utiliser la commande suivante. La commande calcule la moyenne de toutes les valeurs en dollars des diamants coûtant 500$ ou moins.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>price<span class="op">&lt;=</span><span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb74-2" data-line-number="2">## [1] 0.0324</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>price<span class="op">&lt;=</span><span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb76-2" data-line-number="2">## [1] 0.0324</a></code></pre></div>
 <p>Ceci signifie que pour un diamant de 500$, il y a 3.242 % des diamants qui ont une valeur égale ou inférieure.</p>
 
 </div>

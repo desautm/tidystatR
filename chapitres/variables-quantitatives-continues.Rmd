@@ -23,7 +23,22 @@ Le tableau de fréquences que nous utiliserons est le suivant :
 |      (_Classes_)       |      (_Fréquences absolues_)     |         (_Fréquences relatives_)         | (_Fréquences relatives cumulées_) |
 |        **Total**       |                _n_               |                   100%                   |                                   |
 
-Pour être en mesure de briser une variable en classes, il faut utiliser la commande `cut`, comme nous l'avons vu à la sectiion \@ref(quantcont). Les options utilisées sont les suivantes:
+Pour être en mesure de briser une variable en classes, il faut utiliser la commande `cut`. Les options utilisées sont les suivantes:
+
+Pour ce faire, nous devons utiliser la commande `cut` qui permet d'indiquer les frontières de ces classes. Voici un exemple où nous créons des classes de largeur 25:
+
+```{r}
+temp_classes <- cut(weather$temp,
+                    breaks = c(0, 25, 50, 75, 100, 125),
+                    include.lowest = TRUE,
+                    right = FALSE)
+unique(temp_classes)
+```
+
+Nous nous retrouvons donc avec `r length(unique(temp_classes))` classes. Lorsque nous présenterons les variables sous forme de tableau, il nous sera utile d'utiliser la commande `cut`.
+
+L'option `include.lowest` indique que nous voulons conserver ...
+L'option `right = FALSE` indique que nous voulons des intervalles fermés à gauche et  ouverts à droite.
 
 - `include.lowest=TRUE`: permet d'inclure les valeurs extrèmes
 - `right=FALSE`: permet d'avoir des classes fermées à gauche et ouvertes à droite

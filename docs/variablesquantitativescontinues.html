@@ -133,7 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="part"><span><b>I Les outils</b></span></li>
-<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a></li>
+<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
+<li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
 <li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
 <li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>2.2</b> Installation</a></li>
@@ -166,9 +170,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.3" data-path="typesvariables.html"><a href="typesvariables.html#quantcont"><i class="fa fa-check"></i><b>5.3.3</b> Les variables quantitatives continues</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a></li>
+<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="questionnaire.html"><a href="questionnaire.html#criteres-a-respecter"><i class="fa fa-check"></i><b>6.1</b> Critères à respecter</a></li>
+<li class="chapter" data-level="6.2" data-path="questionnaire.html"><a href="questionnaire.html#types-de-questions"><i class="fa fa-check"></i><b>6.2</b> Types de questions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="questionnaire.html"><a href="questionnaire.html#question-ouverte"><i class="fa fa-check"></i><b>6.2.1</b> Question ouverte</a></li>
+<li class="chapter" data-level="6.2.2" data-path="questionnaire.html"><a href="questionnaire.html#questions-fermees"><i class="fa fa-check"></i><b>6.2.2</b> Questions fermées</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="echellesmesures.html"><a href="echellesmesures.html"><i class="fa fa-check"></i><b>7</b> Les échelles de mesure</a></li>
-<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a></li>
+<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a><ul>
+<li class="chapter" data-level="8.1" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-aleatoires"><i class="fa fa-check"></i><b>8.1</b> Techniques d’échantillonnage aléatoires</a></li>
+<li class="chapter" data-level="8.2" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-non-aleatoires"><i class="fa fa-check"></i><b>8.2</b> Techniques d’échantillonnage non-aléatoires</a></li>
+<li class="chapter" data-level="8.3" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#creation-dune-base-de-donnees-pour-les-mms"><i class="fa fa-check"></i><b>8.3</b> Création d’une base de données pour les <em>M&amp;M’s</em></a></li>
+</ul></li>
 <li class="part"><span><b>III Présentation des données</b></span></li>
 <li class="chapter" data-level="9" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>9</b> Les variables qualitatives</a><ul>
 <li class="chapter" data-level="9.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>9.1</b> Mise en place</a></li>
@@ -232,10 +246,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapitre 11</span> Les variables quantitatives continues</h1>
 <div id="mise-en-place-5" class="section level2">
 <h2><span class="header-section-number">11.1</span> Mise en place</h2>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
-<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="kw">library</span>(nycflights13)</a>
-<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="kw">library</span>(knitr)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="kw">library</span>(nycflights13)</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="kw">library</span>(knitr)</a></code></pre></div>
 </div>
 <div id="tableau-de-frequences-1" class="section level2">
 <h2><span class="header-section-number">11.2</span> Tableau de fréquences</h2>
@@ -277,7 +291,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>Pour être en mesure de briser une variable en classes, il faut utiliser la commande <code>cut</code>, comme nous l’avons vu à la sectiion <a href="typesvariables.html#quantcont">5.3.3</a>. Les options utilisées sont les suivantes:</p>
+<p>Pour être en mesure de briser une variable en classes, il faut utiliser la commande <code>cut</code>. Les options utilisées sont les suivantes:</p>
+<p>Pour ce faire, nous devons utiliser la commande <code>cut</code> qui permet d’indiquer les frontières de ces classes. Voici un exemple où nous créons des classes de largeur 25:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">temp_classes &lt;-<span class="st"> </span><span class="kw">cut</span>(weather<span class="op">$</span>temp,</a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">                    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>),</a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">                    <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">                    <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb56-5" data-line-number="5"><span class="kw">unique</span>(temp_classes)</a>
+<a class="sourceLine" id="cb56-6" data-line-number="6">## [1] [25,50)   [0,25)    [50,75)   [75,100)  [100,125] &lt;NA&gt;     </a>
+<a class="sourceLine" id="cb56-7" data-line-number="7">## Levels: [0,25) [25,50) [50,75) [75,100) [100,125]</a></code></pre></div>
+<p>Nous nous retrouvons donc avec 6 classes. Lorsque nous présenterons les variables sous forme de tableau, il nous sera utile d’utiliser la commande <code>cut</code>.</p>
+<p>L’option <code>include.lowest</code> indique que nous voulons conserver …
+L’option <code>right = FALSE</code> indique que nous voulons des intervalles fermés à gauche et ouverts à droite.</p>
 <ul>
 <li><code>include.lowest=TRUE</code>: permet d’inclure les valeurs extrèmes</li>
 <li><code>right=FALSE</code>: permet d’avoir des classes fermées à gauche et ouvertes à droite</li>
@@ -289,15 +314,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>val%cum</code>: le pourcentage cumulé en omettant les valeurs manquantes</li>
 </ul>
 <p>Nous obtenons donc:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">air_time_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(flights<span class="op">$</span>air_time, </a>
-<a class="sourceLine" id="cb55-2" data-line-number="2">                    <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb55-3" data-line-number="3">                    <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb55-4" data-line-number="4">                    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">600</span>, <span class="dv">700</span>))</a>
-<a class="sourceLine" id="cb55-5" data-line-number="5">tab_airtime &lt;-<span class="st"> </span><span class="kw">freq</span>(air_time_rec,</a>
-<a class="sourceLine" id="cb55-6" data-line-number="6">                    <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb55-7" data-line-number="7">                    <span class="dt">total =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb55-8" data-line-number="8">                    <span class="dt">valid =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb55-9" data-line-number="9"><span class="kw">kable</span>(tab_airtime)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">air_time_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(flights<span class="op">$</span>air_time, </a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">                    <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">                    <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">                    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">600</span>, <span class="dv">700</span>))</a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">tab_airtime &lt;-<span class="st"> </span><span class="kw">freq</span>(air_time_rec,</a>
+<a class="sourceLine" id="cb57-6" data-line-number="6">                    <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">                    <span class="dt">total =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb57-8" data-line-number="8">                    <span class="dt">valid =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb57-9" data-line-number="9"><span class="kw">kable</span>(tab_airtime)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -385,15 +410,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>À la section <a href="variablesquantitativesdiscretes.html#tabfreqquantdiscr">10.2</a>, nous avons vu que la variable <code>seats</code> de la base de données <code>planes</code> contenait 48 valeurs différentes. Nous allons donc créer le tableau de fréquences avec des classes.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">seats_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(planes<span class="op">$</span>seats, </a>
-<a class="sourceLine" id="cb56-2" data-line-number="2">                 <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,  </a>
-<a class="sourceLine" id="cb56-3" data-line-number="3">                 <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb56-4" data-line-number="4">                 <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>, <span class="dv">450</span>))</a>
-<a class="sourceLine" id="cb56-5" data-line-number="5">tab_seats &lt;-<span class="st"> </span><span class="kw">freq</span>(seats_rec,</a>
-<a class="sourceLine" id="cb56-6" data-line-number="6">                  <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb56-7" data-line-number="7">                  <span class="dt">total =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb56-8" data-line-number="8">                  <span class="dt">valid =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb56-9" data-line-number="9"><span class="kw">kable</span>(tab_seats)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">seats_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(planes<span class="op">$</span>seats, </a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">                 <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,  </a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">                 <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb58-4" data-line-number="4">                 <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>, <span class="dv">450</span>))</a>
+<a class="sourceLine" id="cb58-5" data-line-number="5">tab_seats &lt;-<span class="st"> </span><span class="kw">freq</span>(seats_rec,</a>
+<a class="sourceLine" id="cb58-6" data-line-number="6">                  <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb58-7" data-line-number="7">                  <span class="dt">total =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb58-8" data-line-number="8">                  <span class="dt">valid =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb58-9" data-line-number="9"><span class="kw">kable</span>(tab_seats)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -491,15 +516,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="representation-graphique---lhistogramme" class="section level2">
 <h2><span class="header-section-number">11.3</span> Représentation graphique - L’histogramme</h2>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">ggplot</span>(flights, <span class="kw">aes</span>(<span class="dt">x =</span> air_time))<span class="op">+</span></a>
-<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">center =</span> <span class="dv">25</span>, <span class="dt">color =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb57-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb57-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 327 346 vols selon le nombre de minutes de vol&quot;</span>,</a>
-<a class="sourceLine" id="cb57-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre de minutes de vol&quot;</span>,</a>
-<a class="sourceLine" id="cb57-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
-<a class="sourceLine" id="cb57-7" data-line-number="7">  )</a>
-<a class="sourceLine" id="cb57-8" data-line-number="8">## Warning: Removed 9430 rows containing non-finite values (stat_bin).</a></code></pre></div>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-68-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">ggplot</span>(flights, <span class="kw">aes</span>(<span class="dt">x =</span> air_time))<span class="op">+</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">center =</span> <span class="dv">25</span>, <span class="dt">color =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb59-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 327 346 vols selon le nombre de minutes de vol&quot;</span>,</a>
+<a class="sourceLine" id="cb59-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre de minutes de vol&quot;</span>,</a>
+<a class="sourceLine" id="cb59-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
+<a class="sourceLine" id="cb59-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb59-8" data-line-number="8">## Warning: Removed 9430 rows containing non-finite values (stat_bin).</a></code></pre></div>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-69-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

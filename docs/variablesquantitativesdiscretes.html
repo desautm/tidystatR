@@ -133,7 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="part"><span><b>I Les outils</b></span></li>
-<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a></li>
+<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
+<li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
 <li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
 <li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>2.2</b> Installation</a></li>
@@ -166,9 +170,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.3" data-path="typesvariables.html"><a href="typesvariables.html#quantcont"><i class="fa fa-check"></i><b>5.3.3</b> Les variables quantitatives continues</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a></li>
+<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="questionnaire.html"><a href="questionnaire.html#criteres-a-respecter"><i class="fa fa-check"></i><b>6.1</b> Critères à respecter</a></li>
+<li class="chapter" data-level="6.2" data-path="questionnaire.html"><a href="questionnaire.html#types-de-questions"><i class="fa fa-check"></i><b>6.2</b> Types de questions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="questionnaire.html"><a href="questionnaire.html#question-ouverte"><i class="fa fa-check"></i><b>6.2.1</b> Question ouverte</a></li>
+<li class="chapter" data-level="6.2.2" data-path="questionnaire.html"><a href="questionnaire.html#questions-fermees"><i class="fa fa-check"></i><b>6.2.2</b> Questions fermées</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="echellesmesures.html"><a href="echellesmesures.html"><i class="fa fa-check"></i><b>7</b> Les échelles de mesure</a></li>
-<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a></li>
+<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a><ul>
+<li class="chapter" data-level="8.1" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-aleatoires"><i class="fa fa-check"></i><b>8.1</b> Techniques d’échantillonnage aléatoires</a></li>
+<li class="chapter" data-level="8.2" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-non-aleatoires"><i class="fa fa-check"></i><b>8.2</b> Techniques d’échantillonnage non-aléatoires</a></li>
+<li class="chapter" data-level="8.3" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#creation-dune-base-de-donnees-pour-les-mms"><i class="fa fa-check"></i><b>8.3</b> Création d’une base de données pour les <em>M&amp;M’s</em></a></li>
+</ul></li>
 <li class="part"><span><b>III Présentation des données</b></span></li>
 <li class="chapter" data-level="9" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>9</b> Les variables qualitatives</a><ul>
 <li class="chapter" data-level="9.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>9.1</b> Mise en place</a></li>
@@ -232,10 +246,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapitre 10</span> Les variables quantitatives discrètes</h1>
 <div id="mise-en-place-4" class="section level2">
 <h2><span class="header-section-number">10.1</span> Mise en place</h2>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
-<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="kw">library</span>(nycflights13)</a>
-<a class="sourceLine" id="cb48-4" data-line-number="4"><span class="kw">library</span>(knitr)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
+<a class="sourceLine" id="cb49-3" data-line-number="3"><span class="kw">library</span>(nycflights13)</a>
+<a class="sourceLine" id="cb49-4" data-line-number="4"><span class="kw">library</span>(knitr)</a></code></pre></div>
 </div>
 <div id="tabfreqquantdiscr" class="section level2">
 <h2><span class="header-section-number">10.2</span> Tableau de fréquences</h2>
@@ -287,11 +301,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>total = TRUE</code>; permet d’afficher le total</li>
 </ul>
 <p>Dans la base de données <code>nycflights13::planes</code>, nous allons afficher la variable <code>engines</code>. Dans la commande ci-dessous, nous enregistrons le tableau de fréquences dans la variable <code>tab_engines</code>. Nous l’affichons ensuite à l’aide de la commande <code>kable</code>.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">tab_engines &lt;-<span class="st"> </span><span class="kw">freq</span>(planes<span class="op">$</span>engines,</a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">                <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">                <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb49-4" data-line-number="4">                <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="kw">kable</span>(tab_engines)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">tab_engines &lt;-<span class="st"> </span><span class="kw">freq</span>(planes<span class="op">$</span>engines,</a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">                <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">                <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">                <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="kw">kable</span>(tab_engines)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -336,11 +350,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Nous remarquons que le pourcentage cumulé pour les avions possédant 3 moteurs est 99.9%. Quelle est la signification de ce pourcentage? Ceci signifie que 99.9% des avions possèdent 3 moteurs ou moins.</p>
 <p>Nous allons maintenant produire le tableau de fréquences de la variable <code>tvhours</code> de la base de données <code>gss_cat</code>. Cette variable correspond au nombre d’heures de télévision écoutées par jour (pour avoir cette information, vous pouvez utiliser la commande <code>?forcats::gss_cat</code>). Nous avons:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">tab_tvhours &lt;-<span class="st"> </span><span class="kw">freq</span>(gss_cat<span class="op">$</span>tvhours,</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">                    <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb50-3" data-line-number="3">                    <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb50-4" data-line-number="4">                    <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="kw">kable</span>(tab_tvhours)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">tab_tvhours &lt;-<span class="st"> </span><span class="kw">freq</span>(gss_cat<span class="op">$</span>tvhours,</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">                    <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">                    <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb51-4" data-line-number="4">                    <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="kw">kable</span>(tab_tvhours)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -518,11 +532,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Quelle est la signification du pourcentage cumulé pour 7 heures? Nous avons que 49.9 % des répondants écoutent la télévision 7 heures ou moins par jour. C’est-à-dire qu’environ la moitié des gens écoutent la télévision 7 heures ou moins par jour.</li>
 </ol>
 <p>Nous pouvons produire le tableau de fréquences de la variable <code>seats</code> de la façon suivante:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">tab_seats &lt;-<span class="st"> </span><span class="kw">freq</span>(planes<span class="op">$</span>seats,</a>
-<a class="sourceLine" id="cb51-2" data-line-number="2">                <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb51-3" data-line-number="3">                <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb51-4" data-line-number="4">                <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="kw">kable</span>(tab_seats)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">tab_seats &lt;-<span class="st"> </span><span class="kw">freq</span>(planes<span class="op">$</span>seats,</a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">                <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">                <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4">                <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="kw">kable</span>(tab_seats)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -838,24 +852,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.3</span> Représentation graphique - Le diagramme à bandes</h2>
 <p>Le graphique utilisé pour représenter une variable quantitative discrète est le diagramme à bâtons.</p>
 <p>Ce graphique est construit comme le diagramme à bandes rectangulaires verticales, sauf que les rectangles sont remplacés par des bâtons très minces (généralement une simple ligne). Pour modifier la largeur de vos lignes, vous utilisez l’option <code>width</code> dans la commande <code>geom_bar()</code>.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> planes, <span class="kw">aes</span>(<span class="dt">x =</span> engines))<span class="op">+</span></a>
-<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="fl">0.1</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb52-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 3 322 avions selon le nombre de leurs moteurs&quot;</span>,</a>
-<a class="sourceLine" id="cb52-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre de moteurs&quot;</span>,</a>
-<a class="sourceLine" id="cb52-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
-<a class="sourceLine" id="cb52-7" data-line-number="7">  )</a></code></pre></div>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-62-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Vous pouvez produire un diagramme à bâtons horizontaux en utilisant la commande <code>coord_flip()</code>.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours))<span class="op">+</span></a>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> planes, <span class="kw">aes</span>(<span class="dt">x =</span> engines))<span class="op">+</span></a>
 <a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="fl">0.1</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb53-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 11 137 répondants selon le nombre d&#39;heures de télévision écoutées par jour&quot;</span>,</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre d&#39;heures de télévision&quot;</span>,</a>
+<a class="sourceLine" id="cb53-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 3 322 avions selon le nombre de leurs moteurs&quot;</span>,</a>
+<a class="sourceLine" id="cb53-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre de moteurs&quot;</span>,</a>
 <a class="sourceLine" id="cb53-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
-<a class="sourceLine" id="cb53-7" data-line-number="7">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb53-8" data-line-number="8"><span class="st">  </span><span class="kw">coord_flip</span>()</a>
-<a class="sourceLine" id="cb53-9" data-line-number="9">## Warning: Removed 10146 rows containing non-finite values (stat_count).</a></code></pre></div>
+<a class="sourceLine" id="cb53-7" data-line-number="7">  )</a></code></pre></div>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-62-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Vous pouvez produire un diagramme à bâtons horizontaux en utilisant la commande <code>coord_flip()</code>.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours))<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="fl">0.1</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb54-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 11 137 répondants selon le nombre d&#39;heures de télévision écoutées par jour&quot;</span>,</a>
+<a class="sourceLine" id="cb54-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre d&#39;heures de télévision&quot;</span>,</a>
+<a class="sourceLine" id="cb54-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-8" data-line-number="8"><span class="st">  </span><span class="kw">coord_flip</span>()</a>
+<a class="sourceLine" id="cb54-9" data-line-number="9">## Warning: Removed 10146 rows containing non-finite values (stat_count).</a></code></pre></div>
 <p><img src="tidystatR_files/figure-html/unnamed-chunk-63-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>

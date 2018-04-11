@@ -1,2 +1,39 @@
 # Construire un questionnaire {#questionnaire}
 
+La deuxième étape de la démarche scientifique est la récolte des données. La façon la plus simple de faire est sans nul doute l’utilisation du questionnaire. 
+
+Lors de la conception d’un questionnaire, il est important de choisir les questions de façon à obtenir l’information recherchée. 
+
+## Critères à respecter
+
+Pour construire un questionnaire qui est fiable, il existe des règles à suivre.
+
+Les questions doivent posséder les qualités ci-dessous : 
+
+1. Claire
+1. Complète 
+1. Neutre 
+1. Non-menaçante 
+1. Pertinente
+
+## Types de questions
+
+Deux questions portant sur un même sujet ne donnent pas nécessairement la même information. C’est pourquoi il est extrêmement important de bien choisir les questions lorsqu’un questionnaire est construit. 
+
+Pour plus d’information à ce sujet, consultez le chapitre \@ref(echellesmesures) portant sur les échelles de mesure. 
+
+
+### Question ouverte
+
+Ce type de question ne limite pas les réponses. On l’utilise principalement pour récolter l’opinion des gens.
+
+### Questions fermées
+
+Ces questions restreignent les choix des répondants. 
+
+- Réponse brève : la réponse est une lettre, un chiffre ou un mot
+- Dichotomique : il n’y a que deux choix de réponses 
+- Choix multiples : le répondant doit sélectionner une réponse parmi celles proposées
+- Cafétéria : plusieurs réponses parmi celles proposées peuvent être choisies 
+- Nature hiérarchique : des éléments doivent être placés en ordre d’importance 
+
