@@ -27,8 +27,14 @@ rmd_files: [
   
   "chapitres/rrstudio.Rmd",
   "chapitres/tidyverse.Rmd",
+  "chapitres/questionr.Rmd",
   
+  "chapitres/demarche-scientifique.Rmd",
   "chapitres/variables.Rmd",
+  "chapitres/questionnaire.Rmd",
+  "chapitres/echelles-mesures.Rmd",
+  "chapitres/techniques-echantillonnage.Rmd",
+  
   "chapitres/variables-qualitatives.Rmd",
   "chapitres/variables-quantitatives-discretes.Rmd",
   "chapitres/variables-quantitatives-continues.Rmd",

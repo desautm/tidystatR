@@ -1,5 +1,5 @@
 ---
-title: "Statistiques et Probabilités avec R et le Tidyverse"
+title: "Statistiques et Probabilités avec R, RStudio et le Tidyverse"
 author: "Marc-André Désautels"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

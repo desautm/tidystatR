@@ -2,4 +2,3 @@
 
 # Les logiciels R et RStudio {#rrstudio}
 
-Test
