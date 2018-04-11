@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="typesvariables.html">
-<link rel="next" href="variablesquantitativesdiscretes.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="tidyverse.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -223,231 +223,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="variablesqualitatives" class="section level1">
-<h1><span class="header-section-number">Chapitre 4</span> Les variables qualitatives</h1>
-<div id="mise-en-place-3" class="section level2">
-<h2><span class="header-section-number">4.1</span> Mise en place</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
-<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="kw">library</span>(knitr)</a></code></pre></div>
-</div>
-<div id="tableau-de-frequences" class="section level2">
-<h2><span class="header-section-number">4.2</span> Tableau de fréquences</h2>
-<p>Une fois les données d’un sondage recueillies, il est plus aisé d’analyser ces données si elles sont classées dans un tableau.</p>
-<p>Le tableau de fréquences que nous utiliserons est le suivant:</p>
-<table>
-<colgroup>
-<col width="24%" />
-<col width="34%" />
-<col width="42%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Titre</th>
-<th align="center"></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>Nom de la variable</strong></td>
-<td align="center"><strong>Nombre d’unités statistiques</strong></td>
-<td align="center"><strong>Pourcentage d’unités statistiques</strong> (%)</td>
-</tr>
-<tr class="even">
-<td align="center">(<em>Modalités</em>)</td>
-<td align="center">(<em>Fréquences absolues</em>)</td>
-<td align="center">(<em>Fréquences relatives</em>)</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>Total</strong></td>
-<td align="center"><em>n</em></td>
-<td align="center">100%</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Important : Le titre doit toujours être indiqué lors de la construction d’un tableau de fréquence.</p>
-</blockquote>
-<p>Lorsque les données se trouvent dans une <code>tibble</code> dans <code>R</code>, il est possible d’utiliser la commande <code>freq</code> de la librairie <code>questionr</code> pour afficher le tableau de fréquences. La commande <code>freq</code> prend comme argument la variable dont vous voulez produire le tableau de fréquences. Pour obtenir une sortie adéquate, il faut ajouter trois options à la commande:</p>
-<ul>
-<li><code>cum = FALSE</code>; permet de ne pas afficher les pourcentages cumulés</li>
-<li><code>valid = FALSE</code>; permet de ne pas afficher les données manquantes</li>
-<li><code>total = TRUE</code>; permet d’afficher le total</li>
-</ul>
-<p>Dans la base de données <code>forcats::gss_cat</code>, nous allons afficher la variable <code>marital</code>. Dans la commande ci-dessous, nous enregistrons le tableau de fréquences dans la variable <code>tab_marital</code>. Nous l’affichons ensuite à l’aide de la commande <code>kable</code>.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">tab_marital &lt;-<span class="st"> </span><span class="kw">freq</span>(gss_cat<span class="op">$</span>marital,</a>
-<a class="sourceLine" id="cb43-2" data-line-number="2">                <span class="dt">cum =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb43-3" data-line-number="3">                <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb43-4" data-line-number="4">                <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb43-5" data-line-number="5"><span class="kw">kable</span>(tab_marital)</a></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">n</th>
-<th align="right">%</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>No answer</td>
-<td align="right">17</td>
-<td align="right">0.1</td>
-</tr>
-<tr class="even">
-<td>Never married</td>
-<td align="right">5416</td>
-<td align="right">25.2</td>
-</tr>
-<tr class="odd">
-<td>Separated</td>
-<td align="right">743</td>
-<td align="right">3.5</td>
-</tr>
-<tr class="even">
-<td>Divorced</td>
-<td align="right">3383</td>
-<td align="right">15.7</td>
-</tr>
-<tr class="odd">
-<td>Widowed</td>
-<td align="right">1807</td>
-<td align="right">8.4</td>
-</tr>
-<tr class="even">
-<td>Married</td>
-<td align="right">10117</td>
-<td align="right">47.1</td>
-</tr>
-<tr class="odd">
-<td>Total</td>
-<td align="right">21483</td>
-<td align="right">100.0</td>
-</tr>
-</tbody>
-</table>
-<p>À l’aide du tableau précédent, répondez aux questions suivantes:</p>
-<ol style="list-style-type: decimal">
-<li>Combien de personnes ne se sont jamais mariées dans l’échantillon? 5416</li>
-<li>Quel est le pourcentage de personnes divorcées dans l’échantillon? 15.7 %</li>
-<li>Quel est le nombre total d’unités statistiques? 21483</li>
-</ol>
-<p>Nous pouvons produire le tableau de fréquences de la variable <code>race</code> de la façon suivante:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">tab_race &lt;-<span class="st"> </span><span class="kw">freq</span>(gss_cat<span class="op">$</span>race,</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2">                <span class="dt">cum =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb44-3" data-line-number="3">                <span class="dt">valid =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb44-4" data-line-number="4">                <span class="dt">total =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="kw">kable</span>(tab_race)</a></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">n</th>
-<th align="right">%</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Other</td>
-<td align="right">1959</td>
-<td align="right">9.1</td>
-</tr>
-<tr class="even">
-<td>Black</td>
-<td align="right">3129</td>
-<td align="right">14.6</td>
-</tr>
-<tr class="odd">
-<td>White</td>
-<td align="right">16395</td>
-<td align="right">76.3</td>
-</tr>
-<tr class="even">
-<td>Not applicable</td>
-<td align="right">0</td>
-<td align="right">0.0</td>
-</tr>
-<tr class="odd">
-<td>Total</td>
-<td align="right">21483</td>
-<td align="right">100.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="representation-graphique---le-diagramme-a-bandes" class="section level2">
-<h2><span class="header-section-number">4.3</span> Représentation graphique - Le diagramme à bandes</h2>
-<p>Pour représenter graphiquement les variables qualitatives, nous allons utiliser les diagrammes à bandes.</p>
-<p>Pour construire ce graphique:</p>
-<ul>
-<li>Chaque modalité est représentée par un rectangle.</li>
-<li>La hauteur de chaque rectangle doit être proportionnelle
-<ul>
-<li>au nombre d’unités statistiques (la fréquence absolue) OU</li>
-<li>au pourcentage d’unités statistiques (la fréquence relative).</li>
-</ul></li>
-<li>Le titre et les fréquences (absolues ou relatives) doivent être indiqués.</li>
-<li>L’axe des x doit posséder un titre : le nom de la variable étudiée.</li>
-<li>L’axe des y doit posséder un titre : “Nombre d’unités statistiques” ou “Pourcentage d’unités statistiques”.</li>
-<li>La graduation de l’axe des y doit commencer à zéro (l’axe ne doit pas être coupé).</li>
-<li>Les rectangles doivent être équidistants et de largeur égale. De plus, ils ne doivent pas être collés.</li>
-</ul>
-<p>Pour produire le diagramme à bandes, nous utiliserons l’extension <code>ggplot2</code> qui est chargée avec le coeur de la librairie <code>tidyverse</code>. La grammaire graphique de <code>ggplot2</code> peut être décrite de la façon suivante:</p>
-<blockquote>
-<p><strong>A statistical graphic is a <code>mapping</code> of <code>data</code> variables to <code>aes</code>thetic attributes of <code>geom</code>etric objects.</strong></p>
-</blockquote>
-<p>Plus spécifiquement, nous pouvons briser un graphique en trois composantes essentielles:</p>
-<ol style="list-style-type: decimal">
-<li><code>data</code>: la base de données contenant les variables que nous désirons visualiser.</li>
-<li><code>geom</code>: l’objet géométrique en question. Ceci réfère au type d’objet que nous pouvons observer dans notre graphique. Par exemple, des points, des lignes, des barres, etc.</li>
-<li><code>aes</code>: les attributs esthétiques (aesthetics) de l’objet géométrique que nous affichons dans notre graphique. Par exemple, la position x/y, la couleur, la forme, la taille. Chaque attribut peut être associé à une variable dans notre base de données.</li>
-</ol>
-<div id="la-variable-marital" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> La variable <code>marital</code></h3>
-<p>Nous allons visualiser le diagramme à bandes de la variable <code>marital</code> provenant de la base de données <code>forcats::gss_cat</code>. Nous devons spécifier:</p>
-<ul>
-<li><code>data = gss_cat</code>: la base de données.</li>
-<li><code>aes(x = marital)</code>: la variable étudiée.</li>
-<li><code>geom_bar()</code>: nous voulons un diagramme à bandes</li>
-</ul>
-<p>La commande est donc:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital))<span class="op">+</span></a>
-<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Pour ajouter un titre et indiquer les titres des axes x et y, nous utilisons la commande <code>labs</code> (pour <em>labels</em>).</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital))<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb46-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 21 483 personnes selon leur statut matrimonial&quot;</span>,</a>
-<a class="sourceLine" id="cb46-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Statut matrimonial&quot;</span>,</a>
-<a class="sourceLine" id="cb46-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
-<a class="sourceLine" id="cb46-7" data-line-number="7">  )</a></code></pre></div>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="la-variable-relig" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> La variable <code>relig</code></h3>
-<p>Nous pouvons afficher le diagramme à bandes horizontales de la variable <code>relig</code> en ajoutant la commande <code>coord_flip()</code>. Nous avons donc:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> relig))<span class="op">+</span></a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb47-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 21 483 personnes selon leur religion&quot;</span>,</a>
-<a class="sourceLine" id="cb47-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Religion&quot;</span>,</a>
-<a class="sourceLine" id="cb47-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
-<a class="sourceLine" id="cb47-7" data-line-number="7">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb47-8" data-line-number="8"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="rrstudio" class="section level1">
+<h1><span class="header-section-number">Chapitre 1</span> Les logiciels R et RStudio</h1>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="typesvariables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variablesquantitativesdiscretes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -477,7 +263,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/desautm/tidystatR/edit/master/chapitres/variables-qualitatives.Rmd",
+"link": "https://github.com/desautm/tidystatR/edit/master/chapitres/rrstudio.Rmd",
 "text": "Modifier"
 },
 "download": ["tidystatR.pdf", "tidystatR.epub"],

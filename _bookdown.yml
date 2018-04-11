@@ -25,6 +25,7 @@ language:
 rmd_files: [
   "index.Rmd",
   
+  "chapitres/rrstudio.Rmd",
   "chapitres/tidyverse.Rmd",
   
   "chapitres/variables.Rmd",

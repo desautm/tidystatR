@@ -1,5 +1,3 @@
-# (PART) Pourquoi le tidyverse {-}
-
 # Le tidyverse {#tidyverse}
 
 Dans ce document, nous utiliserons l'extension  `tidyverse` par [@R-tidyverse]. Ce chapitre permettra d'introduire l'extension `tidyverse` mais surtout les principes qui la sous-tendent. Ce chapitre est inspiré de [@juba2018] et [@wickham2017].
