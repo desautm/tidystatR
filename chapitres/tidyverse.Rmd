@@ -9,7 +9,7 @@ library(questionr)
 
 ## Extensions
 
-Le terme *tidyverse* est une contraction de *tidy* (qu'on pourrait traduire par "bien rangé") et de *universe*. En allant visiter le site internet de ces extensions [https://www.tidyverse.org/](https://www.tidyverse.org/), voici ce que nous pouvons trouver sur la première page du site:
+Le terme *tidyverse* est une contraction de *tidy* (qu'on pourrait traduire par *bien rangé*) et de *universe*. En allant visiter le site internet de ces extensions [https://www.tidyverse.org/](https://www.tidyverse.org/), voici ce que nous pouvons trouver sur la première page du site:
 
 > The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. 
 
@@ -102,79 +102,30 @@ Voici un exemple de données *tidy* qui sont accessibles en `R` de base.
 as_tibble(rownames_to_column(mtcars))
 ```
 
-
 ## Les tibbles {#tibbles}
 
 Une autre particularité du *tidyverse* est que ces extensions travaillent avec des tableaux de données au format *tibble*, qui est une évolution plus moderne du classique *data frame* du R de base. Ce format est fourni est géré par l'extension du même nom (`tibble`), qui fait partie du coeur du *tidyverse*. La plupart des fonctions des extensions du *tidyverse* acceptent des *data frames* en entrée, mais retournent un objet de classe `tibble`.
-
-Contrairement aux *data frames*, les *tibbles* :
-
-- n'ont pas de noms de lignes (*rownames*)
-- autorisent des noms de colonnes invalides pour les *data frames* (espaces, caractères spéciaux, nombres...) ^[Quand on veut utiliser des noms de ce type, on doit les entourer avec des *backticks* (`)]
-- s'affichent plus intelligemment que les *data frames* : seules les premières lignes sont affichées, ainsi que quelques informations supplémentaires utiles (dimensions, types des colonnes...)
-- ne font pas de *partial matching* sur les noms de colonnes ^[Dans R de base, si une table `d` contient une colonne `qualif`, `d$qual` retournera cette colonne.]
-- affichent un avertissement si on essaie d'accéder à une colonne qui n'existe pas
-
-Pour autant, les tibbles restent compatibles avec les *data frames*. On peut ainsi facilement convertir un *data frame* en tibble avec `as_tibble` :
-
-```{r paged.print=FALSE, warning=FALSE}
-as_tibble(mtcars)
-```
-
-Si le *data frame* d'origine a des *rownames*, on peut d'abord les convertir en colonnes avec `rownames_to_columns` :
-
-```{r warning=FALSE, paged.print=FALSE}
-d <- as_tibble(rownames_to_column(mtcars))
-d
-```
-
-À l'inverse, on peut à tout moment convertir un tibble en *data frame* avec `as.data.frame` :
-
-```{r paged.print=FALSE}
-as.data.frame(d)
-```
-
-Là encore, on peut convertir la colonne `rowname` en "vrais" *rownames* avec `column_to_rownames` :
-
-```{r warning=FALSE, paged.print=FALSE}
-column_to_rownames(as.data.frame(d))
-```
-
-Les deux fonctions `column_to_rownames` et `rownames_to_column` acceptent un argument supplémentaire `var` qui permet d'indiquer un nom de colonne autre que le nom `rowname` utilisé par défaut pour créer ou identifier la colonne contenant les noms de lignes.
-
 
 Pour être en mesure d'effectuer des  calculs statistiques, il nous faut une structure qui soit en mesure de garder en mémoire une base de données. Ces structures se nomment des "tibbles" dans R.
 
 ### Prérequis
 
-Pour être en mesure d'utiliser le paquetage **tibble**, nous devons charger le paquetage **tibble** et le paquetage **knitr**. Pour ce faire, il suffit d'utiliser la commande suivante:
+Pour être en mesure d'utiliser le paquetage **tibble**, nous devons charger l'extension **tibble**. Pour ce faire, il suffit d'utiliser la commande suivante:
 
 ```{r}
 library(tibble)
-library(knitr)
 ```
 
-Si vous exécutez ce code et vous recevez le message d'erreur suivant "there is no package called 'tibble'", vous allez devoir installer le paquetage et ensuite charger la librairie.
+### Un exemple de **tibble**
 
-```
-install.packages("tibble")
-library(tibble)
-```
-
-Vous faites la même chose pour le paquetage **knitr**.
-
-Vous devez installer le paquetage une seule fois, mais vous devez le charger à chaque fois que vous démarrez une session en R.
-
-### Un exemple de "tibble"
-
-Pour comprendre ce qu'est un "tibble", nous allons utiliser deux paquetages: "nycflights13" et "diamonds". Si ce n'est pas déjà fait, vous devez les installer et ensuite les charger.
+Pour comprendre ce qu'est un **tibble**, nous allons utiliser deux librairies: `nycflights13` et `diamonds`. Si ce n'est pas déjà fait, vous devez les installer et ensuite les charger.
 
 ```{r}
 library(nycflights13)
 library(ggplot2)
 ```
 
-Nous allons étudier le paquetage "nycflights13" qui contient 5 bases de données contenant des informations concernant les vols intérieurs en partance de New York en 2013, à partir des aéroports de Newark Liberty International (EWR), John F. Kennedy International (JFK) ou LaGuardia (LGA). Les 5 bases de données sont les suivantes:
+Nous allons étudier le paquetage `nycflights13`qui contient 5 bases de données contenant des informations concernant les vols intérieurs en partance de New York en 2013, à partir des aéroports de Newark Liberty International (EWR), John F. Kennedy International (JFK) ou LaGuardia (LGA). Les 5 bases de données sont les suivantes:
 
 - flights: information sur les 336,776 vols
 - airlines: lien entre les codes IATA de deux lettres et les noms de compagnies d'aviation (16 au total)
@@ -184,7 +135,7 @@ Nous allons étudier le paquetage "nycflights13" qui contient 5 bases de donnée
 
 ### La base de données flights
 
-Pour visualiser facilement une base de données sous forme "tibble", il suffit de taper son nom dans la console. Nous allons utiliser la base de données flights. Par exemple:
+Pour visualiser facilement une base de données sous forme **tibble**, il suffit de taper son nom dans la console. Nous allons utiliser la base de données flights. Par exemple:
 
 ```{r}
 flights
@@ -192,18 +143,18 @@ flights
 
 Nous allons décortiquer la sortie console:
 
-- `A tibble: 336,776 x 19`: un "tibble" est une façon de représenter une base de données en R. Cette base de données possède:
+- `A tibble: 336,776 x 19`: un **tibble** est une façon de représenter une base de données en R. Cette base de données possède:
     * `336 776` lignes
     * `19` colonnes correspondant aux 19 variables décrivant chacune des observations
 - `year month` `day` `dep_time` `sched_dep_time` `dep_delay` `arr_time` sont différentes colonnes, en d'autres mots des variables, de cette base de données.
 - Nous avons ensuite 10 lignes d'obervations correspondant à 10 vols
 - `... with 336,766 more rows, and 12 more variables:` nous indique que 336 766 lignes et 12 autres variables ne pouvaient pas être affichées à l'écran.
 
-Malheureusement cette sortie écran ne nous permet pas d'explorer les données correctement. Nous verrons à la section \@ref(explorertibbles) comment explorer des `tibbles`.
+Malheureusement cette sortie écran ne nous permet pas d'explorer les données correctement. Nous verrons à la section \@ref(explorertibbles) comment explorer des **tibbles**.
 
-### La base de données `diamonds` {#donneesdiamonds}
+### La base de données **diamonds** {#donneesdiamonds}
 
-La base de données `diamonds` est composée des variables suivantes:
+La base de données **diamonds** est composée des variables suivantes:
 
 - `price` : prix en dollars US
 - `carat` : poids du diamant en grammes
@@ -247,9 +198,10 @@ glimpse(flights)
 
 3. `kable()`:
 
-La dernière façon d'étudier l'entièreté de la base de données est d'utiliser la fonction `kable()`. Nous allons explorer les codes des différentes compagnies d'aviation de deux façons.
+La dernière façon d'étudier l'entièreté de la base de données est d'utiliser la fonction `kable()` de la librairie `knitr`. Nous allons explorer les codes des différentes compagnies d'aviation de deux façons.
 
 ```{r}
+library(knitr)
 airlines
 kable(airlines)
 ```

@@ -23,16 +23,16 @@ Une fois le sujet de recherche choisi, il faut décider comment la recherche ser
 
 Il existe des avantages et des inconvénients à faire un recensement.
 
-|:---------------|:--------------------------------------------------------------------------------------------------------------------------|
-| Avantages     | Les résultats obtenus correspondent exactement à la réalité. Il est aisé d’analyser des sous-ensembles de la population. |
-| Inconvénients | Les coûts sont élevés.Les résultats sont longs à obtenir.                                                                |
+|:--------------|:------------------------------------------------------------------------------------------------------------------------|
+| Avantages     | Les résultats obtenus correspondent exactement à la réalité. Il est aisé d’analyser des sous-ensembles de la population.|
+| Inconvénients | Les coûts sont élevés.Les résultats sont longs à obtenir.|
 
 Puisqu’il est généralement souhaitable que la récolte d’information soit faite à coûts moindres et le plus rapidement possible, le sondage est souvent utilisé. Ensuite, le chercheur doit définir les éléments suivants : 
 
 |:--------------|:------------------------------------------------------------------------------------------|
-| La population |	Ensemble des personnes, faits ou objets sur lesquels porte l’étude.Sa taille est notée $N$. |
-| L’unité statistique |	Une personne, fait ou objet de la population. |
-| L’échantillon	|	Sous-ensemble de la population utilisé lors d’un sondage. Sa taille est notée $n$. |
+| La population |	Ensemble des personnes, faits ou objets sur lesquels porte l’étude.Sa taille est notée $N$|
+| L’unité statistique |	Une personne, fait ou objet de la population.|
+| L’échantillon	|	Sous-ensemble de la population utilisé lors d’un sondage. Sa taille est notée $n$.|
 
 
 Dans le choix de la méthodologie, il est aussi important de déterminer les variables étudiées, le type des variables, les échelles de mesure, les types de questions et les techniques d’échantillonnage. Ceux-ci seront étudiés dans les chapitres suivants.
