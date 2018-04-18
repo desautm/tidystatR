@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="questionnaire.html">
-<link rel="next" href="techniquesechantillonnage.html">
+<link rel="prev" href="variablesquantitativescontinues.html">
+<link rel="next" href="mesures.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -246,17 +246,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="echellesmesures" class="section level1">
-<h1><span class="header-section-number">Chapitre 7</span> Les échelles de mesure</h1>
+<div id="deuxvariables" class="section level1">
+<h1><span class="header-section-number">Chapitre 12</span> Deux variables</h1>
+<div id="mise-en-place-6" class="section level2">
+<h2><span class="header-section-number">12.1</span> Mise en place</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
+<a class="sourceLine" id="cb53-3" data-line-number="3"><span class="kw">library</span>(knitr)</a></code></pre></div>
+</div>
+<div id="tableaux-a-double-entree" class="section level2">
+<h2><span class="header-section-number">12.2</span> Tableaux à double entrée</h2>
+<p>Lorsque deux variables (peu importe leur type) sont étudiées simultanément, on construit un tableau à double entrée.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Nom de la variable 2</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Nom de la variable 1</td>
+<td align="center">(Modalités de la variable 2)</td>
+<td align="center">Total</td>
+</tr>
+<tr class="even">
+<td align="center">(Modalités de la variable 1)</td>
+<td align="center">(Fréquences)</td>
+<td align="center">(Sous-totaux)</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">(Sous-totaux)</td>
+<td align="center">(Total)</td>
+</tr>
+</tbody>
+</table>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="questionnaire.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="techniquesechantillonnage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="variablesquantitativescontinues.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mesures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -286,7 +322,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/desautm/tidystatR/edit/master/chapitres/echelles-mesures.Rmd",
+"link": "https://github.com/desautm/tidystatR/edit/master/chapitres/deux-variables.Rmd",
 "text": "Modifier"
 },
 "download": ["tidystatR.pdf", "tidystatR.epub"],

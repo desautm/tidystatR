@@ -38,6 +38,7 @@ rmd_files: [
   "chapitres/variables-qualitatives.Rmd",
   "chapitres/variables-quantitatives-discretes.Rmd",
   "chapitres/variables-quantitatives-continues.Rmd",
+  "chapitres/deux-variables.Rmd",
   
   "chapitres/mesures.Rmd",
   

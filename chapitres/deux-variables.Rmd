@@ -1,0 +1,94 @@
+# Deux variables {#deuxvariables}
+
+## Mise en place
+
+```{r message=FALSE}
+library(tidyverse)
+library(questionr)
+library(knitr)
+```
+
+## Croisement de deux variables qualitatives
+
+Quand on veut croiser deux variables qualitatives, on fait un tableau croisé. 
+
+### Tableaux à double entrée
+
+Lorsque deux variables (peu importe leur type) sont étudiées simultanément, on construit un tableau à double entrée.
+
+|                              |   **Nom de la variable 2**   |               |
+|:----------------------------:|:----------------------------:|:-------------:|
+|   **Nom de la variable 1**   | (Modalités de la variable 2) |   **Total**   |
+| (Modalités de la variable 1) |         (Fréquences)         | (Sous-totaux) |
+|           **Total**          |         (Sous-totaux)        |    (Total)    |
+
+
+
+Nous utilisons la commande `table` à laquelle on passe cette fois deux variables en argument. Par exemple, en utilisant la base de données `gss_cat`, nous pouvons croiser les variables `marital` et `race`.
+
+```{r}
+table(gss_cat$marital,gss_cat$race)
+```
+
+Nous pouvons exclure certaines modalités en utilisant l'option `exclude`. Par exemple, on peut exclure les modalités _Not applicable_ de la façon suivante:
+
+```{r}
+table(gss_cat$marital,gss_cat$race, exclude = c("Not applicable"))
+```
+
+Nous pouvons également obtenir les totaux des lignes et des colonnes en utilisant la commande `addmargins`:
+
+```{r}
+addmargins(table(gss_cat$marital,gss_cat$race))
+```
+
+Pour pouvoir interpréter ce tableau on doit passer du tableau en effectifs au tableau en pourcentages ligne ou colonne. Pour cela, on peut utiliser les fonctions `lprop` et `cprop` de l’extension `questionr`, qu’on applique au tableau croisé précédent.
+
+Pour calculer des pourcentages lignes.
+
+```{r}
+lprop(table(gss_cat$marital,gss_cat$race))
+```
+
+Pour calculer des pourcentages colonnes.
+
+```{r}
+cprop(table(gss_cat$marital,gss_cat$race))
+```
+
+Comme vous pouvez le constater, les commandes `lprop` et `cprop` enlève les lignes ou colonnes dont la somme des effectifs est zéro. Pour empêcher ce comportement, vous devez utilisez l'option `drop = FALSE`. Par exemple:
+
+```{r}
+lprop(table(gss_cat$marital,gss_cat$race), drop = FALSE)
+```
+
+Pour connaître toutes les options de ces deux commandes, vous pouvez taper `?lprop` ou `?cprop` dans la console.
+
+## Croisement d'une variable qualitative et d'une variable quantitative
+
+### Représentation graphique - boîte à moustaches
+
+Croiser une variable quantitative et une variable qualitative, c’est essayer de voir si les valeurs de la variable quantitative se répartissent différemment selon la catégorie d’appartenance de la variable qualitative.
+
+Pour cela, l’idéal est de commencer par une représentation graphique de type "boîte à moustache".
+
+> L’interprétation d’une boîte à moustaches est la suivante : Les bords inférieurs et supérieurs du carré central représentent le premier et le troisième quartile de la variable représentée sur l’axe vertical. On a donc 50% de nos observations dans cet intervalle. Le trait horizontal dans le carré représente la médiane. Enfin, des “moustaches” s’étendent de chaque côté du carré, jusqu’aux valeurs minimales et maximales, avec une exception : si des valeurs sont éloignées du carré de plus de 1,5 fois l’écart interquartile (la hauteur du carré), alors on les représente sous forme de points (symbolisant des valeurs considérées comme “extrêmes”).
+
+Nous discuterons plus en détail des toutes ces mesures au chapitre \@ref(mesures).
+
+Voici le graphique boîte à moustaches représentant les variables `marital` et `age`.
+
+```{r}
+ggplot(data = gss_cat, aes(x = marital, y = age))+
+  geom_boxplot()
+```
+
+### Représentation graphique - violon plot
+
+```{r}
+ggplot(data = gss_cat, aes(x = marital, y = age))+
+  geom_violin()
+```
+
+
+## Croisement de deux variables quantitatives
