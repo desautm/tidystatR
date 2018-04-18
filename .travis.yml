@@ -13,4 +13,4 @@ addons:
       - libxml2-dev
 
 script:
-  - Rscript -e 'bookdown::render_book("index.rmd")'
+  - Rscript -e "rmarkdown::render_site(encoding = 'UTF-8')"

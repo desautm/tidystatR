@@ -31,7 +31,7 @@ ggplot(data = canada, aes(x = year, y = lifeExp))+
   geom_point()
 ```
 
-
+Le génocide Rwandais...
 
 ```{r}
 gapminder %>% 
