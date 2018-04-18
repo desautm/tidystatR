@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistiques et Probabilités avec R, RStudio et le Tidyverse</title>
+  <meta name="description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistiques et Probabilités avec R, RStudio et le Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse." />
+  <meta name="github-repo" content="desautm/tidystatR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistiques et Probabilités avec R, RStudio et le Tidyverse" />
+  
+  <meta name="twitter:description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse." />
+  
+
+<meta name="author" content="Marc-André Désautels">
+
+
+<meta name="date" content="2018-04-18">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="tidyverse.html">
+<link rel="next" href="demarchescientifique.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistiques et Probabilités avec R et le Tidyverse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="part"><span><b>I Les outils</b></span></li>
+<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
+<li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
+<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
+<li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>2.2</b> Installation</a></li>
+<li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#tidydata"><i class="fa fa-check"></i><b>2.3</b> Les tidy data</a></li>
+<li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>2.4</b> Les tibbles</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#prerequis"><i class="fa fa-check"></i><b>2.4.1</b> Prérequis</a></li>
+<li class="chapter" data-level="2.4.2" data-path="tidyverse.html"><a href="tidyverse.html#un-exemple-de-tibble"><i class="fa fa-check"></i><b>2.4.2</b> Un exemple de <strong>tibble</strong></a></li>
+<li class="chapter" data-level="2.4.3" data-path="tidyverse.html"><a href="tidyverse.html#la-base-de-donnees-flights"><i class="fa fa-check"></i><b>2.4.3</b> La base de données flights</a></li>
+<li class="chapter" data-level="2.4.4" data-path="tidyverse.html"><a href="tidyverse.html#donneesdiamonds"><i class="fa fa-check"></i><b>2.4.4</b> La base de données <strong>diamonds</strong></a></li>
+<li class="chapter" data-level="2.4.5" data-path="tidyverse.html"><a href="tidyverse.html#explorertibbles"><i class="fa fa-check"></i><b>2.4.5</b> Comment explorer des “tibbles”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lextension-questionr.html"><a href="lextension-questionr.html"><i class="fa fa-check"></i><b>3</b> L’extension <code>questionr</code></a><ul>
+<li class="chapter" data-level="3.1" data-path="lextension-questionr.html"><a href="lextension-questionr.html#mise-en-place"><i class="fa fa-check"></i><b>3.1</b> Mise en place</a></li>
+<li class="chapter" data-level="3.2" data-path="lextension-questionr.html"><a href="lextension-questionr.html#linterface-graphique"><i class="fa fa-check"></i><b>3.2</b> L’interface graphique</a></li>
+</ul></li>
+<li class="part"><span><b>II Introduction</b></span></li>
+<li class="chapter" data-level="4" data-path="demarchescientifique.html"><a href="demarchescientifique.html"><i class="fa fa-check"></i><b>4</b> La démarche scientifique</a></li>
+<li class="chapter" data-level="5" data-path="typesvariables.html"><a href="typesvariables.html"><i class="fa fa-check"></i><b>5</b> Les différents types de variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="typesvariables.html"><a href="typesvariables.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="typesvariables.html"><a href="typesvariables.html#mise-en-place-1"><i class="fa fa-check"></i><b>5.1.1</b> Mise en place</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="typesvariables.html"><a href="typesvariables.html#varqual"><i class="fa fa-check"></i><b>5.2</b> Les variables qualitatives</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="typesvariables.html"><a href="typesvariables.html#qualinominale"><i class="fa fa-check"></i><b>5.2.1</b> Les variables qualitatives à échelle nominale</a></li>
+<li class="chapter" data-level="5.2.2" data-path="typesvariables.html"><a href="typesvariables.html#qualord"><i class="fa fa-check"></i><b>5.2.2</b> Les variables qualitatives à échelle ordinale</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="typesvariables.html"><a href="typesvariables.html#quant"><i class="fa fa-check"></i><b>5.3</b> Les variables quantitatives</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="typesvariables.html"><a href="typesvariables.html#mise-en-place-2"><i class="fa fa-check"></i><b>5.3.1</b> Mise en place</a></li>
+<li class="chapter" data-level="5.3.2" data-path="typesvariables.html"><a href="typesvariables.html#les-variables-quantitatives-discretes"><i class="fa fa-check"></i><b>5.3.2</b> Les variables quantitatives discrètes</a></li>
+<li class="chapter" data-level="5.3.3" data-path="typesvariables.html"><a href="typesvariables.html#quantcont"><i class="fa fa-check"></i><b>5.3.3</b> Les variables quantitatives continues</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a><ul>
+<li class="chapter" data-level="6.1" data-path="questionnaire.html"><a href="questionnaire.html#criteres-a-respecter"><i class="fa fa-check"></i><b>6.1</b> Critères à respecter</a></li>
+<li class="chapter" data-level="6.2" data-path="questionnaire.html"><a href="questionnaire.html#types-de-questions"><i class="fa fa-check"></i><b>6.2</b> Types de questions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="questionnaire.html"><a href="questionnaire.html#question-ouverte"><i class="fa fa-check"></i><b>6.2.1</b> Question ouverte</a></li>
+<li class="chapter" data-level="6.2.2" data-path="questionnaire.html"><a href="questionnaire.html#questions-fermees"><i class="fa fa-check"></i><b>6.2.2</b> Questions fermées</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="echellesmesures.html"><a href="echellesmesures.html"><i class="fa fa-check"></i><b>7</b> Les échelles de mesure</a></li>
+<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a><ul>
+<li class="chapter" data-level="8.1" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-aleatoires"><i class="fa fa-check"></i><b>8.1</b> Techniques d’échantillonnage aléatoires</a></li>
+<li class="chapter" data-level="8.2" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-non-aleatoires"><i class="fa fa-check"></i><b>8.2</b> Techniques d’échantillonnage non-aléatoires</a></li>
+<li class="chapter" data-level="8.3" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#base-de-donnees-pour-les-mms"><i class="fa fa-check"></i><b>8.3</b> Base de données pour les <em>M&amp;M’s</em></a></li>
+</ul></li>
+<li class="part"><span><b>III Présentation des données</b></span></li>
+<li class="chapter" data-level="9" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>9</b> Les variables qualitatives</a><ul>
+<li class="chapter" data-level="9.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>9.1</b> Mise en place</a></li>
+<li class="chapter" data-level="9.2" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#tableau-de-frequences"><i class="fa fa-check"></i><b>9.2</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="9.3" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#representation-graphique---le-diagramme-a-bandes"><i class="fa fa-check"></i><b>9.3</b> Représentation graphique - Le diagramme à bandes</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#la-variable-marital"><i class="fa fa-check"></i><b>9.3.1</b> La variable <code>marital</code></a></li>
+<li class="chapter" data-level="9.3.2" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#la-variable-relig"><i class="fa fa-check"></i><b>9.3.2</b> La variable <code>relig</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html"><i class="fa fa-check"></i><b>10</b> Les variables quantitatives discrètes</a><ul>
+<li class="chapter" data-level="10.1" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html#mise-en-place-4"><i class="fa fa-check"></i><b>10.1</b> Mise en place</a></li>
+<li class="chapter" data-level="10.2" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html#tabfreqquantdiscr"><i class="fa fa-check"></i><b>10.2</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="10.3" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html#representation-graphique---le-diagramme-a-bandes-1"><i class="fa fa-check"></i><b>10.3</b> Représentation graphique - Le diagramme à bandes</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html"><i class="fa fa-check"></i><b>11</b> Les variables quantitatives continues</a><ul>
+<li class="chapter" data-level="11.1" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#mise-en-place-5"><i class="fa fa-check"></i><b>11.1</b> Mise en place</a></li>
+<li class="chapter" data-level="11.2" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#tableau-de-frequences-1"><i class="fa fa-check"></i><b>11.2</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="11.3" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#representation-graphique---lhistogramme"><i class="fa fa-check"></i><b>11.3</b> Représentation graphique - L’histogramme</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="deuxvariables.html"><a href="deuxvariables.html"><i class="fa fa-check"></i><b>12</b> Deux variables</a><ul>
+<li class="chapter" data-level="12.1" data-path="deuxvariables.html"><a href="deuxvariables.html#mise-en-place-6"><i class="fa fa-check"></i><b>12.1</b> Mise en place</a></li>
+<li class="chapter" data-level="12.2" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-de-deux-variables-qualitatives"><i class="fa fa-check"></i><b>12.2</b> Croisement de deux variables qualitatives</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="deuxvariables.html"><a href="deuxvariables.html#tableaux-a-double-entree"><i class="fa fa-check"></i><b>12.2.1</b> Tableaux à double entrée</a></li>
+<li class="chapter" data-level="12.2.2" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---diagramme-a-bandes-chevauchees"><i class="fa fa-check"></i><b>12.2.2</b> Représentation graphique - diagramme à bandes chevauchées</a></li>
+<li class="chapter" data-level="12.2.3" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---diagramme-a-bandes-superposees"><i class="fa fa-check"></i><b>12.2.3</b> Représentation graphique - diagramme à bandes superposées</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-dune-variable-qualitative-et-dune-variable-quantitative"><i class="fa fa-check"></i><b>12.3</b> Croisement d’une variable qualitative et d’une variable quantitative</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---boite-a-moustaches"><i class="fa fa-check"></i><b>12.3.1</b> Représentation graphique - boîte à moustaches</a></li>
+<li class="chapter" data-level="12.3.2" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---diagramme-en-violon"><i class="fa fa-check"></i><b>12.3.2</b> Représentation graphique - diagramme en violon</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-de-deux-variables-quantitatives"><i class="fa fa-check"></i><b>12.4</b> Croisement de deux variables quantitatives</a></li>
+</ul></li>
+<li class="part"><span><b>IV Les mesures</b></span></li>
+<li class="chapter" data-level="13" data-path="proportions.html"><a href="proportions.html"><i class="fa fa-check"></i><b>13</b> Les proportions</a><ul>
+<li class="chapter" data-level="13.1" data-path="proportions.html"><a href="proportions.html#mise-en-place-7"><i class="fa fa-check"></i><b>13.1</b> Mise en place</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="tendancecentrale.html"><a href="tendancecentrale.html"><i class="fa fa-check"></i><b>14</b> Les mesures de tendance centrale</a><ul>
+<li class="chapter" data-level="14.1" data-path="tendancecentrale.html"><a href="tendancecentrale.html#mise-en-place-8"><i class="fa fa-check"></i><b>14.1</b> Mise en place</a></li>
+<li class="chapter" data-level="14.2" data-path="tendancecentrale.html"><a href="tendancecentrale.html#le-mode"><i class="fa fa-check"></i><b>14.2</b> Le mode</a></li>
+<li class="chapter" data-level="14.3" data-path="tendancecentrale.html"><a href="tendancecentrale.html#la-mediane"><i class="fa fa-check"></i><b>14.3</b> La médiane</a></li>
+<li class="chapter" data-level="14.4" data-path="tendancecentrale.html"><a href="tendancecentrale.html#la-moyenne"><i class="fa fa-check"></i><b>14.4</b> La moyenne</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html"><i class="fa fa-check"></i><b>15</b> Les mesures de dispersion</a><ul>
+<li class="chapter" data-level="15.1" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#letendue"><i class="fa fa-check"></i><b>15.1</b> L’étendue</a></li>
+<li class="chapter" data-level="15.2" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#la-variance"><i class="fa fa-check"></i><b>15.2</b> La variance</a></li>
+<li class="chapter" data-level="15.3" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#lecart-type"><i class="fa fa-check"></i><b>15.3</b> L’écart-type</a></li>
+<li class="chapter" data-level="15.4" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#le-coefficient-de-variation"><i class="fa fa-check"></i><b>15.4</b> Le coefficient de variation</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="mesuresposition.html"><a href="mesuresposition.html"><i class="fa fa-check"></i><b>16</b> Les mesures de position</a><ul>
+<li class="chapter" data-level="16.1" data-path="mesuresposition.html"><a href="mesuresposition.html#la-cote-z"><i class="fa fa-check"></i><b>16.1</b> La cote z</a></li>
+<li class="chapter" data-level="16.2" data-path="mesuresposition.html"><a href="mesuresposition.html#les-quantiles"><i class="fa fa-check"></i><b>16.2</b> Les quantiles</a></li>
+<li class="chapter" data-level="16.3" data-path="mesuresposition.html"><a href="mesuresposition.html#la-commande-summary"><i class="fa fa-check"></i><b>16.3</b> La commande <code>summary</code></a></li>
+<li class="chapter" data-level="16.4" data-path="mesuresposition.html"><a href="mesuresposition.html#le-rang-centile"><i class="fa fa-check"></i><b>16.4</b> Le rang centile</a></li>
+</ul></li>
+<li class="part"><span><b>V Les données construites</b></span></li>
+<li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a><ul>
+<li class="chapter" data-level="17.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#mise-en-place-9"><i class="fa fa-check"></i><b>17.1</b> Mise en place</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
+<li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistiques et Probabilités avec R, RStudio et le Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lextension-questionr" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> L’extension <code>questionr</code></h1>
+<p>L’extension <code>questionr</code> propose une interface graphique pour faciliter l’opération qui consiste à réordonner vos données.</p>
+<div id="mise-en-place" class="section level2">
+<h2><span class="header-section-number">3.1</span> Mise en place</h2>
+<p>Pour installer l’extension, vous effectuez la commande suivante:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;questionr&quot;</span>)</a></code></pre></div>
+<p>Vous pouvez ensuite la charger.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(questionr)</a></code></pre></div>
+</div>
+<div id="linterface-graphique" class="section level2">
+<h2><span class="header-section-number">3.2</span> L’interface graphique</h2>
+<p>L’objectif est de permettre à l’utilisateur de saisir les nouvelles valeurs dans un formulaire, et de générer ensuite le code <code>R</code> correspondant au recodage indiqué.</p>
+<p>Pour utiliser cette interface, sous RStudio vous pouvez aller dans le menu <em>Addins</em> (présent dans la barre d’outils principale) puis choisir <em>Levels recoding</em>.</p>
+<div class="figure" style="text-align: center"><span id="fig:addin-irec"></span>
+<img src="images/addin-irec.png" alt="Levels recoding dans le menu Addins" width="25%" />
+<p class="caption">
+Figure 3.1: Levels recoding dans le menu Addins
+</p>
+</div>
+<p>Si nous utilisons l’interface graphique pour la variable <code>rincome</code> de la base de données <code>gts_cat</code>, nous obtenons:</p>
+<div class="figure" style="text-align: center"><span id="fig:irec"></span>
+<img src="images/irec.png" alt="L'interface graphique de Levels recoding" width="100%" />
+<p class="caption">
+Figure 3.2: L’interface graphique de Levels recoding
+</p>
+</div>
+<p>L’interface se compose de trois onglets : l’onglet <em>Variable et paramètres</em> vous permet de sélectionner la variable à recoder, le nom de la nouvelle variable et d’autres paramètres, l’onglet <em>Recodages</em> vous permet de saisir les nouvelles valeurs des modalités, et l’onglet <em>Code et résultat</em> affiche le code <code>R</code> correspondant ainsi qu’un tableau permettant de vérifier les résultats.</p>
+<p>Une fois votre recodage terminé, cliquez sur le bouton <em>Done</em> et le code <code>R</code> sera inséré dans votre script <code>R</code> ou affiché dans la console.</p>
+<blockquote>
+<p><em>Important</em>: cette interface est prévue pour ne pas modifier vos données. C’est donc à vous d’exécuter le code généré pour que le recodage soit réellement effectif.</p>
+</blockquote>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="demarchescientifique.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/desautm/tidystatR/edit/master/chapitres/questionr.Rmd",
+"text": "Modifier"
+},
+"download": ["tidystatR.pdf", "tidystatR.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
