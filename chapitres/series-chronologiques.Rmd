@@ -1,0 +1,45 @@
+# (PART) Les données construites {-}
+
+# Les séries chronologiques {#serieschronologiques}
+
+Une série chronologique est un ensemble de valeurs observées d’une variable quantitative.
+Elle permet d’analyser l’évolution de cette variable dans le temps dans le but éventuel de faire des prévisions.
+Le tableau utilisé pour représenter les données d’une série chronologique comporte une colonne pour la période ainsi qu’une colonne pour la valeur observée.
+
+Pour ce chapitre, nous utiliserons la librairie `gapminder`.
+
+## Mise en place
+
+```{r message=FALSE}
+library(tidyverse)
+library(questionr)
+library(gapminder)
+library(knitr)
+```
+
+```{r}
+canada <- 
+  gapminder %>% 
+  filter(country %in% c("Canada")) %>%
+  select(year,lifeExp)
+canada
+```
+
+```{r}
+ggplot(data = canada, aes(x = year, y = lifeExp))+
+  geom_line()+
+  geom_point()
+```
+
+
+
+```{r}
+gapminder %>% 
+  filter(country %in% c("Rwanda")) %>%
+  select(year,lifeExp) %>%
+  ggplot(aes(x = year, y = lifeExp))+
+    geom_line()+
+    geom_point()
+```
+
+

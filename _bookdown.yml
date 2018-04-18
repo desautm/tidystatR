@@ -45,6 +45,9 @@ rmd_files: [
   "chapitres/mesures-dispersion.Rmd",
   "chapitres/mesures-position.Rmd",
   
+  "chapitres/series-chronologiques.Rmd",
+  "chapitres/donnees-construites.Rmd",
+  
   "references.Rmd"]
 
 before_chapter_script: "_common.R"

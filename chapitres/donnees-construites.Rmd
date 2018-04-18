@@ -1,0 +1,10 @@
+# Les données construites {#donneesconstruites}
+
+## Mise en place
+
+```{r message=FALSE}
+library(tidyverse)
+library(questionr)
+library(knitr)
+```
+
