@@ -1,0 +1,81 @@
+# Les mesures de dispersion {#mesuresdispersion}
+
+Les mesures de tendance centrale (mode, moyenne et médiane) ne permettent pas de déterminer si une série de données est principalement située autour de son centre, ou si au contraire elle est très dispersée. 
+
+Les mesures de dispersion, elles, permettent de déterminer si une série de données est centralisée autour de sa moyenne, ou si elle est au contraire très dispersée. 
+
+Les mesures de dispersion sont l’étendue, la variance, l’écart-type et le coefficient de variation. 
+
+## L'étendue
+
+La première mesure de dispersion, l’étendue, est la différence entre la valeur maximale et la valeur minimale.
+
+L’étendue ne tenant compte que du maximum et du minimum, elle est grandement influencée par les valeurs extrêmes. Elle est donc une mesure de dispersion peu fiable.
+
+La fonction `range` permet de calculer l'étendue d'une variable en langage `R`.
+
+Par exemple, pour calculer l'étendue de la variable `carat` de la base de données `diamonds`, nous avons:
+
+```{r}
+range(diamonds$carat)
+```
+
+Nous pouvons donc calculer l'étendue de la variable `carat` en soustrayant les deux valeurs obtenues par la fonction `range`, c'est-à-dire que l'étendue est  `r range(diamonds$carat)[2]`-`r range(diamonds$carat)[1]` = `r range(diamonds$carat)[2]-range(diamonds$carat)[1]`.
+
+## La variance
+
+La variance sert principalement à calculer l’écart-type, la mesure de dispersion la plus connue.
+
+> Attention : Les unités de la variance sont des unités^2^.
+
+La fonction `var` permet de calculer la variance d'une variable en langage `R`.
+
+Par exemple, pour calculer la variance de la variable `carat` de la base de données `diamonds`, nous avons:
+
+```{r}
+var(diamonds$carat)
+```
+
+Ceci signifie que la variance de la variable `carat` est `r var(diamonds$carat)` carat^2^.
+
+## L'écart-type
+
+L’écart-type est la mesure de dispersion la plus couramment utilisée. Il peut être vu comme la « moyenne » des écarts entre les données et la moyenne.
+
+Puisque l’écart-type tient compte de chacune des données, il est une mesure de dispersion beaucoup plus fiable que l’étendue.
+
+Il est défini comme la racine carrée de la variance.
+
+La fonction `sd` permet de calculer l''écart-type d'une variable en langage `R`.
+
+Par exemple, pour calculer l'écart-type de la variable `carat` de la base de données `diamonds`, nous avons:
+
+```{r}
+sd(diamonds$carat)
+```
+
+Ceci signifie que l'écart-type de la variable `carat` est `r sd(diamonds$carat)` carat.
+
+## Le coefficient de variation
+
+Le coefficient de variation, noté C. V., est calculé comme suit : 
+
+\begin{equation}
+C.V. = \dfrac{\text{ecart-type}}{\text{moyenne}}\times 100\%
+\end{equation}
+
+Si le coefficient est inférieur à 15%, les données sont dites **homogènes**. Cela veut dire que les données sont situées près les unes des autres.
+
+Dans le cas contraire, les données sont dites **hétérogènes**. Cela veut dire que les données sont très dispersées.
+
+> Important : Le coefficient de variation ne possède pas d’unité, outre le symbole de pourcentage.
+
+Il n'existe pas de fonctions en `R` permettant de calculer directement le coefficient de variation. Par contre, nous pouvons utiliser en conjonction les fonctions `sd` et `mean` pour le calculer.
+
+Par exemple, pour calculer le coefficient de variation de la variable `carat` de la base de données `diamonds`, nous avons:
+
+```{r}
+sd(diamonds$carat)/mean(diamonds$carat)*100
+```
+
+Le C.V. de la variable `carat` est donc `r sd(diamonds$carat)/mean(diamonds$carat)*100` %, ce qui signifie que les données sont `r ifelse(sd(diamonds$carat)/mean(diamonds$carat)<=0.15,"homogènes","hétérogènes")`, car le coefficient de variation est `r ifelse(sd(diamonds$carat)/mean(diamonds$carat)<=0.15,"plus petit ou égal à 15%","plus grand que 15%")`.

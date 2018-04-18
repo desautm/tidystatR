@@ -36,6 +36,14 @@ Nous pouvons exclure certaines modalités en utilisant l'option `exclude`. Par e
 table(gss_cat$marital,gss_cat$race, exclude = c("Not applicable"))
 ```
 
+Nous pouvons obtenir un tableau à double entrée comportant des pourcentages à l'aide de la commande `prop`.
+
+```{r}
+prop(table(gss_cat$marital,gss_cat$race))
+```
+
+Pour connaître toutes les options de la commande `prop`, vous pouvez utilisez la commande `?prop` dans la console.
+
 Nous pouvons également obtenir les totaux des lignes et des colonnes en utilisant la commande `addmargins`:
 
 ```{r}
@@ -64,6 +72,43 @@ lprop(table(gss_cat$marital,gss_cat$race), drop = FALSE)
 
 Pour connaître toutes les options de ces deux commandes, vous pouvez taper `?lprop` ou `?cprop` dans la console.
 
+### Représentation graphique - diagramme à bandes chevauchées
+
+Le graphique utilisé pour représenter simultanément deux variables qualitatives est le diagramme à bandes rectangulaires chevauchées. 
+
+Ce graphique ressemble au diagramme à bandes rectangulaires verticales, à la différence qu’il y aura au moins deux rectangles pour chacune des modalités ainsi qu’une légende. 
+
+Encore une fois, ce graphique peut être construit à partir des fréquences absolues ou relatives.
+
+Nous pouvons comparer les variable `race` et `marital` avec des diagrammes à bandes chevauchées en utilisant l'option `position = "dodge"`.
+
+```{r}
+ggplot(data = gss_cat, aes(x = race, fill = marital))+
+  geom_bar(position = "dodge")+
+  labs(x = "Race",
+       y = "Fréquence")
+```
+
+### Représentation graphique - diagramme à bandes superposées
+
+Si nous n'utilisons pas l'option `position = "dodge"`, nous obtenons des diagrammes à bandes superposées.
+
+```{r}
+ggplot(data = gss_cat, aes(x = race, fill = marital))+
+  geom_bar()+
+  labs(x = "Race",
+       y = "Fréquence")
+```
+
+Pour obtenir des diagrammes comportant des fréquences relatives, nous utilisons l'option `position = "fill"`.
+
+```{r}
+ggplot(data = gss_cat, aes(x = race, fill = marital))+
+  geom_bar(position = "fill")+
+  labs(x = "Race",
+       y = "Fréquence")
+```
+
 ## Croisement d'une variable qualitative et d'une variable quantitative
 
 ### Représentation graphique - boîte à moustaches
@@ -74,7 +119,7 @@ Pour cela, l’idéal est de commencer par une représentation graphique de type
 
 > L’interprétation d’une boîte à moustaches est la suivante : Les bords inférieurs et supérieurs du carré central représentent le premier et le troisième quartile de la variable représentée sur l’axe vertical. On a donc 50% de nos observations dans cet intervalle. Le trait horizontal dans le carré représente la médiane. Enfin, des “moustaches” s’étendent de chaque côté du carré, jusqu’aux valeurs minimales et maximales, avec une exception : si des valeurs sont éloignées du carré de plus de 1,5 fois l’écart interquartile (la hauteur du carré), alors on les représente sous forme de points (symbolisant des valeurs considérées comme “extrêmes”).
 
-Nous discuterons plus en détail des toutes ces mesures au chapitre \@ref(mesures).
+Nous discuterons plus en détail des toutes ces mesures au chapitre \@ref(mesuresposition).
 
 Voici le graphique boîte à moustaches représentant les variables `marital` et `age`.
 
@@ -83,12 +128,45 @@ ggplot(data = gss_cat, aes(x = marital, y = age))+
   geom_boxplot()
 ```
 
-### Représentation graphique - violon plot
+Pour mieux visualiser vos boîtes à moustache, vous pouvez les colorier. Si nous voulons colorier les boîtes en fonction de la variable `marital`, nous ajoutons l'option `fill = marital`..
+
+```{r}
+ggplot(data = gss_cat, aes(x = marital, y = age, fill = marital))+
+  geom_boxplot()
+```
+
+### Représentation graphique - diagramme en violon
+
+Nous pouvons également visualiser le lien entre une variable qualitative et une variable quantitative à l'aide d'un diagramme en violon.
+
+> L'interprétation du diagramme en violon est la suivante: La largeur du diagramme nous renseigne sur la fréquence d'apparition de la variable. Plus ils sont larges, plus la valeur de la variable est fréquente et inversement.
+
+Nous pouvons représenter les diagrammes en violon de la variable `marital` et de la variable `age`.
 
 ```{r}
 ggplot(data = gss_cat, aes(x = marital, y = age))+
   geom_violin()
 ```
 
+Nous pouvons ajouter de  la couleur avec l'option `fill`.
+
+```{r}
+ggplot(data = gss_cat, aes(x = marital, y = age, fill = marital))+
+  geom_violin()
+```
+
+Nous pouvons bien sûr superposer des boîtes à moustaches et des diagrammes en violon.
+
+```{r}
+ggplot(data = gss_cat, aes(x = marital, y = age, fill = marital))+
+  geom_violin()+
+  geom_boxplot(width = 0.1)
+```
 
 ## Croisement de deux variables quantitatives
+
+```{r nuage-flights, cache = TRUE}
+ggplot(data = flights, aes(x = dep_delay, y = arr_delay))+
+  geom_point(alpha = 0.25)
+```
+

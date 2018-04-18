@@ -40,7 +40,10 @@ rmd_files: [
   "chapitres/variables-quantitatives-continues.Rmd",
   "chapitres/deux-variables.Rmd",
   
-  "chapitres/mesures.Rmd",
+  "chapitres/proportions.Rmd",
+  "chapitres/tendance-centrale.Rmd",
+  "chapitres/mesures-dispersion.Rmd",
+  "chapitres/mesures-position.Rmd",
   
   "references.Rmd"]
 

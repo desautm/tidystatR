@@ -1,0 +1,19 @@
+# (PART) Les mesures {-}
+
+# Les proportions {#proportions}
+
+Les proportions, exprimées en pourcentage (%), permettent de comparer la taille de deux ensembles. Le symbole utilisé pour représenter une proportion dépend d’où proviennent les données. 
+
+- Si les données proviennent d’une population, la proportion sera notée $\pi$.
+- Si elles proviennent d’un échantillon, la proportion sera notée $\hat{p}$. 
+
+> Attention: $\pi$ indique une proportion et ne représente donc pas 3,1415...
+
+## Mise en place
+
+```{r message=FALSE}
+library(tidyverse)
+library(questionr)
+library(knitr)
+```
+

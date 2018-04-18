@@ -1,0 +1,100 @@
+# Les mesures de tendance centrale {#tendancecentrale}
+
+Dans ce chapitre, nous verrons comment utiliser `R` pour calculer les mesures importantes permettant de résumer des données.
+
+Nous allons charger les librairies que nous allons utiliser:
+
+## Mise en place
+
+```{r}
+library(questionr)
+library(ggplot2)
+library(nycflights13)
+```
+
+Les mesures de tendance centrale permettent de déterminer où se situe le "centre"" des données. Les trois mesures de tendance centrale sont le mode, la moyenne et la médiane.
+
+## Le mode
+
+Le mode est la **modalité**, **valeur** ou **classe** possédant la plus grande fréquence. En d’autres mots, c’est la donnée la plus fréquente. 
+
+Puisque le mode se préoccupe seulement de la donnée la plus fréquente, il n’est pas influencé par les valeurs extrêmes.
+
+Lorsque le mode est une classe, il est appelé **classe modale**. 
+
+Le mode est noté **Mo**. 
+
+Le langage `R` ne possède pas de fonction permettant de calculer le mode. La façon la plus simple de le calculer est d'utiliser la fonction `table` de `R`.
+
+Par exemple, si nous voulons connaître le mode de la variable `marital` de la base de données `gss_cat`:
+
+```{r}
+table(gss_cat$marital)
+```
+
+Nous remarquons que le maximum est à la modalité _Married_ avec une fréquence de `r max(table(gss_cat$marital))`.
+
+Si nous nous intéressons au mode d'une variable quantitative discrète comme `age` de la base de données `gss_cat` nous obtenons:
+
+```{r}
+table(gss_cat$age)
+```
+
+Nous remarquons que le maximum est à la valeur _40_ avec une fréquence de `r max(table(gss_cat$age))`.
+
+Dans le cas d'une variable quantitative continue, pour calculer le mode, il faut commencer par séparer les données en classes. Nous utiliserons les mêmes classes utilisées à la section:
+
+```{r}
+carat_class = cut(diamonds$carat,
+                  breaks = seq(from = 0, to = 6, by = 1),
+                  right = FALSE)
+table(carat_class)
+```
+
+La classe modale est donc la classe _[0,1)_ avec une fréquence de `r max(table(carat_class))`.
+
+## La médiane
+
+La médiane, notée **Md**, est la valeur qui sépare une série de données classée en ordre croissant en deux parties égales. 
+
+La médiane étant la valeur du milieu, elle est la valeur où le pourcentage cumulé atteint 50%. 
+
+Puisque la médiane se préoccupe seulement de déterminer où se situe le centre des données, elle n’est pas influencée par les valeurs extrêmes. Elle est donc une mesure de tendance centrale plus fiable que la moyenne.
+
+> Important : La médiane n’est définie que pour les variables quantitatives. En effet, si vous tentez d'utiliser la médiane pour des données autres que numériques, `R` vous donnera un message d'erreur.
+
+La fonction `median` permet de calculer la médiane en langage `R`.
+
+Par exemple, pour calculer la médiane de la variable `carat` de la base de données `diamonds`, nous avons:
+
+```{r}
+median(diamonds$carat)
+```
+
+Ceci signifie que 50% des diamants ont une valeur en carat inférieure ou égale à `r median(diamonds$carat)` et que 50% des diamants ont une valeur en carat supérieure ou égale à `r median(diamonds$carat)`.
+
+Nous pouvons aussi obtenir que la médiane de la variable `price` de la base de données `diamonds` est donnée par:
+
+```{r}
+median(diamonds$price)
+```
+
+## La moyenne
+
+La moyenne est la valeur qui pourrait remplacer chacune des données d’une série pour que leur somme demeure identique. Intuitivement, elle représente le centre d’équilibre d’une série de données. La somme des distances qui sépare les données plus petites que la moyenne devrait être la même que la somme des distances qui sépare les données plus grandes. 
+
+> Important : La moyenne n’est définie que pour les variables quantitatives. En effet, si vous tentez d'utiliser la moyenne pour des données autres que numériques, `R` vous donnera un message d'erreur.
+
+La fonction `mean` permet de calculer la moyenne en langage `R`.
+
+Par exemple, pour calculer la moyenne de la variable `carat` de la base de données `diamonds`, nous avons:
+
+```{r}
+mean(diamonds$carat)
+```
+
+Nous pouvons aussi obtenir que la moyenne de la variable `price` de la base de données `diamonds` est donnée par:
+
+```{r}
+mean(diamonds$price)
+```

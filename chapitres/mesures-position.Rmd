@@ -1,0 +1,109 @@
+# Les mesures de position {#mesuresposition}
+
+Les mesures de position permettent de situer une donnée par rapport aux autres. Les différentes mesures de position sont la cote Z, les quantiles et les rangs.
+
+Tout comme les mesures de dispersion, celles-ci ne sont définies que pour une variable quantitative.
+
+## La cote z
+
+Cette mesure de position se base sur la moyenne et l’écart-type.
+
+La cote Z d’une donnée x est calculée comme suit : 
+
+\begin{equation}
+Z = \dfrac{x-\text{moyenne}}{\text{ecart-type}}
+\end{equation}
+
+> Important : La cote z ne possède pas d'unités.
+
+Une cote Z peut être positive, négative ou nulle. 
+
+| Cote Z | Interprétation |
+|-------:|:---------------|
+| Z>0 | donnée supérieure à la moyenne | 
+| Z<0 | donnée inférieure à la moyenne |
+| Z=0 | donnée égale à la moyenne |
+
+Il n'existe pas de fonctions en `R` permettant de calculer directement la cote Z. Par contre, nous pouvons utiliser en conjonction les fonctions `sd` et `mean` pour la calculer.
+
+Par exemple, si nous voulons calculer la cote Z d'un diamant de 3 carats, nous avons:
+
+```{r}
+(3-mean(diamonds$carat))/sd(diamonds$carat)
+```
+
+## Les quantiles
+
+Un quantile est une donnée qui correspond à un certain pourcentage cumulé.
+
+Parmi les quantiles, on distingue les quartiles, les quintiles, les déciles et les centiles. 
+
+- Les quartiles Q~1~, Q~2~ et Q~3~, séparent les données en quatre parties égales.
+Environ 25% des données sont inférieures ou égales à Q~1~.
+Environ 50% des données sont inférieures ou égales à Q~2~.
+Environ 75% des données sont inférieures ou égales à Q~3~.
+- Les quintiles V~1~, V~2~, V~3~ et V~4~, séparent les données en cinq parties égales.
+Environ 20% des données sont inférieures ou égales à V~1~.
+Environ 40% des données sont inférieures ou égales à V~2~.
+Etc.
+- Les déciles D~1~, D~2~, ..., D~8~ et D~9~, séparent les données en dix parties égales. 
+Environ 10% des données sont inférieures ou égales à D~1~. 
+Environ 20% des données sont inférieures ou égales à D~2~.
+Etc.
+- Les centiles C~1~, C~2~, ..., C~98~ et C~99~, séparent les données en cent parties égales.
+Environ 1% des données sont inférieures ou égales à C~1~.
+Environ 2% des données sont inférieures ou égales à C~2~.
+Etc.
+
+> Il est utile de noter que certains quantiles se recoupent. 
+
+La fonction `quantile` permet de calculer n'importe quel quantile d'une variable en langage `R`. Il suffit d'indiquer la variable étudiée ainsi que le pourcentage du quantile voulu.
+
+Par exemple, si nous voulons calculer D~1~ pour la variable `carat`, nous allons utiliser la fonction `quantile` avec une probabilité de 0,1.
+
+```{r}
+quantile(diamonds$carat, 0.1)
+```
+
+Ceci implique que 10% des diamants ont une valeur en carat inférieure ou égale à `r quantile(diamonds$carat, 0.1)` carat.
+
+Nous pouvons calculer le troisième quartile Q~3~ de la variable `price` en utilisant la fonction `quantile` avec une probabilité de 0,75.
+
+```{r}
+quantile(diamonds$price, 0.75)
+```
+
+Ceci implique que 75% des diamants ont un prix en dollars inférieur ou égal à `r quantile(diamonds$price, 0.75)` $.
+
+## La commande `summary`
+
+La commande `summary` produit un sommaire contenant six mesures importantes:
+
+1. `Min` : le minimum de la variable
+2. `1st Qu.`: Le premier quartile, Q~1~, de la variable
+3. `Median` : La médiane de la variable
+4. `Mean` : La moyenne de la variable
+5. `3rd Qu.` : Le troisième quartile, Q~3~, de la variable
+6. `Max` : Le maximum de la variable
+
+Nous pouvons donc produire le sommaire de la variable `price` de la base de données `diamonds` de la façon suivante:
+
+```{r}
+summary(diamonds$price)
+```
+
+## Le rang centile
+
+Un rang centile représente le pourcentage cumulé, *exprimé en nombre entier*, qui correspond à une certaine donnée. Nous déterminerons les rangs centiles pour les variables continues seulement.
+
+Les rangs centiles sont donc exactement l’inverse des centiles.
+
+Il n'existe pas de fonctions dans `R` permettant de trouver directement le rang centile, mais il est facile d'utiliser la fonction `mean` pour le trouver. 
+
+Par exemple, si nous voulons trouver le rang centile d'un diamant qui coûte 500\$, il suffit d'utiliser la commande suivante. La commande calcule la moyenne de toutes les valeurs en dollars des diamants coûtant 500\$ ou moins.
+
+```{r}
+mean(diamonds$price<=500)
+```
+
+Ceci signifie que pour un diamant de 500\$, il y a `r mean(diamonds$price<=500)*100` % des diamants qui ont une valeur égale ou inférieure.
