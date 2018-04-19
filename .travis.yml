@@ -18,7 +18,7 @@ script:
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: "TidystatR for Travis"
+  github-token: $GH_TOKEN
   keep-history: true
   local-dir: docs
   on:
