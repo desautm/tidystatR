@@ -48,6 +48,8 @@ rmd_files: [
   "chapitres/series-chronologiques.Rmd",
   "chapitres/donnees-construites.Rmd",
   
+  "chapitres/correlation-lineaire.Rmd",
+  
   "references.Rmd"]
 
 before_chapter_script: "_common.R"

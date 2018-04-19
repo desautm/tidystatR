@@ -1,0 +1,23 @@
+# (PART) L'analyse de lien {-}
+
+# La corrélation linéaire {#correlationlineaire}
+
+## Mise en place
+
+```{r message=FALSE}
+library(tidyverse)
+library(datasauRus)
+```
+
+## Anscombe
+
+## DatasauRus
+
+```{r}
+ggplot(datasaurus_dozen, aes(x=x, y=y, colour=dataset))+
+  geom_point()+
+  theme_void()+
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol=3)
+```
+
