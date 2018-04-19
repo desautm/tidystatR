@@ -136,7 +136,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
 <li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
 <li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
-<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="rrstudio.html"><a href="rrstudio.html#la-console"><i class="fa fa-check"></i><b>1.3.1</b> La console</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
 <li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
@@ -348,16 +350,16 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 </ol>
 <p>Voici un exemple de données <em>tidy</em> qui sont accessibles en <code>R</code> de base.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_tibble</span>(<span class="kw">rownames_to_column</span>(mtcars))
-## # A tibble: 32 x 12
-##   rowname        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
-##   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Mazda RX4     21.0    6.  160.  110.  3.90  2.62  16.5    0.    1.    4.
-## 2 Mazda RX4 W…  21.0    6.  160.  110.  3.90  2.88  17.0    0.    1.    4.
-## 3 Datsun 710    22.8    4.  108.   93.  3.85  2.32  18.6    1.    1.    4.
-## 4 Hornet 4 Dr…  21.4    6.  258.  110.  3.08  3.22  19.4    1.    0.    3.
-## 5 Hornet Spor…  18.7    8.  360.  175.  3.15  3.44  17.0    0.    0.    3.
-## 6 Valiant       18.1    6.  225.  105.  2.76  3.46  20.2    1.    0.    3.
-## # ... with 26 more rows, and 1 more variable: carb &lt;dbl&gt;</code></pre>
+<span class="co">#&gt; # A tibble: 32 x 12</span>
+<span class="co">#&gt;   rowname        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Mazda RX4     21.0    6.  160.  110.  3.90  2.62  16.5    0.    1.    4.</span>
+<span class="co">#&gt; 2 Mazda RX4 W…  21.0    6.  160.  110.  3.90  2.88  17.0    0.    1.    4.</span>
+<span class="co">#&gt; 3 Datsun 710    22.8    4.  108.   93.  3.85  2.32  18.6    1.    1.    4.</span>
+<span class="co">#&gt; 4 Hornet 4 Dr…  21.4    6.  258.  110.  3.08  3.22  19.4    1.    0.    3.</span>
+<span class="co">#&gt; 5 Hornet Spor…  18.7    8.  360.  175.  3.15  3.44  17.0    0.    0.    3.</span>
+<span class="co">#&gt; 6 Valiant       18.1    6.  225.  105.  2.76  3.46  20.2    1.    0.    3.</span>
+<span class="co">#&gt; # ... with 26 more rows, and 1 more variable: carb &lt;dbl&gt;</span></code></pre>
 </div>
 <div id="tibbles" class="section level2">
 <h2><span class="header-section-number">2.4</span> Les tibbles</h2>
@@ -386,19 +388,19 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 <h3><span class="header-section-number">2.4.3</span> La base de données flights</h3>
 <p>Pour visualiser facilement une base de données sous forme <strong>tibble</strong>, il suffit de taper son nom dans la console. Nous allons utiliser la base de données flights. Par exemple:</p>
 <pre class="sourceCode r"><code class="sourceCode r">flights
-## # A tibble: 336,776 x 19
-##    year month   day dep_time sched_dep_time dep_delay arr_time
-##   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
-## 1  2013     1     1      517            515        2.      830
-## 2  2013     1     1      533            529        4.      850
-## 3  2013     1     1      542            540        2.      923
-## 4  2013     1     1      544            545       -1.     1004
-## 5  2013     1     1      554            600       -6.      812
-## 6  2013     1     1      554            558       -4.      740
-## # ... with 3.368e+05 more rows, and 12 more variables:
-## #   sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
-## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
-## #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+<span class="co">#&gt; # A tibble: 336,776 x 19</span>
+<span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span>
+<span class="co">#&gt; 1  2013     1     1      517            515        2.      830</span>
+<span class="co">#&gt; 2  2013     1     1      533            529        4.      850</span>
+<span class="co">#&gt; 3  2013     1     1      542            540        2.      923</span>
+<span class="co">#&gt; 4  2013     1     1      544            545       -1.     1004</span>
+<span class="co">#&gt; 5  2013     1     1      554            600       -6.      812</span>
+<span class="co">#&gt; 6  2013     1     1      554            558       -4.      740</span>
+<span class="co">#&gt; # ... with 3.368e+05 more rows, and 12 more variables:</span>
+<span class="co">#&gt; #   sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,</span>
+<span class="co">#&gt; #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></code></pre>
 <p>Nous allons décortiquer la sortie console:</p>
 <ul>
 <li><code>A tibble: 336,776 x 19</code>: un <strong>tibble</strong> est une façon de représenter une base de données en R. Cette base de données possède:
@@ -428,16 +430,16 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 <li><code>table</code> : largeur du dessus du diamant par rapport à son point le plus large</li>
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r">diamonds
-## # A tibble: 53,940 x 10
-##   carat cut       color clarity depth table price     x     y     z
-##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 0.230 Ideal     E     SI2      61.5   55.   326  3.95  3.98  2.43
-## 2 0.210 Premium   E     SI1      59.8   61.   326  3.89  3.84  2.31
-## 3 0.230 Good      E     VS1      56.9   65.   327  4.05  4.07  2.31
-## 4 0.290 Premium   I     VS2      62.4   58.   334  4.20  4.23  2.63
-## 5 0.310 Good      J     SI2      63.3   58.   335  4.34  4.35  2.75
-## 6 0.240 Very Good J     VVS2     62.8   57.   336  3.94  3.96  2.48
-## # ... with 5.393e+04 more rows</code></pre>
+<span class="co">#&gt; # A tibble: 53,940 x 10</span>
+<span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0.230 Ideal     E     SI2      61.5   55.   326  3.95  3.98  2.43</span>
+<span class="co">#&gt; 2 0.210 Premium   E     SI1      59.8   61.   326  3.89  3.84  2.31</span>
+<span class="co">#&gt; 3 0.230 Good      E     VS1      56.9   65.   327  4.05  4.07  2.31</span>
+<span class="co">#&gt; 4 0.290 Premium   I     VS2      62.4   58.   334  4.20  4.23  2.63</span>
+<span class="co">#&gt; 5 0.310 Good      J     SI2      63.3   58.   335  4.34  4.35  2.75</span>
+<span class="co">#&gt; 6 0.240 Very Good J     VVS2     62.8   57.   336  3.94  3.96  2.48</span>
+<span class="co">#&gt; # ... with 5.393e+04 more rows</span></code></pre>
 </div>
 <div id="explorertibbles" class="section level3">
 <h3><span class="header-section-number">2.4.5</span> Comment explorer des “tibbles”</h3>
@@ -457,43 +459,43 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 </ol>
 <p>La seconde façon d’explorer une base de données est d’utiliser la fonction <code>glimpse()</code>. Cette fonction nous donne la majorité de l’information précédente et encore plus.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(flights)
-## Observations: 336,776
-## Variables: 19
-## $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,...
-## $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
-## $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
-## $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 55...
-## $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 60...
-## $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2...
-## $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 7...
-## $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 7...
-## $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -...
-## $ carrier        &lt;chr&gt; &quot;UA&quot;, &quot;UA&quot;, &quot;AA&quot;, &quot;B6&quot;, &quot;DL&quot;, &quot;UA&quot;, &quot;B6&quot;, &quot;EV&quot;,...
-## $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79...
-## $ tailnum        &lt;chr&gt; &quot;N14228&quot;, &quot;N24211&quot;, &quot;N619AA&quot;, &quot;N804JB&quot;, &quot;N668DN...
-## $ origin         &lt;chr&gt; &quot;EWR&quot;, &quot;LGA&quot;, &quot;JFK&quot;, &quot;JFK&quot;, &quot;LGA&quot;, &quot;EWR&quot;, &quot;EWR&quot;...
-## $ dest           &lt;chr&gt; &quot;IAH&quot;, &quot;IAH&quot;, &quot;MIA&quot;, &quot;BQN&quot;, &quot;ATL&quot;, &quot;ORD&quot;, &quot;FLL&quot;...
-## $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138...
-## $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 94...
-## $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5,...
-## $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, ...
-## $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013...</code></pre>
+<span class="co">#&gt; Observations: 336,776</span>
+<span class="co">#&gt; Variables: 19</span>
+<span class="co">#&gt; $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,...</span>
+<span class="co">#&gt; $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</span>
+<span class="co">#&gt; $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</span>
+<span class="co">#&gt; $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 55...</span>
+<span class="co">#&gt; $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 60...</span>
+<span class="co">#&gt; $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2...</span>
+<span class="co">#&gt; $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 7...</span>
+<span class="co">#&gt; $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 7...</span>
+<span class="co">#&gt; $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -...</span>
+<span class="co">#&gt; $ carrier        &lt;chr&gt; &quot;UA&quot;, &quot;UA&quot;, &quot;AA&quot;, &quot;B6&quot;, &quot;DL&quot;, &quot;UA&quot;, &quot;B6&quot;, &quot;EV&quot;,...</span>
+<span class="co">#&gt; $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79...</span>
+<span class="co">#&gt; $ tailnum        &lt;chr&gt; &quot;N14228&quot;, &quot;N24211&quot;, &quot;N619AA&quot;, &quot;N804JB&quot;, &quot;N668DN...</span>
+<span class="co">#&gt; $ origin         &lt;chr&gt; &quot;EWR&quot;, &quot;LGA&quot;, &quot;JFK&quot;, &quot;JFK&quot;, &quot;LGA&quot;, &quot;EWR&quot;, &quot;EWR&quot;...</span>
+<span class="co">#&gt; $ dest           &lt;chr&gt; &quot;IAH&quot;, &quot;IAH&quot;, &quot;MIA&quot;, &quot;BQN&quot;, &quot;ATL&quot;, &quot;ORD&quot;, &quot;FLL&quot;...</span>
+<span class="co">#&gt; $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138...</span>
+<span class="co">#&gt; $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 94...</span>
+<span class="co">#&gt; $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5,...</span>
+<span class="co">#&gt; $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013...</span></code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><code>kable()</code>:</li>
 </ol>
 <p>La dernière façon d’étudier l’entièreté de la base de données est d’utiliser la fonction <code>kable()</code> de la librairie <code>knitr</code>. Nous allons explorer les codes des différentes compagnies d’aviation de deux façons.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
 airlines
-## # A tibble: 16 x 2
-##   carrier name                    
-##   &lt;chr&gt;   &lt;chr&gt;                   
-## 1 9E      Endeavor Air Inc.       
-## 2 AA      American Airlines Inc.  
-## 3 AS      Alaska Airlines Inc.    
-## 4 B6      JetBlue Airways         
-## 5 DL      Delta Air Lines Inc.    
-## 6 EV      ExpressJet Airlines Inc.
-## # ... with 10 more rows
+<span class="co">#&gt; # A tibble: 16 x 2</span>
+<span class="co">#&gt;   carrier name                    </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                   </span>
+<span class="co">#&gt; 1 9E      Endeavor Air Inc.       </span>
+<span class="co">#&gt; 2 AA      American Airlines Inc.  </span>
+<span class="co">#&gt; 3 AS      Alaska Airlines Inc.    </span>
+<span class="co">#&gt; 4 B6      JetBlue Airways         </span>
+<span class="co">#&gt; 5 DL      Delta Air Lines Inc.    </span>
+<span class="co">#&gt; 6 EV      ExpressJet Airlines Inc.</span>
+<span class="co">#&gt; # ... with 10 more rows</span>
 <span class="kw">kable</span>(airlines)</code></pre>
 <table>
 <thead>
@@ -575,14 +577,14 @@ airlines
 </ol>
 <p>Finalement, l’opérateur <code>$</code> nous permet d’explorer une seule variable à l’intérieur d’une base de données. Par exemple, si nous désirons étudier la variable <code>name</code> de la base de données <code>airlines</code>, nous obtenons:</p>
 <pre class="sourceCode r"><code class="sourceCode r">airlines<span class="op">$</span>name
-##  [1] &quot;Endeavor Air Inc.&quot;           &quot;American Airlines Inc.&quot;     
-##  [3] &quot;Alaska Airlines Inc.&quot;        &quot;JetBlue Airways&quot;            
-##  [5] &quot;Delta Air Lines Inc.&quot;        &quot;ExpressJet Airlines Inc.&quot;   
-##  [7] &quot;Frontier Airlines Inc.&quot;      &quot;AirTran Airways Corporation&quot;
-##  [9] &quot;Hawaiian Airlines Inc.&quot;      &quot;Envoy Air&quot;                  
-## [11] &quot;SkyWest Airlines Inc.&quot;       &quot;United Air Lines Inc.&quot;      
-## [13] &quot;US Airways Inc.&quot;             &quot;Virgin America&quot;             
-## [15] &quot;Southwest Airlines Co.&quot;      &quot;Mesa Airlines Inc.&quot;</code></pre>
+<span class="co">#&gt;  [1] &quot;Endeavor Air Inc.&quot;           &quot;American Airlines Inc.&quot;     </span>
+<span class="co">#&gt;  [3] &quot;Alaska Airlines Inc.&quot;        &quot;JetBlue Airways&quot;            </span>
+<span class="co">#&gt;  [5] &quot;Delta Air Lines Inc.&quot;        &quot;ExpressJet Airlines Inc.&quot;   </span>
+<span class="co">#&gt;  [7] &quot;Frontier Airlines Inc.&quot;      &quot;AirTran Airways Corporation&quot;</span>
+<span class="co">#&gt;  [9] &quot;Hawaiian Airlines Inc.&quot;      &quot;Envoy Air&quot;                  </span>
+<span class="co">#&gt; [11] &quot;SkyWest Airlines Inc.&quot;       &quot;United Air Lines Inc.&quot;      </span>
+<span class="co">#&gt; [13] &quot;US Airways Inc.&quot;             &quot;Virgin America&quot;             </span>
+<span class="co">#&gt; [15] &quot;Southwest Airlines Co.&quot;      &quot;Mesa Airlines Inc.&quot;</span></code></pre>
 
 </div>
 </div>

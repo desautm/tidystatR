@@ -136,7 +136,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
 <li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
 <li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
-<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="rrstudio.html"><a href="rrstudio.html#la-console"><i class="fa fa-check"></i><b>1.3.1</b> La console</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
 <li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
@@ -305,7 +307,7 @@ Z = \dfrac{x-\text{moyenne}}{\text{ecart-type}}
 <p>Il n’existe pas de fonctions en <code>R</code> permettant de calculer directement la cote Z. Par contre, nous pouvons utiliser en conjonction les fonctions <code>sd</code> et <code>mean</code> pour la calculer.</p>
 <p>Par exemple, si nous voulons calculer la cote Z d’un diamant de 3 carats, nous avons:</p>
 <pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span><span class="op">-</span><span class="kw">mean</span>(diamonds<span class="op">$</span>carat))<span class="op">/</span><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)
-## [1] 4.65</code></pre>
+<span class="co">#&gt; [1] 4.65</span></code></pre>
 </div>
 <div id="les-quantiles" class="section level2">
 <h2><span class="header-section-number">16.2</span> Les quantiles</h2>
@@ -335,13 +337,13 @@ Etc.</li>
 <p>La fonction <code>quantile</code> permet de calculer n’importe quel quantile d’une variable en langage <code>R</code>. Il suffit d’indiquer la variable étudiée ainsi que le pourcentage du quantile voulu.</p>
 <p>Par exemple, si nous voulons calculer D<sub>1</sub> pour la variable <code>carat</code>, nous allons utiliser la fonction <code>quantile</code> avec une probabilité de 0,1.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(diamonds<span class="op">$</span>carat, <span class="fl">0.1</span>)
-##  10% 
-## 0.31</code></pre>
+<span class="co">#&gt;  10% </span>
+<span class="co">#&gt; 0.31</span></code></pre>
 <p>Ceci implique que 10% des diamants ont une valeur en carat inférieure ou égale à 0.31 carat.</p>
 <p>Nous pouvons calculer le troisième quartile Q<sub>3</sub> de la variable <code>price</code> en utilisant la fonction <code>quantile</code> avec une probabilité de 0,75.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(diamonds<span class="op">$</span>price, <span class="fl">0.75</span>)
-##  75% 
-## 5324</code></pre>
+<span class="co">#&gt;  75% </span>
+<span class="co">#&gt; 5324</span></code></pre>
 <p>Ceci implique que 75% des diamants ont un prix en dollars inférieur ou égal à 5324.25 $.</p>
 </div>
 <div id="la-commande-summary" class="section level2">
@@ -357,8 +359,8 @@ Etc.</li>
 </ol>
 <p>Nous pouvons donc produire le sommaire de la variable <code>price</code> de la base de données <code>diamonds</code> de la façon suivante:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(diamonds<span class="op">$</span>price)
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##     326     950    2401    3933    5324   18823</code></pre>
+<span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
+<span class="co">#&gt;     326     950    2401    3933    5324   18823</span></code></pre>
 </div>
 <div id="le-rang-centile" class="section level2">
 <h2><span class="header-section-number">16.4</span> Le rang centile</h2>
@@ -367,7 +369,7 @@ Etc.</li>
 <p>Il n’existe pas de fonctions dans <code>R</code> permettant de trouver directement le rang centile, mais il est facile d’utiliser la fonction <code>mean</code> pour le trouver.</p>
 <p>Par exemple, si nous voulons trouver le rang centile d’un diamant qui coûte 500$, il suffit d’utiliser la commande suivante. La commande calcule la moyenne de toutes les valeurs en dollars des diamants coûtant 500$ ou moins.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(diamonds<span class="op">$</span>price<span class="op">&lt;=</span><span class="dv">500</span>)
-## [1] 0.0324</code></pre>
+<span class="co">#&gt; [1] 0.0324</span></code></pre>
 <p>Ceci signifie que pour un diamant de 500$, il y a 3.242 % des diamants qui ont une valeur égale ou inférieure.</p>
 
 </div>
