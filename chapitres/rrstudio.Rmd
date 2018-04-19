@@ -44,3 +44,40 @@ Pour télécharger la version *Desktop* de RStudio (que vous pouvez utilisez sur
 
 ## Les bases de RStudio
 
+### La console
+
+Au premier lancement de RStudio, l'écran est séparé en trois grandes zones:
+
+```{r console-rstudio, echo = FALSE, out.width = "100%", fig.cap = "L'interface de RStudio"}
+knitr::include_graphics("images/console-rstudio.png")
+```
+
+La zone de gauche se nomme _Console_. À son démarrage, RStudio a lancé une nouvelle session de R et c’est dans cette fenêtre que nous allons pouvoir interagir avec lui.
+
+Vous devriez voir un texte ressemblant à celui-ci:
+
+```
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+```
+
+La console ressmble à ceci:
+
+```{r console-r, echo = FALSE, out.width = "50%", fig.cap = "La console R"}
+knitr::include_graphics("images/console-r.png")
+```
+
+La ligne qui débute avec le symbole `>` est appelée l’invite de commande (ou prompt en anglais). Elle signifie que R est disponible et en attente de votre prochaine commande. C'est à cet endroit que nous pouvons ...

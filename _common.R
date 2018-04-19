@@ -3,7 +3,7 @@ set.seed(1978)
 options(digits = 3)
 
 knitr::opts_chunk$set(
-  comment = "##",
+  comment = "#>",
   collapse = TRUE,
   cache = FALSE,
   out.width = "70%",
