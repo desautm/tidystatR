@@ -80,4 +80,12 @@ La console ressmble à ceci:
 knitr::include_graphics("images/console-r.png")
 ```
 
-La ligne qui débute avec le symbole `>` est appelée l’invite de commande (ou prompt en anglais). Elle signifie que R est disponible et en attente de votre prochaine commande. C'est à cet endroit que nous pouvons ...
+La ligne qui débute avec le symbole `>` est appelée l’invite de commande (ou prompt en anglais). Elle signifie que R est disponible et en attente de votre prochaine commande. C'est à cet endroit que nous pouvons entrer des commandes et les éxécuter en appuyabt sur `Entrée`.
+
+### Environment/History/Connections
+
+TODO
+
+### Files/Plots/Packages/Help/Viewer
+
+TODO
