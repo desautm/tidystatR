@@ -16,6 +16,7 @@ script:
   - Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
   
 deploy:
+  provider: releases
   skip-cleanup: true
   github-token: "TidystatR for Travis"
   keep-history: true
