@@ -1,5 +1,5 @@
 language: R
-
+pandoc_version: 2.0.6
 sudo: false
 
 cache:
@@ -15,7 +15,7 @@ addons:
 script:
   - Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
   
-deplot:
+deploy:
   skip-cleanup: true
   github-token: "TidystatR for Travis"
   keep-history: true
