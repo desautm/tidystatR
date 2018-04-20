@@ -252,8 +252,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="correlationlineaire.html"><a href="correlationlineaire.html"><i class="fa fa-check"></i><b>19</b> La corrélation linéaire</a><ul>
 <li class="chapter" data-level="19.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#mise-en-place-11"><i class="fa fa-check"></i><b>19.1</b> Mise en place</a></li>
 <li class="chapter" data-level="19.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-nuage-de-points"><i class="fa fa-check"></i><b>19.2</b> Le nuage de points</a></li>
-<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.3</b> Le quartet d’Anscombe</a></li>
-<li class="chapter" data-level="19.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.4</b> DatasauRus</a></li>
+<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#fake-data"><i class="fa fa-check"></i><b>19.3</b> Fake data</a></li>
+<li class="chapter" data-level="19.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.4</b> Le quartet d’Anscombe</a></li>
+<li class="chapter" data-level="19.5" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.5</b> DatasauRus</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
 <li class="divider"></li>
@@ -381,9 +382,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   )
 <span class="co">#&gt; Warning: Removed 28 rows containing missing values (geom_point).</span></code></pre>
 <p><img src="tidystatR_files/figure-html/unnamed-chunk-115-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Nous remarquons une donnée qui semble aberrante dans le graphique précédent. Le personnage de Star Wars semble avoir une masse très importante par rapport à sa taille. Puisque sa masse dépasse 1 000kg, nous allons filtrer les données pour trouver le nom du personnage en question.</p>
+<pre class="sourceCode r"><code class="sourceCode r">starwars <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(mass <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>)
+<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt;   name     height  mass hair_color skin_color  eye_color birth_year gender</span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; </span>
+<span class="co">#&gt; 1 Jabba D…    175 1358. &lt;NA&gt;       green-tan,… orange          600. herma…</span>
+<span class="co">#&gt; # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,</span>
+<span class="co">#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</span></code></pre>
+<p>Le personnage est bien sûr Jabba Desilijic Tiure.</p>
+<p>Il est possible de quantifier la force de la corrélation linéaire entre deux variables à l’aide d’une mesure. Cette mesure est appelée le coefficient de corrélation et est noté <span class="math inline">\(r\)</span>.</p>
+<p>La formule pour calculer <span class="math inline">\(r\)</span> est la suivante:</p>
+<p><span class="math display">\[
+r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
+\]</span></p>
+<p>Nous pouvons utiliser la commande <code>cor</code> dans R pour trouver le coefficient de corrélation. Par exemple, si nous voulons trouver le coefficient de corrélation entre les variables <code>height</code> et <code>mass</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(starwars<span class="op">$</span>height,starwars<span class="op">$</span>mass)
+<span class="co">#&gt; [1] NA</span></code></pre>
+<p>Nous obtenons comme réponse <code>NA</code>. Ceci signifie que des données sont manquantes dans nos observations. Pour calculer un coefficient de corrélation en omettant les données manquantes, nous pouvons utiliser l’option <code>use = &quot;complete.obs&quot;</code>. Nous obtenons donc:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(starwars<span class="op">$</span>height, starwars<span class="op">$</span>mass, <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>)
+<span class="co">#&gt; [1] 0.134</span></code></pre>
+<p>Le coefficient de corrélation est donc de 0.134.</p>
+<p>Nous pouvons calculer le coefficient de corrélation lorsque nous enlevons l’observation de Jabba Desilijic Tiure. Nous obtenons:</p>
+<pre class="sourceCode r"><code class="sourceCode r">no_jabba &lt;-<span class="st"> </span>starwars <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(mass <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span>)
+<span class="kw">cor</span>(no_jabba<span class="op">$</span>height, no_jabba<span class="op">$</span>mass)
+<span class="co">#&gt; [1] 0.761</span></code></pre>
+<p>Le coefficient de corrélation est maintenant de 0.761.</p>
+<p>La valeur de <span class="math inline">\(r\)</span> permet de quantifier la force de la corrélation entre <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> et permet aussi de déterminer si cette corrélation est positive ou négative.</p>
+</div>
+<div id="fake-data" class="section level2">
+<h2><span class="header-section-number">19.3</span> Fake data</h2>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-122-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="le-quartet-danscombe" class="section level2">
-<h2><span class="header-section-number">19.3</span> Le quartet d’Anscombe</h2>
+<h2><span class="header-section-number">19.4</span> Le quartet d’Anscombe</h2>
 <p>Le quartet d’Anscombe est constitué de quatre ensembles de données qui ont les mêmes propriétés statistiques simples mais qui sont en réalité très différents, ce qui se voit facilement lorsqu’on les représente sous forme de graphiques. Ils ont été construits en 1973 par le statisticien Francis Anscombe dans le but de démontrer l’importance de tracer des graphiques avant d’analyser des données, car cela permet notamment d’estimer l’incidence des données aberrantes sur les différentes indices statistiques que l’on pourrait calculer.</p>
 <p>Le quartet d’Anscombe est disponible dans R sous le nom <code>anscombe</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(anscombe)</code></pre>
@@ -574,10 +608,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>ensemble) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-119-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-126-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="datasaurus" class="section level2">
-<h2><span class="header-section-number">19.4</span> DatasauRus</h2>
+<h2><span class="header-section-number">19.5</span> DatasauRus</h2>
 <pre class="sourceCode r"><code class="sourceCode r">datasaurus_dozen <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(dataset) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="st">&quot;moyenne des $x$&quot;</span>=<span class="kw">mean</span>(x), 
@@ -709,7 +743,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="st">  </span><span class="kw">theme_void</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset, <span class="dt">ncol=</span><span class="dv">3</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-121-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-128-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
