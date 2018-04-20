@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="typesvariables.html">
-<link rel="next" href="echellesmesures.html">
+<link rel="prev" href="donneesconstruites.html">
+<link rel="next" href="bibliographie.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -275,42 +275,213 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="questionnaire" class="section level1">
-<h1><span class="header-section-number">Chapitre 6</span> Construire un questionnaire</h1>
-<p>La deuxième étape de la démarche scientifique est la récolte des données. La façon la plus simple de faire est sans nul doute l’utilisation du questionnaire.</p>
-<p>Lors de la conception d’un questionnaire, il est important de choisir les questions de façon à obtenir l’information recherchée.</p>
-<div id="criteres-a-respecter" class="section level2">
-<h2><span class="header-section-number">6.1</span> Critères à respecter</h2>
-<p>Pour construire un questionnaire qui est fiable, il existe des règles à suivre.</p>
-<p>Les questions doivent posséder les qualités ci-dessous :</p>
-<ol style="list-style-type: decimal">
-<li>Claire</li>
-<li>Complète</li>
-<li>Neutre</li>
-<li>Non-menaçante</li>
-<li>Pertinente</li>
-</ol>
+<div id="correlationlineaire" class="section level1">
+<h1><span class="header-section-number">Chapitre 19</span> La corrélation linéaire</h1>
+<div id="mise-en-place-11" class="section level2">
+<h2><span class="header-section-number">19.1</span> Mise en place</h2>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="kw">library</span>(datasauRus)</a>
+<a class="sourceLine" id="cb94-3" data-line-number="3"><span class="kw">library</span>(knitr)</a></code></pre></div>
 </div>
-<div id="types-de-questions" class="section level2">
-<h2><span class="header-section-number">6.2</span> Types de questions</h2>
-<p>Deux questions portant sur un même sujet ne donnent pas nécessairement la même information. C’est pourquoi il est extrêmement important de bien choisir les questions lorsqu’un questionnaire est construit.</p>
-<p>Pour plus d’information à ce sujet, consultez le chapitre <a href="echellesmesures.html#echellesmesures">7</a> portant sur les échelles de mesure.</p>
-<div id="question-ouverte" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Question ouverte</h3>
-<p>Ce type de question ne limite pas les réponses. On l’utilise principalement pour récolter l’opinion des gens.</p>
+<div id="le-quartet-danscombe" class="section level2">
+<h2><span class="header-section-number">19.2</span> Le quartet d’Anscombe</h2>
+<p>Le quartet d’Anscombe est constitué de quatre ensembles de données qui ont les mêmes propriétés statistiques simples mais qui sont en réalité très différents, ce qui se voit facilement lorsqu’on les représente sous forme de graphiques. Ils ont été construits en 1973 par le statisticien Francis Anscombe dans le but de démontrer l’importance de tracer des graphiques avant d’analyser des données, car cela permet notamment d’estimer l’incidence des données aberrantes sur les différentes indices statistiques que l’on pourrait calculer.</p>
+<p>Le quartet d’Anscombe est disponible dans R sous le nom <code>anscombe</code>.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="kw">kable</span>(anscombe)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">x1</th>
+<th align="right">x2</th>
+<th align="right">x3</th>
+<th align="right">x4</th>
+<th align="right">y1</th>
+<th align="right">y2</th>
+<th align="right">y3</th>
+<th align="right">y4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">8</td>
+<td align="right">8.04</td>
+<td align="right">9.14</td>
+<td align="right">7.46</td>
+<td align="right">6.58</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">6.95</td>
+<td align="right">8.14</td>
+<td align="right">6.77</td>
+<td align="right">5.76</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">8</td>
+<td align="right">7.58</td>
+<td align="right">8.74</td>
+<td align="right">12.74</td>
+<td align="right">7.71</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">8</td>
+<td align="right">8.81</td>
+<td align="right">8.77</td>
+<td align="right">7.11</td>
+<td align="right">8.84</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">8</td>
+<td align="right">8.33</td>
+<td align="right">9.26</td>
+<td align="right">7.81</td>
+<td align="right">8.47</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">8</td>
+<td align="right">9.96</td>
+<td align="right">8.10</td>
+<td align="right">8.84</td>
+<td align="right">7.04</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">8</td>
+<td align="right">7.24</td>
+<td align="right">6.13</td>
+<td align="right">6.08</td>
+<td align="right">5.25</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">19</td>
+<td align="right">4.26</td>
+<td align="right">3.10</td>
+<td align="right">5.39</td>
+<td align="right">12.50</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">8</td>
+<td align="right">10.84</td>
+<td align="right">9.13</td>
+<td align="right">8.15</td>
+<td align="right">5.56</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">8</td>
+<td align="right">4.82</td>
+<td align="right">7.26</td>
+<td align="right">6.42</td>
+<td align="right">7.91</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="right">5.68</td>
+<td align="right">4.74</td>
+<td align="right">5.73</td>
+<td align="right">6.89</td>
+</tr>
+</tbody>
+</table>
+<p>Les observations <span class="math inline">\(x_i\)</span> sont reliées aux observations <span class="math inline">\(y_i\)</span>. Pour visualiser ces quatre ensembles de données, nous avons produit une nouvelle base de données <code>anscombe_tidy</code> sous la forme de <em>tidy data</em>.</p>
+<p>Avant d’afficher les ensembles de données, nous allons calculer quelques mesures sur chacun de ces ensembles, à savoir, la moyenne des <span class="math inline">\(x\)</span>, la moyenne des <span class="math inline">\(y\)</span>, la variance des <span class="math inline">\(x\)</span>, la variance des <span class="math inline">\(y\)</span> et le coefficient de corrélation.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">anscombe_tidy <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(ensemble) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(x), <span class="kw">var</span>(x), <span class="kw">mean</span>(y), <span class="kw">var</span>(y), <span class="kw">cor</span>(x,y)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-4" data-line-number="4"><span class="st">  </span>kable</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ensemble</th>
+<th align="right">mean(x)</th>
+<th align="right">var(x)</th>
+<th align="right">mean(y)</th>
+<th align="right">var(y)</th>
+<th align="right">cor(x, y)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">I</td>
+<td align="right">9</td>
+<td align="right">11</td>
+<td align="right">7.5</td>
+<td align="right">4.13</td>
+<td align="right">0.816</td>
+</tr>
+<tr class="even">
+<td align="left">II</td>
+<td align="right">9</td>
+<td align="right">11</td>
+<td align="right">7.5</td>
+<td align="right">4.13</td>
+<td align="right">0.816</td>
+</tr>
+<tr class="odd">
+<td align="left">III</td>
+<td align="right">9</td>
+<td align="right">11</td>
+<td align="right">7.5</td>
+<td align="right">4.12</td>
+<td align="right">0.816</td>
+</tr>
+<tr class="even">
+<td align="left">IV</td>
+<td align="right">9</td>
+<td align="right">11</td>
+<td align="right">7.5</td>
+<td align="right">4.12</td>
+<td align="right">0.817</td>
+</tr>
+</tbody>
+</table>
+<p>Nous affichons ensuite les quatre ensembles de données.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">ggplot</span>(anscombe_tidy, <span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>ensemble) <span class="op">+</span></a>
+<a class="sourceLine" id="cb97-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-116-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="questions-fermees" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Questions fermées</h3>
-<p>Ces questions restreignent les choix des répondants.</p>
-<ul>
-<li>Réponse brève : la réponse est une lettre, un chiffre ou un mot</li>
-<li>Dichotomique : il n’y a que deux choix de réponses</li>
-<li>Choix multiples : le répondant doit sélectionner une réponse parmi celles proposées</li>
-<li>Cafétéria : plusieurs réponses parmi celles proposées peuvent être choisies</li>
-<li>Nature hiérarchique : des éléments doivent être placés en ordre d’importance</li>
-</ul>
+<div id="datasaurus" class="section level2">
+<h2><span class="header-section-number">19.3</span> DatasauRus</h2>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">ggplot</span>(datasaurus_dozen, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y, <span class="dt">colour=</span>dataset))<span class="op">+</span></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_void</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb98-4" data-line-number="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb98-5" data-line-number="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset, <span class="dt">ncol=</span><span class="dv">3</span>)</a></code></pre></div>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-117-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
-</div>
 </div>
 </div>
             </section>
@@ -318,8 +489,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="typesvariables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="echellesmesures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="donneesconstruites.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliographie.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -349,7 +520,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/desautm/tidystatR/edit/master/chapitres/questionnaire.Rmd",
+"link": "https://github.com/desautm/tidystatR/edit/master/chapitres/correlation-lineaire.Rmd",
 "text": "Modifier"
 },
 "download": ["tidystatR.pdf", "tidystatR.epub"],

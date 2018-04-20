@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-19">
+<meta name="date" content="2018-04-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,6 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
 <li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="rrstudio.html"><a href="rrstudio.html#la-console"><i class="fa fa-check"></i><b>1.3.1</b> La console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rrstudio.html"><a href="rrstudio.html#environmenthistoryconnections"><i class="fa fa-check"></i><b>1.3.2</b> Environment/History/Connections</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rrstudio.html"><a href="rrstudio.html#filesplotspackageshelpviewer"><i class="fa fa-check"></i><b>1.3.3</b> Files/Plots/Packages/Help/Viewer</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
@@ -246,6 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
 </ul></li>
+<li class="part"><span><b>VI L’analyse de lien</b></span></li>
+<li class="chapter" data-level="19" data-path="correlationlineaire.html"><a href="correlationlineaire.html"><i class="fa fa-check"></i><b>19</b> La corrélation linéaire</a><ul>
+<li class="chapter" data-level="19.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#mise-en-place-11"><i class="fa fa-check"></i><b>19.1</b> Mise en place</a></li>
+<li class="chapter" data-level="19.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.2</b> Le quartet d’Anscombe</a></li>
+<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.3</b> DatasauRus</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
@@ -306,8 +314,8 @@ Z = \dfrac{x-\text{moyenne}}{\text{ecart-type}}
 </table>
 <p>Il n’existe pas de fonctions en <code>R</code> permettant de calculer directement la cote Z. Par contre, nous pouvons utiliser en conjonction les fonctions <code>sd</code> et <code>mean</code> pour la calculer.</p>
 <p>Par exemple, si nous voulons calculer la cote Z d’un diamant de 3 carats, nous avons:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">(<span class="dv">3</span><span class="op">-</span><span class="kw">mean</span>(diamonds<span class="op">$</span>carat))<span class="op">/</span><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)</a>
-<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="co">#&gt; [1] 4.65</span></a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">(<span class="dv">3</span><span class="op">-</span><span class="kw">mean</span>(diamonds<span class="op">$</span>carat))<span class="op">/</span><span class="kw">sd</span>(diamonds<span class="op">$</span>carat)</a>
+<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="co">#&gt; [1] 4.65</span></a></code></pre></div>
 </div>
 <div id="les-quantiles" class="section level2">
 <h2><span class="header-section-number">16.2</span> Les quantiles</h2>
@@ -336,14 +344,14 @@ Etc.</li>
 </blockquote>
 <p>La fonction <code>quantile</code> permet de calculer n’importe quel quantile d’une variable en langage <code>R</code>. Il suffit d’indiquer la variable étudiée ainsi que le pourcentage du quantile voulu.</p>
 <p>Par exemple, si nous voulons calculer D<sub>1</sub> pour la variable <code>carat</code>, nous allons utiliser la fonction <code>quantile</code> avec une probabilité de 0,1.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>carat, <span class="fl">0.1</span>)</a>
-<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="co">#&gt;  10% </span></a>
-<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="co">#&gt; 0.31</span></a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>carat, <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="co">#&gt;  10% </span></a>
+<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="co">#&gt; 0.31</span></a></code></pre></div>
 <p>Ceci implique que 10% des diamants ont une valeur en carat inférieure ou égale à 0.31 carat.</p>
 <p>Nous pouvons calculer le troisième quartile Q<sub>3</sub> de la variable <code>price</code> en utilisant la fonction <code>quantile</code> avec une probabilité de 0,75.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>price, <span class="fl">0.75</span>)</a>
-<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="co">#&gt;  75% </span></a>
-<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="co">#&gt; 5324</span></a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">quantile</span>(diamonds<span class="op">$</span>price, <span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="co">#&gt;  75% </span></a>
+<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="co">#&gt; 5324</span></a></code></pre></div>
 <p>Ceci implique que 75% des diamants ont un prix en dollars inférieur ou égal à 5324.25 $.</p>
 </div>
 <div id="la-commande-summary" class="section level2">
@@ -358,9 +366,9 @@ Etc.</li>
 <li><code>Max</code> : Le maximum de la variable</li>
 </ol>
 <p>Nous pouvons donc produire le sommaire de la variable <code>price</code> de la base de données <code>diamonds</code> de la façon suivante:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">summary</span>(diamonds<span class="op">$</span>price)</a>
-<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></a>
-<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="co">#&gt;     326     950    2401    3933    5324   18823</span></a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">summary</span>(diamonds<span class="op">$</span>price)</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></a>
+<a class="sourceLine" id="cb87-3" data-line-number="3"><span class="co">#&gt;     326     950    2401    3933    5324   18823</span></a></code></pre></div>
 </div>
 <div id="le-rang-centile" class="section level2">
 <h2><span class="header-section-number">16.4</span> Le rang centile</h2>
@@ -368,8 +376,8 @@ Etc.</li>
 <p>Les rangs centiles sont donc exactement l’inverse des centiles.</p>
 <p>Il n’existe pas de fonctions dans <code>R</code> permettant de trouver directement le rang centile, mais il est facile d’utiliser la fonction <code>mean</code> pour le trouver.</p>
 <p>Par exemple, si nous voulons trouver le rang centile d’un diamant qui coûte 500$, il suffit d’utiliser la commande suivante. La commande calcule la moyenne de toutes les valeurs en dollars des diamants coûtant 500$ ou moins.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>price<span class="op">&lt;=</span><span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="co">#&gt; [1] 0.0324</span></a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">mean</span>(diamonds<span class="op">$</span>price<span class="op">&lt;=</span><span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="co">#&gt; [1] 0.0324</span></a></code></pre></div>
 <p>Ceci signifie que pour un diamant de 500$, il y a 3.242 % des diamants qui ont une valeur égale ou inférieure.</p>
 
 </div>

@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-19">
+<meta name="date" content="2018-04-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,6 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
 <li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="rrstudio.html"><a href="rrstudio.html#la-console"><i class="fa fa-check"></i><b>1.3.1</b> La console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rrstudio.html"><a href="rrstudio.html#environmenthistoryconnections"><i class="fa fa-check"></i><b>1.3.2</b> Environment/History/Connections</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rrstudio.html"><a href="rrstudio.html#filesplotspackageshelpviewer"><i class="fa fa-check"></i><b>1.3.3</b> Files/Plots/Packages/Help/Viewer</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
@@ -246,6 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
 </ul></li>
+<li class="part"><span><b>VI L’analyse de lien</b></span></li>
+<li class="chapter" data-level="19" data-path="correlationlineaire.html"><a href="correlationlineaire.html"><i class="fa fa-check"></i><b>19</b> La corrélation linéaire</a><ul>
+<li class="chapter" data-level="19.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#mise-en-place-11"><i class="fa fa-check"></i><b>19.1</b> Mise en place</a></li>
+<li class="chapter" data-level="19.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.2</b> Le quartet d’Anscombe</a></li>
+<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.3</b> DatasauRus</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
@@ -270,8 +278,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tidyverse" class="section level1">
 <h1><span class="header-section-number">Chapitre 2</span> Le tidyverse</h1>
 <p>Dans ce document, nous utiliserons l’extension <code>tidyverse</code> par <span class="citation">(Wickham <a href="#ref-R-tidyverse">2017</a><a href="#ref-R-tidyverse">b</a>)</span>. Ce chapitre permettra d’introduire l’extension <code>tidyverse</code> mais surtout les principes qui la sous-tendent. Ce chapitre est inspiré de <span class="citation">(Barnier <a href="#ref-juba2018">2018</a>)</span> et <span class="citation">(Wickham and Grolemund <a href="#ref-wickham2017">2017</a>)</span>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(questionr)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(questionr)</a></code></pre></div>
 <div id="extensions" class="section level2">
 <h2><span class="header-section-number">2.1</span> Extensions</h2>
 <p>Le terme <em>tidyverse</em> est une contraction de <em>tidy</em> (qu’on pourrait traduire par <em>bien rangé</em>) et de <em>universe</em>. En allant visiter le site internet de ces extensions <a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a>, voici ce que nous pouvons trouver sur la première page du site:</p>
@@ -303,10 +311,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="installation" class="section level2">
 <h2><span class="header-section-number">2.2</span> Installation</h2>
 <p>Pour installer les extensions du <code>tidyverse</code>, nous effectuons la commande suivante:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
 <p>Une fois l’extension installée, il n’est pas nécessaire de la réinstaller à chaque fois que vous utilisez <code>R</code>. Par contre, vous devez charger l’extension à chaque fois que vous utilisez <code>R</code>.</p>
 <p>Pour charger l’extension et l’utiliser dans <code>R</code>, nous effectuons la commande suivante:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Cette commande va en fait charger plusieurs extensions qui constituent le <strong>coeur</strong> du <code>tidyverse</code>, à savoir :</p>
 <ul>
 <li><code>ggplot2</code> (visualisation)</li>
@@ -349,17 +357,17 @@ de <em>vectoriser</em> les opérations dans <code>R</code>. Ceci implique que vo
 rapides lorsque viendra le temps de les exécuter.</p></li>
 </ol>
 <p>Voici un exemple de données <em>tidy</em> qui sont accessibles en <code>R</code> de base.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">as_tibble</span>(<span class="kw">rownames_to_column</span>(mtcars))</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 32 x 12</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;   rowname        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1 Mazda RX4     21.0    6.  160.  110.  3.90  2.62  16.5    0.    1.    4.</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2 Mazda RX4 W~  21.0    6.  160.  110.  3.90  2.88  17.0    0.    1.    4.</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3 Datsun 710    22.8    4.  108.   93.  3.85  2.32  18.6    1.    1.    4.</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4 Hornet 4 Dr~  21.4    6.  258.  110.  3.08  3.22  19.4    1.    0.    3.</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5 Hornet Spor~  18.7    8.  360.  175.  3.15  3.44  17.0    0.    0.    3.</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6 Valiant       18.1    6.  225.  105.  2.76  3.46  20.2    1.    0.    3.</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; # ... with 26 more rows, and 1 more variable: carb &lt;dbl&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">as_tibble</span>(<span class="kw">rownames_to_column</span>(mtcars))</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; # A tibble: 32 x 12</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;   rowname        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 1 Mazda RX4     21.0    6.  160.  110.  3.90  2.62  16.5    0.    1.    4.</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 2 Mazda RX4 W~  21.0    6.  160.  110.  3.90  2.88  17.0    0.    1.    4.</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 3 Datsun 710    22.8    4.  108.   93.  3.85  2.32  18.6    1.    1.    4.</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 4 Hornet 4 Dr~  21.4    6.  258.  110.  3.08  3.22  19.4    1.    0.    3.</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 5 Hornet Spor~  18.7    8.  360.  175.  3.15  3.44  17.0    0.    0.    3.</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 6 Valiant       18.1    6.  225.  105.  2.76  3.46  20.2    1.    0.    3.</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; # ... with 26 more rows, and 1 more variable: carb &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 <div id="tibbles" class="section level2">
 <h2><span class="header-section-number">2.4</span> Les tibbles</h2>
@@ -368,13 +376,13 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 <div id="prerequis" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Prérequis</h3>
 <p>Pour être en mesure d’utiliser le paquetage <strong>tibble</strong>, nous devons charger l’extension <strong>tibble</strong>. Pour ce faire, il suffit d’utiliser la commande suivante:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(tibble)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(tibble)</a></code></pre></div>
 </div>
 <div id="un-exemple-de-tibble" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> Un exemple de <strong>tibble</strong></h3>
 <p>Pour comprendre ce qu’est un <strong>tibble</strong>, nous allons utiliser deux librairies: <code>nycflights13</code> et <code>diamonds</code>. Si ce n’est pas déjà fait, vous devez les installer et ensuite les charger.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(nycflights13)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(nycflights13)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
 <p>Nous allons étudier le paquetage <code>nycflights13</code>qui contient 5 bases de données contenant des informations concernant les vols intérieurs en partance de New York en 2013, à partir des aéroports de Newark Liberty International (EWR), John F. Kennedy International (JFK) ou LaGuardia (LGA). Les 5 bases de données sont les suivantes:</p>
 <ul>
 <li>flights: information sur les 336,776 vols</li>
@@ -387,20 +395,20 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 <div id="la-base-de-donnees-flights" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> La base de données flights</h3>
 <p>Pour visualiser facilement une base de données sous forme <strong>tibble</strong>, il suffit de taper son nom dans la console. Nous allons utiliser la base de données flights. Par exemple:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">flights</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; # A tibble: 336,776 x 19</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; 1  2013     1     1      517            515        2.      830</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 2  2013     1     1      533            529        4.      850</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 3  2013     1     1      542            540        2.      923</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 4  2013     1     1      544            545       -1.     1004</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 5  2013     1     1      554            600       -6.      812</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 6  2013     1     1      554            558       -4.      740</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; # ... with 3.368e+05 more rows, and 12 more variables:</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; #   sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">flights</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; # A tibble: 336,776 x 19</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1  2013     1     1      517            515        2.      830</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 2  2013     1     1      533            529        4.      850</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 3  2013     1     1      542            540        2.      923</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 4  2013     1     1      544            545       -1.     1004</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 5  2013     1     1      554            600       -6.      812</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 6  2013     1     1      554            558       -4.      740</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; # ... with 3.368e+05 more rows, and 12 more variables:</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; #   sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
 <p>Nous allons décortiquer la sortie console:</p>
 <ul>
 <li><code>A tibble: 336,776 x 19</code>: un <strong>tibble</strong> est une façon de représenter une base de données en R. Cette base de données possède:
@@ -429,17 +437,17 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 <li><code>depth</code> : z / mean(x, y) = 2 * z / (x + y)</li>
 <li><code>table</code> : largeur du dessus du diamant par rapport à son point le plus large</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">diamonds</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; # A tibble: 53,940 x 10</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1 0.230 Ideal     E     SI2      61.5   55.   326  3.95  3.98  2.43</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 2 0.210 Premium   E     SI1      59.8   61.   326  3.89  3.84  2.31</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 3 0.230 Good      E     VS1      56.9   65.   327  4.05  4.07  2.31</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 4 0.290 Premium   I     VS2      62.4   58.   334  4.20  4.23  2.63</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 5 0.310 Good      J     SI2      63.3   58.   335  4.34  4.35  2.75</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 6 0.240 Very Good J     VVS2     62.8   57.   336  3.94  3.96  2.48</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; # ... with 5.393e+04 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">diamonds</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; # A tibble: 53,940 x 10</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; 1 0.230 Ideal     E     SI2      61.5   55.   326  3.95  3.98  2.43</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; 2 0.210 Premium   E     SI1      59.8   61.   326  3.89  3.84  2.31</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 3 0.230 Good      E     VS1      56.9   65.   327  4.05  4.07  2.31</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 4 0.290 Premium   I     VS2      62.4   58.   334  4.20  4.23  2.63</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 5 0.310 Good      J     SI2      63.3   58.   335  4.34  4.35  2.75</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 6 0.240 Very Good J     VVS2     62.8   57.   336  3.94  3.96  2.48</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; # ... with 5.393e+04 more rows</span></a></code></pre></div>
 </div>
 <div id="explorertibbles" class="section level3">
 <h3><span class="header-section-number">2.4.5</span> Comment explorer des “tibbles”</h3>
@@ -458,45 +466,45 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 <li><code>glimpse</code>:</li>
 </ol>
 <p>La seconde façon d’explorer une base de données est d’utiliser la fonction <code>glimpse()</code>. Cette fonction nous donne la majorité de l’information précédente et encore plus.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">glimpse</span>(flights)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; Observations: 336,776</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Variables: 19</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,...</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 55...</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 60...</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2...</span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 7...</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 7...</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -...</span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; $ carrier        &lt;chr&gt; &quot;UA&quot;, &quot;UA&quot;, &quot;AA&quot;, &quot;B6&quot;, &quot;DL&quot;, &quot;UA&quot;, &quot;B6&quot;, &quot;EV&quot;,...</span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt; $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79...</span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; $ tailnum        &lt;chr&gt; &quot;N14228&quot;, &quot;N24211&quot;, &quot;N619AA&quot;, &quot;N804JB&quot;, &quot;N668DN...</span></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; $ origin         &lt;chr&gt; &quot;EWR&quot;, &quot;LGA&quot;, &quot;JFK&quot;, &quot;JFK&quot;, &quot;LGA&quot;, &quot;EWR&quot;, &quot;EWR&quot;...</span></a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; $ dest           &lt;chr&gt; &quot;IAH&quot;, &quot;IAH&quot;, &quot;MIA&quot;, &quot;BQN&quot;, &quot;ATL&quot;, &quot;ORD&quot;, &quot;FLL&quot;...</span></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138...</span></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 94...</span></a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5,...</span></a>
-<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, ...</span></a>
-<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013...</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">glimpse</span>(flights)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; Observations: 336,776</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; Variables: 19</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,...</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 55...</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 60...</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2...</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 7...</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 7...</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -...</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; $ carrier        &lt;chr&gt; &quot;UA&quot;, &quot;UA&quot;, &quot;AA&quot;, &quot;B6&quot;, &quot;DL&quot;, &quot;UA&quot;, &quot;B6&quot;, &quot;EV&quot;,...</span></a>
+<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt; $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79...</span></a>
+<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt; $ tailnum        &lt;chr&gt; &quot;N14228&quot;, &quot;N24211&quot;, &quot;N619AA&quot;, &quot;N804JB&quot;, &quot;N668DN...</span></a>
+<a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt; $ origin         &lt;chr&gt; &quot;EWR&quot;, &quot;LGA&quot;, &quot;JFK&quot;, &quot;JFK&quot;, &quot;LGA&quot;, &quot;EWR&quot;, &quot;EWR&quot;...</span></a>
+<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="co">#&gt; $ dest           &lt;chr&gt; &quot;IAH&quot;, &quot;IAH&quot;, &quot;MIA&quot;, &quot;BQN&quot;, &quot;ATL&quot;, &quot;ORD&quot;, &quot;FLL&quot;...</span></a>
+<a class="sourceLine" id="cb11-18" data-line-number="18"><span class="co">#&gt; $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138...</span></a>
+<a class="sourceLine" id="cb11-19" data-line-number="19"><span class="co">#&gt; $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 94...</span></a>
+<a class="sourceLine" id="cb11-20" data-line-number="20"><span class="co">#&gt; $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5,...</span></a>
+<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">#&gt; $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, ...</span></a>
+<a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">#&gt; $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013...</span></a></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li><code>kable()</code>:</li>
 </ol>
 <p>La dernière façon d’étudier l’entièreté de la base de données est d’utiliser la fonction <code>kable()</code> de la librairie <code>knitr</code>. Nous allons explorer les codes des différentes compagnies d’aviation de deux façons.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">airlines</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; # A tibble: 16 x 2</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt;   carrier name                    </span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                   </span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; 1 9E      Endeavor Air Inc.       </span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; 2 AA      American Airlines Inc.  </span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; 3 AS      Alaska Airlines Inc.    </span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 4 B6      JetBlue Airways         </span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 5 DL      Delta Air Lines Inc.    </span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 6 EV      ExpressJet Airlines Inc.</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; # ... with 10 more rows</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="kw">kable</span>(airlines)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">airlines</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; # A tibble: 16 x 2</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt;   carrier name                    </span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                   </span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; 1 9E      Endeavor Air Inc.       </span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; 2 AA      American Airlines Inc.  </span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 3 AS      Alaska Airlines Inc.    </span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 4 B6      JetBlue Airways         </span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 5 DL      Delta Air Lines Inc.    </span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 6 EV      ExpressJet Airlines Inc.</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; # ... with 10 more rows</span></a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="kw">kable</span>(airlines)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -576,15 +584,15 @@ rapides lorsque viendra le temps de les exécuter.</p></li>
 <li>L’opérateur <code>$</code>:</li>
 </ol>
 <p>Finalement, l’opérateur <code>$</code> nous permet d’explorer une seule variable à l’intérieur d’une base de données. Par exemple, si nous désirons étudier la variable <code>name</code> de la base de données <code>airlines</code>, nous obtenons:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">airlines<span class="op">$</span>name</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt;  [1] &quot;Endeavor Air Inc.&quot;           &quot;American Airlines Inc.&quot;     </span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt;  [3] &quot;Alaska Airlines Inc.&quot;        &quot;JetBlue Airways&quot;            </span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt;  [5] &quot;Delta Air Lines Inc.&quot;        &quot;ExpressJet Airlines Inc.&quot;   </span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;  [7] &quot;Frontier Airlines Inc.&quot;      &quot;AirTran Airways Corporation&quot;</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;  [9] &quot;Hawaiian Airlines Inc.&quot;      &quot;Envoy Air&quot;                  </span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; [11] &quot;SkyWest Airlines Inc.&quot;       &quot;United Air Lines Inc.&quot;      </span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [13] &quot;US Airways Inc.&quot;             &quot;Virgin America&quot;             </span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; [15] &quot;Southwest Airlines Co.&quot;      &quot;Mesa Airlines Inc.&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">airlines<span class="op">$</span>name</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt;  [1] &quot;Endeavor Air Inc.&quot;           &quot;American Airlines Inc.&quot;     </span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt;  [3] &quot;Alaska Airlines Inc.&quot;        &quot;JetBlue Airways&quot;            </span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;  [5] &quot;Delta Air Lines Inc.&quot;        &quot;ExpressJet Airlines Inc.&quot;   </span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;  [7] &quot;Frontier Airlines Inc.&quot;      &quot;AirTran Airways Corporation&quot;</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt;  [9] &quot;Hawaiian Airlines Inc.&quot;      &quot;Envoy Air&quot;                  </span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; [11] &quot;SkyWest Airlines Inc.&quot;       &quot;United Air Lines Inc.&quot;      </span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; [13] &quot;US Airways Inc.&quot;             &quot;Virgin America&quot;             </span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; [15] &quot;Southwest Airlines Co.&quot;      &quot;Mesa Airlines Inc.&quot;</span></a></code></pre></div>
 
 </div>
 </div>

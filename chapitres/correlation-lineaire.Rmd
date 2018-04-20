@@ -2,18 +2,141 @@
 
 # La corrélation linéaire {#correlationlineaire}
 
+La corrélation est l’étude de l’intensité du lien entre deux variables. Elle permet de quantifier la relation entre deux variables **quantitatives**. 
+
+Bien qu’à priori le lien de dépendance ne soit pas toujours évident entre ces deux variables, il est pratique, à des fins d’analyse, de définir la variable indépendante $X$ et la variable dépendante $Y$.
+
 ## Mise en place
+
+Nous utiliserons les librairies suivantes pour ce chapitre.
 
 ```{r message=FALSE}
 library(tidyverse)
 library(datasauRus)
+library(knitr)
 ```
 
-## Anscombe
+Dans ce chapitre, nous utiliserons la base de données `starwars` qui est chargée par l'extension `dplyr` du `tidyverse`. Les informations présentes dans cette base de données sont:
+
+```{r echo=FALSE}
+starwars_description <- tibble(
+  variable = c("name",
+               "height",
+               "mass",
+               "hair_color,skin_color,eye_color",
+               "birth_year",
+               "gender",
+               "homeworld",
+               "species",
+               "films",
+               "vehicles",
+               "starships"),
+  description = c("Name of the character",
+                  "Height (cm)",
+                  "Weight (kg)",
+                  "Hair, skin, and eye colors",
+                  "Year born (BBY = Before Battle of Yavin)",
+                  "male, female, hermaphrodite, or none.",
+                  "Name of homeworld",
+                  "Name of species",
+                  "List of films the character appeared in",
+                  "List of vehicles the character has piloted",
+                  "List of starships the character has piloted")
+  )
+kable(starwars_description)
+```
+
+Nous pouvons avoir un meilleur apercu des différentes variables de la base de données en utilisant la commande `glimpse`.
+
+```{r}
+glimpse(starwars)
+```
+
+## Le nuage de points
+
+Dans le cours de méthodes quantitatives, nous nous intéressons à la corrélation linéaire. Un nuage de points permet de visualiser les données. 
+
+Pour construire ce graphique:
+
+- Le titre doit être indiqué : "Lien entre variable 1 et variable 2".
+- La variable indépendante est placée sur l’axe des $x$ et la variable dépendante est placée sur l’axe des $y$.
+- Les titres des axes doivent être présents.
+- Un point doit être placé à la coordonnée $(x_i,y_i)$ pour chacun des couples de données.
+- Les axes $x$ et $y$ peuvent être coupés pour améliorer la présentation.
+
+Nous allons nous intéresser aux variables `height` et `mass` de la base de données `starwars`. Puisque la masse (`mass`) dépend de la taille (`height`), la variable `mass` est la variable dépendante et la variable `height` est la variable indépendante.
+
+Nous avons donc:
+
+```{r}
+ggplot(data = starwars, aes(x = height, y = mass))+
+  geom_point()+
+  labs(
+    x = "Taille (cm)",
+    y = "Masse (kg)",
+    title = "Lien entre la taille et la masse"
+  )
+```
+
+
+## Le quartet d'Anscombe
+
+Le quartet d'Anscombe est constitué de quatre ensembles de données qui ont les mêmes propriétés statistiques simples mais qui sont en réalité très différents, ce qui se voit facilement lorsqu'on les représente sous forme de graphiques. Ils ont été construits en 1973 par le statisticien Francis Anscombe dans le but de démontrer l'importance de tracer des graphiques avant d'analyser des données, car cela permet notamment d'estimer l'incidence des données aberrantes sur les différentes indices statistiques que l'on pourrait calculer.
+
+Le quartet d'Anscombe est disponible dans R sous le nom `anscombe`.
+
+```{r}
+kable(anscombe)
+```
+
+Les observations $x_i$ sont reliées aux observations $y_i$. Pour visualiser ces quatre ensembles de données, nous avons produit une nouvelle base de données `anscombe_tidy` sous la forme de _tidy data_. 
+
+```{r echo = FALSE}
+anscombe_tidy <- anscombe %>%
+    mutate(observation = seq_len(n())) %>%
+    gather(key, value, -observation) %>%
+    separate(key, c("variable", "ensemble"), 1, convert = TRUE) %>%
+    mutate(ensemble = c("I", "II", "III", "IV")[ensemble]) %>%
+    spread(variable, value)
+```
+
+Avant d'afficher les ensembles de données, nous allons calculer quelques mesures sur chacun de ces ensembles, à savoir, la moyenne des $x$, la moyenne des $y$, la variance des $x$, la variance des $y$ et le coefficient de corrélation.
+
+```{r}
+anscombe_tidy %>%
+  group_by(ensemble) %>%
+  summarise("moyenne des $x$"=mean(x), 
+            "variance des $x$"=var(x), 
+            "moyenne des $y$"=mean(y), 
+            "variance des $y$"=var(y), 
+            "coeff. de corrélation"=cor(x,y)) %>%
+  kable
+```
+
+Comme nous pouvons le remarquer, les quatre ensembles de données possèdent les mêmes mesures. Par contre, lorsque nous affichons ensuite les quatre ensembles de données, nous remarquons que ces ensembles sont très différents.
+
+```{r}
+ggplot(anscombe_tidy, aes(x, y)) +
+    geom_point() +
+    facet_wrap(~ ensemble) +
+    geom_smooth(method = "lm", se = FALSE)
+```
+
 
 ## DatasauRus
 
 ```{r}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarise("moyenne des $x$"=mean(x), 
+            "variance des $x$"=var(x), 
+            "moyenne des $y$"=mean(y), 
+            "variance des $y$"=var(y), 
+            "coeff. de corrélation"=cor(x,y)) %>%
+  kable
+```
+
+```{r fig.height=12}
 ggplot(datasaurus_dozen, aes(x=x, y=y, colour=dataset))+
   geom_point()+
   theme_void()+

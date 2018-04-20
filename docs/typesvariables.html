@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-19">
+<meta name="date" content="2018-04-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,6 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
 <li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="rrstudio.html"><a href="rrstudio.html#la-console"><i class="fa fa-check"></i><b>1.3.1</b> La console</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rrstudio.html"><a href="rrstudio.html#environmenthistoryconnections"><i class="fa fa-check"></i><b>1.3.2</b> Environment/History/Connections</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rrstudio.html"><a href="rrstudio.html#filesplotspackageshelpviewer"><i class="fa fa-check"></i><b>1.3.3</b> Files/Plots/Packages/Help/Viewer</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
@@ -246,6 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
 </ul></li>
+<li class="part"><span><b>VI L’analyse de lien</b></span></li>
+<li class="chapter" data-level="19" data-path="correlationlineaire.html"><a href="correlationlineaire.html"><i class="fa fa-check"></i><b>19</b> La corrélation linéaire</a><ul>
+<li class="chapter" data-level="19.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#mise-en-place-11"><i class="fa fa-check"></i><b>19.1</b> Mise en place</a></li>
+<li class="chapter" data-level="19.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.2</b> Le quartet d’Anscombe</a></li>
+<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.3</b> DatasauRus</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
@@ -275,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mise-en-place-1" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Mise en place</h3>
 <p>Dans ce chapitre, nous introduirons les différents types de variables et les façons avec lesquelles nous pouvons les utiliser en langage <code>R</code>. Nous utiliserons la librairie <code>tidyverse</code> et en particulier l’extension <code>forcats</code> pour travailler avec des variables qualitatives. Puisque l’extension <code>forcats</code> fait partie du <code>tidyverse</code> de base, nous avons simplement à charger <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 </div>
 </div>
 <div id="varqual" class="section level2">
@@ -286,101 +294,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>On observe ce type de variable lorsqu’il n’y a pas d’ordre croissant naturel dans les <strong>modalités</strong> de la variable. Par exemple, la variable <em>couleur des cheveux</em> est à échelle nominale. L’ordre “blonds, bruns, roux, noirs, autre” est un ordre aussi valable que
 “bruns, noirs, roux, blonds, autre”.</p>
 <p>Imaginons que vous vouliez créer une variable qui indique le mois de l’année:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Déc&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Déc&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</a></code></pre></div>
 <p>L’approche précédente pose deux problèmes:</p>
 <ol style="list-style-type: decimal">
 <li><p>Il n’y a que douze mois possibles et rien ne vous empêche de vous tromper dans votre entrée de modalités:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Déc&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Jam&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</a></code></pre></div></li>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Déc&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Jam&quot;</span>, <span class="st">&quot;Mar&quot;</span>)</a></code></pre></div></li>
 <li><p>Les modalités ne seront pas affichées dans un ordre logique</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># La commande &quot;sort&quot; permet de trier les données</span></a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">sort</span>(x1)</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co">#&gt; [1] &quot;Avr&quot; &quot;Déc&quot; &quot;Jan&quot; &quot;Mar&quot;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># La commande &quot;sort&quot; permet de trier les données</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">sort</span>(x1)</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co">#&gt; [1] &quot;Avr&quot; &quot;Déc&quot; &quot;Jan&quot; &quot;Mar&quot;</span></a></code></pre></div></li>
 </ol>
 <p>Nous pouvons résoudre ce problèmes en utilisant un <strong>facteur</strong> (<strong>factor</strong> en <code>R</code>). Pour créer un facteur, vous devez créer en premier lieu une liste avec <strong>toutes les modalités possibles placées dans l’ordre qui vous convient</strong> (<strong>levels</strong> en <code>R</code>):</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">niveaux_mois &lt;-<span class="st"> </span><span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">  <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Fév&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Jun&quot;</span>,</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">  <span class="st">&quot;Jui&quot;</span>, <span class="st">&quot;Aoû&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Oct&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Déc&quot;</span></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">niveaux_mois &lt;-<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">  <span class="st">&quot;Jan&quot;</span>, <span class="st">&quot;Fév&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Avr&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Jun&quot;</span>,</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">  <span class="st">&quot;Jui&quot;</span>, <span class="st">&quot;Aoû&quot;</span>, <span class="st">&quot;Sep&quot;</span>, <span class="st">&quot;Oct&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Déc&quot;</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">)</a></code></pre></div>
 <p>Vous pouvez maintenant créer un facteur:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">y1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> niveaux_mois)</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">y1</a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co">#&gt; [1] Déc Avr Jan Mar</span></a>
-<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co">#&gt; Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</span></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="kw">sort</span>(y1)</a>
-<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="co">#&gt; [1] Jan Mar Avr Déc</span></a>
-<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="co">#&gt; Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">y1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> niveaux_mois)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">y1</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="co">#&gt; [1] Déc Avr Jan Mar</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="co">#&gt; Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</span></a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="kw">sort</span>(y1)</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="co">#&gt; [1] Jan Mar Avr Déc</span></a>
+<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="co">#&gt; Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</span></a></code></pre></div>
 <p>Si certaines modalités ne sont pas dans votre liste de levels, elles seront converties en NA:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">y2 &lt;-<span class="st"> </span><span class="kw">factor</span>(x2, <span class="dt">levels =</span> niveaux_mois)</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">y2</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="co">#&gt; [1] Déc  Avr  &lt;NA&gt; Mar </span></a>
-<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="co">#&gt; Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</span></a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">y2 &lt;-<span class="st"> </span><span class="kw">factor</span>(x2, <span class="dt">levels =</span> niveaux_mois)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">y2</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="co">#&gt; [1] Déc  Avr  &lt;NA&gt; Mar </span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="co">#&gt; Levels: Jan Fév Mar Avr Mai Jun Jui Aoû Sep Oct Nov Déc</span></a></code></pre></div>
 <p>Si vous n’utilisez pas vos levels, vos modalités seront affichées en ordre alphabétique:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">factor</span>(x1)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="co">#&gt; [1] Déc Avr Jan Mar</span></a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="co">#&gt; Levels: Avr Déc Jan Mar</span></a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">factor</span>(x1)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co">#&gt; [1] Déc Avr Jan Mar</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co">#&gt; Levels: Avr Déc Jan Mar</span></a></code></pre></div>
 <p>Le fait qu’il y ait un <strong>ordre</strong> dans les modalités n’est pas suffisant pour dire qu’une variable qualitative n’est pas nominale. Dans l’exemple précédent, bien que les mois de l’année soient toujours énumérés dans un certain ordre, il serait faux de dire que Janvier &lt; Février par exemple.</p>
 <p>Nous pourrions créer une variable qui contient la couleur des cheveux sans indiquer de levels. De cette façon, les données seront triées en ordre alphabétique:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">x3  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;blonds&quot;</span>, <span class="st">&quot;bruns&quot;</span>, <span class="st">&quot;roux&quot;</span>, <span class="st">&quot;noirs&quot;</span>, <span class="st">&quot;autre&quot;</span>)</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">sort</span>(x3)</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co">#&gt; [1] &quot;autre&quot;  &quot;blonds&quot; &quot;bruns&quot;  &quot;noirs&quot;  &quot;roux&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">x3  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;blonds&quot;</span>, <span class="st">&quot;bruns&quot;</span>, <span class="st">&quot;roux&quot;</span>, <span class="st">&quot;noirs&quot;</span>, <span class="st">&quot;autre&quot;</span>)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="kw">sort</span>(x3)</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="co">#&gt; [1] &quot;autre&quot;  &quot;blonds&quot; &quot;bruns&quot;  &quot;noirs&quot;  &quot;roux&quot;</span></a></code></pre></div>
 <p>Nous allons maintenant utiliser de vraies données provenant du <a href="http://gss.norc.org">General Social Survey</a>, qui est un sondage produit par une organisation de recherche indépendante NORC à l’Université de Chicago. Le sondage original comporte des milliers de questions, la base de donnéee <code>forcats::gss_cat</code> n’en contient que quelques unes. Pour en savoir plus sur la base de données <code>gss_cat</code>, consultez <span class="citation">Wickham (<a href="#ref-R-forcats">2018</a>)</span>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">gss_cat</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="co">#&gt; # A tibble: 21,483 x 9</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="co">#&gt;    year marital         age race  rincome  partyid   relig  denom  tvhours</span></a>
-<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="co">#&gt; 1  2000 Never married    26 White $8000 t~ Ind,near~ Prote~ South~      12</span></a>
-<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="co">#&gt; 2  2000 Divorced         48 White $8000 t~ Not str ~ Prote~ Bapti~      NA</span></a>
-<a class="sourceLine" id="cb24-7" data-line-number="7"><span class="co">#&gt; 3  2000 Widowed          67 White Not app~ Independ~ Prote~ No de~       2</span></a>
-<a class="sourceLine" id="cb24-8" data-line-number="8"><span class="co">#&gt; 4  2000 Never married    39 White Not app~ Ind,near~ Ortho~ Not a~       4</span></a>
-<a class="sourceLine" id="cb24-9" data-line-number="9"><span class="co">#&gt; 5  2000 Divorced         25 White Not app~ Not str ~ None   Not a~       1</span></a>
-<a class="sourceLine" id="cb24-10" data-line-number="10"><span class="co">#&gt; 6  2000 Married          25 White $20000 ~ Strong d~ Prote~ South~      NA</span></a>
-<a class="sourceLine" id="cb24-11" data-line-number="11"><span class="co">#&gt; # ... with 2.148e+04 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">gss_cat</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="co">#&gt; # A tibble: 21,483 x 9</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="co">#&gt;    year marital         age race  rincome  partyid   relig  denom  tvhours</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#&gt;   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#&gt; 1  2000 Never married    26 White $8000 t~ Ind,near~ Prote~ South~      12</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="co">#&gt; 2  2000 Divorced         48 White $8000 t~ Not str ~ Prote~ Bapti~      NA</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="co">#&gt; 3  2000 Widowed          67 White Not app~ Independ~ Prote~ No de~       2</span></a>
+<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="co">#&gt; 4  2000 Never married    39 White Not app~ Ind,near~ Ortho~ Not a~       4</span></a>
+<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="co">#&gt; 5  2000 Divorced         25 White Not app~ Not str ~ None   Not a~       1</span></a>
+<a class="sourceLine" id="cb25-10" data-line-number="10"><span class="co">#&gt; 6  2000 Married          25 White $20000 ~ Strong d~ Prote~ South~      NA</span></a>
+<a class="sourceLine" id="cb25-11" data-line-number="11"><span class="co">#&gt; # ... with 2.148e+04 more rows</span></a></code></pre></div>
 <p>Pour visualiser les levels d’une variable facilement, nous pouvons utiliser la fonction <code>levels</code> qui retourne tous les levels différents rencontrés pour cette variable. Voici par exemple les levels pour les variables <code>race</code> et <code>marital</code></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">levels</span>(gss_cat<span class="op">$</span>race)</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="co">#&gt; [1] &quot;Other&quot;          &quot;Black&quot;          &quot;White&quot;          &quot;Not applicable&quot;</span></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="kw">levels</span>(gss_cat<span class="op">$</span>marital)</a>
-<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co">#&gt; [1] &quot;No answer&quot;     &quot;Never married&quot; &quot;Separated&quot;     &quot;Divorced&quot;     </span></a>
-<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="co">#&gt; [5] &quot;Widowed&quot;       &quot;Married&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">levels</span>(gss_cat<span class="op">$</span>race)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="co">#&gt; [1] &quot;Other&quot;          &quot;Black&quot;          &quot;White&quot;          &quot;Not applicable&quot;</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="kw">levels</span>(gss_cat<span class="op">$</span>marital)</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co">#&gt; [1] &quot;No answer&quot;     &quot;Never married&quot; &quot;Separated&quot;     &quot;Divorced&quot;     </span></a>
+<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="co">#&gt; [5] &quot;Widowed&quot;       &quot;Married&quot;</span></a></code></pre></div>
 </div>
 <div id="qualord" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Les variables qualitatives à échelle ordinale</h3>
 <p>On observe ce type de variable lorsqu’il existe un ordre croissant dans les modalités de la variable. Par exemple, la variable <em>degré de satisfaction</em> est à échelle ordinale. Il est possible de classer les modalités en ordre décroissant en écrivant : Très satisfait &gt; Satisfait &gt; Insatisfait &gt; Très insatisfait.</p>
 <p>Pour créer une variable qualitative à échelle ordinale en <code>R</code>, nous pouvons utiliser la même technique vue à la section <a href="typesvariables.html#qualinominale">5.2.1</a>. Nous pouvons donc avoir:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Satisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>)</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">niveaux_satisfaction &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>, <span class="st">&quot;Satisfait&quot;</span>, <span class="st">&quot;Très satisfait&quot;</span>)</a>
-<a class="sourceLine" id="cb26-3" data-line-number="3">z1 &lt;-<span class="st"> </span><span class="kw">factor</span>(z, <span class="dt">levels =</span> niveaux_satisfaction)</a>
-<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="kw">sort</span>(z1)</a>
-<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="co">#&gt; [1] Très insatisfait Très insatisfait Insatisfait      Insatisfait     </span></a>
-<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="co">#&gt; [5] Satisfait       </span></a>
-<a class="sourceLine" id="cb26-7" data-line-number="7"><span class="co">#&gt; Levels: Très insatisfait Insatisfait Satisfait Très satisfait</span></a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Satisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>, <span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">niveaux_satisfaction &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Très insatisfait&quot;</span>, <span class="st">&quot;Insatisfait&quot;</span>, <span class="st">&quot;Satisfait&quot;</span>, <span class="st">&quot;Très satisfait&quot;</span>)</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">z1 &lt;-<span class="st"> </span><span class="kw">factor</span>(z, <span class="dt">levels =</span> niveaux_satisfaction)</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="kw">sort</span>(z1)</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#&gt; [1] Très insatisfait Très insatisfait Insatisfait      Insatisfait     </span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">#&gt; [5] Satisfait       </span></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="co">#&gt; Levels: Très insatisfait Insatisfait Satisfait Très satisfait</span></a></code></pre></div>
 <p>Il est aussi possible d’utiliser des <strong>facteurs ordonnés</strong>. Nous devons utiliser encore la commande <code>factor</code> en ajoutant l’option <code>ordered=TRUE</code>. Par example:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">z2 &lt;-<span class="st"> </span><span class="kw">factor</span>(z, <span class="dt">levels =</span> niveaux_satisfaction, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">sort</span>(z2)</a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co">#&gt; [1] Très insatisfait Très insatisfait Insatisfait      Insatisfait     </span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="co">#&gt; [5] Satisfait       </span></a>
-<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="co">#&gt; 4 Levels: Très insatisfait &lt; Insatisfait &lt; ... &lt; Très satisfait</span></a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">z2 &lt;-<span class="st"> </span><span class="kw">factor</span>(z, <span class="dt">levels =</span> niveaux_satisfaction, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">sort</span>(z2)</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="co">#&gt; [1] Très insatisfait Très insatisfait Insatisfait      Insatisfait     </span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="co">#&gt; [5] Satisfait       </span></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="co">#&gt; 4 Levels: Très insatisfait &lt; Insatisfait &lt; ... &lt; Très satisfait</span></a></code></pre></div>
 <p>Remarquons que dans la liste <strong>Levels</strong>, <code>R</code> ajoute les symboles <code>&lt;</code> pour indiquer que la variable possède un ordre. Il n’est pas nécessaire de travailler avec des facteurs ordonnés.</p>
 <p>Nous remarquons que dans la base de données <code>forcats::gss_cat</code>, la variable <code>rincome</code> représente une variable qualitative à échelle ordinale:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">levels</span>(gss_cat<span class="op">$</span>rincome)</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co">#&gt;  [1] &quot;No answer&quot;      &quot;Don&#39;t know&quot;     &quot;Refused&quot;        &quot;$25000 or more&quot;</span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="co">#&gt;  [5] &quot;$20000 - 24999&quot; &quot;$15000 - 19999&quot; &quot;$10000 - 14999&quot; &quot;$8000 to 9999&quot; </span></a>
-<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="co">#&gt;  [9] &quot;$7000 to 7999&quot;  &quot;$6000 to 6999&quot;  &quot;$5000 to 5999&quot;  &quot;$4000 to 4999&quot; </span></a>
-<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="co">#&gt; [13] &quot;$3000 to 3999&quot;  &quot;$1000 to 2999&quot;  &quot;Lt $1000&quot;       &quot;Not applicable&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">levels</span>(gss_cat<span class="op">$</span>rincome)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="co">#&gt;  [1] &quot;No answer&quot;      &quot;Don&#39;t know&quot;     &quot;Refused&quot;        &quot;$25000 or more&quot;</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co">#&gt;  [5] &quot;$20000 - 24999&quot; &quot;$15000 - 19999&quot; &quot;$10000 - 14999&quot; &quot;$8000 to 9999&quot; </span></a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="co">#&gt;  [9] &quot;$7000 to 7999&quot;  &quot;$6000 to 6999&quot;  &quot;$5000 to 5999&quot;  &quot;$4000 to 4999&quot; </span></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="co">#&gt; [13] &quot;$3000 to 3999&quot;  &quot;$1000 to 2999&quot;  &quot;Lt $1000&quot;       &quot;Not applicable&quot;</span></a></code></pre></div>
 <p>Si nous laissons de côté les modalités <em>No answer</em>, <em>Don’t know</em> et <em>Refused</em>, le reste des modalités peut être placé en ordre. En effet, la modalité <em>$4000 to 4999</em> est plus petite que la modalité <em>$5000 to 5999</em> et ainsi de suite.</p>
 <blockquote>
 <p>Bien que les modalités de la variable précédente soient composées de nombres, le fait que nous ayons affaire à des intervalles indique que nous avons en fait une variable qualitative à échelle ordinale.</p>
 </blockquote>
 <p>Les modalités sont placées en ordre décroissant, si nous voulions avoir les modalités en ordre croissant, nous pourrions faire ceci:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">factor</span>(gss_cat<span class="op">$</span>rincome, </a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">            <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Lt $1000&quot;</span>, <span class="st">&quot;$1000 to 2999&quot;</span>, <span class="st">&quot;$3000 to 3999&quot;</span>, <span class="st">&quot;$4000 to 4999&quot;</span>, </a>
-<a class="sourceLine" id="cb29-3" data-line-number="3">                     <span class="st">&quot;$5000 to 5999&quot;</span>, <span class="st">&quot;$6000 to 6999&quot;</span>, <span class="st">&quot;$7000 to 7999&quot;</span>, <span class="st">&quot;$8000 to 9999&quot;</span>, </a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">                     <span class="st">&quot;$10000 - 14999&quot;</span>, <span class="st">&quot;$15000 - 19999&quot;</span>, <span class="st">&quot;$20000 - 24999&quot;</span>, <span class="st">&quot;$25000 or more&quot;</span>, </a>
-<a class="sourceLine" id="cb29-5" data-line-number="5">                     <span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Refused&quot;</span>, <span class="st">&quot;Not applicable&quot;</span>, <span class="st">&quot;Don&#39;t know&quot;</span>))</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="kw">levels</span>(a)</a>
-<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="co">#&gt;  [1] &quot;Lt $1000&quot;       &quot;$1000 to 2999&quot;  &quot;$3000 to 3999&quot;  &quot;$4000 to 4999&quot; </span></a>
-<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="co">#&gt;  [5] &quot;$5000 to 5999&quot;  &quot;$6000 to 6999&quot;  &quot;$7000 to 7999&quot;  &quot;$8000 to 9999&quot; </span></a>
-<a class="sourceLine" id="cb29-9" data-line-number="9"><span class="co">#&gt;  [9] &quot;$10000 - 14999&quot; &quot;$15000 - 19999&quot; &quot;$20000 - 24999&quot; &quot;$25000 or more&quot;</span></a>
-<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="co">#&gt; [13] &quot;No answer&quot;      &quot;Refused&quot;        &quot;Not applicable&quot; &quot;Don&#39;t know&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">factor</span>(gss_cat<span class="op">$</span>rincome, </a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">            <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Lt $1000&quot;</span>, <span class="st">&quot;$1000 to 2999&quot;</span>, <span class="st">&quot;$3000 to 3999&quot;</span>, <span class="st">&quot;$4000 to 4999&quot;</span>, </a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">                     <span class="st">&quot;$5000 to 5999&quot;</span>, <span class="st">&quot;$6000 to 6999&quot;</span>, <span class="st">&quot;$7000 to 7999&quot;</span>, <span class="st">&quot;$8000 to 9999&quot;</span>, </a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">                     <span class="st">&quot;$10000 - 14999&quot;</span>, <span class="st">&quot;$15000 - 19999&quot;</span>, <span class="st">&quot;$20000 - 24999&quot;</span>, <span class="st">&quot;$25000 or more&quot;</span>, </a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">                     <span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Refused&quot;</span>, <span class="st">&quot;Not applicable&quot;</span>, <span class="st">&quot;Don&#39;t know&quot;</span>))</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="kw">levels</span>(a)</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7"><span class="co">#&gt;  [1] &quot;Lt $1000&quot;       &quot;$1000 to 2999&quot;  &quot;$3000 to 3999&quot;  &quot;$4000 to 4999&quot; </span></a>
+<a class="sourceLine" id="cb30-8" data-line-number="8"><span class="co">#&gt;  [5] &quot;$5000 to 5999&quot;  &quot;$6000 to 6999&quot;  &quot;$7000 to 7999&quot;  &quot;$8000 to 9999&quot; </span></a>
+<a class="sourceLine" id="cb30-9" data-line-number="9"><span class="co">#&gt;  [9] &quot;$10000 - 14999&quot; &quot;$15000 - 19999&quot; &quot;$20000 - 24999&quot; &quot;$25000 or more&quot;</span></a>
+<a class="sourceLine" id="cb30-10" data-line-number="10"><span class="co">#&gt; [13] &quot;No answer&quot;      &quot;Refused&quot;        &quot;Not applicable&quot; &quot;Don&#39;t know&quot;</span></a></code></pre></div>
 </div>
 </div>
 <div id="quant" class="section level2">
@@ -389,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mise-en-place-2" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Mise en place</h3>
 <p>Dans cette section, nous utiliserons la librairie <code>nycflights13</code> (voir <span class="citation">Wickham (<a href="#ref-R-nycflights13">2017</a><a href="#ref-R-nycflights13">a</a>)</span>) qui contient cinq bases de données portant sur tous les vols aériens ayant quittés la ville de New-York en 2013.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">library</span>(nycflights13)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">library</span>(nycflights13)</a></code></pre></div>
 <p>Les cinq base de données sont les suivantes:</p>
 <ul>
 <li><code>airlines</code></li>
@@ -404,26 +412,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.3.2</span> Les variables quantitatives discrètes</h3>
 <p>On observe ce type de variable lorsque les valeurs sont énumérables, c’est-à-dire lorsqu’il n’existe pas de valeur possible entre deux valeurs consécutives. Par exemple, la variable <em>nombre de cours suivis pendant cette session</em> est une variable quantitative discrète. Les valeurs de ces variables peuvent être : 3, 4, 5, 6, 7,… Il est impossible de suivre 4,6 cours durant une session.</p>
 <p>La base de données <code>planes</code> contient certaines variables quantitatives discrètes.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">planes</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="co">#&gt; # A tibble: 3,322 x 9</span></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="co">#&gt;   tailnum  year type       manufacturer  model  engines seats speed engine</span></a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="co">#&gt; 1 N10156   2004 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~</span></a>
-<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="co">#&gt; 2 N102UW   1998 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
-<a class="sourceLine" id="cb31-7" data-line-number="7"><span class="co">#&gt; 3 N103US   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
-<a class="sourceLine" id="cb31-8" data-line-number="8"><span class="co">#&gt; 4 N104UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
-<a class="sourceLine" id="cb31-9" data-line-number="9"><span class="co">#&gt; 5 N10575   2002 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~</span></a>
-<a class="sourceLine" id="cb31-10" data-line-number="10"><span class="co">#&gt; 6 N105UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
-<a class="sourceLine" id="cb31-11" data-line-number="11"><span class="co">#&gt; # ... with 3,316 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">planes</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co">#&gt; # A tibble: 3,322 x 9</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="co">#&gt;   tailnum  year type       manufacturer  model  engines seats speed engine</span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="co">#&gt; 1 N10156   2004 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~</span></a>
+<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="co">#&gt; 2 N102UW   1998 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
+<a class="sourceLine" id="cb32-7" data-line-number="7"><span class="co">#&gt; 3 N103US   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
+<a class="sourceLine" id="cb32-8" data-line-number="8"><span class="co">#&gt; 4 N104UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
+<a class="sourceLine" id="cb32-9" data-line-number="9"><span class="co">#&gt; 5 N10575   2002 Fixed win~ EMBRAER       EMB-1~       2    55    NA Turbo~</span></a>
+<a class="sourceLine" id="cb32-10" data-line-number="10"><span class="co">#&gt; 6 N105UW   1999 Fixed win~ AIRBUS INDUS~ A320-~       2   182    NA Turbo~</span></a>
+<a class="sourceLine" id="cb32-11" data-line-number="11"><span class="co">#&gt; # ... with 3,316 more rows</span></a></code></pre></div>
 <p>Pour être en mesure de connaître toutes les <em>valeurs</em> différentes que peut prendre une variable, nous allons utiliser la commande <code>unique</code>. Si nous nous intéressons à la variable <code>engines</code> (qui dénombre le nombre de moteurs de l’avion):</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>engines)</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co">#&gt; [1] 2 1 4 3</span></a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>engines)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co">#&gt; [1] 2 1 4 3</span></a></code></pre></div>
 <p>Les avions peuvent donc avoir 1, 2, 3 ou 4 moteurs.</p>
 <p>La variable <code>seats</code> (qui dénombre le nombre de sièges de l’avion):</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>seats)</a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co">#&gt;  [1]  55 182 149 330 178  95 290 199  20 140   2   8 400 260 255 191 375</span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="co">#&gt; [18] 145  22  14   6  80 189   7   4 377 102  10  11 269 200 222 172 379</span></a>
-<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="co">#&gt; [35]   5 147 100  16 275 292 139   9 450 179 128 300 142  12</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">unique</span>(planes<span class="op">$</span>seats)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#&gt;  [1]  55 182 149 330 178  95 290 199  20 140   2   8 400 260 255 191 375</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#&gt; [18] 145  22  14   6  80 189   7   4 377 102  10  11 269 200 222 172 379</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#&gt; [35]   5 147 100  16 275 292 139   9 450 179 128 300 142  12</span></a></code></pre></div>
 <p>Dans la sortie <code>R</code> les valeurs ne sont pas en ordre croissant mais elles le seront lorsque nous les représenterons sous forme de tableau ou de graphique.</p>
 <blockquote>
 <p>Bien que la variable <code>seats</code> possède plusieurs valeurs (elle en possède 48), cela ne signifie pas qu’elle soit une variable quantitative continue, comme nous le verrons à la section <a href="typesvariables.html#quantcont">5.3.3</a>.</p>
@@ -433,36 +441,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.3.3</span> Les variables quantitatives continues</h3>
 <p>On observe ce type de variable lorsqu’il existe une infinité de valeurs entre deux autres. Par exemple, la variable <em>masse d’un étudiant (en lbs)</em> est une variable quantitative continue. Entre 130 et 131 lbs, il existe une infinité de valeurs telles que 130,54 lbs.</p>
 <p>Dans la base de données <code>weather</code> de l’extension <code>nycflights13</code>, nous allons observer la variable <code>temp</code>, qui représente la température en degrés Farenheit pour toutes les heures de chaques jours de l’année 2013.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">weather</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#&gt; # A tibble: 26,130 x 15</span></a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#&gt;   origin  year month   day  hour  temp  dewp humid wind_dir wind_speed</span></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="co">#&gt; 1 EWR    2013.    1.     1     0  37.0  21.9  54.0     230.       10.4</span></a>
-<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co">#&gt; 2 EWR    2013.    1.     1     1  37.0  21.9  54.0     230.       13.8</span></a>
-<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">#&gt; 3 EWR    2013.    1.     1     2  37.9  21.9  52.1     230.       12.7</span></a>
-<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="co">#&gt; 4 EWR    2013.    1.     1     3  37.9  23.0  54.5     230.       13.8</span></a>
-<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="co">#&gt; 5 EWR    2013.    1.     1     4  37.9  24.1  57.0     240.       15.0</span></a>
-<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="co">#&gt; 6 EWR    2013.    1.     1     6  39.0  26.1  59.4     270.       10.4</span></a>
-<a class="sourceLine" id="cb34-11" data-line-number="11"><span class="co">#&gt; # ... with 2.612e+04 more rows, and 5 more variables: wind_gust &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb34-12" data-line-number="12"><span class="co">#&gt; #   precip &lt;dbl&gt;, pressure &lt;dbl&gt;, visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">weather</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co">#&gt; # A tibble: 26,130 x 15</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co">#&gt;   origin  year month   day  hour  temp  dewp humid wind_dir wind_speed</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="co">#&gt; 1 EWR    2013.    1.     1     0  37.0  21.9  54.0     230.       10.4</span></a>
+<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="co">#&gt; 2 EWR    2013.    1.     1     1  37.0  21.9  54.0     230.       13.8</span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co">#&gt; 3 EWR    2013.    1.     1     2  37.9  21.9  52.1     230.       12.7</span></a>
+<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="co">#&gt; 4 EWR    2013.    1.     1     3  37.9  23.0  54.5     230.       13.8</span></a>
+<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="co">#&gt; 5 EWR    2013.    1.     1     4  37.9  24.1  57.0     240.       15.0</span></a>
+<a class="sourceLine" id="cb35-10" data-line-number="10"><span class="co">#&gt; 6 EWR    2013.    1.     1     6  39.0  26.1  59.4     270.       10.4</span></a>
+<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="co">#&gt; # ... with 2.612e+04 more rows, and 5 more variables: wind_gust &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="co">#&gt; #   precip &lt;dbl&gt;, pressure &lt;dbl&gt;, visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
 <p>Si nous utilisons la commande <code>unique</code> sur cette variable, nous obtenons la sortie suivante:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">unique</span>(weather<span class="op">$</span>temp)</a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co">#&gt;   [1]  37.0  37.9  39.0  39.9  41.0  39.2  36.0  34.0  33.1  32.0  30.0</span></a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="co">#&gt;  [12]  28.9  28.0  27.0  26.1  25.0  24.1  30.9  35.1  42.1  43.0  44.1</span></a>
-<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="co">#&gt;  [23]  33.8  35.6  37.4  46.0  46.9  48.0  45.0  48.9  50.0  46.4  44.6</span></a>
-<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="co">#&gt;  [34]  42.8  48.2  51.1  51.8  52.0  55.9  57.9  57.0  55.0  53.1  54.0</span></a>
-<a class="sourceLine" id="cb35-6" data-line-number="6"><span class="co">#&gt;  [45]  23.0  21.0  19.9  19.4  21.9  19.0  18.0  17.1  16.0  15.1  14.0</span></a>
-<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="co">#&gt;  [56]  12.9  12.0  10.9  21.2  17.6  30.2  64.0  64.4  59.0  57.2  60.8</span></a>
-<a class="sourceLine" id="cb35-8" data-line-number="8"><span class="co">#&gt;  [67]  62.1  62.6  24.8  26.6  28.4  41.9  45.7  41.2  38.8  34.2  34.9</span></a>
-<a class="sourceLine" id="cb35-9" data-line-number="9"><span class="co">#&gt;  [78]  32.4  36.5  53.6  60.1  63.0  64.9  66.0  70.0  71.1  68.0  66.9</span></a>
-<a class="sourceLine" id="cb35-10" data-line-number="10"><span class="co">#&gt;  [89]  73.9  77.0  80.1  82.0  82.9  84.0  81.0  79.0  73.0  69.1  61.0</span></a>
-<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="co">#&gt; [100]  55.4  72.0  66.2  73.4  75.2  75.9  78.1  69.8  75.0  86.0  88.0</span></a>
-<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="co">#&gt; [111]  87.1  84.9  78.8  80.6  82.4  71.6  89.1  91.0  91.9  93.0  91.4</span></a>
-<a class="sourceLine" id="cb35-13" data-line-number="13"><span class="co">#&gt; [122]  90.0  93.9  89.6  95.0  87.8  84.2  97.0  96.1  98.1 100.0  99.0</span></a>
-<a class="sourceLine" id="cb35-14" data-line-number="14"><span class="co">#&gt; [133]  93.2    NA  50.7  47.1  50.5  49.1  47.3  51.3  45.3  13.1  82.6</span></a>
-<a class="sourceLine" id="cb35-15" data-line-number="15"><span class="co">#&gt; [144]  84.7  83.7  81.1  54.5  53.4  50.2  48.4  43.2  40.6  42.3  43.9</span></a>
-<a class="sourceLine" id="cb35-16" data-line-number="16"><span class="co">#&gt; [155]  47.8  52.5  55.6  54.1  54.9  50.9  51.4  49.5  46.6  47.5  49.8</span></a>
-<a class="sourceLine" id="cb35-17" data-line-number="17"><span class="co">#&gt; [166]  50.4  52.7  56.5  58.1  57.6  51.6  60.4  60.3  59.2  55.8</span></a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">unique</span>(weather<span class="op">$</span>temp)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">#&gt;   [1]  37.0  37.9  39.0  39.9  41.0  39.2  36.0  34.0  33.1  32.0  30.0</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="co">#&gt;  [12]  28.9  28.0  27.0  26.1  25.0  24.1  30.9  35.1  42.1  43.0  44.1</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co">#&gt;  [23]  33.8  35.6  37.4  46.0  46.9  48.0  45.0  48.9  50.0  46.4  44.6</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="co">#&gt;  [34]  42.8  48.2  51.1  51.8  52.0  55.9  57.9  57.0  55.0  53.1  54.0</span></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="co">#&gt;  [45]  23.0  21.0  19.9  19.4  21.9  19.0  18.0  17.1  16.0  15.1  14.0</span></a>
+<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="co">#&gt;  [56]  12.9  12.0  10.9  21.2  17.6  30.2  64.0  64.4  59.0  57.2  60.8</span></a>
+<a class="sourceLine" id="cb36-8" data-line-number="8"><span class="co">#&gt;  [67]  62.1  62.6  24.8  26.6  28.4  41.9  45.7  41.2  38.8  34.2  34.9</span></a>
+<a class="sourceLine" id="cb36-9" data-line-number="9"><span class="co">#&gt;  [78]  32.4  36.5  53.6  60.1  63.0  64.9  66.0  70.0  71.1  68.0  66.9</span></a>
+<a class="sourceLine" id="cb36-10" data-line-number="10"><span class="co">#&gt;  [89]  73.9  77.0  80.1  82.0  82.9  84.0  81.0  79.0  73.0  69.1  61.0</span></a>
+<a class="sourceLine" id="cb36-11" data-line-number="11"><span class="co">#&gt; [100]  55.4  72.0  66.2  73.4  75.2  75.9  78.1  69.8  75.0  86.0  88.0</span></a>
+<a class="sourceLine" id="cb36-12" data-line-number="12"><span class="co">#&gt; [111]  87.1  84.9  78.8  80.6  82.4  71.6  89.1  91.0  91.9  93.0  91.4</span></a>
+<a class="sourceLine" id="cb36-13" data-line-number="13"><span class="co">#&gt; [122]  90.0  93.9  89.6  95.0  87.8  84.2  97.0  96.1  98.1 100.0  99.0</span></a>
+<a class="sourceLine" id="cb36-14" data-line-number="14"><span class="co">#&gt; [133]  93.2    NA  50.7  47.1  50.5  49.1  47.3  51.3  45.3  13.1  82.6</span></a>
+<a class="sourceLine" id="cb36-15" data-line-number="15"><span class="co">#&gt; [144]  84.7  83.7  81.1  54.5  53.4  50.2  48.4  43.2  40.6  42.3  43.9</span></a>
+<a class="sourceLine" id="cb36-16" data-line-number="16"><span class="co">#&gt; [155]  47.8  52.5  55.6  54.1  54.9  50.9  51.4  49.5  46.6  47.5  49.8</span></a>
+<a class="sourceLine" id="cb36-17" data-line-number="17"><span class="co">#&gt; [166]  50.4  52.7  56.5  58.1  57.6  51.6  60.4  60.3  59.2  55.8</span></a></code></pre></div>
 <p>Puisque nous avons 175 températures différentes et que nous avons affaire à une variable quantitative continue, il est souvent avantageux de placer ces données dans des classes. Nous verrons comment faire au chapitre <a href="variablesquantitativescontinues.html#variablesquantitativescontinues">11</a>.</p>
 
 </div>
