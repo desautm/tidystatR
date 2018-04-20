@@ -78,6 +78,71 @@ ggplot(data = starwars, aes(x = height, y = mass))+
   )
 ```
 
+Nous remarquons une donnée qui semble aberrante dans le graphique précédent. Le personnage de Star Wars semble avoir une masse très importante par rapport à sa taille. Puisque sa masse dépasse 1 000kg, nous allons filtrer les données pour trouver le nom du personnage en question.
+
+```{r}
+starwars %>%
+  filter(mass > 1000)
+```
+
+```{r echo=FALSE}
+big <- starwars %>%
+  filter(mass > 1000)
+```
+Le personnage est bien sûr `r big[[1]]`.
+
+Il est possible de quantifier la force de la corrélation linéaire entre deux variables à l'aide d'une mesure. Cette mesure est appelée le coefficient de corrélation et est noté $r$.
+
+La formule pour calculer $r$ est la suivante:
+
+\[
+r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
+\]
+
+Nous pouvons utiliser la commande `cor` dans R pour trouver le coefficient de corrélation. Par exemple, si nous voulons trouver le coefficient de corrélation entre les variables `height` et `mass`:
+
+```{r}
+cor(starwars$height,starwars$mass)
+```
+
+Nous obtenons comme réponse `NA`. Ceci signifie que des données sont manquantes dans nos observations. Pour calculer un coefficient de corrélation en omettant les données manquantes, nous pouvons utiliser l'option `use = "complete.obs"`. Nous obtenons donc:
+
+```{r}
+cor(starwars$height, starwars$mass, use = "complete.obs")
+```
+
+```{r echo=FALSE}
+height_mass_r <- cor(starwars$height, starwars$mass, use = "complete.obs")
+```
+Le coefficient de corrélation est donc de `r height_mass_r`.
+
+Nous pouvons calculer le coefficient de corrélation lorsque nous enlevons l'observation de `r big[[1]]`. Nous obtenons:
+
+```{r}
+no_jabba <- starwars %>%
+  filter(mass < 1000)
+cor(no_jabba$height, no_jabba$mass)
+```
+Le coefficient de corrélation est maintenant de `r cor(no_jabba$height, no_jabba$mass)`.
+
+La valeur de $r$ permet de quantifier la force de la corrélation entre $X$ et $Y$ et permet aussi de déterminer si cette corrélation est positive ou négative.
+
+## Fake data
+
+```{r echo = FALSE}
+a <- 1 # Pente
+b <- 0 # Ordonnée à l'origine
+
+N <- 50 # Nombre de points
+
+x <- seq_len(N)
+y <- a*x+b+runif(N, min = -5, max = 5)
+
+data <- tibble(x,y)
+
+ggplot(data, aes(x,y))+geom_point()
+```
+
 
 ## Le quartet d'Anscombe
 
