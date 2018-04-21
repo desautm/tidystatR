@@ -64,7 +64,19 @@ Pour construire ce graphique:
 - Un point doit être placé à la coordonnée $(x_i,y_i)$ pour chacun des couples de données.
 - Les axes $x$ et $y$ peuvent être coupés pour améliorer la présentation.
 
+Nous allons débuter par représenter les deux variables étudiées:. Puisque la base de données contient `r nrow(starwars)`, nous n'afficherons que les premières données. 
+
+```{r echo=FALSE}
+starwars %>%
+  select(height, mass) %>%
+  head() %>%
+  rbind(rep("...", 2)) %>%
+  kable
+```
+
 Nous allons nous intéresser aux variables `height` et `mass` de la base de données `starwars`. Puisque la masse (`mass`) dépend de la taille (`height`), la variable `mass` est la variable dépendante et la variable `height` est la variable indépendante.
+
+Nous affichons ces données dans un plan cartésien et chaque ligne du tableau précédent correspond aux coordonnées cartésiennes de nos points. Par exemple, puisque le premier personnage à une taille de `r starwars$height[1]` et un poids de `r starwars$mass[1]`, nous allons afficher le point (`r starwars$height[1]`,`r starwars$mass[1]`). Si nous le faisons pour toutes les données, nous obtenons un nuage de points.
 
 Nous avons donc:
 
@@ -78,7 +90,7 @@ ggplot(data = starwars, aes(x = height, y = mass))+
   )
 ```
 
-Nous remarquons une donnée qui semble aberrante dans le graphique précédent. Le personnage de Star Wars semble avoir une masse très importante par rapport à sa taille. Puisque sa masse dépasse 1 000kg, nous allons filtrer les données pour trouver le nom du personnage en question.
+Nous remarquons une donnée qui semble aberrante dans le graphique précédent. Le personnage de Star Wars semble avoir une masse très importante par rapport à sa taille. Puisque sa masse dépasse 1000kg, nous allons filtrer les données pour trouver le nom du personnage en question.
 
 ```{r}
 starwars %>%
@@ -90,6 +102,8 @@ big <- starwars %>%
   filter(mass > 1000)
 ```
 Le personnage est bien sûr `r big[[1]]`.
+
+![Jabba](images/jabba-the-hutt.jpeg)
 
 Il est possible de quantifier la force de la corrélation linéaire entre deux variables à l'aide d'une mesure. Cette mesure est appelée le coefficient de corrélation et est noté $r$.
 
@@ -132,17 +146,61 @@ La valeur de $r$ permet de quantifier la force de la corrélation entre $X$ et $
 ```{r echo = FALSE}
 a <- 1 # Pente
 b <- 0 # Ordonnée à l'origine
-
 N <- 50 # Nombre de points
+random <- 0.25
+x0 <- 0
+xf <- 1
+delta <- (xf-x0)/N
 
-x <- seq_len(N)
-y <- a*x+b+runif(N, min = -5, max = 5)
+x <- seq(x0, xf, delta)
 
-data <- tibble(x,y)
+y <- b+runif(N+1, min = -random, max = random)
+y_positive <- a*x+b+runif(N+1, min = -random, max = random)
+y_negative <- -a*x+b+runif(N+1, min = -random, max = random)
 
-ggplot(data, aes(x,y))+geom_point()
+data <- tibble(x, y)
+data_positive <- tibble(x,y_positive)
+data_negative <- tibble(x,y_negative)
 ```
 
+### Corrélation positive
+
+```{r echo = FALSE}
+ggplot(data_positive, aes(x,y_positive))+
+  geom_point()+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+### Corrélation négative
+
+```{r echo = FALSE}
+ggplot(data_negative, aes(x,y_negative))+
+  geom_point()+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+### Aucune corrélation
+
+```{r echo = FALSE}
+ggplot(data, aes(x,y))+
+  geom_point()+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
 
 ## Le quartet d'Anscombe
 

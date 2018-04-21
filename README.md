@@ -20,20 +20,20 @@ Appliquer des outils statistiques à l’interprétation de données reliées à
 ### Éléments de la compétence et critères de performance
 
 1. Situer l’analyse des données, en particulier leur interprétation, à l’intérieur de la démarche scientifique en sciences humaines.
-  1. Utilisation juste des notions et du vocabulaire appropriés.
-  1. Distinction des types de variables et des échelles de mesure.
-  1. Identification plausible de la méthode d’échantillonnage utilisée d’après un échantillon observé de la population visée.
+    1. Utilisation juste des notions et du vocabulaire appropriés.
+    1. Distinction des types de variables et des échelles de mesure.
+    1. Identification plausible de la méthode d’échantillonnage utilisée d’après un échantillon observé de la population visée.
 1. Présenter des données sous des formes adéquates.
-  1. Organisation judicieuse de données sous forme de tableaux et de graphiques.
+    1. Organisation judicieuse de données sous forme de tableaux et de graphiques.
 1. Analyser des données à l’aide de différentes mesures.
-  1. Utilisation correcte et interprétation des mesures de tendance centrale, de dispersion et de position.
-  1. Utilisation correcte et interprétation de taux, de proportions, de pourcentages, d’indices, de ratios et des mesures de variation dans le temps.
+    1. Utilisation correcte et interprétation des mesures de tendance centrale, de dispersion et de position.
+    1. Utilisation correcte et interprétation de taux, de proportions, de pourcentages, d’indices, de ratios et des mesures de variation dans le temps.
 1. Établir la nature et l’intensité du lien entre des variables.
-  1. Vérification formelle de la présence d’un lien statistique entre deux variables, par le test d’indépendance du khi-carré, et qualification de l’intensité du lien à l’aide d’un coefficient approprié.
-  1. Identification de la présence d’un lien linéaire entre deux variables à partir d’un nuage de points, du coefficient de corrélation linéaire, et description du lien à l’aide de la droite de régression.
+    1. Vérification formelle de la présence d’un lien statistique entre deux variables, par le test d’indépendance du khi-carré, et qualification de l’intensité du lien à l’aide d’un coefficient approprié.
+    1. Identification de la présence d’un lien linéaire entre deux variables à partir d’un nuage de points, du coefficient de corrélation linéaire, et description du lien à l’aide de la droite de régression.
 1. Estimer des paramètres d’une population à partir des statistiques correspondantes obtenues  sur un échantillon.
-  1. Estimation par intervalle  d’une moyenne et d’une proportion dans une population, en tenant compte du niveau de confiance.
-  1. Lecture critique de textes comportant de l’information de nature quantitative.
+    1. Estimation par intervalle  d’une moyenne et d’une proportion dans une population, en tenant compte du niveau de confiance.
+    1. Lecture critique de textes comportant de l’information de nature quantitative.
 
 ## Bookdown
 
