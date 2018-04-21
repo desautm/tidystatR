@@ -158,7 +158,7 @@ y <- b+runif(N+1, min = -random, max = random)
 y_positive <- a*x+b+runif(N+1, min = -random, max = random)
 y_negative <- -a*x+b+runif(N+1, min = -random, max = random)
 
-data <- tibble(x, y)
+data_no <- tibble(x, y)
 data_positive <- tibble(x,y_positive)
 data_negative <- tibble(x,y_negative)
 ```
@@ -192,7 +192,7 @@ ggplot(data_negative, aes(x,y_negative))+
 ### Aucune corrélation
 
 ```{r echo = FALSE}
-ggplot(data, aes(x,y))+
+ggplot(data_no, aes(x,y))+
   geom_point()+
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
