@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-20">
+<meta name="date" content="2018-04-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -252,7 +252,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19" data-path="correlationlineaire.html"><a href="correlationlineaire.html"><i class="fa fa-check"></i><b>19</b> La corrélation linéaire</a><ul>
 <li class="chapter" data-level="19.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#mise-en-place-11"><i class="fa fa-check"></i><b>19.1</b> Mise en place</a></li>
 <li class="chapter" data-level="19.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-nuage-de-points"><i class="fa fa-check"></i><b>19.2</b> Le nuage de points</a></li>
-<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#fake-data"><i class="fa fa-check"></i><b>19.3</b> Fake data</a></li>
+<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#fake-data"><i class="fa fa-check"></i><b>19.3</b> Fake data</a><ul>
+<li class="chapter" data-level="19.3.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#correlation-positive"><i class="fa fa-check"></i><b>19.3.1</b> Corrélation positive</a></li>
+<li class="chapter" data-level="19.3.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#correlation-negative"><i class="fa fa-check"></i><b>19.3.2</b> Corrélation négative</a></li>
+<li class="chapter" data-level="19.3.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#aucune-correlation"><i class="fa fa-check"></i><b>19.3.3</b> Aucune corrélation</a></li>
+</ul></li>
 <li class="chapter" data-level="19.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.4</b> Le quartet d’Anscombe</a></li>
 <li class="chapter" data-level="19.5" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.5</b> DatasauRus</a></li>
 </ul></li>
@@ -371,7 +375,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Un point doit être placé à la coordonnée <span class="math inline">\((x_i,y_i)\)</span> pour chacun des couples de données.</li>
 <li>Les axes <span class="math inline">\(x\)</span> et <span class="math inline">\(y\)</span> peuvent être coupés pour améliorer la présentation.</li>
 </ul>
+<p>Nous allons débuter par représenter les deux variables étudiées:. Puisque la base de données contient 87, nous n’afficherons que les premières données.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">height</th>
+<th align="left">mass</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">172</td>
+<td align="left">77</td>
+</tr>
+<tr class="even">
+<td align="left">167</td>
+<td align="left">75</td>
+</tr>
+<tr class="odd">
+<td align="left">96</td>
+<td align="left">32</td>
+</tr>
+<tr class="even">
+<td align="left">202</td>
+<td align="left">136</td>
+</tr>
+<tr class="odd">
+<td align="left">150</td>
+<td align="left">49</td>
+</tr>
+<tr class="even">
+<td align="left">178</td>
+<td align="left">120</td>
+</tr>
+<tr class="odd">
+<td align="left">…</td>
+<td align="left">…</td>
+</tr>
+</tbody>
+</table>
 <p>Nous allons nous intéresser aux variables <code>height</code> et <code>mass</code> de la base de données <code>starwars</code>. Puisque la masse (<code>mass</code>) dépend de la taille (<code>height</code>), la variable <code>mass</code> est la variable dépendante et la variable <code>height</code> est la variable indépendante.</p>
+<p>Nous affichons ces données dans un plan cartésien et chaque ligne du tableau précédent correspond aux coordonnées cartésiennes de nos points. Par exemple, puisque le premier personnage à une taille de 172 et un poids de 77, nous allons afficher le point (172,77). Si nous le faisons pour toutes les données, nous obtenons un nuage de points.</p>
 <p>Nous avons donc:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> starwars, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> mass))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
@@ -381,8 +425,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="dt">title =</span> <span class="st">&quot;Lien entre la taille et la masse&quot;</span>
   )
 <span class="co">#&gt; Warning: Removed 28 rows containing missing values (geom_point).</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-115-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Nous remarquons une donnée qui semble aberrante dans le graphique précédent. Le personnage de Star Wars semble avoir une masse très importante par rapport à sa taille. Puisque sa masse dépasse 1 000kg, nous allons filtrer les données pour trouver le nom du personnage en question.</p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-116-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Nous remarquons une donnée qui semble aberrante dans le graphique précédent. Le personnage de Star Wars semble avoir une masse très importante par rapport à sa taille. Puisque sa masse dépasse 1000kg, nous allons filtrer les données pour trouver le nom du personnage en question.</p>
 <pre class="sourceCode r"><code class="sourceCode r">starwars <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(mass <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>)
 <span class="co">#&gt; # A tibble: 1 x 13</span>
@@ -392,6 +436,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="co">#&gt; # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,</span>
 <span class="co">#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</span></code></pre>
 <p>Le personnage est bien sûr Jabba Desilijic Tiure.</p>
+<div class="figure">
+<img src="images/jabba-the-hutt.jpeg" alt="Jabba" />
+<p class="caption">Jabba</p>
+</div>
 <p>Il est possible de quantifier la force de la corrélation linéaire entre deux variables à l’aide d’une mesure. Cette mesure est appelée le coefficient de corrélation et est noté <span class="math inline">\(r\)</span>.</p>
 <p>La formule pour calculer <span class="math inline">\(r\)</span> est la suivante:</p>
 <p><span class="math display">\[
@@ -414,7 +462,18 @@ r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
 </div>
 <div id="fake-data" class="section level2">
 <h2><span class="header-section-number">19.3</span> Fake data</h2>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-122-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="correlation-positive" class="section level3">
+<h3><span class="header-section-number">19.3.1</span> Corrélation positive</h3>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-124-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="correlation-negative" class="section level3">
+<h3><span class="header-section-number">19.3.2</span> Corrélation négative</h3>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-125-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="aucune-correlation" class="section level3">
+<h3><span class="header-section-number">19.3.3</span> Aucune corrélation</h3>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-126-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 </div>
 <div id="le-quartet-danscombe" class="section level2">
 <h2><span class="header-section-number">19.4</span> Le quartet d’Anscombe</h2>
@@ -608,7 +667,7 @@ r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>ensemble) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-126-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-130-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="datasaurus" class="section level2">
 <h2><span class="header-section-number">19.5</span> DatasauRus</h2>
@@ -743,7 +802,7 @@ r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
 <span class="st">  </span><span class="kw">theme_void</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset, <span class="dt">ncol=</span><span class="dv">3</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-128-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-132-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
