@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-21">
+<meta name="date" content="2018-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -256,9 +256,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.3.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#correlation-positive"><i class="fa fa-check"></i><b>19.3.1</b> Corrélation positive</a></li>
 <li class="chapter" data-level="19.3.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#correlation-negative"><i class="fa fa-check"></i><b>19.3.2</b> Corrélation négative</a></li>
 <li class="chapter" data-level="19.3.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#aucune-correlation"><i class="fa fa-check"></i><b>19.3.3</b> Aucune corrélation</a></li>
+<li class="chapter" data-level="19.3.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#une-autre-facon-de-simuler"><i class="fa fa-check"></i><b>19.3.4</b> Une autre façon de simuler</a></li>
 </ul></li>
 <li class="chapter" data-level="19.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.4</b> Le quartet d’Anscombe</a></li>
 <li class="chapter" data-level="19.5" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.5</b> DatasauRus</a></li>
+<li class="chapter" data-level="19.6" data-path="correlationlineaire.html"><a href="correlationlineaire.html#challenger"><i class="fa fa-check"></i><b>19.6</b> Challenger</a><ul>
+<li class="chapter" data-level="19.6.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#toutes-les-donnees"><i class="fa fa-check"></i><b>19.6.1</b> Toutes les données</a></li>
+<li class="chapter" data-level="19.6.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#sans-incident"><i class="fa fa-check"></i><b>19.6.2</b> Sans incident</a></li>
+<li class="chapter" data-level="19.6.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#probabilites-en-enlevant-les-incidents"><i class="fa fa-check"></i><b>19.6.3</b> Probabilités en enlevant les incidents</a></li>
+<li class="chapter" data-level="19.6.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#probabilites-en-gardant-les-incidents"><i class="fa fa-check"></i><b>19.6.4</b> Probabilités en gardant les incidents</a></li>
+<li class="chapter" data-level="19.6.5" data-path="correlationlineaire.html"><a href="correlationlineaire.html#glm"><i class="fa fa-check"></i><b>19.6.5</b> GLM</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
 <li class="divider"></li>
@@ -474,6 +482,27 @@ r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
 <h3><span class="header-section-number">19.3.3</span> Aucune corrélation</h3>
 <p><img src="tidystatR_files/figure-html/unnamed-chunk-126-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
+<div id="une-autre-facon-de-simuler" class="section level3">
+<h3><span class="header-section-number">19.3.4</span> Une autre façon de simuler</h3>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co"># Pente</span>
+b &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Ordonnée à l&#39;origine</span>
+N &lt;-<span class="st"> </span><span class="dv">50</span> <span class="co"># Nombre de points</span>
+x0 &lt;-<span class="st"> </span><span class="dv">0</span>
+xf &lt;-<span class="st"> </span><span class="dv">1</span>
+error &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N<span class="op">+</span><span class="dv">1</span>, <span class="dv">0</span>, (<span class="fl">0.3</span>)<span class="op">^</span><span class="dv">2</span>)
+delta &lt;-<span class="st"> </span>(xf<span class="op">-</span>x0)<span class="op">/</span>N
+
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(x0, xf, delta)
+y &lt;-<span class="st"> </span>a<span class="op">*</span>x<span class="op">+</span>b<span class="op">+</span>error
+
+essai &lt;-<span class="st"> </span><span class="kw">tibble</span>(x, y)
+
+<span class="kw">cor</span>(essai<span class="op">$</span>x,essai<span class="op">$</span>y)
+<span class="co">#&gt; [1] 0.965</span>
+
+<span class="kw">ggplot</span>(essai, <span class="kw">aes</span>(x, y))<span class="op">+</span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-127-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 </div>
 <div id="le-quartet-danscombe" class="section level2">
 <h2><span class="header-section-number">19.4</span> Le quartet d’Anscombe</h2>
@@ -667,7 +696,7 @@ r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>ensemble) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-130-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-131-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="datasaurus" class="section level2">
 <h2><span class="header-section-number">19.5</span> DatasauRus</h2>
@@ -802,8 +831,202 @@ r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
 <span class="st">  </span><span class="kw">theme_void</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset, <span class="dt">ncol=</span><span class="dv">3</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-132-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-133-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="challenger" class="section level2">
+<h2><span class="header-section-number">19.6</span> Challenger</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(orings)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">fligth</th>
+<th align="right">temperature</th>
+<th align="right">damaged</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">53</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">57</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">58</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">63</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">66</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">67</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">67</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">67</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">68</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">69</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">70</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">70</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">70</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">70</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">72</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">73</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">75</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">75</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">76</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">76</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">21</td>
+<td align="right">78</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">22</td>
+<td align="right">79</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">23</td>
+<td align="right">81</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<div id="toutes-les-donnees" class="section level3">
+<h3><span class="header-section-number">19.6.1</span> Toutes les données</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> orings, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> damaged))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-136-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="sans-incident" class="section level3">
+<h3><span class="header-section-number">19.6.2</span> Sans incident</h3>
+<pre class="sourceCode r"><code class="sourceCode r">orings <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(damaged <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> damaged))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-137-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="probabilites-en-enlevant-les-incidents" class="section level3">
+<h3><span class="header-section-number">19.6.3</span> Probabilités en enlevant les incidents</h3>
+<pre class="sourceCode r"><code class="sourceCode r">fitting &lt;-<span class="st"> </span>orings <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(damaged <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proba =</span> <span class="kw">if_else</span>(damaged <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, damaged<span class="op">/</span><span class="dv">6</span>, <span class="fl">0.01</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">log =</span> <span class="kw">log</span>(proba<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>proba)))
 
+model &lt;-<span class="st"> </span><span class="kw">lm</span>(log <span class="op">~</span>temperature, <span class="dt">data =</span> fitting)
+b &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients[[<span class="dv">1</span>]]
+a &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients[[<span class="dv">2</span>]]
+fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="dv">6</span><span class="op">*</span><span class="kw">exp</span>(a<span class="op">*</span>x<span class="op">+</span>b)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(a<span class="op">*</span>x<span class="op">+</span>b))}
+<span class="kw">ggplot</span>(<span class="dt">data =</span> fitting, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> damaged))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> fun)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>, <span class="dv">90</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>)</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-138-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="probabilites-en-gardant-les-incidents" class="section level3">
+<h3><span class="header-section-number">19.6.4</span> Probabilités en gardant les incidents</h3>
+<pre class="sourceCode r"><code class="sourceCode r">fitting &lt;-<span class="st"> </span>orings <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proba =</span> <span class="kw">if_else</span>(damaged <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, damaged<span class="op">/</span><span class="dv">6</span>, <span class="fl">0.01</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">log =</span> <span class="kw">log</span>(proba<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>proba)))
+
+model &lt;-<span class="st"> </span><span class="kw">lm</span>(log <span class="op">~</span>temperature, <span class="dt">data =</span> fitting)
+b &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients[[<span class="dv">1</span>]]
+a &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients[[<span class="dv">2</span>]]
+
+fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="dv">6</span><span class="op">*</span><span class="kw">exp</span>(a<span class="op">*</span>x<span class="op">+</span>b)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(a<span class="op">*</span>x<span class="op">+</span>b))}
+<span class="kw">ggplot</span>(<span class="dt">data =</span> orings, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> damaged))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> fun)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>, <span class="dv">90</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>)</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-139-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="glm" class="section level3">
+<h3><span class="header-section-number">19.6.5</span> GLM</h3>
+<pre class="sourceCode r"><code class="sourceCode r">model &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="kw">cbind</span>(damaged, <span class="dv">6</span><span class="op">-</span>damaged)<span class="op">~</span>temperature, <span class="dt">data =</span> orings, <span class="dt">family =</span> binomial)
+b &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients[[<span class="dv">1</span>]]
+a &lt;-<span class="st"> </span>model<span class="op">$</span>coefficients[[<span class="dv">2</span>]]
+
+fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="dv">6</span><span class="op">*</span><span class="kw">exp</span>(a<span class="op">*</span>x<span class="op">+</span>b)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(a<span class="op">*</span>x<span class="op">+</span>b))}
+<span class="kw">ggplot</span>(<span class="dt">data =</span> orings, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> damaged))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> fun)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>, <span class="dv">90</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>)</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-140-1.png" width="70%" style="display: block; margin: auto;" /></p>
+
+</div>
 </div>
 </div>
             </section>
