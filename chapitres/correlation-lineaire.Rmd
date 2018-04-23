@@ -202,6 +202,28 @@ ggplot(data_no, aes(x,y))+
         axis.ticks.y=element_blank())
 ```
 
+### Une autre façon de simuler
+
+```{r}
+a <- 1 # Pente
+b <- 0 # Ordonnée à l'origine
+N <- 50 # Nombre de points
+x0 <- 0
+xf <- 1
+error <- rnorm(N+1, 0, (0.3)^2)
+delta <- (xf-x0)/N
+
+x <- seq(x0, xf, delta)
+y <- a*x+b+error
+
+essai <- tibble(x, y)
+
+cor(essai$x,essai$y)
+
+ggplot(essai, aes(x, y))+geom_point()
+```
+
+
 ## Le quartet d'Anscombe
 
 Le quartet d'Anscombe est constitué de quatre ensembles de données qui ont les mêmes propriétés statistiques simples mais qui sont en réalité très différents, ce qui se voit facilement lorsqu'on les représente sous forme de graphiques. Ils ont été construits en 1973 par le statisticien Francis Anscombe dans le but de démontrer l'importance de tracer des graphiques avant d'analyser des données, car cela permet notamment d'estimer l'incidence des données aberrantes sur les différentes indices statistiques que l'on pourrait calculer.
@@ -265,5 +287,92 @@ ggplot(datasaurus_dozen, aes(x=x, y=y, colour=dataset))+
   theme_void()+
   theme(legend.position = "none")+
   facet_wrap(~dataset, ncol=3)
+```
+
+## Challenger
+
+```{r echo = FALSE}
+temperature <- c(53, 57, 58, 63, 66, 67, 67, 67, 68, 69, 70, 70, 70, 70, 72, 73, 75, 75, 76, 76, 78, 79, 81)
+damaged <- c(2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0)
+orings <- tibble(
+  fligth = 1:23,
+  temperature = temperature,
+  damaged = as.integer(damaged)
+)
+```
+
+```{r}
+kable(orings)
+```
+
+
+### Toutes les données
+
+```{r}
+ggplot(data = orings, aes(x = temperature, y = damaged))+
+  geom_point()
+```
+
+### Sans incident
+
+```{r}
+orings %>%
+  filter(damaged != 0) %>%
+  ggplot(aes(x = temperature, y = damaged))+
+  geom_point()
+```
+
+### Probabilités en enlevant les incidents
+
+```{r}
+fitting <- orings %>%
+  filter(damaged > 0) %>%
+  mutate(proba = if_else(damaged > 0, damaged/6, 0.01)) %>%
+  mutate(log = log(proba/(1-proba)))
+
+model <- lm(log ~temperature, data = fitting)
+b <- model$coefficients[[1]]
+a <- model$coefficients[[2]]
+fun <- function(x){6*exp(a*x+b)/(1+exp(a*x+b))}
+ggplot(data = fitting, aes(x = temperature, y = damaged))+
+  geom_point()+
+  stat_function(fun = fun)+
+  xlim(30, 90)+
+  ylim(0,6)
+```
+
+
+### Probabilités en gardant les incidents
+
+```{r}
+fitting <- orings %>%
+  mutate(proba = if_else(damaged > 0, damaged/6, 0.01)) %>%
+  mutate(log = log(proba/(1-proba)))
+
+model <- lm(log ~temperature, data = fitting)
+b <- model$coefficients[[1]]
+a <- model$coefficients[[2]]
+
+fun <- function(x){6*exp(a*x+b)/(1+exp(a*x+b))}
+ggplot(data = orings, aes(x = temperature, y = damaged))+
+  geom_point()+
+  stat_function(fun = fun)+
+  xlim(30, 90)+
+  ylim(0,6)
+```
+
+### GLM
+
+```{r}
+model <- glm(cbind(damaged, 6-damaged)~temperature, data = orings, family = binomial)
+b <- model$coefficients[[1]]
+a <- model$coefficients[[2]]
+
+fun <- function(x){6*exp(a*x+b)/(1+exp(a*x+b))}
+ggplot(data = orings, aes(x = temperature, y = damaged))+
+  geom_point()+
+  stat_function(fun = fun)+
+  xlim(30, 90)+
+  ylim(0,6)
 ```
 
