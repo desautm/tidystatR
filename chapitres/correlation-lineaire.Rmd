@@ -205,22 +205,47 @@ ggplot(data_no, aes(x,y))+
 ### Une autre façon de simuler
 
 ```{r}
-a <- 1 # Pente
-b <- 0 # Ordonnée à l'origine
 N <- 50 # Nombre de points
 x0 <- 0
 xf <- 1
-error <- rnorm(N+1, 0, (0.3)^2)
 delta <- (xf-x0)/N
 
 x <- seq(x0, xf, delta)
-y <- a*x+b+error
+y_pos_high <- x+b+rnorm(N+1, 0, (0.25)^2)
+y_pos_low <- x+b+rnorm(N+1, 0, (0.5)^2)
+y_neg_high <- -x+1+rnorm(N+1, 0, (0.25)^2)
+y_neg_low <- -x+1+rnorm(N+1, 0, (0.5)^2)
 
-essai <- tibble(x, y)
+cor_lin <- rbind(
+  tibble(
+  type = "Corrélation positive forte",
+  x,
+  y = y_pos_high),
+  tibble(
+  type = "Corrélation positive faible",
+  x,
+  y = y_pos_low),
+  tibble(
+  type = "Corrélation négative forte",
+  x,
+  y = y_neg_high),
+  tibble(
+  type = "Corrélation négative faible",
+  x,
+  y = y_neg_low)
+  )
 
-cor(essai$x,essai$y)
-
-ggplot(essai, aes(x, y))+geom_point()
+ggplot(cor_lin, aes(x, y))+
+  geom_point()+
+  facet_wrap(~type)+
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())+
+  xlim(-0,1)+
+  ylim(-0.5,1.5)
 ```
 
 

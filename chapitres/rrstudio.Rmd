@@ -89,3 +89,7 @@ TODO
 ### Files/Plots/Packages/Help/Viewer
 
 TODO
+
+### Aller chercher de l'aide
+
+TODO
