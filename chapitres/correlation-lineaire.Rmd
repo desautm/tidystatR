@@ -292,6 +292,40 @@ ggplot(anscombe_tidy, aes(x, y)) +
     geom_smooth(method = "lm", se = FALSE)
 ```
 
+### Autre essai moderndive
+
+```{r correlation1, echo=FALSE, fig.cap="Different correlation coefficients"}
+library(mvtnorm)
+correlation <- c(-0.9999, -0.75, 0, 0.75, 0.9999)
+n_sim <- 100
+
+values <- NULL
+for(i in 1:length(correlation)){
+  rho <- correlation[i]
+  sigma <- matrix(c(5, rho * sqrt(50), rho * sqrt(50), 10), 2, 2) 
+  sim <- rmvnorm(
+    n = n_sim,
+    mean = c(20,40),
+    sigma = sigma
+    ) %>%
+    as_data_frame() %>% 
+    mutate(correlation = round(rho, 2))
+  
+  values <- bind_rows(values, sim)
+}
+
+ggplot(data = values, mapping = aes(V1, V2)) +
+  geom_point() +
+  facet_wrap(~ correlation, nrow = 2) +
+  labs(x = "x", y = "y") + 
+  theme(
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank()
+  )
+```
+
+
 
 ## DatasauRus
 
