@@ -10,5 +10,6 @@ Imports:
   questionr,
   knitr,
   datasauRus,
-  mvtnorm
+  mvtnorm,
+  here
 Remotes: rstudio/bookdown

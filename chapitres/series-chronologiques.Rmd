@@ -46,7 +46,8 @@ gapminder %>%
 ## Criminalité à Montréal
 
 ```{r criminalite}
-criminalite <- read_csv("../data/criminalite-2015-2018.csv", locale = locale(encoding = 'ISO-8859-1'))
+#criminalite <- read_csv("../data/criminalite-2015-2018.csv", locale = locale(encoding = 'ISO-8859-1'))
+criminalite <- read_csv(here::here("data","criminalite-2015-2018.csv"), locale = locale(encoding = 'ISO-8859-1'))
 ```
 
 ```{r}
