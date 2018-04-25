@@ -43,3 +43,27 @@ gapminder %>%
 ```
 
 
+## Criminalité à Montréal
+
+```{r criminalite}
+criminalite <- read_csv("../data/criminalite-2015-2018.csv", locale = locale(encoding = 'ISO-8859-1'))
+```
+
+```{r}
+criminalite %>%
+  group_by(CATEGORIE, DATE, QUART) %>%
+  summarise(Nombre = n()) %>%
+  ggplot(aes(x = DATE, y = Nombre, color = QUART))+
+  geom_line()+
+  facet_wrap(~ CATEGORIE)
+```
+
+```{r}
+criminalite %>%
+  filter(DATE > "2016-06-30" & DATE < "2016-08-01") %>%
+  group_by(CATEGORIE, DATE, QUART) %>%
+  summarise(Nombre = n()) %>%
+  ggplot(aes(x = DATE, y = Nombre, color = QUART))+
+  geom_path()+
+  facet_wrap(~CATEGORIE)
+```
