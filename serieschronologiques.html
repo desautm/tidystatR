@@ -245,6 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>V Les données construites</b></span></li>
 <li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a><ul>
 <li class="chapter" data-level="17.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#mise-en-place-9"><i class="fa fa-check"></i><b>17.1</b> Mise en place</a></li>
+<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
@@ -330,6 +331,39 @@ canada
 <span class="st">    </span><span class="kw">geom_line</span>()<span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>()</code></pre>
 <p><img src="tidystatR_files/figure-html/unnamed-chunk-108-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="criminalite-a-montreal" class="section level2">
+<h2><span class="header-section-number">17.2</span> Criminalité à Montréal</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#criminalite &lt;- read_csv(&quot;../data/criminalite-2015-2018.csv&quot;, locale = locale(encoding = &#39;ISO-8859-1&#39;))</span>
+criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;criminalite-2015-2018.csv&quot;</span>), <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">encoding =</span> <span class="st">&#39;ISO-8859-1&#39;</span>))
+<span class="co">#&gt; Parsed with column specification:</span>
+<span class="co">#&gt; cols(</span>
+<span class="co">#&gt;   CATEGORIE = col_character(),</span>
+<span class="co">#&gt;   DATE = col_date(format = &quot;&quot;),</span>
+<span class="co">#&gt;   QUART = col_character(),</span>
+<span class="co">#&gt;   PDQ = col_integer(),</span>
+<span class="co">#&gt;   X = col_double(),</span>
+<span class="co">#&gt;   Y = col_double(),</span>
+<span class="co">#&gt;   LAT = col_double(),</span>
+<span class="co">#&gt;   LONG = col_double()</span>
+<span class="co">#&gt; )</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">criminalite <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(CATEGORIE, DATE, QUART) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Nombre =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> DATE, <span class="dt">y =</span> Nombre, <span class="dt">color =</span> QUART))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>CATEGORIE)</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-109-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">criminalite <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(DATE <span class="op">&gt;</span><span class="st"> &quot;2016-06-30&quot;</span> <span class="op">&amp;</span><span class="st"> </span>DATE <span class="op">&lt;</span><span class="st"> &quot;2016-08-01&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(CATEGORIE, DATE, QUART) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Nombre =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> DATE, <span class="dt">y =</span> Nombre, <span class="dt">color =</span> QUART))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_path</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>CATEGORIE)
+<span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
+<span class="co">#&gt; adjust the group aesthetic?</span></code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-110-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
