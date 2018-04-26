@@ -11,5 +11,7 @@ Imports:
   knitr,
   datasauRus,
   mvtnorm,
-  here
+  here,
+  fivethirtyeight,
+  dslabs
 Remotes: rstudio/bookdown
