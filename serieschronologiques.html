@@ -25,7 +25,7 @@
 <meta name="author" content="Marc-André Désautels">
 
 
-<meta name="date" content="2018-04-25">
+<meta name="date" content="2018-04-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -245,7 +245,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>V Les données construites</b></span></li>
 <li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a><ul>
 <li class="chapter" data-level="17.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#mise-en-place-9"><i class="fa fa-check"></i><b>17.1</b> Mise en place</a></li>
-<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a></li>
+<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.2.1</b> Airbnb</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
@@ -334,19 +336,9 @@ canada
 </div>
 <div id="criminalite-a-montreal" class="section level2">
 <h2><span class="header-section-number">17.2</span> Criminalité à Montréal</h2>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#criminalite &lt;- read_csv(&quot;../data/criminalite-2015-2018.csv&quot;, locale = locale(encoding = &#39;ISO-8859-1&#39;))</span>
-criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;criminalite-2015-2018.csv&quot;</span>), <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">encoding =</span> <span class="st">&#39;ISO-8859-1&#39;</span>))
-<span class="co">#&gt; Parsed with column specification:</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   CATEGORIE = col_character(),</span>
-<span class="co">#&gt;   DATE = col_date(format = &quot;&quot;),</span>
-<span class="co">#&gt;   QUART = col_character(),</span>
-<span class="co">#&gt;   PDQ = col_integer(),</span>
-<span class="co">#&gt;   X = col_double(),</span>
-<span class="co">#&gt;   Y = col_double(),</span>
-<span class="co">#&gt;   LAT = col_double(),</span>
-<span class="co">#&gt;   LONG = col_double()</span>
-<span class="co">#&gt; )</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># On lit les données disponibles sur le web.</span>
+criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;http://donnees.ville.montreal.qc.ca/dataset/5829b5b0-ea6f-476f-be94-bc2b8797769a/resource/c6f482bf-bf0f-4960-8b2f-9982c211addd/download/interventionscitoyendo.csv&quot;</span>, <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="dt">encoding =</span> <span class="st">&#39;ISO-8859-1&#39;</span>))
+<span class="co">#criminalite &lt;- read_csv(here::here(&quot;data&quot;,&quot;criminalite-2015-2018.csv&quot;), locale = locale(encoding = &#39;ISO-8859-1&#39;))</span></code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">criminalite <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(CATEGORIE, DATE, QUART) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Nombre =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
@@ -364,7 +356,147 @@ criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(here<
 <span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
 <span class="co">#&gt; adjust the group aesthetic?</span></code></pre>
 <p><img src="tidystatR_files/figure-html/unnamed-chunk-110-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="airbnb" class="section level3">
+<h3><span class="header-section-number">17.2.1</span> Airbnb</h3>
+<pre class="sourceCode r"><code class="sourceCode r">airbnb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;http://data.insideairbnb.com/canada/qc/montreal/2016-05-04/visualisations/listings.csv&quot;</span>)
+<span class="co">#airbnb &lt;- read_csv(here::here(&quot;data&quot;, &quot;airbnb-listings-mtl.csv&quot;))</span>
+<span class="co">#calendar &lt;- read_csv(here::here(&quot;data&quot;, &quot;airbnb-calendar-mtl.csv&quot;), n_max = 526400)</span></code></pre>
+<div id="categorie-de-logement" class="section level4">
+<h4><span class="header-section-number">17.2.1.1</span> Catégorie de logement</h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(<span class="kw">freq</span>(airbnb<span class="op">$</span>room_type,
+     <span class="dt">total =</span> <span class="ot">TRUE</span>,
+     <span class="dt">valid =</span> <span class="ot">FALSE</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">n</th>
+<th align="right">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entire home/apt</td>
+<td align="right">6377</td>
+<td align="right">60.1</td>
+</tr>
+<tr class="even">
+<td>Private room</td>
+<td align="right">4092</td>
+<td align="right">38.5</td>
+</tr>
+<tr class="odd">
+<td>Shared room</td>
+<td align="right">150</td>
+<td align="right">1.4</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td align="right">10619</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airbnb, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> room_type, <span class="dt">fill =</span> room_type))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(
+    <span class="dt">x =</span> <span class="st">&quot;Type de logement&quot;</span>,
+    <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>
+  )</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-112-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>La moyenne du prix par nuit.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airbnb<span class="op">$</span>price)
+<span class="co">#&gt; [1] 90.6</span></code></pre>
+</div>
+<div id="availability" class="section level4">
+<h4><span class="header-section-number">17.2.1.2</span> Availability</h4>
+<p>Création d’une nouvelle colonne pour avoir haute (plus de 90 jours par année) et basse (90 jours ou moins par année) disponibilité.</p>
+<pre class="sourceCode r"><code class="sourceCode r">airbnb_av &lt;-<span class="st"> </span>airbnb <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">disponibilite =</span> <span class="kw">if_else</span>(availability_<span class="dv">365</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">90</span>, <span class="st">&quot;haute&quot;</span>, <span class="st">&quot;basse&quot;</span>))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(<span class="kw">freq</span>(airbnb_av<span class="op">$</span>disponibilite,
+           <span class="dt">total =</span> <span class="ot">TRUE</span>,
+           <span class="dt">valid =</span> <span class="ot">FALSE</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">n</th>
+<th align="right">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>basse</td>
+<td align="right">3774</td>
+<td align="right">35.5</td>
+</tr>
+<tr class="even">
+<td>haute</td>
+<td align="right">6845</td>
+<td align="right">64.5</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right">10619</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+<p>Les logements sont disponibles en moyenne combien de jours par année?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airbnb<span class="op">$</span>availability_<span class="dv">365</span>)
+<span class="co">#&gt; [1] 197</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airbnb, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> availability_<span class="dv">365</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(
+    <span class="dt">x =</span> <span class="st">&quot;Nombre de jours disponibles par année&quot;</span>,
+    <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>
+  )</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-117-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="nombre-de-logements-par-hotes" class="section level4">
+<h4><span class="header-section-number">17.2.1.3</span> Nombre de logements par hôtes</h4>
+<p>Création d’une nouvelle colonne pour savoir si l’hôte possède un seul logement ou plusieurs.</p>
+<pre class="sourceCode r"><code class="sourceCode r">airbnb_mult &lt;-<span class="st"> </span>airbnb <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">multi =</span> <span class="kw">if_else</span>(calculated_host_listings_count <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Multi&quot;</span>, <span class="st">&quot;Unique&quot;</span>))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(<span class="kw">freq</span>(airbnb_mult<span class="op">$</span>multi,
+      <span class="dt">total =</span> <span class="ot">TRUE</span>,
+      <span class="dt">valid =</span> <span class="ot">FALSE</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">n</th>
+<th align="right">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Multi</td>
+<td align="right">3336</td>
+<td align="right">31.4</td>
+</tr>
+<tr class="even">
+<td>Unique</td>
+<td align="right">7283</td>
+<td align="right">68.6</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right">10619</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airbnb, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> calculated_host_listings_count))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(
+    <span class="dt">x =</span> <span class="st">&quot;Nombre de logements au nom de l&#39;hôte&quot;</span>,
+    <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>
+  )</code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-120-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
+</div>
+</div>
 </div>
 </div>
             </section>
