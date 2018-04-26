@@ -245,9 +245,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>V Les données construites</b></span></li>
 <li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a><ul>
 <li class="chapter" data-level="17.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#mise-en-place-9"><i class="fa fa-check"></i><b>17.1</b> Mise en place</a></li>
-<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.2.1</b> Airbnb</a></li>
+<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a></li>
+<li class="chapter" data-level="17.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.3</b> Airbnb</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#categorie-de-logement"><i class="fa fa-check"></i><b>17.3.1</b> Catégorie de logement</a></li>
+<li class="chapter" data-level="17.3.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#availability"><i class="fa fa-check"></i><b>17.3.2</b> Availability</a></li>
+<li class="chapter" data-level="17.3.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#nombre-de-logements-par-hotes"><i class="fa fa-check"></i><b>17.3.3</b> Nombre de logements par hôtes</a></li>
 </ul></li>
+<li class="chapter" data-level="17.4" data-path="serieschronologiques.html"><a href="serieschronologiques.html#dslabs"><i class="fa fa-check"></i><b>17.4</b> DSLABS</a></li>
+<li class="chapter" data-level="17.5" data-path="serieschronologiques.html"><a href="serieschronologiques.html#fivethirtyeight"><i class="fa fa-check"></i><b>17.5</b> FIVETHIRTYEIGHT</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
@@ -438,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="dt">title =</span> <span class="st">&quot;Lien entre la taille et la masse&quot;</span>
   )
 <span class="co">#&gt; Warning: Removed 28 rows containing missing values (geom_point).</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-128-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-133-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Nous remarquons une donnée qui semble aberrante dans le graphique précédent. Le personnage de Star Wars semble avoir une masse très importante par rapport à sa taille. Puisque sa masse dépasse 1000kg, nous allons filtrer les données pour trouver le nom du personnage en question.</p>
 <pre class="sourceCode r"><code class="sourceCode r">starwars <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(mass <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>)
@@ -477,15 +482,15 @@ r = \dfrac{\sum xy - n\bar x \bar y}{(n-1)s_x s_y}
 <h2><span class="header-section-number">19.3</span> Fake data</h2>
 <div id="correlation-positive" class="section level3">
 <h3><span class="header-section-number">19.3.1</span> Corrélation positive</h3>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-136-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-141-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="correlation-negative" class="section level3">
 <h3><span class="header-section-number">19.3.2</span> Corrélation négative</h3>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-137-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-142-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="aucune-correlation" class="section level3">
 <h3><span class="header-section-number">19.3.3</span> Aucune corrélation</h3>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-138-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-143-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="une-autre-facon-de-simuler" class="section level3">
 <h3><span class="header-section-number">19.3.4</span> Une autre façon de simuler</h3>
@@ -530,7 +535,7 @@ cor_lin &lt;-<span class="st"> </span><span class="kw">rbind</span>(
         <span class="dt">axis.ticks.y=</span><span class="kw">element_blank</span>())<span class="op">+</span>
 <span class="st">  </span><span class="kw">xlim</span>(<span class="op">-</span><span class="dv">0</span>,<span class="dv">1</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">ylim</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">1.5</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-139-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-144-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="autre-essai-moderndive" class="section level3">
 <h3><span class="header-section-number">19.3.5</span> Autre essai moderndive</h3>
@@ -734,7 +739,7 @@ Figure 19.1: Different correlation coefficients
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>ensemble) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-143-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-148-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="datasaurus" class="section level2">
 <h2><span class="header-section-number">19.5</span> DatasauRus</h2>
@@ -869,7 +874,7 @@ Figure 19.1: Different correlation coefficients
 <span class="st">  </span><span class="kw">theme_void</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset, <span class="dt">ncol=</span><span class="dv">3</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-145-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-150-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="challenger" class="section level2">
 <h2><span class="header-section-number">19.6</span> Challenger</h2>
@@ -1004,7 +1009,7 @@ Figure 19.1: Different correlation coefficients
 <h3><span class="header-section-number">19.6.1</span> Toutes les données</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> orings, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> damaged))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-148-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-153-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="sans-incident" class="section level3">
 <h3><span class="header-section-number">19.6.2</span> Sans incident</h3>
@@ -1012,7 +1017,7 @@ Figure 19.1: Different correlation coefficients
 <span class="st">  </span><span class="kw">filter</span>(damaged <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> damaged))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-149-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-154-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="probabilites-en-enlevant-les-incidents" class="section level3">
 <h3><span class="header-section-number">19.6.3</span> Probabilités en enlevant les incidents</h3>
@@ -1030,7 +1035,7 @@ fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span clas
 <span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> fun)<span class="op">+</span>
 <span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>, <span class="dv">90</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-150-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-155-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="probabilites-en-gardant-les-incidents" class="section level3">
 <h3><span class="header-section-number">19.6.4</span> Probabilités en gardant les incidents</h3>
@@ -1048,7 +1053,7 @@ fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span clas
 <span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> fun)<span class="op">+</span>
 <span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>, <span class="dv">90</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-151-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-156-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="glm" class="section level3">
 <h3><span class="header-section-number">19.6.5</span> GLM</h3>
@@ -1062,7 +1067,7 @@ fun &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span clas
 <span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> fun)<span class="op">+</span>
 <span class="st">  </span><span class="kw">xlim</span>(<span class="dv">30</span>, <span class="dv">90</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-152-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-157-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

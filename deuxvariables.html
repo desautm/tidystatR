@@ -245,9 +245,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>V Les données construites</b></span></li>
 <li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a><ul>
 <li class="chapter" data-level="17.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#mise-en-place-9"><i class="fa fa-check"></i><b>17.1</b> Mise en place</a></li>
-<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.2.1</b> Airbnb</a></li>
+<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a></li>
+<li class="chapter" data-level="17.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.3</b> Airbnb</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#categorie-de-logement"><i class="fa fa-check"></i><b>17.3.1</b> Catégorie de logement</a></li>
+<li class="chapter" data-level="17.3.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#availability"><i class="fa fa-check"></i><b>17.3.2</b> Availability</a></li>
+<li class="chapter" data-level="17.3.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#nombre-de-logements-par-hotes"><i class="fa fa-check"></i><b>17.3.3</b> Nombre de logements par hôtes</a></li>
 </ul></li>
+<li class="chapter" data-level="17.4" data-path="serieschronologiques.html"><a href="serieschronologiques.html#dslabs"><i class="fa fa-check"></i><b>17.4</b> DSLABS</a></li>
+<li class="chapter" data-level="17.5" data-path="serieschronologiques.html"><a href="serieschronologiques.html#fivethirtyeight"><i class="fa fa-check"></i><b>17.5</b> FIVETHIRTYEIGHT</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
@@ -423,7 +428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Race&quot;</span>,
        <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-74-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-77-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="representation-graphique---diagramme-a-bandes-superposees" class="section level3">
 <h3><span class="header-section-number">12.2.3</span> Représentation graphique - diagramme à bandes superposées</h3>
@@ -432,13 +437,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="st">  </span><span class="kw">geom_bar</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Race&quot;</span>,
        <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-75-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Pour obtenir des diagrammes comportant des fréquences relatives, nous utilisons l’option <code>position = &quot;fill&quot;</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> race, <span class="dt">fill =</span> marital))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Race&quot;</span>,
        <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-76-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-79-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="croisement-dune-variable-qualitative-et-dune-variable-quantitative" class="section level2">
@@ -455,12 +460,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital, <span class="dt">y =</span> age))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()
 <span class="co">#&gt; Warning: Removed 76 rows containing non-finite values (stat_boxplot).</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-77-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-80-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Pour mieux visualiser vos boîtes à moustache, vous pouvez les colorier. Si nous voulons colorier les boîtes en fonction de la variable <code>marital</code>, nous ajoutons l’option <code>fill = marital</code>..</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital, <span class="dt">y =</span> age, <span class="dt">fill =</span> marital))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()
 <span class="co">#&gt; Warning: Removed 76 rows containing non-finite values (stat_boxplot).</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-81-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="representation-graphique---diagramme-en-violon" class="section level3">
 <h3><span class="header-section-number">12.3.2</span> Représentation graphique - diagramme en violon</h3>
@@ -472,19 +477,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital, <span class="dt">y =</span> age))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>()
 <span class="co">#&gt; Warning: Removed 76 rows containing non-finite values (stat_ydensity).</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-79-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-82-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Nous pouvons ajouter de la couleur avec l’option <code>fill</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital, <span class="dt">y =</span> age, <span class="dt">fill =</span> marital))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>()
 <span class="co">#&gt; Warning: Removed 76 rows containing non-finite values (stat_ydensity).</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-80-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-83-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Nous pouvons bien sûr superposer des boîtes à moustaches et des diagrammes en violon.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> gss_cat, <span class="kw">aes</span>(<span class="dt">x =</span> marital, <span class="dt">y =</span> age, <span class="dt">fill =</span> marital))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">0.1</span>)
 <span class="co">#&gt; Warning: Removed 76 rows containing non-finite values (stat_ydensity).</span>
 <span class="co">#&gt; Warning: Removed 76 rows containing non-finite values (stat_boxplot).</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-81-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-84-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="croisement-de-deux-variables-quantitatives" class="section level2">

@@ -245,9 +245,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>V Les données construites</b></span></li>
 <li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a><ul>
 <li class="chapter" data-level="17.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#mise-en-place-9"><i class="fa fa-check"></i><b>17.1</b> Mise en place</a></li>
-<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.2.1</b> Airbnb</a></li>
+<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a></li>
+<li class="chapter" data-level="17.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.3</b> Airbnb</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#categorie-de-logement"><i class="fa fa-check"></i><b>17.3.1</b> Catégorie de logement</a></li>
+<li class="chapter" data-level="17.3.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#availability"><i class="fa fa-check"></i><b>17.3.2</b> Availability</a></li>
+<li class="chapter" data-level="17.3.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#nombre-de-logements-par-hotes"><i class="fa fa-check"></i><b>17.3.3</b> Nombre de logements par hôtes</a></li>
 </ul></li>
+<li class="chapter" data-level="17.4" data-path="serieschronologiques.html"><a href="serieschronologiques.html#dslabs"><i class="fa fa-check"></i><b>17.4</b> DSLABS</a></li>
+<li class="chapter" data-level="17.5" data-path="serieschronologiques.html"><a href="serieschronologiques.html#fivethirtyeight"><i class="fa fa-check"></i><b>17.5</b> FIVETHIRTYEIGHT</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
@@ -324,7 +329,7 @@ canada
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> canada, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-107-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-110-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Le génocide Rwandais…</p>
 <pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Rwanda&quot;</span>)) <span class="op">%&gt;%</span>
@@ -332,7 +337,7 @@ canada
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp))<span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_line</span>()<span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-108-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-111-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="criminalite-a-montreal" class="section level2">
 <h2><span class="header-section-number">17.2</span> Criminalité à Montréal</h2>
@@ -345,7 +350,7 @@ criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> DATE, <span class="dt">y =</span> Nombre, <span class="dt">color =</span> QUART))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>CATEGORIE)</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-109-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-112-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r">criminalite <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(DATE <span class="op">&gt;</span><span class="st"> &quot;2016-06-30&quot;</span> <span class="op">&amp;</span><span class="st"> </span>DATE <span class="op">&lt;</span><span class="st"> &quot;2016-08-01&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(CATEGORIE, DATE, QUART) <span class="op">%&gt;%</span>
@@ -355,14 +360,17 @@ criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>CATEGORIE)
 <span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to</span>
 <span class="co">#&gt; adjust the group aesthetic?</span></code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-110-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div id="airbnb" class="section level3">
-<h3><span class="header-section-number">17.2.1</span> Airbnb</h3>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-113-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="airbnb" class="section level2">
+<h2><span class="header-section-number">17.3</span> Airbnb</h2>
+<p>Sur le site où les données ont été prises, nous pour vons utiliser une autre base de données <code>calendar</code>. Par contre, le fichier fait 100 Mo et prend plusieurs minutes à être lu par <code>read_csv</code>. On pourrait unir les deux bases de données pour connaître le nombre moyen de jours d’occupations, etc…</p>
+<p>On veut retrouver les statistiques calculées ici <a href="http://insideairbnb.com/montreal/">airbnb montreal</a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">airbnb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;http://data.insideairbnb.com/canada/qc/montreal/2016-05-04/visualisations/listings.csv&quot;</span>)
 <span class="co">#airbnb &lt;- read_csv(here::here(&quot;data&quot;, &quot;airbnb-listings-mtl.csv&quot;))</span>
 <span class="co">#calendar &lt;- read_csv(here::here(&quot;data&quot;, &quot;airbnb-calendar-mtl.csv&quot;), n_max = 526400)</span></code></pre>
-<div id="categorie-de-logement" class="section level4">
-<h4><span class="header-section-number">17.2.1.1</span> Catégorie de logement</h4>
+<div id="categorie-de-logement" class="section level3">
+<h3><span class="header-section-number">17.3.1</span> Catégorie de logement</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(<span class="kw">freq</span>(airbnb<span class="op">$</span>room_type,
      <span class="dt">total =</span> <span class="ot">TRUE</span>,
      <span class="dt">valid =</span> <span class="ot">FALSE</span>))</code></pre>
@@ -403,13 +411,13 @@ criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span
     <span class="dt">x =</span> <span class="st">&quot;Type de logement&quot;</span>,
     <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>
   )</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-112-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-115-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>La moyenne du prix par nuit.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airbnb<span class="op">$</span>price)
 <span class="co">#&gt; [1] 90.6</span></code></pre>
 </div>
-<div id="availability" class="section level4">
-<h4><span class="header-section-number">17.2.1.2</span> Availability</h4>
+<div id="availability" class="section level3">
+<h3><span class="header-section-number">17.3.2</span> Availability</h3>
 <p>Création d’une nouvelle colonne pour avoir haute (plus de 90 jours par année) et basse (90 jours ou moins par année) disponibilité.</p>
 <pre class="sourceCode r"><code class="sourceCode r">airbnb_av &lt;-<span class="st"> </span>airbnb <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">disponibilite =</span> <span class="kw">if_else</span>(availability_<span class="dv">365</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">90</span>, <span class="st">&quot;haute&quot;</span>, <span class="st">&quot;basse&quot;</span>))</code></pre>
@@ -451,10 +459,10 @@ criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span
     <span class="dt">x =</span> <span class="st">&quot;Nombre de jours disponibles par année&quot;</span>,
     <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>
   )</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-117-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-120-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="nombre-de-logements-par-hotes" class="section level4">
-<h4><span class="header-section-number">17.2.1.3</span> Nombre de logements par hôtes</h4>
+<div id="nombre-de-logements-par-hotes" class="section level3">
+<h3><span class="header-section-number">17.3.3</span> Nombre de logements par hôtes</h3>
 <p>Création d’une nouvelle colonne pour savoir si l’hôte possède un seul logement ou plusieurs.</p>
 <pre class="sourceCode r"><code class="sourceCode r">airbnb_mult &lt;-<span class="st"> </span>airbnb <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">multi =</span> <span class="kw">if_else</span>(calculated_host_listings_count <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, <span class="st">&quot;Multi&quot;</span>, <span class="st">&quot;Unique&quot;</span>))</code></pre>
@@ -493,10 +501,30 @@ criminalite &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span
     <span class="dt">x =</span> <span class="st">&quot;Nombre de logements au nom de l&#39;hôte&quot;</span>,
     <span class="dt">y =</span> <span class="st">&quot;Fréquence&quot;</span>
   )</code></pre>
-<p><img src="tidystatR_files/figure-html/unnamed-chunk-120-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-123-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="dslabs" class="section level2">
+<h2><span class="header-section-number">17.4</span> DSLABS</h2>
+<p>La librairie</p>
+</div>
+<div id="fivethirtyeight" class="section level2">
+<h2><span class="header-section-number">17.5</span> FIVETHIRTYEIGHT</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fivethirtyeight)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">polls &lt;-<span class="st"> </span><span class="kw">as.tibble</span>(generic_polllist)
+polls <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(enddate, pollster, adjusted_dem, adjusted_rep) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">rename</span>(Dé<span class="dt">mocrates =</span> adjusted_dem, Ré<span class="dt">publicains =</span> adjusted_rep) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(parti, percentage, <span class="op">-</span>enddate, <span class="op">-</span>pollster) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">parti =</span> <span class="kw">factor</span>(parti, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Démocrates&quot;</span>,<span class="st">&quot;Républicains&quot;</span>))) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(enddate, percentage, <span class="dt">color =</span> parti)) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha=</span><span class="fl">0.4</span>)  <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.15</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">50</span>))
+<span class="co">#&gt; Warning: Removed 38 rows containing non-finite values (stat_smooth).</span>
+<span class="co">#&gt; Warning: Removed 38 rows containing missing values (geom_point).</span></code></pre>
+<p><img src="tidystatR_files/figure-html/unnamed-chunk-125-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
-</div>
-</div>
 </div>
 </div>
             </section>
