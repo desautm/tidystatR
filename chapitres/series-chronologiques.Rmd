@@ -173,14 +173,13 @@ La librairie
 library(fivethirtyeight)
 ```
 
-
 ```{r}
 polls <- as.tibble(generic_polllist)
 polls %>%
   select(enddate, pollster, adjusted_dem, adjusted_rep) %>%
-  rename(Démocrates = adjusted_dem, Républicains = adjusted_rep) %>%
+  rename(Democrates = adjusted_dem, Republicains = adjusted_rep) %>%
   gather(parti, percentage, -enddate, -pollster) %>%
-  mutate(parti = factor(parti, levels = c("Démocrates","Républicains"))) %>%
+  mutate(parti = factor(parti, levels = c("Democrates","Republicains"))) %>%
   ggplot(aes(enddate, percentage, color = parti)) +  
   geom_point(show.legend = FALSE, alpha=0.4)  + 
   geom_smooth(method = "loess", span = 0.15) +
