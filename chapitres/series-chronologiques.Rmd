@@ -70,7 +70,11 @@ criminalite %>%
   facet_wrap(~CATEGORIE)
 ```
 
-### Airbnb
+## Airbnb
+
+Sur le site où les données ont été prises, nous pour vons utiliser une autre base de données `calendar`. Par contre, le fichier fait 100 Mo et prend plusieurs minutes à être lu par `read_csv`. On pourrait unir les deux bases de données pour connaître le nombre moyen de jours d'occupations, etc...
+
+On veut retrouver les statistiques calculées ici [airbnb montreal](http://insideairbnb.com/montreal/).
 
 ```{r airbnb-montreal, message = FALSE}
 airbnb <- read_csv("http://data.insideairbnb.com/canada/qc/montreal/2016-05-04/visualisations/listings.csv")
@@ -79,7 +83,7 @@ airbnb <- read_csv("http://data.insideairbnb.com/canada/qc/montreal/2016-05-04/v
 ```
 
 
-#### Catégorie de logement
+### Catégorie de logement
 
 ```{r}
 kable(freq(airbnb$room_type,
@@ -103,7 +107,7 @@ La moyenne du prix par nuit.
 mean(airbnb$price)
 ```
 
-#### Availability
+### Availability
 
 Création d'une nouvelle colonne pour avoir haute (plus de 90 jours par année) et basse (90 jours ou moins par année) disponibilité.
 
@@ -134,7 +138,7 @@ ggplot(data = airbnb, mapping = aes(x = availability_365))+
   )
 ```
 
-#### Nombre de logements par hôtes
+### Nombre de logements par hôtes
 
 Création d'une nouvelle colonne pour savoir si l'hôte possède un seul logement ou plusieurs.
 
@@ -157,5 +161,29 @@ ggplot(data = airbnb, mapping = aes(x = calculated_host_listings_count))+
     x = "Nombre de logements au nom de l'hôte",
     y = "Fréquence"
   )
+```
+
+## DSLABS
+
+La librairie 
+
+## FIVETHIRTYEIGHT
+
+```{r}
+library(fivethirtyeight)
+```
+
+
+```{r}
+polls <- as.tibble(generic_polllist)
+polls %>%
+  select(enddate, pollster, adjusted_dem, adjusted_rep) %>%
+  rename(Démocrates = adjusted_dem, Républicains = adjusted_rep) %>%
+  gather(parti, percentage, -enddate, -pollster) %>%
+  mutate(parti = factor(parti, levels = c("Démocrates","Républicains"))) %>%
+  ggplot(aes(enddate, percentage, color = parti)) +  
+  geom_point(show.legend = FALSE, alpha=0.4)  + 
+  geom_smooth(method = "loess", span = 0.15) +
+  scale_y_continuous(limits = c(30,50))
 ```
 
