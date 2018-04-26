@@ -30,7 +30,7 @@ Appliquer des outils statistiques à l’interprétation de données reliées à
         * L'utilisation juste des notions est un élément essentiel. Il ne faut pas seulement apprendre aux étudiants à faire les choses, mais plutôt leur apprendre à utiliser les bonnes notions dans les bonnes situations.
         * Le vocabulaire peut être appris en établissant des liens avec R
     1. Distinction des types de variables et des échelles de mesure.
-        * 
+        * On peut le faire...
     1. Identification plausible de la méthode d’échantillonnage utilisée d’après un échantillon observé de la population visée.
 1. Présenter des données sous des formes adéquates.
     1. Organisation judicieuse de données sous forme de tableaux et de graphiques.

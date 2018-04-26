@@ -45,9 +45,10 @@ gapminder %>%
 
 ## Criminalité à Montréal
 
-```{r criminalite}
-#criminalite <- read_csv("../data/criminalite-2015-2018.csv", locale = locale(encoding = 'ISO-8859-1'))
-criminalite <- read_csv(here::here("data","criminalite-2015-2018.csv"), locale = locale(encoding = 'ISO-8859-1'))
+```{r criminalite, message = FALSE}
+# On lit les données disponibles sur le web.
+criminalite <- read_csv("http://donnees.ville.montreal.qc.ca/dataset/5829b5b0-ea6f-476f-be94-bc2b8797769a/resource/c6f482bf-bf0f-4960-8b2f-9982c211addd/download/interventionscitoyendo.csv", locale = locale(encoding = 'ISO-8859-1'))
+#criminalite <- read_csv(here::here("data","criminalite-2015-2018.csv"), locale = locale(encoding = 'ISO-8859-1'))
 ```
 
 ```{r}
@@ -68,3 +69,93 @@ criminalite %>%
   geom_path()+
   facet_wrap(~CATEGORIE)
 ```
+
+### Airbnb
+
+```{r airbnb-montreal, message = FALSE}
+airbnb <- read_csv("http://data.insideairbnb.com/canada/qc/montreal/2016-05-04/visualisations/listings.csv")
+#airbnb <- read_csv(here::here("data", "airbnb-listings-mtl.csv"))
+#calendar <- read_csv(here::here("data", "airbnb-calendar-mtl.csv"), n_max = 526400)
+```
+
+
+#### Catégorie de logement
+
+```{r}
+kable(freq(airbnb$room_type,
+     total = TRUE,
+     valid = FALSE))
+```
+
+
+```{r}
+ggplot(data = airbnb, mapping = aes(x = room_type, fill = room_type))+
+  geom_bar()+
+  labs(
+    x = "Type de logement",
+    y = "Fréquence"
+  )
+```
+
+La moyenne du prix par nuit.
+
+```{r}
+mean(airbnb$price)
+```
+
+#### Availability
+
+Création d'une nouvelle colonne pour avoir haute (plus de 90 jours par année) et basse (90 jours ou moins par année) disponibilité.
+
+```{r}
+airbnb_av <- airbnb %>%
+  mutate(disponibilite = if_else(availability_365 > 90, "haute", "basse"))
+```
+
+```{r}
+kable(freq(airbnb_av$disponibilite,
+           total = TRUE,
+           valid = FALSE))
+```
+
+Les logements sont disponibles en moyenne combien de jours par année?
+
+```{r}
+mean(airbnb$availability_365)
+```
+
+
+```{r}
+ggplot(data = airbnb, mapping = aes(x = availability_365))+
+  geom_bar()+
+  labs(
+    x = "Nombre de jours disponibles par année",
+    y = "Fréquence"
+  )
+```
+
+#### Nombre de logements par hôtes
+
+Création d'une nouvelle colonne pour savoir si l'hôte possède un seul logement ou plusieurs.
+
+```{r}
+airbnb_mult <- airbnb %>%
+  mutate(multi = if_else(calculated_host_listings_count > 1, "Multi", "Unique"))
+```
+
+```{r}
+kable(freq(airbnb_mult$multi,
+      total = TRUE,
+      valid = FALSE))
+```
+
+
+```{r}
+ggplot(data = airbnb, mapping = aes(x = calculated_host_listings_count))+
+  geom_bar()+
+  labs(
+    x = "Nombre de logements au nom de l'hôte",
+    y = "Fréquence"
+  )
+```
+
