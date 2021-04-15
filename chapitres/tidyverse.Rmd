@@ -82,7 +82,7 @@ Les principes d'un jeu de données *tidy* sont les suivants :
 La figure \@ref(fig:tidy-structure) montre ces règles de façon visuelle (l'image a été prise de [@wickham2017]).
 
 ```{r tidy-structure, echo = FALSE, out.width = "100%", fig.cap = "Suivre les trois principes rend les données tidy: les variables sont en colonnes, les observations sont sur des lignes, et chaques valeurs sont dans des cellules différentes."}
-knitr::include_graphics("images/tidy-1.png")
+knitr::include_graphics("../images/tidy-1.png")
 ```
 
 Pourquoi s'assurer que vos données sont *tidy*? Il y a deux avantages importants:

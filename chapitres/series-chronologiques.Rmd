@@ -47,7 +47,7 @@ gapminder %>%
 
 ```{r criminalite, message = FALSE}
 # On lit les données disponibles sur le web.
-criminalite <- read_csv("http://donnees.ville.montreal.qc.ca/dataset/5829b5b0-ea6f-476f-be94-bc2b8797769a/resource/c6f482bf-bf0f-4960-8b2f-9982c211addd/download/interventionscitoyendo.csv", locale = locale(encoding = 'ISO-8859-1'))
+criminalite <- read_csv("https://data.montreal.ca/dataset/5829b5b0-ea6f-476f-be94-bc2b8797769a/resource/c6f482bf-bf0f-4960-8b2f-9982c211addd/download/interventionscitoyendo.csv", locale = locale(encoding = 'ISO-8859-1'))
 #criminalite <- read_csv(here::here("data","criminalite-2015-2018.csv"), locale = locale(encoding = 'ISO-8859-1'))
 ```
 

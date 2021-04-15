@@ -28,13 +28,13 @@ L’objectif est de permettre à l’utilisateur de saisir les nouvelles valeurs
 Pour utiliser cette interface, sous RStudio vous pouvez aller dans le menu _Addins_ (présent dans la barre d’outils principale) puis choisir _Levels recoding_.
 
 ```{r addin-irec, echo = FALSE, out.width = "25%", fig.cap = "Levels recoding dans le menu Addins"}
-knitr::include_graphics("images/addin-irec.png")
+knitr::include_graphics("../images/addin-irec.png")
 ```
 
 Si nous utilisons l'interface graphique pour la variable `rincome` de la base de données `gts_cat`, nous obtenons:
 
 ```{r irec, echo = FALSE, out.width = "100%", fig.cap = "L'interface graphique de Levels recoding"}
-knitr::include_graphics("images/irec.png")
+knitr::include_graphics("../images/irec.png")
 ```
 
 L’interface se compose de trois onglets : l’onglet _Variable et paramètres_ vous permet de sélectionner la variable à recoder, le nom de la nouvelle variable et d’autres paramètres, l’onglet _Recodages_ vous permet de saisir les nouvelles valeurs des modalités, et l’onglet _Code et résultat_ affiche le code `R` correspondant ainsi qu’un tableau permettant de vérifier les résultats.
