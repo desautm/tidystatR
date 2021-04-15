@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Statistiques et Probabilités avec R, RStudio et le Tidyverse</title>
-  <meta name="description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 11 Les variables quantitatives continues | Statistiques et Probabilités avec R, RStudio et le Tidyverse</title>
+  <meta name="description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Statistiques et Probabilités avec R, RStudio et le Tidyverse" />
+  <meta property="og:title" content="Chapitre 11 Les variables quantitatives continues | Statistiques et Probabilités avec R, RStudio et le Tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -17,29 +16,34 @@
   <meta name="github-repo" content="desautm/tidystatR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistiques et Probabilités avec R, RStudio et le Tidyverse" />
+  <meta name="twitter:title" content="Chapitre 11 Les variables quantitatives continues | Statistiques et Probabilités avec R, RStudio et le Tidyverse" />
   
   <meta name="twitter:description" content="Un livre portant sur les statistiques et la probabilité en utilisant le langage R et le tidyverse." />
   
 
-<meta name="author" content="Marc-André Désautels">
+<meta name="author" content="Marc-André Désautels" />
 
 
-<meta name="date" content="2018-09-19">
+<meta name="date" content="2021-04-15" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="variablesquantitativesdiscretes.html">
-<link rel="next" href="deuxvariables.html">
+<link rel="prev" href="variablesquantitativesdiscretes.html"/>
+<link rel="next" href="deuxvariables.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,28 +54,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -115,7 +118,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -133,148 +136,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="part"><span><b>I Les outils</b></span></li>
-<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a><ul>
+<li class="chapter" data-level="1" data-path="rrstudio.html"><a href="rrstudio.html"><i class="fa fa-check"></i><b>1</b> Les logiciels R et RStudio</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-r"><i class="fa fa-check"></i><b>1.1</b> Qu’est-ce que R?</a></li>
 <li class="chapter" data-level="1.2" data-path="rrstudio.html"><a href="rrstudio.html#quest-ce-que-rstudio"><i class="fa fa-check"></i><b>1.2</b> Qu’est-ce que RStudio?</a></li>
-<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a><ul>
+<li class="chapter" data-level="1.3" data-path="rrstudio.html"><a href="rrstudio.html#les-bases-de-rstudio"><i class="fa fa-check"></i><b>1.3</b> Les bases de RStudio</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="rrstudio.html"><a href="rrstudio.html#la-console"><i class="fa fa-check"></i><b>1.3.1</b> La console</a></li>
 <li class="chapter" data-level="1.3.2" data-path="rrstudio.html"><a href="rrstudio.html#environmenthistoryconnections"><i class="fa fa-check"></i><b>1.3.2</b> Environment/History/Connections</a></li>
 <li class="chapter" data-level="1.3.3" data-path="rrstudio.html"><a href="rrstudio.html#filesplotspackageshelpviewer"><i class="fa fa-check"></i><b>1.3.3</b> Files/Plots/Packages/Help/Viewer</a></li>
 <li class="chapter" data-level="1.3.4" data-path="rrstudio.html"><a href="rrstudio.html#aller-chercher-de-laide"><i class="fa fa-check"></i><b>1.3.4</b> Aller chercher de l’aide</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a><ul>
+<li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Le tidyverse</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#extensions"><i class="fa fa-check"></i><b>2.1</b> Extensions</a></li>
 <li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#installation"><i class="fa fa-check"></i><b>2.2</b> Installation</a></li>
 <li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#tidydata"><i class="fa fa-check"></i><b>2.3</b> Les tidy data</a></li>
-<li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>2.4</b> Les tibbles</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#prerequis"><i class="fa fa-check"></i><b>2.4.1</b> Prérequis</a></li>
+<li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>2.4</b> Les tibbles</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#prérequis"><i class="fa fa-check"></i><b>2.4.1</b> Prérequis</a></li>
 <li class="chapter" data-level="2.4.2" data-path="tidyverse.html"><a href="tidyverse.html#un-exemple-de-tibble"><i class="fa fa-check"></i><b>2.4.2</b> Un exemple de <strong>tibble</strong></a></li>
-<li class="chapter" data-level="2.4.3" data-path="tidyverse.html"><a href="tidyverse.html#la-base-de-donnees-flights"><i class="fa fa-check"></i><b>2.4.3</b> La base de données flights</a></li>
+<li class="chapter" data-level="2.4.3" data-path="tidyverse.html"><a href="tidyverse.html#la-base-de-données-flights"><i class="fa fa-check"></i><b>2.4.3</b> La base de données flights</a></li>
 <li class="chapter" data-level="2.4.4" data-path="tidyverse.html"><a href="tidyverse.html#donneesdiamonds"><i class="fa fa-check"></i><b>2.4.4</b> La base de données <strong>diamonds</strong></a></li>
 <li class="chapter" data-level="2.4.5" data-path="tidyverse.html"><a href="tidyverse.html#explorertibbles"><i class="fa fa-check"></i><b>2.4.5</b> Comment explorer des “tibbles”</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="lextension-questionr.html"><a href="lextension-questionr.html"><i class="fa fa-check"></i><b>3</b> L’extension <code>questionr</code></a><ul>
+<li class="chapter" data-level="3" data-path="lextension-questionr.html"><a href="lextension-questionr.html"><i class="fa fa-check"></i><b>3</b> L’extension <code>questionr</code></a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="lextension-questionr.html"><a href="lextension-questionr.html#mise-en-place"><i class="fa fa-check"></i><b>3.1</b> Mise en place</a></li>
 <li class="chapter" data-level="3.2" data-path="lextension-questionr.html"><a href="lextension-questionr.html#linterface-graphique"><i class="fa fa-check"></i><b>3.2</b> L’interface graphique</a></li>
 </ul></li>
 <li class="part"><span><b>II Introduction</b></span></li>
 <li class="chapter" data-level="4" data-path="demarchescientifique.html"><a href="demarchescientifique.html"><i class="fa fa-check"></i><b>4</b> La démarche scientifique</a></li>
-<li class="chapter" data-level="5" data-path="typesvariables.html"><a href="typesvariables.html"><i class="fa fa-check"></i><b>5</b> Les différents types de variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="typesvariables.html"><a href="typesvariables.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5" data-path="typesvariables.html"><a href="typesvariables.html"><i class="fa fa-check"></i><b>5</b> Les différents types de variables</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="typesvariables.html"><a href="typesvariables.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="typesvariables.html"><a href="typesvariables.html#mise-en-place-1"><i class="fa fa-check"></i><b>5.1.1</b> Mise en place</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="typesvariables.html"><a href="typesvariables.html#varqual"><i class="fa fa-check"></i><b>5.2</b> Les variables qualitatives</a><ul>
+<li class="chapter" data-level="5.2" data-path="typesvariables.html"><a href="typesvariables.html#varqual"><i class="fa fa-check"></i><b>5.2</b> Les variables qualitatives</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="typesvariables.html"><a href="typesvariables.html#qualinominale"><i class="fa fa-check"></i><b>5.2.1</b> Les variables qualitatives à échelle nominale</a></li>
 <li class="chapter" data-level="5.2.2" data-path="typesvariables.html"><a href="typesvariables.html#qualord"><i class="fa fa-check"></i><b>5.2.2</b> Les variables qualitatives à échelle ordinale</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="typesvariables.html"><a href="typesvariables.html#quant"><i class="fa fa-check"></i><b>5.3</b> Les variables quantitatives</a><ul>
+<li class="chapter" data-level="5.3" data-path="typesvariables.html"><a href="typesvariables.html#quant"><i class="fa fa-check"></i><b>5.3</b> Les variables quantitatives</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="typesvariables.html"><a href="typesvariables.html#mise-en-place-2"><i class="fa fa-check"></i><b>5.3.1</b> Mise en place</a></li>
-<li class="chapter" data-level="5.3.2" data-path="typesvariables.html"><a href="typesvariables.html#les-variables-quantitatives-discretes"><i class="fa fa-check"></i><b>5.3.2</b> Les variables quantitatives discrètes</a></li>
+<li class="chapter" data-level="5.3.2" data-path="typesvariables.html"><a href="typesvariables.html#les-variables-quantitatives-discrètes"><i class="fa fa-check"></i><b>5.3.2</b> Les variables quantitatives discrètes</a></li>
 <li class="chapter" data-level="5.3.3" data-path="typesvariables.html"><a href="typesvariables.html#quantcont"><i class="fa fa-check"></i><b>5.3.3</b> Les variables quantitatives continues</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a><ul>
-<li class="chapter" data-level="6.1" data-path="questionnaire.html"><a href="questionnaire.html#criteres-a-respecter"><i class="fa fa-check"></i><b>6.1</b> Critères à respecter</a></li>
-<li class="chapter" data-level="6.2" data-path="questionnaire.html"><a href="questionnaire.html#types-de-questions"><i class="fa fa-check"></i><b>6.2</b> Types de questions</a><ul>
+<li class="chapter" data-level="6" data-path="questionnaire.html"><a href="questionnaire.html"><i class="fa fa-check"></i><b>6</b> Construire un questionnaire</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="questionnaire.html"><a href="questionnaire.html#critères-à-respecter"><i class="fa fa-check"></i><b>6.1</b> Critères à respecter</a></li>
+<li class="chapter" data-level="6.2" data-path="questionnaire.html"><a href="questionnaire.html#types-de-questions"><i class="fa fa-check"></i><b>6.2</b> Types de questions</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="questionnaire.html"><a href="questionnaire.html#question-ouverte"><i class="fa fa-check"></i><b>6.2.1</b> Question ouverte</a></li>
-<li class="chapter" data-level="6.2.2" data-path="questionnaire.html"><a href="questionnaire.html#questions-fermees"><i class="fa fa-check"></i><b>6.2.2</b> Questions fermées</a></li>
+<li class="chapter" data-level="6.2.2" data-path="questionnaire.html"><a href="questionnaire.html#questions-fermées"><i class="fa fa-check"></i><b>6.2.2</b> Questions fermées</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="echellesmesures.html"><a href="echellesmesures.html"><i class="fa fa-check"></i><b>7</b> Les échelles de mesure</a></li>
-<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a><ul>
-<li class="chapter" data-level="8.1" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-aleatoires"><i class="fa fa-check"></i><b>8.1</b> Techniques d’échantillonnage aléatoires</a></li>
-<li class="chapter" data-level="8.2" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-dechantillonnage-non-aleatoires"><i class="fa fa-check"></i><b>8.2</b> Techniques d’échantillonnage non-aléatoires</a></li>
-<li class="chapter" data-level="8.3" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#base-de-donnees-pour-les-mms"><i class="fa fa-check"></i><b>8.3</b> Base de données pour les <em>M&amp;M’s</em></a></li>
+<li class="chapter" data-level="8" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html"><i class="fa fa-check"></i><b>8</b> Les techniques d’échantillonnage</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-déchantillonnage-aléatoires"><i class="fa fa-check"></i><b>8.1</b> Techniques d’échantillonnage aléatoires</a></li>
+<li class="chapter" data-level="8.2" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#techniques-déchantillonnage-non-aléatoires"><i class="fa fa-check"></i><b>8.2</b> Techniques d’échantillonnage non-aléatoires</a></li>
+<li class="chapter" data-level="8.3" data-path="techniquesechantillonnage.html"><a href="techniquesechantillonnage.html#base-de-données-pour-les-mms"><i class="fa fa-check"></i><b>8.3</b> Base de données pour les <em>M&amp;M’s</em></a></li>
 </ul></li>
 <li class="part"><span><b>III Présentation des données</b></span></li>
-<li class="chapter" data-level="9" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>9</b> Les variables qualitatives</a><ul>
+<li class="chapter" data-level="9" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html"><i class="fa fa-check"></i><b>9</b> Les variables qualitatives</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#mise-en-place-3"><i class="fa fa-check"></i><b>9.1</b> Mise en place</a></li>
-<li class="chapter" data-level="9.2" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#tableau-de-frequences"><i class="fa fa-check"></i><b>9.2</b> Tableau de fréquences</a></li>
-<li class="chapter" data-level="9.3" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#representation-graphique---le-diagramme-a-bandes"><i class="fa fa-check"></i><b>9.3</b> Représentation graphique - Le diagramme à bandes</a><ul>
+<li class="chapter" data-level="9.2" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#tableau-de-fréquences"><i class="fa fa-check"></i><b>9.2</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="9.3" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#représentation-graphique---le-diagramme-à-bandes"><i class="fa fa-check"></i><b>9.3</b> Représentation graphique - Le diagramme à bandes</a>
+<ul>
 <li class="chapter" data-level="9.3.1" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#la-variable-marital"><i class="fa fa-check"></i><b>9.3.1</b> La variable <code>marital</code></a></li>
 <li class="chapter" data-level="9.3.2" data-path="variablesqualitatives.html"><a href="variablesqualitatives.html#la-variable-relig"><i class="fa fa-check"></i><b>9.3.2</b> La variable <code>relig</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html"><i class="fa fa-check"></i><b>10</b> Les variables quantitatives discrètes</a><ul>
+<li class="chapter" data-level="10" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html"><i class="fa fa-check"></i><b>10</b> Les variables quantitatives discrètes</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html#mise-en-place-4"><i class="fa fa-check"></i><b>10.1</b> Mise en place</a></li>
 <li class="chapter" data-level="10.2" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html#tabfreqquantdiscr"><i class="fa fa-check"></i><b>10.2</b> Tableau de fréquences</a></li>
-<li class="chapter" data-level="10.3" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html#representation-graphique---le-diagramme-a-bandes-1"><i class="fa fa-check"></i><b>10.3</b> Représentation graphique - Le diagramme à bandes</a></li>
+<li class="chapter" data-level="10.3" data-path="variablesquantitativesdiscretes.html"><a href="variablesquantitativesdiscretes.html#représentation-graphique---le-diagramme-à-bandes-1"><i class="fa fa-check"></i><b>10.3</b> Représentation graphique - Le diagramme à bandes</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html"><i class="fa fa-check"></i><b>11</b> Les variables quantitatives continues</a><ul>
+<li class="chapter" data-level="11" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html"><i class="fa fa-check"></i><b>11</b> Les variables quantitatives continues</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#mise-en-place-5"><i class="fa fa-check"></i><b>11.1</b> Mise en place</a></li>
-<li class="chapter" data-level="11.2" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#tableau-de-frequences-1"><i class="fa fa-check"></i><b>11.2</b> Tableau de fréquences</a></li>
-<li class="chapter" data-level="11.3" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#representation-graphique---lhistogramme"><i class="fa fa-check"></i><b>11.3</b> Représentation graphique - L’histogramme</a></li>
+<li class="chapter" data-level="11.2" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#tableau-de-fréquences-1"><i class="fa fa-check"></i><b>11.2</b> Tableau de fréquences</a></li>
+<li class="chapter" data-level="11.3" data-path="variablesquantitativescontinues.html"><a href="variablesquantitativescontinues.html#représentation-graphique---lhistogramme"><i class="fa fa-check"></i><b>11.3</b> Représentation graphique - L’histogramme</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="deuxvariables.html"><a href="deuxvariables.html"><i class="fa fa-check"></i><b>12</b> Deux variables</a><ul>
+<li class="chapter" data-level="12" data-path="deuxvariables.html"><a href="deuxvariables.html"><i class="fa fa-check"></i><b>12</b> Deux variables</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="deuxvariables.html"><a href="deuxvariables.html#mise-en-place-6"><i class="fa fa-check"></i><b>12.1</b> Mise en place</a></li>
-<li class="chapter" data-level="12.2" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-de-deux-variables-qualitatives"><i class="fa fa-check"></i><b>12.2</b> Croisement de deux variables qualitatives</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="deuxvariables.html"><a href="deuxvariables.html#tableaux-a-double-entree"><i class="fa fa-check"></i><b>12.2.1</b> Tableaux à double entrée</a></li>
-<li class="chapter" data-level="12.2.2" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---diagramme-a-bandes-chevauchees"><i class="fa fa-check"></i><b>12.2.2</b> Représentation graphique - diagramme à bandes chevauchées</a></li>
-<li class="chapter" data-level="12.2.3" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---diagramme-a-bandes-superposees"><i class="fa fa-check"></i><b>12.2.3</b> Représentation graphique - diagramme à bandes superposées</a></li>
+<li class="chapter" data-level="12.2" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-de-deux-variables-qualitatives"><i class="fa fa-check"></i><b>12.2</b> Croisement de deux variables qualitatives</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="deuxvariables.html"><a href="deuxvariables.html#tableaux-à-double-entrée"><i class="fa fa-check"></i><b>12.2.1</b> Tableaux à double entrée</a></li>
+<li class="chapter" data-level="12.2.2" data-path="deuxvariables.html"><a href="deuxvariables.html#représentation-graphique---diagramme-à-bandes-chevauchées"><i class="fa fa-check"></i><b>12.2.2</b> Représentation graphique - diagramme à bandes chevauchées</a></li>
+<li class="chapter" data-level="12.2.3" data-path="deuxvariables.html"><a href="deuxvariables.html#représentation-graphique---diagramme-à-bandes-superposées"><i class="fa fa-check"></i><b>12.2.3</b> Représentation graphique - diagramme à bandes superposées</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-dune-variable-qualitative-et-dune-variable-quantitative"><i class="fa fa-check"></i><b>12.3</b> Croisement d’une variable qualitative et d’une variable quantitative</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---boite-a-moustaches"><i class="fa fa-check"></i><b>12.3.1</b> Représentation graphique - boîte à moustaches</a></li>
-<li class="chapter" data-level="12.3.2" data-path="deuxvariables.html"><a href="deuxvariables.html#representation-graphique---diagramme-en-violon"><i class="fa fa-check"></i><b>12.3.2</b> Représentation graphique - diagramme en violon</a></li>
+<li class="chapter" data-level="12.3" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-dune-variable-qualitative-et-dune-variable-quantitative"><i class="fa fa-check"></i><b>12.3</b> Croisement d’une variable qualitative et d’une variable quantitative</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="deuxvariables.html"><a href="deuxvariables.html#représentation-graphique---boîte-à-moustaches"><i class="fa fa-check"></i><b>12.3.1</b> Représentation graphique - boîte à moustaches</a></li>
+<li class="chapter" data-level="12.3.2" data-path="deuxvariables.html"><a href="deuxvariables.html#représentation-graphique---diagramme-en-violon"><i class="fa fa-check"></i><b>12.3.2</b> Représentation graphique - diagramme en violon</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="deuxvariables.html"><a href="deuxvariables.html#croisement-de-deux-variables-quantitatives"><i class="fa fa-check"></i><b>12.4</b> Croisement de deux variables quantitatives</a></li>
 </ul></li>
 <li class="part"><span><b>IV Les mesures</b></span></li>
-<li class="chapter" data-level="13" data-path="proportions.html"><a href="proportions.html"><i class="fa fa-check"></i><b>13</b> Les proportions</a><ul>
+<li class="chapter" data-level="13" data-path="proportions.html"><a href="proportions.html"><i class="fa fa-check"></i><b>13</b> Les proportions</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="proportions.html"><a href="proportions.html#mise-en-place-7"><i class="fa fa-check"></i><b>13.1</b> Mise en place</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="tendancecentrale.html"><a href="tendancecentrale.html"><i class="fa fa-check"></i><b>14</b> Les mesures de tendance centrale</a><ul>
+<li class="chapter" data-level="14" data-path="tendancecentrale.html"><a href="tendancecentrale.html"><i class="fa fa-check"></i><b>14</b> Les mesures de tendance centrale</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="tendancecentrale.html"><a href="tendancecentrale.html#mise-en-place-8"><i class="fa fa-check"></i><b>14.1</b> Mise en place</a></li>
 <li class="chapter" data-level="14.2" data-path="tendancecentrale.html"><a href="tendancecentrale.html#le-mode"><i class="fa fa-check"></i><b>14.2</b> Le mode</a></li>
-<li class="chapter" data-level="14.3" data-path="tendancecentrale.html"><a href="tendancecentrale.html#la-mediane"><i class="fa fa-check"></i><b>14.3</b> La médiane</a></li>
+<li class="chapter" data-level="14.3" data-path="tendancecentrale.html"><a href="tendancecentrale.html#la-médiane"><i class="fa fa-check"></i><b>14.3</b> La médiane</a></li>
 <li class="chapter" data-level="14.4" data-path="tendancecentrale.html"><a href="tendancecentrale.html#la-moyenne"><i class="fa fa-check"></i><b>14.4</b> La moyenne</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html"><i class="fa fa-check"></i><b>15</b> Les mesures de dispersion</a><ul>
-<li class="chapter" data-level="15.1" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#letendue"><i class="fa fa-check"></i><b>15.1</b> L’étendue</a></li>
+<li class="chapter" data-level="15" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html"><i class="fa fa-check"></i><b>15</b> Les mesures de dispersion</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#létendue"><i class="fa fa-check"></i><b>15.1</b> L’étendue</a></li>
 <li class="chapter" data-level="15.2" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#la-variance"><i class="fa fa-check"></i><b>15.2</b> La variance</a></li>
-<li class="chapter" data-level="15.3" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#lecart-type"><i class="fa fa-check"></i><b>15.3</b> L’écart-type</a></li>
+<li class="chapter" data-level="15.3" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#lécart-type"><i class="fa fa-check"></i><b>15.3</b> L’écart-type</a></li>
 <li class="chapter" data-level="15.4" data-path="mesuresdispersion.html"><a href="mesuresdispersion.html#le-coefficient-de-variation"><i class="fa fa-check"></i><b>15.4</b> Le coefficient de variation</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="mesuresposition.html"><a href="mesuresposition.html"><i class="fa fa-check"></i><b>16</b> Les mesures de position</a><ul>
+<li class="chapter" data-level="16" data-path="mesuresposition.html"><a href="mesuresposition.html"><i class="fa fa-check"></i><b>16</b> Les mesures de position</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="mesuresposition.html"><a href="mesuresposition.html#la-cote-z"><i class="fa fa-check"></i><b>16.1</b> La cote z</a></li>
 <li class="chapter" data-level="16.2" data-path="mesuresposition.html"><a href="mesuresposition.html#les-quantiles"><i class="fa fa-check"></i><b>16.2</b> Les quantiles</a></li>
 <li class="chapter" data-level="16.3" data-path="mesuresposition.html"><a href="mesuresposition.html#la-commande-summary"><i class="fa fa-check"></i><b>16.3</b> La commande <code>summary</code></a></li>
 <li class="chapter" data-level="16.4" data-path="mesuresposition.html"><a href="mesuresposition.html#le-rang-centile"><i class="fa fa-check"></i><b>16.4</b> Le rang centile</a></li>
 </ul></li>
 <li class="part"><span><b>V Les données construites</b></span></li>
-<li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a><ul>
+<li class="chapter" data-level="17" data-path="serieschronologiques.html"><a href="serieschronologiques.html"><i class="fa fa-check"></i><b>17</b> Les séries chronologiques</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#mise-en-place-9"><i class="fa fa-check"></i><b>17.1</b> Mise en place</a></li>
-<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalite-a-montreal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a></li>
-<li class="chapter" data-level="17.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.3</b> Airbnb</a><ul>
-<li class="chapter" data-level="17.3.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#categorie-de-logement"><i class="fa fa-check"></i><b>17.3.1</b> Catégorie de logement</a></li>
+<li class="chapter" data-level="17.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#criminalité-à-montréal"><i class="fa fa-check"></i><b>17.2</b> Criminalité à Montréal</a></li>
+<li class="chapter" data-level="17.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#airbnb"><i class="fa fa-check"></i><b>17.3</b> Airbnb</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="serieschronologiques.html"><a href="serieschronologiques.html#catégorie-de-logement"><i class="fa fa-check"></i><b>17.3.1</b> Catégorie de logement</a></li>
 <li class="chapter" data-level="17.3.2" data-path="serieschronologiques.html"><a href="serieschronologiques.html#availability"><i class="fa fa-check"></i><b>17.3.2</b> Availability</a></li>
-<li class="chapter" data-level="17.3.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#nombre-de-logements-par-hotes"><i class="fa fa-check"></i><b>17.3.3</b> Nombre de logements par hôtes</a></li>
+<li class="chapter" data-level="17.3.3" data-path="serieschronologiques.html"><a href="serieschronologiques.html#nombre-de-logements-par-hôtes"><i class="fa fa-check"></i><b>17.3.3</b> Nombre de logements par hôtes</a></li>
 </ul></li>
 <li class="chapter" data-level="17.4" data-path="serieschronologiques.html"><a href="serieschronologiques.html#dslabs"><i class="fa fa-check"></i><b>17.4</b> DSLABS</a></li>
 <li class="chapter" data-level="17.5" data-path="serieschronologiques.html"><a href="serieschronologiques.html#fivethirtyeight"><i class="fa fa-check"></i><b>17.5</b> FIVETHIRTYEIGHT</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a><ul>
+<li class="chapter" data-level="18" data-path="donneesconstruites.html"><a href="donneesconstruites.html"><i class="fa fa-check"></i><b>18</b> Les données construites</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="donneesconstruites.html"><a href="donneesconstruites.html#mise-en-place-10"><i class="fa fa-check"></i><b>18.1</b> Mise en place</a></li>
 </ul></li>
 <li class="part"><span><b>VI L’analyse de lien</b></span></li>
-<li class="chapter" data-level="19" data-path="correlationlineaire.html"><a href="correlationlineaire.html"><i class="fa fa-check"></i><b>19</b> La corrélation linéaire</a><ul>
+<li class="chapter" data-level="19" data-path="correlationlineaire.html"><a href="correlationlineaire.html"><i class="fa fa-check"></i><b>19</b> La corrélation linéaire</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#mise-en-place-11"><i class="fa fa-check"></i><b>19.1</b> Mise en place</a></li>
 <li class="chapter" data-level="19.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-nuage-de-points"><i class="fa fa-check"></i><b>19.2</b> Le nuage de points</a></li>
-<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#fake-data"><i class="fa fa-check"></i><b>19.3</b> Fake data</a><ul>
-<li class="chapter" data-level="19.3.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#correlation-positive"><i class="fa fa-check"></i><b>19.3.1</b> Corrélation positive</a></li>
-<li class="chapter" data-level="19.3.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#correlation-negative"><i class="fa fa-check"></i><b>19.3.2</b> Corrélation négative</a></li>
-<li class="chapter" data-level="19.3.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#aucune-correlation"><i class="fa fa-check"></i><b>19.3.3</b> Aucune corrélation</a></li>
-<li class="chapter" data-level="19.3.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#une-autre-facon-de-simuler"><i class="fa fa-check"></i><b>19.3.4</b> Une autre façon de simuler</a></li>
+<li class="chapter" data-level="19.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#fake-data"><i class="fa fa-check"></i><b>19.3</b> Fake data</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#corrélation-positive"><i class="fa fa-check"></i><b>19.3.1</b> Corrélation positive</a></li>
+<li class="chapter" data-level="19.3.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#corrélation-négative"><i class="fa fa-check"></i><b>19.3.2</b> Corrélation négative</a></li>
+<li class="chapter" data-level="19.3.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#aucune-corrélation"><i class="fa fa-check"></i><b>19.3.3</b> Aucune corrélation</a></li>
+<li class="chapter" data-level="19.3.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#une-autre-façon-de-simuler"><i class="fa fa-check"></i><b>19.3.4</b> Une autre façon de simuler</a></li>
 <li class="chapter" data-level="19.3.5" data-path="correlationlineaire.html"><a href="correlationlineaire.html#autre-essai-moderndive"><i class="fa fa-check"></i><b>19.3.5</b> Autre essai moderndive</a></li>
 </ul></li>
 <li class="chapter" data-level="19.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#le-quartet-danscombe"><i class="fa fa-check"></i><b>19.4</b> Le quartet d’Anscombe</a></li>
 <li class="chapter" data-level="19.5" data-path="correlationlineaire.html"><a href="correlationlineaire.html#datasaurus"><i class="fa fa-check"></i><b>19.5</b> DatasauRus</a></li>
-<li class="chapter" data-level="19.6" data-path="correlationlineaire.html"><a href="correlationlineaire.html#challenger"><i class="fa fa-check"></i><b>19.6</b> Challenger</a><ul>
-<li class="chapter" data-level="19.6.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#toutes-les-donnees"><i class="fa fa-check"></i><b>19.6.1</b> Toutes les données</a></li>
+<li class="chapter" data-level="19.6" data-path="correlationlineaire.html"><a href="correlationlineaire.html#challenger"><i class="fa fa-check"></i><b>19.6</b> Challenger</a>
+<ul>
+<li class="chapter" data-level="19.6.1" data-path="correlationlineaire.html"><a href="correlationlineaire.html#toutes-les-données"><i class="fa fa-check"></i><b>19.6.1</b> Toutes les données</a></li>
 <li class="chapter" data-level="19.6.2" data-path="correlationlineaire.html"><a href="correlationlineaire.html#sans-incident"><i class="fa fa-check"></i><b>19.6.2</b> Sans incident</a></li>
-<li class="chapter" data-level="19.6.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#probabilites-en-enlevant-les-incidents"><i class="fa fa-check"></i><b>19.6.3</b> Probabilités en enlevant les incidents</a></li>
-<li class="chapter" data-level="19.6.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#probabilites-en-gardant-les-incidents"><i class="fa fa-check"></i><b>19.6.4</b> Probabilités en gardant les incidents</a></li>
+<li class="chapter" data-level="19.6.3" data-path="correlationlineaire.html"><a href="correlationlineaire.html#probabilités-en-enlevant-les-incidents"><i class="fa fa-check"></i><b>19.6.3</b> Probabilités en enlevant les incidents</a></li>
+<li class="chapter" data-level="19.6.4" data-path="correlationlineaire.html"><a href="correlationlineaire.html#probabilités-en-gardant-les-incidents"><i class="fa fa-check"></i><b>19.6.4</b> Probabilités en gardant les incidents</a></li>
 <li class="chapter" data-level="19.6.5" data-path="correlationlineaire.html"><a href="correlationlineaire.html#glm"><i class="fa fa-check"></i><b>19.6.5</b> GLM</a></li>
 </ul></li>
 </ul></li>
@@ -299,16 +331,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="variablesquantitativescontinues" class="section level1">
+<div id="variablesquantitativescontinues" class="section level1" number="11">
 <h1><span class="header-section-number">Chapitre 11</span> Les variables quantitatives continues</h1>
-<div id="mise-en-place-5" class="section level2">
+<div id="mise-en-place-5" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Mise en place</h2>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="kw">library</span>(questionr)</a>
-<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="kw">library</span>(nycflights13)</a>
-<a class="sourceLine" id="cb52-4" data-line-number="4"><span class="kw">library</span>(knitr)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="variablesquantitativescontinues.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb53-2"><a href="variablesquantitativescontinues.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(questionr)</span>
+<span id="cb53-3"><a href="variablesquantitativescontinues.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb53-4"><a href="variablesquantitativescontinues.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
 </div>
-<div id="tableau-de-frequences-1" class="section level2">
+<div id="tableau-de-fréquences-1" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> Tableau de fréquences</h2>
 <p>Les différentes valeurs d’une variable continue étant impossibles à énumérer, nous devrons regrouper celles-ci en classes. La première colonne sera donc constituée de celles-ci.</p>
 <p>Il sera parfois utile d’ajouter une colonne supplémentaire au tableau habituel: le milieu de classe. Celui-ci est calculé en faisant la moyenne entre le début de classe et la fin de classe.</p>
@@ -323,6 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <thead>
 <tr class="header">
 <th align="center">Titre</th>
+<th align="center"></th>
 <th align="center"></th>
 <th align="center"></th>
 </tr>
@@ -350,13 +383,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Pour être en mesure de briser une variable en classes, il faut utiliser la commande <code>cut</code>. Les options utilisées sont les suivantes:</p>
 <p>Pour ce faire, nous devons utiliser la commande <code>cut</code> qui permet d’indiquer les frontières de ces classes. Voici un exemple où nous créons des classes de largeur 25:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">temp_classes &lt;-<span class="st"> </span><span class="kw">cut</span>(weather<span class="op">$</span>temp,</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2">                    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>),</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">                    <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">                    <span class="dt">right =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb53-5" data-line-number="5"><span class="kw">unique</span>(temp_classes)</a>
-<a class="sourceLine" id="cb53-6" data-line-number="6"><span class="co">#&gt; [1] [25,50)   [0,25)    [50,75)   [75,100)  [100,125] &lt;NA&gt;     </span></a>
-<a class="sourceLine" id="cb53-7" data-line-number="7"><span class="co">#&gt; Levels: [0,25) [25,50) [50,75) [75,100) [100,125]</span></a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="variablesquantitativescontinues.html#cb54-1" aria-hidden="true" tabindex="-1"></a>temp_classes <span class="ot">&lt;-</span> <span class="fu">cut</span>(weather<span class="sc">$</span>temp,</span>
+<span id="cb54-2"><a href="variablesquantitativescontinues.html#cb54-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>),</span>
+<span id="cb54-3"><a href="variablesquantitativescontinues.html#cb54-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb54-4"><a href="variablesquantitativescontinues.html#cb54-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">right =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-5"><a href="variablesquantitativescontinues.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(temp_classes)</span>
+<span id="cb54-6"><a href="variablesquantitativescontinues.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] [25,50)   [0,25)    [50,75)   [75,100)  [100,125] &lt;NA&gt;     </span></span>
+<span id="cb54-7"><a href="variablesquantitativescontinues.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: [0,25) [25,50) [50,75) [75,100) [100,125]</span></span></code></pre></div>
 <p>Nous nous retrouvons donc avec 6 classes. Lorsque nous présenterons les variables sous forme de tableau, il nous sera utile d’utiliser la commande <code>cut</code>.</p>
 <p>L’option <code>include.lowest</code> indique que nous voulons conserver …
 L’option <code>right = FALSE</code> indique que nous voulons des intervalles fermés à gauche et ouverts à droite.</p>
@@ -371,19 +404,19 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <li><code>val%cum</code>: le pourcentage cumulé en omettant les valeurs manquantes</li>
 </ul>
 <p>Nous obtenons donc:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">air_time_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(flights<span class="op">$</span>air_time, </a>
-<a class="sourceLine" id="cb54-2" data-line-number="2">                    <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb54-3" data-line-number="3">                    <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb54-4" data-line-number="4">                    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">600</span>, <span class="dv">700</span>))</a>
-<a class="sourceLine" id="cb54-5" data-line-number="5">tab_airtime &lt;-<span class="st"> </span><span class="kw">freq</span>(air_time_rec,</a>
-<a class="sourceLine" id="cb54-6" data-line-number="6">                    <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb54-7" data-line-number="7">                    <span class="dt">total =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb54-8" data-line-number="8">                    <span class="dt">valid =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb54-9" data-line-number="9"><span class="kw">kable</span>(tab_airtime)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="variablesquantitativescontinues.html#cb55-1" aria-hidden="true" tabindex="-1"></a>air_time_rec <span class="ot">&lt;-</span> <span class="fu">cut</span>(flights<span class="sc">$</span>air_time, </span>
+<span id="cb55-2"><a href="variablesquantitativescontinues.html#cb55-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">include.lowest=</span><span class="cn">TRUE</span>,</span>
+<span id="cb55-3"><a href="variablesquantitativescontinues.html#cb55-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">right=</span><span class="cn">FALSE</span>,</span>
+<span id="cb55-4"><a href="variablesquantitativescontinues.html#cb55-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">600</span>, <span class="dv">700</span>))</span>
+<span id="cb55-5"><a href="variablesquantitativescontinues.html#cb55-5" aria-hidden="true" tabindex="-1"></a>tab_airtime <span class="ot">&lt;-</span> <span class="fu">freq</span>(air_time_rec,</span>
+<span id="cb55-6"><a href="variablesquantitativescontinues.html#cb55-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cum =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb55-7"><a href="variablesquantitativescontinues.html#cb55-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">total =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb55-8"><a href="variablesquantitativescontinues.html#cb55-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">valid =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb55-9"><a href="variablesquantitativescontinues.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tab_airtime)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th></th>
+<th align="left"></th>
 <th align="right">n</th>
 <th align="right">%</th>
 <th align="right">val%</th>
@@ -393,7 +426,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 </thead>
 <tbody>
 <tr class="odd">
-<td>[0,100)</td>
+<td align="left">[0,100)</td>
 <td align="right">105687</td>
 <td align="right">31.4</td>
 <td align="right">32.3</td>
@@ -401,7 +434,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">32.3</td>
 </tr>
 <tr class="even">
-<td>[100,200)</td>
+<td align="left">[100,200)</td>
 <td align="right">146527</td>
 <td align="right">43.5</td>
 <td align="right">44.8</td>
@@ -409,7 +442,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">77.0</td>
 </tr>
 <tr class="odd">
-<td>[200,300)</td>
+<td align="left">[200,300)</td>
 <td align="right">31036</td>
 <td align="right">9.2</td>
 <td align="right">9.5</td>
@@ -417,7 +450,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">86.5</td>
 </tr>
 <tr class="even">
-<td>[300,400)</td>
+<td align="left">[300,400)</td>
 <td align="right">43347</td>
 <td align="right">12.9</td>
 <td align="right">13.2</td>
@@ -425,7 +458,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">99.8</td>
 </tr>
 <tr class="odd">
-<td>[400,500)</td>
+<td align="left">[400,500)</td>
 <td align="right">48</td>
 <td align="right">0.0</td>
 <td align="right">0.0</td>
@@ -433,7 +466,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">99.8</td>
 </tr>
 <tr class="even">
-<td>[500,600)</td>
+<td align="left">[500,600)</td>
 <td align="right">132</td>
 <td align="right">0.0</td>
 <td align="right">0.0</td>
@@ -441,7 +474,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">99.8</td>
 </tr>
 <tr class="odd">
-<td>[600,700]</td>
+<td align="left">[600,700]</td>
 <td align="right">569</td>
 <td align="right">0.2</td>
 <td align="right">0.2</td>
@@ -449,7 +482,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">100.0</td>
 </tr>
 <tr class="even">
-<td>NA</td>
+<td align="left">NA</td>
 <td align="right">9430</td>
 <td align="right">2.8</td>
 <td align="right">NA</td>
@@ -457,7 +490,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>Total</td>
+<td align="left">Total</td>
 <td align="right">336776</td>
 <td align="right">100.0</td>
 <td align="right">100.0</td>
@@ -467,19 +500,19 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 </tbody>
 </table>
 <p>À la section <a href="variablesquantitativesdiscretes.html#tabfreqquantdiscr">10.2</a>, nous avons vu que la variable <code>seats</code> de la base de données <code>planes</code> contenait 48 valeurs différentes. Nous allons donc créer le tableau de fréquences avec des classes.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">seats_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(planes<span class="op">$</span>seats, </a>
-<a class="sourceLine" id="cb55-2" data-line-number="2">                 <span class="dt">include.lowest=</span><span class="ot">TRUE</span>,  </a>
-<a class="sourceLine" id="cb55-3" data-line-number="3">                 <span class="dt">right=</span><span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb55-4" data-line-number="4">                 <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>, <span class="dv">450</span>))</a>
-<a class="sourceLine" id="cb55-5" data-line-number="5">tab_seats &lt;-<span class="st"> </span><span class="kw">freq</span>(seats_rec,</a>
-<a class="sourceLine" id="cb55-6" data-line-number="6">                  <span class="dt">cum =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb55-7" data-line-number="7">                  <span class="dt">total =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb55-8" data-line-number="8">                  <span class="dt">valid =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb55-9" data-line-number="9"><span class="kw">kable</span>(tab_seats)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="variablesquantitativescontinues.html#cb56-1" aria-hidden="true" tabindex="-1"></a>seats_rec <span class="ot">&lt;-</span> <span class="fu">cut</span>(planes<span class="sc">$</span>seats, </span>
+<span id="cb56-2"><a href="variablesquantitativescontinues.html#cb56-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">include.lowest=</span><span class="cn">TRUE</span>,  </span>
+<span id="cb56-3"><a href="variablesquantitativescontinues.html#cb56-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">right=</span><span class="cn">FALSE</span>,</span>
+<span id="cb56-4"><a href="variablesquantitativescontinues.html#cb56-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">250</span>, <span class="dv">300</span>, <span class="dv">350</span>, <span class="dv">400</span>, <span class="dv">450</span>))</span>
+<span id="cb56-5"><a href="variablesquantitativescontinues.html#cb56-5" aria-hidden="true" tabindex="-1"></a>tab_seats <span class="ot">&lt;-</span> <span class="fu">freq</span>(seats_rec,</span>
+<span id="cb56-6"><a href="variablesquantitativescontinues.html#cb56-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cum =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb56-7"><a href="variablesquantitativescontinues.html#cb56-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">total =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb56-8"><a href="variablesquantitativescontinues.html#cb56-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">valid =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-9"><a href="variablesquantitativescontinues.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tab_seats)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th></th>
+<th align="left"></th>
 <th align="right">n</th>
 <th align="right">%</th>
 <th align="right">val%</th>
@@ -489,7 +522,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 </thead>
 <tbody>
 <tr class="odd">
-<td>[0,50)</td>
+<td align="left">[0,50)</td>
 <td align="right">122</td>
 <td align="right">3.7</td>
 <td align="right">3.7</td>
@@ -497,7 +530,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">3.7</td>
 </tr>
 <tr class="even">
-<td>[50,100)</td>
+<td align="left">[50,100)</td>
 <td align="right">596</td>
 <td align="right">17.9</td>
 <td align="right">17.9</td>
@@ -505,7 +538,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">21.6</td>
 </tr>
 <tr class="odd">
-<td>[100,150)</td>
+<td align="left">[100,150)</td>
 <td align="right">1193</td>
 <td align="right">35.9</td>
 <td align="right">35.9</td>
@@ -513,7 +546,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">57.5</td>
 </tr>
 <tr class="even">
-<td>[150,200)</td>
+<td align="left">[150,200)</td>
 <td align="right">860</td>
 <td align="right">25.9</td>
 <td align="right">25.9</td>
@@ -521,7 +554,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">83.4</td>
 </tr>
 <tr class="odd">
-<td>[200,250)</td>
+<td align="left">[200,250)</td>
 <td align="right">269</td>
 <td align="right">8.1</td>
 <td align="right">8.1</td>
@@ -529,7 +562,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">91.5</td>
 </tr>
 <tr class="even">
-<td>[250,300)</td>
+<td align="left">[250,300)</td>
 <td align="right">68</td>
 <td align="right">2.0</td>
 <td align="right">2.0</td>
@@ -537,7 +570,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">93.6</td>
 </tr>
 <tr class="odd">
-<td>[300,350)</td>
+<td align="left">[300,350)</td>
 <td align="right">131</td>
 <td align="right">3.9</td>
 <td align="right">3.9</td>
@@ -545,7 +578,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">97.5</td>
 </tr>
 <tr class="even">
-<td>[350,400)</td>
+<td align="left">[350,400)</td>
 <td align="right">70</td>
 <td align="right">2.1</td>
 <td align="right">2.1</td>
@@ -553,7 +586,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">99.6</td>
 </tr>
 <tr class="odd">
-<td>[400,450]</td>
+<td align="left">[400,450]</td>
 <td align="right">13</td>
 <td align="right">0.4</td>
 <td align="right">0.4</td>
@@ -561,7 +594,7 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 <td align="right">100.0</td>
 </tr>
 <tr class="even">
-<td>Total</td>
+<td align="left">Total</td>
 <td align="right">3322</td>
 <td align="right">100.0</td>
 <td align="right">100.0</td>
@@ -571,16 +604,16 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
 </tbody>
 </table>
 </div>
-<div id="representation-graphique---lhistogramme" class="section level2">
+<div id="représentation-graphique---lhistogramme" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> Représentation graphique - L’histogramme</h2>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">ggplot</span>(flights, <span class="kw">aes</span>(<span class="dt">x =</span> air_time))<span class="op">+</span></a>
-<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">center =</span> <span class="dv">25</span>, <span class="dt">color =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb56-4" data-line-number="4">    <span class="dt">title =</span> <span class="st">&quot;Répartition de 327 346 vols selon le nombre de minutes de vol&quot;</span>,</a>
-<a class="sourceLine" id="cb56-5" data-line-number="5">    <span class="dt">x =</span> <span class="st">&quot;Nombre de minutes de vol&quot;</span>,</a>
-<a class="sourceLine" id="cb56-6" data-line-number="6">    <span class="dt">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></a>
-<a class="sourceLine" id="cb56-7" data-line-number="7">  )</a>
-<a class="sourceLine" id="cb56-8" data-line-number="8"><span class="co">#&gt; Warning: Removed 9430 rows containing non-finite values (stat_bin).</span></a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="variablesquantitativescontinues.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(flights, <span class="fu">aes</span>(<span class="at">x =</span> air_time))<span class="sc">+</span></span>
+<span id="cb57-2"><a href="variablesquantitativescontinues.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">50</span>, <span class="at">center =</span> <span class="dv">25</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>)<span class="sc">+</span></span>
+<span id="cb57-3"><a href="variablesquantitativescontinues.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb57-4"><a href="variablesquantitativescontinues.html#cb57-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Répartition de 327 346 vols selon le nombre de minutes de vol&quot;</span>,</span>
+<span id="cb57-5"><a href="variablesquantitativescontinues.html#cb57-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Nombre de minutes de vol&quot;</span>,</span>
+<span id="cb57-6"><a href="variablesquantitativescontinues.html#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Nombre d&#39;unités statistiques&quot;</span></span>
+<span id="cb57-7"><a href="variablesquantitativescontinues.html#cb57-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb57-8"><a href="variablesquantitativescontinues.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 9430 rows containing non-finite values (stat_bin).</span></span></code></pre></div>
 <p><img src="tidystatR_files/figure-html/unnamed-chunk-67-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </div>
@@ -596,11 +629,13 @@ L’option <code>right = FALSE</code> indique que nous voulons des intervalles f
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -608,12 +643,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -623,6 +657,14 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/desautm/tidystatR/edit/master/chapitres/variables-quantitatives-continues.Rmd",
 "text": "Modifier"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
 },
 "download": ["tidystatR.pdf", "tidystatR.epub"],
 "toc": {
@@ -638,9 +680,10 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

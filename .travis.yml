@@ -12,6 +12,8 @@ addons:
     packages:
       - libxml2-dev
 
+install: travis_wait mvn install
+
 script:
   - Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
   

@@ -1,3 +1,11 @@
+fig:console-rstudio
+fig:console-r
+fig:environment-r
+fig:files-r
+fig:tidy-structure
+fig:addin-irec
+fig:irec
+fig:correlation1
 rrstudio
 quest-ce-que-r
 quest-ce-que-rstudio
