@@ -49,7 +49,7 @@ Pour télécharger la version *Desktop* de RStudio (que vous pouvez utilisez sur
 Au premier lancement de RStudio, l'écran est séparé en trois grandes zones:
 
 ```{r console-rstudio, echo = FALSE, out.width = "100%", fig.cap = "L'interface de RStudio"}
-knitr::include_graphics("../images/console-rstudio.png")
+knitr::include_graphics("images/console-rstudio.png")
 ```
 
 La zone de gauche se nomme _Console_. À son démarrage, RStudio a lancé une nouvelle session de R et c’est dans cette fenêtre que nous allons pouvoir interagir avec lui.
@@ -77,7 +77,7 @@ Type 'q()' to quit R.
 La console ressemble à ceci:
 
 ```{r console-r, echo = FALSE, out.width = "75%", fig.cap = "La console R"}
-knitr::include_graphics("../images/console-r.png")
+knitr::include_graphics("images/console-r.png")
 ```
 
 La ligne qui débute avec le symbole `>` est appelée l’invite de commande (ou prompt en anglais). Elle signifie que R est disponible et en attente de votre prochaine commande. C'est à cet endroit que nous pouvons entrer des commandes et les éxécuter en appuyabt sur `Entrée`.
@@ -85,13 +85,13 @@ La ligne qui débute avec le symbole `>` est appelée l’invite de commande (ou
 ### Environment/History/Connections
 
 ```{r environment-r, echo = FALSE, out.width = "75%", fig.cap = "La zone Environment/History/Connections"}
-knitr::include_graphics("../images/environment-r.png")
+knitr::include_graphics("images/environment-r.png")
 ```
 
 ### Files/Plots/Packages/Help/Viewer
 
 ```{r files-r, echo = FALSE, out.width = "75%", fig.cap = "La zone Files/Plots/Packages/Help/Viewer"}
-knitr::include_graphics("../images/files-r.png")
+knitr::include_graphics("images/files-r.png")
 ```
 
 Vous pouvez chercher de l'aide dans l'onglet *Help* de l'interface de RStudio (voir la figure \@ref(fig:files-r)) et utiliser le moteur de recherche intégré.
